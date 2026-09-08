@@ -1,0 +1,123 @@
+i## title: End of my services	/	tilde.team	70
+i## date: "2026-09-07"	/	tilde.team	70
+i	/	tilde.team	70
+i## Introduction	/	tilde.team	70
+i	/	tilde.team	70
+iToday's post is a short one. In it, I'm announcing that I'm	/	tilde.team	70
+iending the hosting of my services on the Internet. In this	/	tilde.team	70
+iblog post, when I talk about alternative hosting, I am	/	tilde.team	70
+ireferring to an alternative to what the GAFAM companies	/	tilde.team	70
+ioffer.	/	tilde.team	70
+hGAFAM	URL:https://en.wikipedia.org/wiki/Big_Tech#FAANG	en.wikipedia.org	443
+i	/	tilde.team	70
+i## Alternative hosting	/	tilde.team	70
+i	/	tilde.team	70
+iThis section explains why I've been hosting services on the	/	tilde.team	70
+iInternet. For technical details, please visit this webpage.	/	tilde.team	70
+iAlso, most of the infrastructure components are listed in my	/	tilde.team	70
+iorganization's GitHub repositories.	/	tilde.team	70
+hthis webpage	URL:https://github.com/theobori-cafe/services.theobori.cafe/blob/main/content/documentation.md	github.com	443
+hGitHub repositories	URL:https://github.com/theobori-cafe	github.com	443
+i	/	tilde.team	70
+i### Current state	/	tilde.team	70
+i	/	tilde.team	70
+iFor about three years, I've been making free services	/	tilde.team	70
+ipublicly available on the Internet, open to everyone. Some	/	tilde.team	70
+iservices are on-demand because they require users to first	/	tilde.team	70
+icreate an account in my LDAP directory. There are various	/	tilde.team	70
+itypes of services, such as Gitea, Nextcloud, PrivateBin, and	/	tilde.team	70
+iothers, these are primarily browser-based services. As of the	/	tilde.team	70
+itime of writing this blog post, all services are still	/	tilde.team	70
+iavailable.	/	tilde.team	70
+hLDAP directory	URL:https://www.openldap.org/	www.openldap.org	443
+hGitea	URL:https://about.gitea.com/	about.gitea.com	443
+hNextcloud	URL:https://nextcloud.com/fr	nextcloud.com	443
+hPrivateBin	URL:https://privatebin.info/	privatebin.info	443
+i	/	tilde.team	70
+iThese various applications are hosted on a VPS with Contabo.	/	tilde.team	70
+iIn addition to these, there are other applications that	/	tilde.team	70
+ienable the proper administration and management of the	/	tilde.team	70
+iservices, some are designed to improve service uptime,	/	tilde.team	70
+iothers to manage the application lifecycle, others to	/	tilde.team	70
+imonitor system status, and still others to manage	/	tilde.team	70
+iapplication backups, etc. I believe this is a relatively	/	tilde.team	70
+icomprehensive and advanced environment that will stand the	/	tilde.team	70
+itest of time.	/	tilde.team	70
+hContabo	URL:https://contabo.com/en	contabo.com	443
+i	/	tilde.team	70
+i### My motivations	/	tilde.team	70
+i	/	tilde.team	70
+iI've always thought alternative hosting was really cool, I	/	tilde.team	70
+iwas introduced to it by the tildes, who are the members of	/	tilde.team	70
+ithe Tildeverse. I did some research and quickly found	/	tilde.team	70
+iCHATONS, a collective of alternative hosting providers. That	/	tilde.team	70
+iinspired me to start offering online services, on my own	/	tilde.team	70
+ismall scale, for others and for myself.	/	tilde.team	70
+hTildeverse	URL:https://tildeverse.org	tildeverse.org	443
+hCHATONS	URL:https://www.chatons.org/	www.chatons.org	443
+i	/	tilde.team	70
+i### My objectives	/	tilde.team	70
+i	/	tilde.team	70
+iAt the start of the project, I'd never managed services this	/	tilde.team	70
+iway before, with so many mechanisms involved. My goal was to	/	tilde.team	70
+ilearn the technical aspects, build my skills, and keep the	/	tilde.team	70
+isetup running for as long as possible. I also wanted to	/	tilde.team	70
+ioffer an alternative to GAFAM services, which I find neither	/	tilde.team	70
+iethical nor respectful of their users' privacy.	/	tilde.team	70
+i	/	tilde.team	70
+i### The End	/	tilde.team	70
+i	/	tilde.team	70
+iIt was a very interesting and educational experience. After	/	tilde.team	70
+ithree years of keeping the services uptime as high as	/	tilde.team	70
+ipossible, performing maintenance, adding features,	/	tilde.team	70
+iinvestigating various issues, backing up data regularly, and	/	tilde.team	70
+icarrying out whatever other necessary tasks, I decided to	/	tilde.team	70
+istop maintaining these services.	/	tilde.team	70
+i	/	tilde.team	70
+iFrom now on, I'd rather focus on other things, I no longer	/	tilde.team	70
+iwant to spend as much time as before maintaining the	/	tilde.team	70
+iinfrastructure. Now that I have a job, I have less time than	/	tilde.team	70
+iwhen I was a student, and I'd rather organize my time	/	tilde.team	70
+idifferently.	/	tilde.team	70
+i	/	tilde.team	70
+i### Future	/	tilde.team	70
+i	/	tilde.team	70
+iIn the future, I may continue to offer services, but with a	/	tilde.team	70
+imuch simpler infrastructure and a focus on specific topics,	/	tilde.team	70
+isuch as a Gopher holes hosting service.	/	tilde.team	70
+i	/	tilde.team	70
+i## My static websites	/	tilde.team	70
+i	/	tilde.team	70
+iAs for my websites, my personal website and my zettelkasten,	/	tilde.team	70
+iI'll continue to update them, but both will be hosted on	/	tilde.team	70
+iGitHub Pages.	/	tilde.team	70
+hmy personal website	URL:https://theobori.cafe	theobori.cafe	443
+hmy zettelkasten	URL:https://zettel.theobori.cafe	zettel.theobori.cafe	443
+i	/	tilde.team	70
+i## Acknowledgments	/	tilde.team	70
+i	/	tilde.team	70
+iI'd like to thank the online communities, especially the	/	tilde.team	70
+ipubnixes, that emphasize knowledge sharing and learning,	/	tilde.team	70
+ithat share their techniques and setups, and that provide	/	tilde.team	70
+ipublic guides and resources to educate people. It's thanks	/	tilde.team	70
+ito these communities that art, authentic and caring social	/	tilde.team	70
+iinteractions, and computing culture endure.	/	tilde.team	70
+i	/	tilde.team	70
+iThis has allowed me to discover new things, computer science	/	tilde.team	70
+iconcepts, UNIX systems and programs, rabbit holes, and more.	/	tilde.team	70
+iBut the most valuable thing I've gained from this is	/	tilde.team	70
+icomputer culture. It's something that, unfortunately, is	/	tilde.team	70
+ibeing lost and is becoming increasingly difficult to access.	/	tilde.team	70
+i	/	tilde.team	70
+i## Conclusion	/	tilde.team	70
+i	/	tilde.team	70
+iIt was a wonderful experience, I really enjoyed setting up	/	tilde.team	70
+imy little server, writing the configuration files, and	/	tilde.team	70
+imaking the deployment reproducible. If you're curious, I	/	tilde.team	70
+irecommend that you try hosting your own services online,	/	tilde.team	70
+ieither publicly on the Internet or privately for yourself or	/	tilde.team	70
+iyour loved ones. Anyone with basic knowledge of system	/	tilde.team	70
+iadministration, DevOps, or even SRE can do it, even on a	/	tilde.team	70
+ismall scale, like I did. And if you don't have the technical	/	tilde.team	70
+iskills, this is a really fun project for learning.	/	tilde.team	70
+
