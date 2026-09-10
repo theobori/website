@@ -9,4 +9,4 @@ I support F(L)OSS and pubnixes values, I love UNIX systems, especially [NixOS](h
 
 If you're interested you can have a look at [my blog posts](/blog), everything I make is open source and available on [GitHub](https://github.com/theobori). You can also check my [public zettelkasten](https://zettel.theobori.cafe).
 
-This website also offers a version for the [Gopher](gopher://tilde.team:70/1/~nagi) minimal web protocol. Feel free to contact me at <a href="mailto:theobori@disroot.org">theobori@disroot.org</a>.
+This website also offers a version for the [Gopher](gopher://tilde.club:70/1/~theobori) minimal web protocol. Feel free to contact me at <a href="mailto:theobori@disroot.org">theobori@disroot.org</a>.

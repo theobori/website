@@ -1,83 +1,83 @@
-i## title: Writing an Emacs package based on nix-converter	/	tilde.team	70
-i## date: "2026-01-18"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iAs a GNU Emacs user, I spend most of my time there. Not long	/	tilde.team	70
-iago I released version 1.0.0 of nix-converter, a CLI for	/	tilde.team	70
-iconverting Nix code into a configuration language and vice-	/	tilde.team	70
-iversa. I thought it might be fun to be able to use it	/	tilde.team	70
-ithrough Emacs' features rather than through a command-line	/	tilde.team	70
-ishell.	/	tilde.team	70
+i## title: Writing an Emacs package based on nix-converter	/	tilde.club	70
+i## date: "2026-01-18"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iAs a GNU Emacs user, I spend most of my time there. Not long	/	tilde.club	70
+iago I released version 1.0.0 of nix-converter, a CLI for	/	tilde.club	70
+iconverting Nix code into a configuration language and vice-	/	tilde.club	70
+iversa. I thought it might be fun to be able to use it	/	tilde.club	70
+ithrough Emacs' features rather than through a command-line	/	tilde.club	70
+ishell.	/	tilde.club	70
 hnix-converter	URL:https://github.com/theobori/nix-converter	github.com	443
-i	/	tilde.team	70
-iThe aim of this post is to show the interesting things you	/	tilde.team	70
-ican do with Emacs, it won't necessarily cover all the	/	tilde.team	70
-itechnical aspects of the project.	/	tilde.team	70
+i	/	tilde.club	70
+iThe aim of this post is to show the interesting things you	/	tilde.club	70
+ican do with Emacs, it won't necessarily cover all the	/	tilde.club	70
+itechnical aspects of the project.	/	tilde.club	70
 hproject	URL:https://github.com/theobori/nix-converter.el	github.com	443
-i	/	tilde.team	70
-iAlso, in this post, Emacs refers to GNU Emacs and ELisp	/	tilde.team	70
-istands for Emacs Lisp.	/	tilde.team	70
-i	/	tilde.team	70
-i## My goal	/	tilde.team	70
-i	/	tilde.team	70
-iMy goal is to write an Emacs package for at least version	/	tilde.team	70
-i30.1 that allows me to use nix-converter through ELisp. In	/	tilde.team	70
-iparticular, I'd like to have a feature that lets me convert	/	tilde.team	70
-ithe active region directly by modifying the Emacs buffer.	/	tilde.team	70
+i	/	tilde.club	70
+iAlso, in this post, Emacs refers to GNU Emacs and ELisp	/	tilde.club	70
+istands for Emacs Lisp.	/	tilde.club	70
+i	/	tilde.club	70
+i## My goal	/	tilde.club	70
+i	/	tilde.club	70
+iMy goal is to write an Emacs package for at least version	/	tilde.club	70
+i30.1 that allows me to use nix-converter through ELisp. In	/	tilde.club	70
+iparticular, I'd like to have a feature that lets me convert	/	tilde.club	70
+ithe active region directly by modifying the Emacs buffer.	/	tilde.club	70
 hnix-converter	URL:https://github.com/theobori/nix-converter	github.com	443
-i	/	tilde.team	70
-i## Learning Lisp/ELisp	/	tilde.team	70
-i	/	tilde.team	70
-iOf course I use Emacs, and I've spent some time configuring	/	tilde.team	70
-iit, but before starting this project I wasn't able to write	/	tilde.team	70
-iin ELisp in a meaningful way, I didn't know enough about the	/	tilde.team	70
-ilanguage and how it worked.	/	tilde.team	70
+i	/	tilde.club	70
+i## Learning Lisp/ELisp	/	tilde.club	70
+i	/	tilde.club	70
+iOf course I use Emacs, and I've spent some time configuring	/	tilde.club	70
+iit, but before starting this project I wasn't able to write	/	tilde.club	70
+iin ELisp in a meaningful way, I didn't know enough about the	/	tilde.club	70
+ilanguage and how it worked.	/	tilde.club	70
 hproject	URL:https://github.com/theobori/nix-converter.el	github.com	443
-i	/	tilde.team	70
-iThat's why I decided to deepen my ELisp theory and practice.	/	tilde.team	70
-iFor that, I reread my few notes from last year on Emacs Lisp	/	tilde.team	70
-iIntro and Masterring Emacs, then actively watched System	/	tilde.team	70
-icrafter's youtube video series to learn ELisp.	/	tilde.team	70
+i	/	tilde.club	70
+iThat's why I decided to deepen my ELisp theory and practice.	/	tilde.club	70
+iFor that, I reread my few notes from last year on Emacs Lisp	/	tilde.club	70
+iIntro and Masterring Emacs, then actively watched System	/	tilde.club	70
+icrafter's youtube video series to learn ELisp.	/	tilde.club	70
 hSystem crafter	URL:https://systemcrafters.net	systemcrafters.net	443
 hyoutube video series	URL:https://www.youtube.com/watch?v=RQK_DaaX34Q&list=PLEoMzSkcN8oPQtn7FQEF3D7sroZbXuPZ7	www.youtube.com	443
-i	/	tilde.team	70
-i## Writing the project	/	tilde.team	70
-i	/	tilde.team	70
-iAfter improving my knowledge of ELisp, I was able to start	/	tilde.team	70
-iwriting the project, which in the end went rather well. I	/	tilde.team	70
-ihaven't encountered many problems, apart from one that	/	tilde.team	70
-iforced me to transform the path to the source file into an	/	tilde.team	70
-iabsolute path.	/	tilde.team	70
+i	/	tilde.club	70
+i## Writing the project	/	tilde.club	70
+i	/	tilde.club	70
+iAfter improving my knowledge of ELisp, I was able to start	/	tilde.club	70
+iwriting the project, which in the end went rather well. I	/	tilde.club	70
+ihaven't encountered many problems, apart from one that	/	tilde.club	70
+iforced me to transform the path to the source file into an	/	tilde.club	70
+iabsolute path.	/	tilde.club	70
 hproject	URL:https://github.com/theobori/nix-converter.el	github.com	443
-i	/	tilde.team	70
-iI was able to write a coherent ELisp interface that allowed	/	tilde.team	70
-ime to use nix-converter's functionality.	/	tilde.team	70
+i	/	tilde.club	70
+iI was able to write a coherent ELisp interface that allowed	/	tilde.club	70
+ime to use nix-converter's functionality.	/	tilde.club	70
 hnix-converter	URL:https://github.com/theobori/nix-converter	github.com	443
-i	/	tilde.team	70
-i## Results	/	tilde.team	70
-i	/	tilde.team	70
-iI managed to achieve my goal, which was to convert the	/	tilde.team	70
-iactive region directly by modifying an Emacs buffer. Below	/	tilde.team	70
-iis a gif showing this functionality with a conversion from	/	tilde.team	70
-iYAML to Nix, without additional nix-converter flags.	/	tilde.team	70
-i	/	tilde.team	70
-i/nix-converter-el-result.gif	/	tilde.team	70
-g/nix-converter-el-result.gif	/~nagi/nix-converter-el-result.gif	tilde.team	70
-i	/	tilde.team	70
-iThe package provides other features such as ad-hoc expression	/	tilde.team	70
-iconversion. Below is a gif showing an on-the-fly conversion	/	tilde.team	70
-ifrom Nix to YAML.	/	tilde.team	70
-i	/	tilde.team	70
-i/nix-converter-el-result2.gif	/	tilde.team	70
-g/nix-converter-el-result2.gif	/~nagi/nix-converter-el-result2.gif	tilde.team	70
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iIt was a stimulating and enriching experience that	/	tilde.team	70
-iintroduced me to Emacs and its language, Emacs Lisp, in	/	tilde.team	70
-igreater detail. I love ELisp more than ever, and I'm looking	/	tilde.team	70
-iforward to writing more! If you want more technical details	/	tilde.team	70
-iabout the project feel free to check out the GitHub	/	tilde.team	70
-irepository.	/	tilde.team	70
+i	/	tilde.club	70
+i## Results	/	tilde.club	70
+i	/	tilde.club	70
+iI managed to achieve my goal, which was to convert the	/	tilde.club	70
+iactive region directly by modifying an Emacs buffer. Below	/	tilde.club	70
+iis a gif showing this functionality with a conversion from	/	tilde.club	70
+iYAML to Nix, without additional nix-converter flags.	/	tilde.club	70
+i	/	tilde.club	70
+i/nix-converter-el-result.gif	/	tilde.club	70
+g/nix-converter-el-result.gif	/~theobori/nix-converter-el-result.gif	tilde.club	70
+i	/	tilde.club	70
+iThe package provides other features such as ad-hoc expression	/	tilde.club	70
+iconversion. Below is a gif showing an on-the-fly conversion	/	tilde.club	70
+ifrom Nix to YAML.	/	tilde.club	70
+i	/	tilde.club	70
+i/nix-converter-el-result2.gif	/	tilde.club	70
+g/nix-converter-el-result2.gif	/~theobori/nix-converter-el-result2.gif	tilde.club	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iIt was a stimulating and enriching experience that	/	tilde.club	70
+iintroduced me to Emacs and its language, Emacs Lisp, in	/	tilde.club	70
+igreater detail. I love ELisp more than ever, and I'm looking	/	tilde.club	70
+iforward to writing more! If you want more technical details	/	tilde.club	70
+iabout the project feel free to check out the GitHub	/	tilde.club	70
+irepository.	/	tilde.club	70
 hGitHub repository	URL:https://github.com/theobori/nix-converter.el	github.com	443

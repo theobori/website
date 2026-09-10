@@ -1,105 +1,105 @@
-i## title: The sad servers are smiling again	/	tilde.team	70
-i## date: "2026-08-15"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iI was bored. I had the idea to look for a stimulating and	/	tilde.team	70
-ichallenging platform similar to LeetCode, but focused on	/	tilde.team	70
-iLinux and DevOps.	/	tilde.team	70
+i## title: The sad servers are smiling again	/	tilde.club	70
+i## date: "2026-08-15"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iI was bored. I had the idea to look for a stimulating and	/	tilde.club	70
+ichallenging platform similar to LeetCode, but focused on	/	tilde.club	70
+iLinux and DevOps.	/	tilde.club	70
 hLeetCode	URL:https://leetcode.com/	leetcode.com	443
-i	/	tilde.team	70
-iSo I did some research and quickly found SadServers. I then	/	tilde.team	70
-idecided to explore it and try to solve a few problems. This	/	tilde.team	70
-iblog post is simply a brief review of my experience with	/	tilde.team	70
-iSadServers.	/	tilde.team	70
+i	/	tilde.club	70
+iSo I did some research and quickly found SadServers. I then	/	tilde.club	70
+idecided to explore it and try to solve a few problems. This	/	tilde.club	70
+iblog post is simply a brief review of my experience with	/	tilde.club	70
+iSadServers.	/	tilde.club	70
 hSadServers	URL:https://sadservers.com/	sadservers.com	443
-i	/	tilde.team	70
-iIn the rest of this blog post, we'll refer to the problems	/	tilde.team	70
-ias scenarios in accordance with the SadServers terminology.	/	tilde.team	70
+i	/	tilde.club	70
+iIn the rest of this blog post, we'll refer to the problems	/	tilde.club	70
+ias scenarios in accordance with the SadServers terminology.	/	tilde.club	70
 hscenarios	URL:https://sadservers.com/scenarios	sadservers.com	443
-i	/	tilde.team	70
-i## What is SadServers	/	tilde.team	70
-i	/	tilde.team	70
-iIt's a web platform that offers scenarios for DevOps	/	tilde.team	70
-iengineers to solve within a time limit. Each scenario is set	/	tilde.team	70
-iup in a dedicated Linux environment accessible remotely via	/	tilde.team	70
-ithe SadServers web interface. The goal is to solve the	/	tilde.team	70
-iscenarios and then have the solutions verified.	/	tilde.team	70
-i	/	tilde.team	70
-i## My goal	/	tilde.team	70
-i	/	tilde.team	70
-iI set myself the goal of solving as many scenarios as	/	tilde.team	70
-ipossible until I get tired of it and/or my monthly	/	tilde.team	70
-isubscription expires.	/	tilde.team	70
-i	/	tilde.team	70
-i## My experience	/	tilde.team	70
-i	/	tilde.team	70
-iIn this section, I'll talk about my experience with the	/	tilde.team	70
-iplatform.	/	tilde.team	70
-i	/	tilde.team	70
-i### Completed scenarios	/	tilde.team	70
-i	/	tilde.team	70
-iI was able to complete 122 out of 124 challenges, 31 out of	/	tilde.team	70
-i31 easy, 74 out of 74 medium, and 17 out of 19 hard.	/	tilde.team	70
-i	/	tilde.team	70
-i### Time spent	/	tilde.team	70
-i	/	tilde.team	70
-iIt took me about 3 weeks from start to finish. I recommend	/	tilde.team	70
-ithis platform to beginners and professionals who have some	/	tilde.team	70
-ifree time and want to challenge themselves. I solved an	/	tilde.team	70
-iaverage of about 5 scenarios per day for 3 weeks, a little	/	tilde.team	70
-imore on the weekends. It took me an average of 2 to 3 hours	/	tilde.team	70
-ieach evening, excluding weekends.	/	tilde.team	70
-i	/	tilde.team	70
-i### Topics	/	tilde.team	70
-i	/	tilde.team	70
-iI find the topics quite diverse and relevant. Each one is a	/	tilde.team	70
-iset of scenarios that could occur in a professional context,	/	tilde.team	70
-iparticularly in a corporate setting, for example, creating	/	tilde.team	70
-iapplication backups that don't work, a misconfigured	/	tilde.team	70
-idatabase, containers that can't communicate with each other,	/	tilde.team	70
-iand so on.	/	tilde.team	70
-i	/	tilde.team	70
-iMy favorite topic is Hack, it's similar to CTF challenges.	/	tilde.team	70
-iFor example, the scenario Monaco: Disappearing Trick	/	tilde.team	70
-iliterally asks you to find a flag by hacking a web server.	/	tilde.team	70
+i	/	tilde.club	70
+i## What is SadServers	/	tilde.club	70
+i	/	tilde.club	70
+iIt's a web platform that offers scenarios for DevOps	/	tilde.club	70
+iengineers to solve within a time limit. Each scenario is set	/	tilde.club	70
+iup in a dedicated Linux environment accessible remotely via	/	tilde.club	70
+ithe SadServers web interface. The goal is to solve the	/	tilde.club	70
+iscenarios and then have the solutions verified.	/	tilde.club	70
+i	/	tilde.club	70
+i## My goal	/	tilde.club	70
+i	/	tilde.club	70
+iI set myself the goal of solving as many scenarios as	/	tilde.club	70
+ipossible until I get tired of it and/or my monthly	/	tilde.club	70
+isubscription expires.	/	tilde.club	70
+i	/	tilde.club	70
+i## My experience	/	tilde.club	70
+i	/	tilde.club	70
+iIn this section, I'll talk about my experience with the	/	tilde.club	70
+iplatform.	/	tilde.club	70
+i	/	tilde.club	70
+i### Completed scenarios	/	tilde.club	70
+i	/	tilde.club	70
+iI was able to complete 122 out of 124 challenges, 31 out of	/	tilde.club	70
+i31 easy, 74 out of 74 medium, and 17 out of 19 hard.	/	tilde.club	70
+i	/	tilde.club	70
+i### Time spent	/	tilde.club	70
+i	/	tilde.club	70
+iIt took me about 3 weeks from start to finish. I recommend	/	tilde.club	70
+ithis platform to beginners and professionals who have some	/	tilde.club	70
+ifree time and want to challenge themselves. I solved an	/	tilde.club	70
+iaverage of about 5 scenarios per day for 3 weeks, a little	/	tilde.club	70
+imore on the weekends. It took me an average of 2 to 3 hours	/	tilde.club	70
+ieach evening, excluding weekends.	/	tilde.club	70
+i	/	tilde.club	70
+i### Topics	/	tilde.club	70
+i	/	tilde.club	70
+iI find the topics quite diverse and relevant. Each one is a	/	tilde.club	70
+iset of scenarios that could occur in a professional context,	/	tilde.club	70
+iparticularly in a corporate setting, for example, creating	/	tilde.club	70
+iapplication backups that don't work, a misconfigured	/	tilde.club	70
+idatabase, containers that can't communicate with each other,	/	tilde.club	70
+iand so on.	/	tilde.club	70
+i	/	tilde.club	70
+iMy favorite topic is Hack, it's similar to CTF challenges.	/	tilde.club	70
+iFor example, the scenario Monaco: Disappearing Trick	/	tilde.club	70
+iliterally asks you to find a flag by hacking a web server.	/	tilde.club	70
 hMonaco: Disappearing Trick	URL:https://sadservers.com/scenario/monaco	sadservers.com	443
-i	/	tilde.team	70
-i### Difficulty	/	tilde.team	70
-i	/	tilde.team	70
-iThe difficulty is fairly well balanced between easy, medium,	/	tilde.team	70
-iand hard. I first finished all the easy levels, then tackled	/	tilde.team	70
-ithe medium ones, and finally the hard ones. I could really	/	tilde.team	70
-itell the difficulty increased with each level.	/	tilde.team	70
-i	/	tilde.team	70
-iThat said, I did find some hard scenarios easier than	/	tilde.team	70
-icertain medium ones, I'm thinking in particular of	/	tilde.team	70
-iKarakorum: WTFIT – What The Fun Is This?, which has a	/	tilde.team	70
-imaximum solve time of 40 minutes but feels much shorter to	/	tilde.team	70
-ime.	/	tilde.team	70
+i	/	tilde.club	70
+i### Difficulty	/	tilde.club	70
+i	/	tilde.club	70
+iThe difficulty is fairly well balanced between easy, medium,	/	tilde.club	70
+iand hard. I first finished all the easy levels, then tackled	/	tilde.club	70
+ithe medium ones, and finally the hard ones. I could really	/	tilde.club	70
+itell the difficulty increased with each level.	/	tilde.club	70
+i	/	tilde.club	70
+iThat said, I did find some hard scenarios easier than	/	tilde.club	70
+icertain medium ones, I'm thinking in particular of	/	tilde.club	70
+iKarakorum: WTFIT – What The Fun Is This?, which has a	/	tilde.club	70
+imaximum solve time of 40 minutes but feels much shorter to	/	tilde.club	70
+ime.	/	tilde.club	70
 hKarakorum: WTFIT – What The Fun Is This?	URL:https://sadservers.com/scenario/karakorum	sadservers.com	443
-i	/	tilde.team	70
-i### Price	/	tilde.team	70
-i	/	tilde.team	70
-iI chose the Pro monthly subscription, which costs $9 per	/	tilde.team	70
-imonth. I don't think that's very expensive considering the	/	tilde.team	70
-icontent offered. I'm happy with the purchase. As far as I	/	tilde.team	70
-iunderstand, SadServers pays AWS to be able to deploy a new	/	tilde.team	70
-iVM for each challenge.	/	tilde.team	70
-i	/	tilde.team	70
-iHowever, I probably won't continue paying since I've already	/	tilde.team	70
-icompleted 99% of the challenges and not many new ones are	/	tilde.team	70
-ibeing released. In fact, that's why I don't see the point in	/	tilde.team	70
-ibuying an annual subscription. Because in 12 months, you	/	tilde.team	70
-ihave more than enough time to solve all the scenarios.	/	tilde.team	70
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iI really enjoyed SadServers. Thanks to Fernando Duran for	/	tilde.team	70
-icreating and maintaining it, it kept me busy while allowing	/	tilde.team	70
-ime to put my DevOps engineering skills to use. It also	/	tilde.team	70
-ihelped me achieve my goal while having fun and challenging	/	tilde.team	70
-imyself. I found it very fun and challenging, these are great	/	tilde.team	70
-iexercises for learning new technical skills and even for	/	tilde.team	70
-iimproving your existing ones.	/	tilde.team	70
+i	/	tilde.club	70
+i### Price	/	tilde.club	70
+i	/	tilde.club	70
+iI chose the Pro monthly subscription, which costs $9 per	/	tilde.club	70
+imonth. I don't think that's very expensive considering the	/	tilde.club	70
+icontent offered. I'm happy with the purchase. As far as I	/	tilde.club	70
+iunderstand, SadServers pays AWS to be able to deploy a new	/	tilde.club	70
+iVM for each challenge.	/	tilde.club	70
+i	/	tilde.club	70
+iHowever, I probably won't continue paying since I've already	/	tilde.club	70
+icompleted 99% of the challenges and not many new ones are	/	tilde.club	70
+ibeing released. In fact, that's why I don't see the point in	/	tilde.club	70
+ibuying an annual subscription. Because in 12 months, you	/	tilde.club	70
+ihave more than enough time to solve all the scenarios.	/	tilde.club	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iI really enjoyed SadServers. Thanks to Fernando Duran for	/	tilde.club	70
+icreating and maintaining it, it kept me busy while allowing	/	tilde.club	70
+ime to put my DevOps engineering skills to use. It also	/	tilde.club	70
+ihelped me achieve my goal while having fun and challenging	/	tilde.club	70
+imyself. I found it very fun and challenging, these are great	/	tilde.club	70
+iexercises for learning new technical skills and even for	/	tilde.club	70
+iimproving your existing ones.	/	tilde.club	70
 

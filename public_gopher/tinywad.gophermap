@@ -1,233 +1,233 @@
-i## title: DOOM modding library	/	tilde.team	70
-i## date: "2023-05-03"	/	tilde.team	70
-i	/	tilde.team	70
-iThis project is a WAD library/manager, it can be used as a	/	tilde.team	70
-ibase for other WAD projects like a GUI, a CLI, etc..	/	tilde.team	70
-i	/	tilde.team	70
-iI have played around with some well known IWAD like doom.wad	/	tilde.team	70
-iand doom2.wad (registered).	/	tilde.team	70
-i	/	tilde.team	70
-iTo test the IWAD/PWAD generated, I have used two engines:	/	tilde.team	70
-i- GZDoom (tests + screenshots)	/	tilde.team	70
-i- WAD Commander (tests + preview in multiple contexts)	/	tilde.team	70
+i## title: DOOM modding library	/	tilde.club	70
+i## date: "2023-05-03"	/	tilde.club	70
+i	/	tilde.club	70
+iThis project is a WAD library/manager, it can be used as a	/	tilde.club	70
+ibase for other WAD projects like a GUI, a CLI, etc..	/	tilde.club	70
+i	/	tilde.club	70
+iI have played around with some well known IWAD like doom.wad	/	tilde.club	70
+iand doom2.wad (registered).	/	tilde.club	70
+i	/	tilde.club	70
+iTo test the IWAD/PWAD generated, I have used two engines:	/	tilde.club	70
+i- GZDoom (tests + screenshots)	/	tilde.club	70
+i- WAD Commander (tests + preview in multiple contexts)	/	tilde.club	70
 hGZDoom	URL:https://zdoom.org/index	zdoom.org	443
 hWAD Commander	URL:https://wadcmd.com/	wadcmd.com	443
-i	/	tilde.team	70
-i## Use cases	/	tilde.team	70
-i	/	tilde.team	70
-iSome use cases you could use in a DOOM modding context.	/	tilde.team	70
-i	/	tilde.team	70
-i### IWAD patching	/	tilde.team	70
-i	/	tilde.team	70
-iuse tinywad::error::WadError;	/	tilde.team	70
-iuse tinywad::models::operation::WadOp;	/	tilde.team	70
-iuse tinywad::wad::Wad;	/	tilde.team	70
-i	/	tilde.team	70
-ifn main() -> Result<(), WadError> {	/	tilde.team	70
-i    let mut doom_2 = Wad::new();	/	tilde.team	70
-i    doom_2.load_from_file("wads/doom2.wad")?;	/	tilde.team	70
-i	/	tilde.team	70
-i    let gate = doom_2.lump("GATE3").unwrap();	/	tilde.team	70
-i	/	tilde.team	70
-i    let mut doom_1 = Wad::new();	/	tilde.team	70
-i    doom_1.load_from_file("doom1.wad")?;	/	tilde.team	70
-i	/	tilde.team	70
-i    doom_1.select("^FLAT|FLOOR");	/	tilde.team	70
-i    doom_1.update_lumps_raw(&gate.data().buffer);	/	tilde.team	70
-i    doom_1.save("doom1.wad");	/	tilde.team	70
-i	/	tilde.team	70
-i    Ok(())	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iSo basically (above) it loads a first IWAD file, in our case	/	tilde.team	70
-iit is doom2.wad. It borrows a lump (GATE3) into the variable	/	tilde.team	70
-igate, then we load a second IWAD which is doom1.wad, it	/	tilde.team	70
-iselects desired lumps, then it update the selected lumps in	/	tilde.team	70
-iDOOM1 and finally overwrite the file.	/	tilde.team	70
-i	/	tilde.team	70
-i### Screenhot(s)	/	tilde.team	70
-i/doom_gate3.png	/	tilde.team	70
-I/doom_gate3.png	/~nagi/doom_gate3.png	tilde.team	70
-i	/	tilde.team	70
-i### Lumps extracting	/	tilde.team	70
-i	/	tilde.team	70
-iuse std::fs;	/	tilde.team	70
-i	/	tilde.team	70
-iuse tinywad::dir::MAX_PAL;	/	tilde.team	70
-iuse tinywad::error::WadError;	/	tilde.team	70
-iuse tinywad::models::operation::WadOp;	/	tilde.team	70
-iuse tinywad::wad::Wad;	/	tilde.team	70
-i	/	tilde.team	70
-ifn main() -> Result<(), WadError> {	/	tilde.team	70
-i    let mut doom_2 = Wad::new();	/	tilde.team	70
-i    doom_2.load_from_file("wads/doom2.wad")?;	/	tilde.team	70
-i	/	tilde.team	70
-i    for pal in 0..MAX_PAL {	/	tilde.team	70
-i        doom_2.set_palette(pal);	/	tilde.team	70
-i        doom_2.reload()?;	/	tilde.team	70
-i        doom_2.select("^BOSF");	/	tilde.team	70
-i	/	tilde.team	70
-i        let dirpath = format!("doom2/pal_{}", pal);	/	tilde.team	70
-i	/	tilde.team	70
-i        fs::create_dir_all(dirpath.clone()).unwrap();	/	tilde.team	70
-i	/	tilde.team	70
-i        doom_2.save_lumps(dirpath);	/	tilde.team	70
-i    }	/	tilde.team	70
-i	/	tilde.team	70
-i    Ok(())	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iIn this part of code, it extracts as PNG the selected lumps	/	tilde.team	70
-iwith different palettes (13).	/	tilde.team	70
-i	/	tilde.team	70
-i### Extracted lumps (as PNGs)	/	tilde.team	70
-i	/	tilde.team	70
-i/doom2/pal_0/BOSFB0.png	/	tilde.team	70
-i/doom2/pal_1/BOSFB0.png	/	tilde.team	70
-i/doom2/pal_2/BOSFB0.png	/	tilde.team	70
-i/doom2/pal_3/BOSFB0.png	/	tilde.team	70
-i/doom2/pal_4/BOSFB0.png	/	tilde.team	70
-i/doom2/pal_5/BOSFB0.png	/	tilde.team	70
-i/doom2/pal_6/BOSFB0.png	/	tilde.team	70
-i/doom2/pal_7/BOSFB0.png	/	tilde.team	70
-i/doom2/pal_8/BOSFB0.png	/	tilde.team	70
-i/doom2/pal_9/BOSFB0.png	/	tilde.team	70
-i/doom2/pal_10/BOSFB0.png	/	tilde.team	70
-i/doom2/pal_11/BOSFB0.png	/	tilde.team	70
-i/doom2/pal_12/BOSFB0.png	/	tilde.team	70
-I/doom2/pal_0/BOSFB0.png	/~nagi/doom2/pal_0/BOSFB0.png	tilde.team	70
-I/doom2/pal_1/BOSFB0.png	/~nagi/doom2/pal_1/BOSFB0.png	tilde.team	70
-I/doom2/pal_2/BOSFB0.png	/~nagi/doom2/pal_2/BOSFB0.png	tilde.team	70
-I/doom2/pal_3/BOSFB0.png	/~nagi/doom2/pal_3/BOSFB0.png	tilde.team	70
-I/doom2/pal_4/BOSFB0.png	/~nagi/doom2/pal_4/BOSFB0.png	tilde.team	70
-I/doom2/pal_5/BOSFB0.png	/~nagi/doom2/pal_5/BOSFB0.png	tilde.team	70
-I/doom2/pal_6/BOSFB0.png	/~nagi/doom2/pal_6/BOSFB0.png	tilde.team	70
-I/doom2/pal_7/BOSFB0.png	/~nagi/doom2/pal_7/BOSFB0.png	tilde.team	70
-I/doom2/pal_8/BOSFB0.png	/~nagi/doom2/pal_8/BOSFB0.png	tilde.team	70
-I/doom2/pal_9/BOSFB0.png	/~nagi/doom2/pal_9/BOSFB0.png	tilde.team	70
-I/doom2/pal_10/BOSFB0.png	/~nagi/doom2/pal_10/BOSFB0.png	tilde.team	70
-I/doom2/pal_11/BOSFB0.png	/~nagi/doom2/pal_11/BOSFB0.png	tilde.team	70
-I/doom2/pal_12/BOSFB0.png	/~nagi/doom2/pal_12/BOSFB0.png	tilde.team	70
-i	/	tilde.team	70
-i### Dumping metadata	/	tilde.team	70
-i	/	tilde.team	70
-iuse tinywad::error::WadError;	/	tilde.team	70
-iuse tinywad::models::operation::WadOp;	/	tilde.team	70
-iuse tinywad::wad::Wad;	/	tilde.team	70
-i	/	tilde.team	70
-ifn main() -> Result<(), WadError> {	/	tilde.team	70
-i    let mut src = Wad::new();	/	tilde.team	70
-i	/	tilde.team	70
-i    src.load_from_file("wads/hexen.wad")?;	/	tilde.team	70
-i    src.dump();	/	tilde.team	70
-i	/	tilde.team	70
-i    Ok(())	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-i### Output	/	tilde.team	70
-i	/	tilde.team	70
-iName: XXTIC, Size: 8, Offset: 12	/	tilde.team	70
-iName: STARTUP, Size: 153648, Offset: 20	/	tilde.team	70
-iName: PLAYPAL, Size: 21504, Offset: 153668, Palettes amount:	/	tilde.team	70
-i28	/	tilde.team	70
-iName: COLORMAP, Size: 8704, Offset: 175172	/	tilde.team	70
-iName: FOGMAP, Size: 8704, Offset: 183876	/	tilde.team	70
-iName: TINTTAB, Size: 65536, Offset: 192580	/	tilde.team	70
-iName: TRANTBL0, Size: 256, Offset: 258116	/	tilde.team	70
-iName: TRANTBL1, Size: 256, Offset: 258372	/	tilde.team	70
-iName: TRANTBL2, Size: 256, Offset: 258628	/	tilde.team	70
-i...	/	tilde.team	70
-i	/	tilde.team	70
-i### Building a PWAD from scratch	/	tilde.team	70
-i	/	tilde.team	70
-iuse tinywad::error::WadError;	/	tilde.team	70
-iuse tinywad::lump::{LumpAdd, LumpAddKind};	/	tilde.team	70
-iuse tinywad::models::operation::WadOp;	/	tilde.team	70
-iuse tinywad::wad::{Wad, WadKind,};	/	tilde.team	70
-i	/	tilde.team	70
-ifn main() -> Result<(), WadError> {	/	tilde.team	70
-i    let mut src = Wad::new();	/	tilde.team	70
-i	/	tilde.team	70
-i    let lump_names = [	/	tilde.team	70
-i        "FLOOR0_1", "FLOOR0_3", "FLOOR0_6",	/	tilde.team	70
-i        "FLOOR1_1", "FLOOR1_7", "FLOOR3_3",	/	tilde.team	70
-i        "FLOOR4_1", "FLOOR4_5", "FLOOR4_6",	/	tilde.team	70
-i        "FLOOR4_8", "FLOOR5_1", "FLOOR5_2",	/	tilde.team	70
-i        "FLOOR5_3", "FLOOR5_4", "FLOOR6_1",	/	tilde.team	70
-i        "FLOOR6_2", "FLOOR7_1", "FLOOR7_2",	/	tilde.team	70
-i    ];	/	tilde.team	70
-i	/	tilde.team	70
-i    src.load_from_file("doom.wad")?;	/	tilde.team	70
-i	/	tilde.team	70
-i    let gate = src.lump("FLOOR6_1").unwrap();	/	tilde.team	70
-i	/	tilde.team	70
-i    let mut dest = Wad::new();	/	tilde.team	70
-i	/	tilde.team	70
-i    dest.set_kind(WadKind::Pwad);	/	tilde.team	70
-i    dest.add_lump_raw(	/	tilde.team	70
-i        LumpAdd::new(	/	tilde.team	70
-i            LumpAddKind::Back,	/	tilde.team	70
-i            &vec![],	/	tilde.team	70
-i            "FF_START",	/	tilde.team	70
-i        )	/	tilde.team	70
-i    )?;	/	tilde.team	70
-i	/	tilde.team	70
-i    for lump_name in lump_names {	/	tilde.team	70
-i        dest.add_lump_raw(	/	tilde.team	70
-i            LumpAdd::new(	/	tilde.team	70
-i                LumpAddKind::Back,	/	tilde.team	70
-i                &gate.data().buffer,	/	tilde.team	70
-i                lump_name,	/	tilde.team	70
-i            )	/	tilde.team	70
-i        )?;	/	tilde.team	70
-i    }	/	tilde.team	70
-i	/	tilde.team	70
-i    dest.add_lump_raw(	/	tilde.team	70
-i        LumpAdd::new(	/	tilde.team	70
-i            LumpAddKind::Back,	/	tilde.team	70
-i            &vec![],	/	tilde.team	70
-i            "F_END",	/	tilde.team	70
-i        )	/	tilde.team	70
-i    )?;	/	tilde.team	70
-i	/	tilde.team	70
-i    dest.save("doom1_patch.wad");	/	tilde.team	70
-i	/	tilde.team	70
-i    Ok(())	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iTo take the screenshot (below) doom1_patch.wad has been	/	tilde.team	70
-iinjected into GZDOOM with the IWAD doom.wad (registered).	/	tilde.team	70
-i	/	tilde.team	70
-i### Result	/	tilde.team	70
-i/doom_floor6_1.png	/	tilde.team	70
-I/doom_floor6_1.png	/~nagi/doom_floor6_1.png	tilde.team	70
-i	/	tilde.team	70
-i### Files	/	tilde.team	70
-i	/	tilde.team	70
-idoom1_patch.wad	/	tilde.team	70
-idoom1_patch.asc	/	tilde.team	70
-ichecksum	/	tilde.team	70
-1doom1_patch.wad	/~nagi/doom1_patch.wad	tilde.team	70
-1doom1_patch.asc	/~nagi/doom1_patch.asc	tilde.team	70
-0checksum	/~nagi/checksum.txt	tilde.team	70
-i	/	tilde.team	70
-i### Extracting MIDI lumps	/	tilde.team	70
-i	/	tilde.team	70
-iExtracting every musics from the IWAD doom.wad.	/	tilde.team	70
-i	/	tilde.team	70
-iuse tinywad::error::WadError;	/	tilde.team	70
-iuse tinywad::models::operation::WadOp;	/	tilde.team	70
-iuse tinywad::wad::{Wad};	/	tilde.team	70
-i	/	tilde.team	70
-ifn main() -> Result<(), WadError> {	/	tilde.team	70
-i    let mut src = Wad::new();	/	tilde.team	70
-i	/	tilde.team	70
-i    src.load_from_file("doom.wad")?;	/	tilde.team	70
-i    src.select("D_");	/	tilde.team	70
-i    src.save_lumps(".");	/	tilde.team	70
-i	/	tilde.team	70
-i    Ok(())	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-ihttps://github.com/theobori/tinywad	/	tilde.team	70
+i	/	tilde.club	70
+i## Use cases	/	tilde.club	70
+i	/	tilde.club	70
+iSome use cases you could use in a DOOM modding context.	/	tilde.club	70
+i	/	tilde.club	70
+i### IWAD patching	/	tilde.club	70
+i	/	tilde.club	70
+iuse tinywad::error::WadError;	/	tilde.club	70
+iuse tinywad::models::operation::WadOp;	/	tilde.club	70
+iuse tinywad::wad::Wad;	/	tilde.club	70
+i	/	tilde.club	70
+ifn main() -> Result<(), WadError> {	/	tilde.club	70
+i    let mut doom_2 = Wad::new();	/	tilde.club	70
+i    doom_2.load_from_file("wads/doom2.wad")?;	/	tilde.club	70
+i	/	tilde.club	70
+i    let gate = doom_2.lump("GATE3").unwrap();	/	tilde.club	70
+i	/	tilde.club	70
+i    let mut doom_1 = Wad::new();	/	tilde.club	70
+i    doom_1.load_from_file("doom1.wad")?;	/	tilde.club	70
+i	/	tilde.club	70
+i    doom_1.select("^FLAT|FLOOR");	/	tilde.club	70
+i    doom_1.update_lumps_raw(&gate.data().buffer);	/	tilde.club	70
+i    doom_1.save("doom1.wad");	/	tilde.club	70
+i	/	tilde.club	70
+i    Ok(())	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iSo basically (above) it loads a first IWAD file, in our case	/	tilde.club	70
+iit is doom2.wad. It borrows a lump (GATE3) into the variable	/	tilde.club	70
+igate, then we load a second IWAD which is doom1.wad, it	/	tilde.club	70
+iselects desired lumps, then it update the selected lumps in	/	tilde.club	70
+iDOOM1 and finally overwrite the file.	/	tilde.club	70
+i	/	tilde.club	70
+i### Screenhot(s)	/	tilde.club	70
+i/doom_gate3.png	/	tilde.club	70
+I/doom_gate3.png	/~theobori/doom_gate3.png	tilde.club	70
+i	/	tilde.club	70
+i### Lumps extracting	/	tilde.club	70
+i	/	tilde.club	70
+iuse std::fs;	/	tilde.club	70
+i	/	tilde.club	70
+iuse tinywad::dir::MAX_PAL;	/	tilde.club	70
+iuse tinywad::error::WadError;	/	tilde.club	70
+iuse tinywad::models::operation::WadOp;	/	tilde.club	70
+iuse tinywad::wad::Wad;	/	tilde.club	70
+i	/	tilde.club	70
+ifn main() -> Result<(), WadError> {	/	tilde.club	70
+i    let mut doom_2 = Wad::new();	/	tilde.club	70
+i    doom_2.load_from_file("wads/doom2.wad")?;	/	tilde.club	70
+i	/	tilde.club	70
+i    for pal in 0..MAX_PAL {	/	tilde.club	70
+i        doom_2.set_palette(pal);	/	tilde.club	70
+i        doom_2.reload()?;	/	tilde.club	70
+i        doom_2.select("^BOSF");	/	tilde.club	70
+i	/	tilde.club	70
+i        let dirpath = format!("doom2/pal_{}", pal);	/	tilde.club	70
+i	/	tilde.club	70
+i        fs::create_dir_all(dirpath.clone()).unwrap();	/	tilde.club	70
+i	/	tilde.club	70
+i        doom_2.save_lumps(dirpath);	/	tilde.club	70
+i    }	/	tilde.club	70
+i	/	tilde.club	70
+i    Ok(())	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iIn this part of code, it extracts as PNG the selected lumps	/	tilde.club	70
+iwith different palettes (13).	/	tilde.club	70
+i	/	tilde.club	70
+i### Extracted lumps (as PNGs)	/	tilde.club	70
+i	/	tilde.club	70
+i/doom2/pal_0/BOSFB0.png	/	tilde.club	70
+i/doom2/pal_1/BOSFB0.png	/	tilde.club	70
+i/doom2/pal_2/BOSFB0.png	/	tilde.club	70
+i/doom2/pal_3/BOSFB0.png	/	tilde.club	70
+i/doom2/pal_4/BOSFB0.png	/	tilde.club	70
+i/doom2/pal_5/BOSFB0.png	/	tilde.club	70
+i/doom2/pal_6/BOSFB0.png	/	tilde.club	70
+i/doom2/pal_7/BOSFB0.png	/	tilde.club	70
+i/doom2/pal_8/BOSFB0.png	/	tilde.club	70
+i/doom2/pal_9/BOSFB0.png	/	tilde.club	70
+i/doom2/pal_10/BOSFB0.png	/	tilde.club	70
+i/doom2/pal_11/BOSFB0.png	/	tilde.club	70
+i/doom2/pal_12/BOSFB0.png	/	tilde.club	70
+I/doom2/pal_0/BOSFB0.png	/~theobori/doom2/pal_0/BOSFB0.png	tilde.club	70
+I/doom2/pal_1/BOSFB0.png	/~theobori/doom2/pal_1/BOSFB0.png	tilde.club	70
+I/doom2/pal_2/BOSFB0.png	/~theobori/doom2/pal_2/BOSFB0.png	tilde.club	70
+I/doom2/pal_3/BOSFB0.png	/~theobori/doom2/pal_3/BOSFB0.png	tilde.club	70
+I/doom2/pal_4/BOSFB0.png	/~theobori/doom2/pal_4/BOSFB0.png	tilde.club	70
+I/doom2/pal_5/BOSFB0.png	/~theobori/doom2/pal_5/BOSFB0.png	tilde.club	70
+I/doom2/pal_6/BOSFB0.png	/~theobori/doom2/pal_6/BOSFB0.png	tilde.club	70
+I/doom2/pal_7/BOSFB0.png	/~theobori/doom2/pal_7/BOSFB0.png	tilde.club	70
+I/doom2/pal_8/BOSFB0.png	/~theobori/doom2/pal_8/BOSFB0.png	tilde.club	70
+I/doom2/pal_9/BOSFB0.png	/~theobori/doom2/pal_9/BOSFB0.png	tilde.club	70
+I/doom2/pal_10/BOSFB0.png	/~theobori/doom2/pal_10/BOSFB0.png	tilde.club	70
+I/doom2/pal_11/BOSFB0.png	/~theobori/doom2/pal_11/BOSFB0.png	tilde.club	70
+I/doom2/pal_12/BOSFB0.png	/~theobori/doom2/pal_12/BOSFB0.png	tilde.club	70
+i	/	tilde.club	70
+i### Dumping metadata	/	tilde.club	70
+i	/	tilde.club	70
+iuse tinywad::error::WadError;	/	tilde.club	70
+iuse tinywad::models::operation::WadOp;	/	tilde.club	70
+iuse tinywad::wad::Wad;	/	tilde.club	70
+i	/	tilde.club	70
+ifn main() -> Result<(), WadError> {	/	tilde.club	70
+i    let mut src = Wad::new();	/	tilde.club	70
+i	/	tilde.club	70
+i    src.load_from_file("wads/hexen.wad")?;	/	tilde.club	70
+i    src.dump();	/	tilde.club	70
+i	/	tilde.club	70
+i    Ok(())	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+i### Output	/	tilde.club	70
+i	/	tilde.club	70
+iName: XXTIC, Size: 8, Offset: 12	/	tilde.club	70
+iName: STARTUP, Size: 153648, Offset: 20	/	tilde.club	70
+iName: PLAYPAL, Size: 21504, Offset: 153668, Palettes amount:	/	tilde.club	70
+i28	/	tilde.club	70
+iName: COLORMAP, Size: 8704, Offset: 175172	/	tilde.club	70
+iName: FOGMAP, Size: 8704, Offset: 183876	/	tilde.club	70
+iName: TINTTAB, Size: 65536, Offset: 192580	/	tilde.club	70
+iName: TRANTBL0, Size: 256, Offset: 258116	/	tilde.club	70
+iName: TRANTBL1, Size: 256, Offset: 258372	/	tilde.club	70
+iName: TRANTBL2, Size: 256, Offset: 258628	/	tilde.club	70
+i...	/	tilde.club	70
+i	/	tilde.club	70
+i### Building a PWAD from scratch	/	tilde.club	70
+i	/	tilde.club	70
+iuse tinywad::error::WadError;	/	tilde.club	70
+iuse tinywad::lump::{LumpAdd, LumpAddKind};	/	tilde.club	70
+iuse tinywad::models::operation::WadOp;	/	tilde.club	70
+iuse tinywad::wad::{Wad, WadKind,};	/	tilde.club	70
+i	/	tilde.club	70
+ifn main() -> Result<(), WadError> {	/	tilde.club	70
+i    let mut src = Wad::new();	/	tilde.club	70
+i	/	tilde.club	70
+i    let lump_names = [	/	tilde.club	70
+i        "FLOOR0_1", "FLOOR0_3", "FLOOR0_6",	/	tilde.club	70
+i        "FLOOR1_1", "FLOOR1_7", "FLOOR3_3",	/	tilde.club	70
+i        "FLOOR4_1", "FLOOR4_5", "FLOOR4_6",	/	tilde.club	70
+i        "FLOOR4_8", "FLOOR5_1", "FLOOR5_2",	/	tilde.club	70
+i        "FLOOR5_3", "FLOOR5_4", "FLOOR6_1",	/	tilde.club	70
+i        "FLOOR6_2", "FLOOR7_1", "FLOOR7_2",	/	tilde.club	70
+i    ];	/	tilde.club	70
+i	/	tilde.club	70
+i    src.load_from_file("doom.wad")?;	/	tilde.club	70
+i	/	tilde.club	70
+i    let gate = src.lump("FLOOR6_1").unwrap();	/	tilde.club	70
+i	/	tilde.club	70
+i    let mut dest = Wad::new();	/	tilde.club	70
+i	/	tilde.club	70
+i    dest.set_kind(WadKind::Pwad);	/	tilde.club	70
+i    dest.add_lump_raw(	/	tilde.club	70
+i        LumpAdd::new(	/	tilde.club	70
+i            LumpAddKind::Back,	/	tilde.club	70
+i            &vec![],	/	tilde.club	70
+i            "FF_START",	/	tilde.club	70
+i        )	/	tilde.club	70
+i    )?;	/	tilde.club	70
+i	/	tilde.club	70
+i    for lump_name in lump_names {	/	tilde.club	70
+i        dest.add_lump_raw(	/	tilde.club	70
+i            LumpAdd::new(	/	tilde.club	70
+i                LumpAddKind::Back,	/	tilde.club	70
+i                &gate.data().buffer,	/	tilde.club	70
+i                lump_name,	/	tilde.club	70
+i            )	/	tilde.club	70
+i        )?;	/	tilde.club	70
+i    }	/	tilde.club	70
+i	/	tilde.club	70
+i    dest.add_lump_raw(	/	tilde.club	70
+i        LumpAdd::new(	/	tilde.club	70
+i            LumpAddKind::Back,	/	tilde.club	70
+i            &vec![],	/	tilde.club	70
+i            "F_END",	/	tilde.club	70
+i        )	/	tilde.club	70
+i    )?;	/	tilde.club	70
+i	/	tilde.club	70
+i    dest.save("doom1_patch.wad");	/	tilde.club	70
+i	/	tilde.club	70
+i    Ok(())	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iTo take the screenshot (below) doom1_patch.wad has been	/	tilde.club	70
+iinjected into GZDOOM with the IWAD doom.wad (registered).	/	tilde.club	70
+i	/	tilde.club	70
+i### Result	/	tilde.club	70
+i/doom_floor6_1.png	/	tilde.club	70
+I/doom_floor6_1.png	/~theobori/doom_floor6_1.png	tilde.club	70
+i	/	tilde.club	70
+i### Files	/	tilde.club	70
+i	/	tilde.club	70
+idoom1_patch.wad	/	tilde.club	70
+idoom1_patch.asc	/	tilde.club	70
+ichecksum	/	tilde.club	70
+1doom1_patch.wad	/~theobori/doom1_patch.wad	tilde.club	70
+1doom1_patch.asc	/~theobori/doom1_patch.asc	tilde.club	70
+0checksum	/~theobori/checksum.txt	tilde.club	70
+i	/	tilde.club	70
+i### Extracting MIDI lumps	/	tilde.club	70
+i	/	tilde.club	70
+iExtracting every musics from the IWAD doom.wad.	/	tilde.club	70
+i	/	tilde.club	70
+iuse tinywad::error::WadError;	/	tilde.club	70
+iuse tinywad::models::operation::WadOp;	/	tilde.club	70
+iuse tinywad::wad::{Wad};	/	tilde.club	70
+i	/	tilde.club	70
+ifn main() -> Result<(), WadError> {	/	tilde.club	70
+i    let mut src = Wad::new();	/	tilde.club	70
+i	/	tilde.club	70
+i    src.load_from_file("doom.wad")?;	/	tilde.club	70
+i    src.select("D_");	/	tilde.club	70
+i    src.save_lumps(".");	/	tilde.club	70
+i	/	tilde.club	70
+i    Ok(())	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+ihttps://github.com/theobori/tinywad	/	tilde.club	70
 hhttps://github.com/theobori/tinywad	URL:https://github.com/theobori/tinywad	github.com	443

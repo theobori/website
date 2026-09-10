@@ -1,96 +1,96 @@
-i## title: A union filesystem in userspace	/	tilde.team	70
-i## date: "2026-06-14"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iI find the various concepts and philosophy behind Plan 9	/	tilde.team	70
-ivery interesting. About a month ago, I discovered the union	/	tilde.team	70
-idirectory feature. It involves binding directories to other	/	tilde.team	70
-idirectories. In practice, you end up with a directory that	/	tilde.team	70
-ibehaves like a collection of directories. I wanted to try	/	tilde.team	70
-iimplementing a similar feature for UNIX.	/	tilde.team	70
+i## title: A union filesystem in userspace	/	tilde.club	70
+i## date: "2026-06-14"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iI find the various concepts and philosophy behind Plan 9	/	tilde.club	70
+ivery interesting. About a month ago, I discovered the union	/	tilde.club	70
+idirectory feature. It involves binding directories to other	/	tilde.club	70
+idirectories. In practice, you end up with a directory that	/	tilde.club	70
+ibehaves like a collection of directories. I wanted to try	/	tilde.club	70
+iimplementing a similar feature for UNIX.	/	tilde.club	70
 hPlan 9	URL:https://p9f.org/	p9f.org	443
-i	/	tilde.team	70
-i## My goal	/	tilde.team	70
-i	/	tilde.team	70
-iThe main goal of this project is to have fun and learn about	/	tilde.team	70
-itechnologies I wasn't familiar with. Technically, I'd like	/	tilde.team	70
-ito write a virtual file system for UNIX that behaves	/	tilde.team	70
-isimilarly to Plan 9's union dir. The idea is to have mount	/	tilde.team	70
-ipoints that communicate with a daemon that manages a global	/	tilde.team	70
-imount table. Having a client-server architecture will allow	/	tilde.team	70
-ithe mount table to be managed even after the mount points	/	tilde.team	70
-ihave been created.	/	tilde.team	70
-i	/	tilde.team	70
-i## Implementation	/	tilde.team	70
-i	/	tilde.team	70
-iSo, I decided to create a Python project on GitHub	/	tilde.team	70
-icontaining a library and a CLI. The library provides Python	/	tilde.team	70
-icode that communicates with FUSE to export a file system to	/	tilde.team	70
-ithe kernel, a server to manage the global mount table in	/	tilde.team	70
-imemory, and functions to communicate with that server. The	/	tilde.team	70
-iCLI is a Python application that allows you to manage the	/	tilde.team	70
-imount points of the virtual file system and manipulate the	/	tilde.team	70
-iglobal mount table. Most of the file system operations are	/	tilde.team	70
-iinspired by https://1e.iwp9.org/cready/unfs.pdf. For more	/	tilde.team	70
-itechnical details, please refer to the project	/	tilde.team	70
-idocumentation.	/	tilde.team	70
+i	/	tilde.club	70
+i## My goal	/	tilde.club	70
+i	/	tilde.club	70
+iThe main goal of this project is to have fun and learn about	/	tilde.club	70
+itechnologies I wasn't familiar with. Technically, I'd like	/	tilde.club	70
+ito write a virtual file system for UNIX that behaves	/	tilde.club	70
+isimilarly to Plan 9's union dir. The idea is to have mount	/	tilde.club	70
+ipoints that communicate with a daemon that manages a global	/	tilde.club	70
+imount table. Having a client-server architecture will allow	/	tilde.club	70
+ithe mount table to be managed even after the mount points	/	tilde.club	70
+ihave been created.	/	tilde.club	70
+i	/	tilde.club	70
+i## Implementation	/	tilde.club	70
+i	/	tilde.club	70
+iSo, I decided to create a Python project on GitHub	/	tilde.club	70
+icontaining a library and a CLI. The library provides Python	/	tilde.club	70
+icode that communicates with FUSE to export a file system to	/	tilde.club	70
+ithe kernel, a server to manage the global mount table in	/	tilde.club	70
+imemory, and functions to communicate with that server. The	/	tilde.club	70
+iCLI is a Python application that allows you to manage the	/	tilde.club	70
+imount points of the virtual file system and manipulate the	/	tilde.club	70
+iglobal mount table. Most of the file system operations are	/	tilde.club	70
+iinspired by https://1e.iwp9.org/cready/unfs.pdf. For more	/	tilde.club	70
+itechnical details, please refer to the project	/	tilde.club	70
+idocumentation.	/	tilde.club	70
 hPython project	URL:https://github.com/theobori/unionfs	github.com	443
 hFUSE	URL:https://www.kernel.org/doc/html/next/filesystems/fuse.html	www.kernel.org	443
 hhttps://1e.iwp9.org/cready/unfs.pdf	URL:https://1e.iwp9.org/cready/unfs.pdf	1e.iwp9.org	443
 hproject documentation	URL:https://github.com/theobori/unionfs/blob/main/README.md	github.com	443
-i	/	tilde.team	70
-i## Components	/	tilde.team	70
-i	/	tilde.team	70
-iBelow are the main components of the project.	/	tilde.team	70
-i	/	tilde.team	70
-i### Mount Table	/	tilde.team	70
-i	/	tilde.team	70
-iThe mount table is a Python object that manages a hash map,	/	tilde.team	70
-iwhere each key is a path corresponding to a mount point, and	/	tilde.team	70
-ieach value is a custom data structure designed to manage the	/	tilde.team	70
-imounted directories. It has a time complexity of O(1) for	/	tilde.team	70
-ieach required operation.	/	tilde.team	70
-i	/	tilde.team	70
-i### Daemon	/	tilde.team	70
-i	/	tilde.team	70
-iThis is a server that must be started before mounting the	/	tilde.team	70
-ifilesystem. It is responsible for managing the global mount	/	tilde.team	70
-itable in memory and handling mount and bind requests.	/	tilde.team	70
-i	/	tilde.team	70
-i### Mount Points	/	tilde.team	70
-i	/	tilde.team	70
-iThese export the filesystem to the kernel using FUSE. While	/	tilde.team	70
-irunning, they communicate with the daemon to update their	/	tilde.team	70
-ibound directories.	/	tilde.team	70
-i	/	tilde.team	70
-i## Usage example	/	tilde.team	70
-i	/	tilde.team	70
-iPersonally, I used it to organize Quake mods into a single	/	tilde.team	70
-ifolder. I ran the commands below.	/	tilde.team	70
-i	/	tilde.team	70
-imkdir -pv /tmp/union-quake	/	tilde.team	70
-i	/	tilde.team	70
-iunionfs daemon --verbose	/	tilde.team	70
-iunionfs mount /tmp/union-quake	/	tilde.team	70
-iunionfs bind /tmp/union-quake ~/quake/ -a	/	tilde.team	70
-iunionfs bind /tmp/union-quake ~/snacks/ -a	/	tilde.team	70
-i	/	tilde.team	70
-ivkquake -basedir /tmp/union-quake/	/	tilde.team	70
-i	/	tilde.team	70
-iAnd I was able to play my Quake mods, which were spread out	/	tilde.team	70
-iacross several folders.	/	tilde.team	70
-i	/	tilde.team	70
-i## Project Progress	/	tilde.team	70
-i	/	tilde.team	70
-iThe project is not entirely finished, there are still areas	/	tilde.team	70
-ifor improvement to explore and tasks to complete. However,	/	tilde.team	70
-iit remains functional.	/	tilde.team	70
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iAlthough the project isn't quite finished yet, it was cool	/	tilde.team	70
-ito create a small protocol dedicated to managing the mount	/	tilde.team	70
-itable. I also got to explore FUSE in more detail and learn	/	tilde.team	70
-isome new things. I'm pretty happy with the result.	/	tilde.team	70
+i	/	tilde.club	70
+i## Components	/	tilde.club	70
+i	/	tilde.club	70
+iBelow are the main components of the project.	/	tilde.club	70
+i	/	tilde.club	70
+i### Mount Table	/	tilde.club	70
+i	/	tilde.club	70
+iThe mount table is a Python object that manages a hash map,	/	tilde.club	70
+iwhere each key is a path corresponding to a mount point, and	/	tilde.club	70
+ieach value is a custom data structure designed to manage the	/	tilde.club	70
+imounted directories. It has a time complexity of O(1) for	/	tilde.club	70
+ieach required operation.	/	tilde.club	70
+i	/	tilde.club	70
+i### Daemon	/	tilde.club	70
+i	/	tilde.club	70
+iThis is a server that must be started before mounting the	/	tilde.club	70
+ifilesystem. It is responsible for managing the global mount	/	tilde.club	70
+itable in memory and handling mount and bind requests.	/	tilde.club	70
+i	/	tilde.club	70
+i### Mount Points	/	tilde.club	70
+i	/	tilde.club	70
+iThese export the filesystem to the kernel using FUSE. While	/	tilde.club	70
+irunning, they communicate with the daemon to update their	/	tilde.club	70
+ibound directories.	/	tilde.club	70
+i	/	tilde.club	70
+i## Usage example	/	tilde.club	70
+i	/	tilde.club	70
+iPersonally, I used it to organize Quake mods into a single	/	tilde.club	70
+ifolder. I ran the commands below.	/	tilde.club	70
+i	/	tilde.club	70
+imkdir -pv /tmp/union-quake	/	tilde.club	70
+i	/	tilde.club	70
+iunionfs daemon --verbose	/	tilde.club	70
+iunionfs mount /tmp/union-quake	/	tilde.club	70
+iunionfs bind /tmp/union-quake ~/quake/ -a	/	tilde.club	70
+iunionfs bind /tmp/union-quake ~/snacks/ -a	/	tilde.club	70
+i	/	tilde.club	70
+ivkquake -basedir /tmp/union-quake/	/	tilde.club	70
+i	/	tilde.club	70
+iAnd I was able to play my Quake mods, which were spread out	/	tilde.club	70
+iacross several folders.	/	tilde.club	70
+i	/	tilde.club	70
+i## Project Progress	/	tilde.club	70
+i	/	tilde.club	70
+iThe project is not entirely finished, there are still areas	/	tilde.club	70
+ifor improvement to explore and tasks to complete. However,	/	tilde.club	70
+iit remains functional.	/	tilde.club	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iAlthough the project isn't quite finished yet, it was cool	/	tilde.club	70
+ito create a small protocol dedicated to managing the mount	/	tilde.club	70
+itable. I also got to explore FUSE in more detail and learn	/	tilde.club	70
+isome new things. I'm pretty happy with the result.	/	tilde.club	70
 

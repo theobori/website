@@ -1,49 +1,49 @@
-iI write these blog posts to share topics and experiences	/	tilde.team	70
-ithat I find interesting. Also it allows me to be more	/	tilde.team	70
-ispecific and understand more things. No AI is involved in	/	tilde.team	70
-ithis blog.	/	tilde.team	70
-hAI	URL:https://en.wikipedia.org/wiki/Artificial_intelligence	tilde.team	70
-i	/	tilde.team	70
-iBelow you will find all my blog posts, most of which focus on IT.	/	tilde.team	70
-1End of my services - sep 2026	/~nagi/end-of-my-services.gophermap	tilde.team	70
-1My opinionated tool to manage notes - sep 2026	/~nagi/a.gophermap	tilde.team	70
-1The sad servers are smiling again - aug 2026	/~nagi/sadservers.gophermap	tilde.team	70
-1A union filesystem in userspace - jun 2026	/~nagi/unionfs.gophermap	tilde.team	70
-1My Gopher webring application - jun 2026	/~nagi/ange.gophermap	tilde.team	70
-1My Gopher application framework - jun 2026	/~nagi/fleur.gophermap	tilde.team	70
-1Emacs dashboard DDNet integration - may 2026	/~nagi/dashboard-ddnet.gophermap	tilde.team	70
-1Nix functions in pure Python - apr 2026	/~nagi/nixpkgs-lib.gophermap	tilde.team	70
-1Esoteric programming languages - apr 2026	/~nagi/esoteric.gophermap	tilde.team	70
-1A Transient menu for qBittorrent - mar 2026	/~nagi/qbittorrent-transient.gophermap	tilde.team	70
-1Fun visualization of Emacs dependencies - mar 2026	/~nagi/dv.gophermap	tilde.team	70
-1Writing an Emacs package based on nix-converter - jan 2026	/~nagi/nix-converter-el.gophermap	tilde.team	70
-1Porting Plan 9 applications to UNIX - jan 2026	/~nagi/9ports.gophermap	tilde.team	70
-1My Gopherspace garden - jan 2026	/~nagi/gopherspace-garden.gophermap	tilde.team	70
-1My second Linux From Scratch system - jan 2026	/~nagi/lfs-second.gophermap	tilde.team	70
-1My Nix converter tool - dec 2025	/~nagi/nix-converter.gophermap	tilde.team	70
-1My algorithms and data structures journey - nov 2025	/~nagi/dsa_journey.gophermap	tilde.team	70
-1Poisoning LLM web scrapers - nov 2025	/~nagi/poison.gophermap	tilde.team	70
-1My first Linux From Scratch system - mar 2025	/~nagi/lfs-first.gophermap	tilde.team	70
-1A GNU Emacs experience throught NixOS - feb 2025	/~nagi/emacs.gophermap	tilde.team	70
-1My NixOS Teeworlds servers management module - nov 2024	/~nagi/nix-teeworlds.gophermap	tilde.team	70
-1Declarative Vencord configuration on NixOS - nov 2024	/~nagi/nixcord.gophermap	tilde.team	70
-1My bytecode VM Lox interpreter - oct 2024	/~nagi/clox.gophermap	tilde.team	70
-1A toy to visualize recursive function calls - jun 2024	/~nagi/callviz.gophermap	tilde.team	70
-1My Nix exploration - jun 2024	/~nagi/nix.gophermap	tilde.team	70
-1My homelab - jun 2024	/~nagi/homelab.gophermap	tilde.team	70
-1Teeworlds Terraform chaos engineering - mar 2024	/~nagi/terraform_chaos_teeworlds.gophermap	tilde.team	70
-1My Tree-Walker Lox interpreter - jun 2024	/~nagi/jlox.gophermap	tilde.team	70
-1Porting X11 applications to OpenBSD - mar 2024	/~nagi/openbsd_ports.gophermap	tilde.team	70
-1Manage dotfiles with chezmoi - mar 2024	/~nagi/chezmoi.gophermap	tilde.team	70
-1eBPF essentials - jan 2024	/~nagi/ebpf.gophermap	tilde.team	70
-1Public access UNIX systems - oct 2023	/~nagi/pubnix.gophermap	tilde.team	70
-1Play Teeworlds through Docker - oct 2023	/~nagi/teeworlds.gophermap	tilde.team	70
-1NGINX for Mozilla HTTP Observatory - oct 2023	/~nagi/mozilla.gophermap	tilde.team	70
-1Terraform OVH external DNS records - oct 2023	/~nagi/tf-ovh.gophermap	tilde.team	70
-1OpenSSH port knocking with UFW - oct 2023	/~nagi/knockd_ufw.gophermap	tilde.team	70
-1Teeworlds utilities - jul 2023	/~nagi/teeworlds-utilities.gophermap	tilde.team	70
-1My Terraform NeuVector provider - jun 2023	/~nagi/tf-neuvector.gophermap	tilde.team	70
-1Terraform chaos engineering - jun 2023	/~nagi/terraform_chaos_doom.gophermap	tilde.team	70
-1DOOM modding library - may 2023	/~nagi/tinywad.gophermap	tilde.team	70
-1Interesting websites - mar 2023	/~nagi/websites.gophermap	tilde.team	70
-1CHIP-8 emulator - mar 2023	/~nagi/tinychip.gophermap	tilde.team	70
+iI write these blog posts to share topics and experiences	/	tilde.club	70
+ithat I find interesting. Also it allows me to be more	/	tilde.club	70
+ispecific and understand more things. No AI is involved in	/	tilde.club	70
+ithis blog.	/	tilde.club	70
+hAI	URL:https://en.wikipedia.org/wiki/Artificial_intelligence	tilde.club	70
+i	/	tilde.club	70
+iBelow you will find all my blog posts, most of which focus on IT.	/	tilde.club	70
+1End of my services - sep 2026	/~theobori/end-of-my-services.gophermap	tilde.club	70
+1My opinionated tool to manage notes - sep 2026	/~theobori/a.gophermap	tilde.club	70
+1The sad servers are smiling again - aug 2026	/~theobori/sadservers.gophermap	tilde.club	70
+1A union filesystem in userspace - jun 2026	/~theobori/unionfs.gophermap	tilde.club	70
+1My Gopher webring application - jun 2026	/~theobori/ange.gophermap	tilde.club	70
+1My Gopher application framework - jun 2026	/~theobori/fleur.gophermap	tilde.club	70
+1Emacs dashboard DDNet integration - may 2026	/~theobori/dashboard-ddnet.gophermap	tilde.club	70
+1Nix functions in pure Python - apr 2026	/~theobori/nixpkgs-lib.gophermap	tilde.club	70
+1Esoteric programming languages - apr 2026	/~theobori/esoteric.gophermap	tilde.club	70
+1A Transient menu for qBittorrent - mar 2026	/~theobori/qbittorrent-transient.gophermap	tilde.club	70
+1Fun visualization of Emacs dependencies - mar 2026	/~theobori/dv.gophermap	tilde.club	70
+1Writing an Emacs package based on nix-converter - jan 2026	/~theobori/nix-converter-el.gophermap	tilde.club	70
+1Porting Plan 9 applications to UNIX - jan 2026	/~theobori/9ports.gophermap	tilde.club	70
+1My Gopherspace garden - jan 2026	/~theobori/gopherspace-garden.gophermap	tilde.club	70
+1My second Linux From Scratch system - jan 2026	/~theobori/lfs-second.gophermap	tilde.club	70
+1My Nix converter tool - dec 2025	/~theobori/nix-converter.gophermap	tilde.club	70
+1My algorithms and data structures journey - nov 2025	/~theobori/dsa_journey.gophermap	tilde.club	70
+1Poisoning LLM web scrapers - nov 2025	/~theobori/poison.gophermap	tilde.club	70
+1My first Linux From Scratch system - mar 2025	/~theobori/lfs-first.gophermap	tilde.club	70
+1A GNU Emacs experience throught NixOS - feb 2025	/~theobori/emacs.gophermap	tilde.club	70
+1My NixOS Teeworlds servers management module - nov 2024	/~theobori/nix-teeworlds.gophermap	tilde.club	70
+1Declarative Vencord configuration on NixOS - nov 2024	/~theobori/nixcord.gophermap	tilde.club	70
+1My bytecode VM Lox interpreter - oct 2024	/~theobori/clox.gophermap	tilde.club	70
+1A toy to visualize recursive function calls - jun 2024	/~theobori/callviz.gophermap	tilde.club	70
+1My Nix exploration - jun 2024	/~theobori/nix.gophermap	tilde.club	70
+1My homelab - jun 2024	/~theobori/homelab.gophermap	tilde.club	70
+1Teeworlds Terraform chaos engineering - mar 2024	/~theobori/terraform_chaos_teeworlds.gophermap	tilde.club	70
+1My Tree-Walker Lox interpreter - jun 2024	/~theobori/jlox.gophermap	tilde.club	70
+1Porting X11 applications to OpenBSD - mar 2024	/~theobori/openbsd_ports.gophermap	tilde.club	70
+1Manage dotfiles with chezmoi - mar 2024	/~theobori/chezmoi.gophermap	tilde.club	70
+1eBPF essentials - jan 2024	/~theobori/ebpf.gophermap	tilde.club	70
+1Public access UNIX systems - oct 2023	/~theobori/pubnix.gophermap	tilde.club	70
+1Play Teeworlds through Docker - oct 2023	/~theobori/teeworlds.gophermap	tilde.club	70
+1NGINX for Mozilla HTTP Observatory - oct 2023	/~theobori/mozilla.gophermap	tilde.club	70
+1Terraform OVH external DNS records - oct 2023	/~theobori/tf-ovh.gophermap	tilde.club	70
+1OpenSSH port knocking with UFW - oct 2023	/~theobori/knockd_ufw.gophermap	tilde.club	70
+1Teeworlds utilities - jul 2023	/~theobori/teeworlds-utilities.gophermap	tilde.club	70
+1My Terraform NeuVector provider - jun 2023	/~theobori/tf-neuvector.gophermap	tilde.club	70
+1Terraform chaos engineering - jun 2023	/~theobori/terraform_chaos_doom.gophermap	tilde.club	70
+1DOOM modding library - may 2023	/~theobori/tinywad.gophermap	tilde.club	70
+1Interesting websites - mar 2023	/~theobori/websites.gophermap	tilde.club	70
+1CHIP-8 emulator - mar 2023	/~theobori/tinychip.gophermap	tilde.club	70

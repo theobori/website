@@ -1,75 +1,75 @@
-i## title: Emacs dashboard DDNet integration	/	tilde.team	70
-i## date: "2026-05-12"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iRight now, I'm playing a lot of Teeworlds on DDNet servers.	/	tilde.team	70
-iIt turns out I also use Emacs a lot, for example, to write	/	tilde.team	70
-ithis blog post. I know that DDNet publicly displays	/	tilde.team	70
-istatistics about the players on their servers on the web. I	/	tilde.team	70
-iknow how to write ELisp, and people have written packages	/	tilde.team	70
-ithat allow you to make web requests. This means it's	/	tilde.team	70
-ipossible to retrieve my DDNet statistics and display them in	/	tilde.team	70
-imy Emacs window.	/	tilde.team	70
+i## title: Emacs dashboard DDNet integration	/	tilde.club	70
+i## date: "2026-05-12"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iRight now, I'm playing a lot of Teeworlds on DDNet servers.	/	tilde.club	70
+iIt turns out I also use Emacs a lot, for example, to write	/	tilde.club	70
+ithis blog post. I know that DDNet publicly displays	/	tilde.club	70
+istatistics about the players on their servers on the web. I	/	tilde.club	70
+iknow how to write ELisp, and people have written packages	/	tilde.club	70
+ithat allow you to make web requests. This means it's	/	tilde.club	70
+ipossible to retrieve my DDNet statistics and display them in	/	tilde.club	70
+imy Emacs window.	/	tilde.club	70
 hTeeworlds	URL:https://teeworlds.com/	teeworlds.com	443
 hDDNet	URL:https://ddnet.org	ddnet.org	443
-i	/	tilde.team	70
-i## My goal	/	tilde.team	70
-i	/	tilde.team	70
-iI'd like to be able to display my DDNet statistics,such as	/	tilde.team	70
-imy points, my most recently completed maps, my latest	/	tilde.team	70
-iactivities, etc. in my Emacs dashboard.	/	tilde.team	70
-i	/	tilde.team	70
-i## Emacs package	/	tilde.team	70
-i	/	tilde.team	70
-iThe ideal solution in this context was to create a new Emacs	/	tilde.team	70
-ipackage called dashboard-ddnet. It contains functions that	/	tilde.team	70
-ihave been added to dashboard-item-generators. These functions	/	tilde.team	70
-iare used by the dashboard to insert sections containing	/	tilde.team	70
-istatistics about a specific DDNet player. Below is an	/	tilde.team	70
-iexample configuration for using the package.	/	tilde.team	70
+i	/	tilde.club	70
+i## My goal	/	tilde.club	70
+i	/	tilde.club	70
+iI'd like to be able to display my DDNet statistics,such as	/	tilde.club	70
+imy points, my most recently completed maps, my latest	/	tilde.club	70
+iactivities, etc. in my Emacs dashboard.	/	tilde.club	70
+i	/	tilde.club	70
+i## Emacs package	/	tilde.club	70
+i	/	tilde.club	70
+iThe ideal solution in this context was to create a new Emacs	/	tilde.club	70
+ipackage called dashboard-ddnet. It contains functions that	/	tilde.club	70
+ihave been added to dashboard-item-generators. These functions	/	tilde.club	70
+iare used by the dashboard to insert sections containing	/	tilde.club	70
+istatistics about a specific DDNet player. Below is an	/	tilde.club	70
+iexample configuration for using the package.	/	tilde.club	70
 hdashboard-ddnet	URL:https://github.com/theobori/dashboard-ddnet	github.com	443
-i	/	tilde.team	70
-i(use-package dashboard-ddnet	/	tilde.team	70
-i  :straight (dashboard-ddnet :type git	/	tilde.team	70
-i                 :host github	/	tilde.team	70
-i                 :repo "theobori/dashboard-ddnet")	/	tilde.team	70
-i  :custom	/	tilde.team	70
-i  (dashboard-ddnet-player-name "brainless tee")	/	tilde.team	70
-i  (dashboard-ddnet-cache-ttl 600))	/	tilde.team	70
-i	/	tilde.team	70
-i(use-package dashboard	/	tilde.team	70
-i  :custom	/	tilde.team	70
-i  (dashboard-center-content t)	/	tilde.team	70
-i  (dashboard-set-navigator t)	/	tilde.team	70
-i  (dashboard-items '((ddnet-player-general-informations . 5)	/	tilde.team	70
-i                     (ddnet-player-last-finishes . 5)	/	tilde.team	70
-i                     (ddnet-player-favorite-partners . 5)	/	tilde.team	70
-i                     (ddnet-player-last-activity . 5)))	/	tilde.team	70
-i  :config	/	tilde.team	70
-i  (setq initial-buffer-choice (lambda ()	/	tilde.team	70
-i                              (get-buffer-create "*dashboard*")	/	tilde.team	70
-i                              (dashboard-refresh-buffer))))	/	tilde.team	70
-i	/	tilde.team	70
-iStraight is used because the package is not published in an	/	tilde.team	70
-iEmacs package archive. Feel free to adapt this configuration	/	tilde.team	70
-iif you wish.	/	tilde.team	70
-i	/	tilde.team	70
-i## Overview	/	tilde.team	70
-i	/	tilde.team	70
-iHere is what the dashboard might look like with dashboard-	/	tilde.team	70
-iddnet items.	/	tilde.team	70
-i	/	tilde.team	70
-i/dashboard-ddnet-screenshot.png	/	tilde.team	70
-I/dashboard-ddnet-screenshot.png	/~nagi/dashboard-ddnet-screenshot.png	tilde.team	70
-i	/	tilde.team	70
-iMost of the elements are push-button widgets, so they are	/	tilde.team	70
-iclickable and open the URLs associated with these elements	/	tilde.team	70
-iin an external web browser.	/	tilde.team	70
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iIt was interesting to dig into the dashboard source code to	/	tilde.team	70
-iunderstand how the package works and handles certain things,	/	tilde.team	70
-isuch as the icons associated with certain sections.	/	tilde.team	70
+i	/	tilde.club	70
+i(use-package dashboard-ddnet	/	tilde.club	70
+i  :straight (dashboard-ddnet :type git	/	tilde.club	70
+i                 :host github	/	tilde.club	70
+i                 :repo "theobori/dashboard-ddnet")	/	tilde.club	70
+i  :custom	/	tilde.club	70
+i  (dashboard-ddnet-player-name "brainless tee")	/	tilde.club	70
+i  (dashboard-ddnet-cache-ttl 600))	/	tilde.club	70
+i	/	tilde.club	70
+i(use-package dashboard	/	tilde.club	70
+i  :custom	/	tilde.club	70
+i  (dashboard-center-content t)	/	tilde.club	70
+i  (dashboard-set-navigator t)	/	tilde.club	70
+i  (dashboard-items '((ddnet-player-general-informations . 5)	/	tilde.club	70
+i                     (ddnet-player-last-finishes . 5)	/	tilde.club	70
+i                     (ddnet-player-favorite-partners . 5)	/	tilde.club	70
+i                     (ddnet-player-last-activity . 5)))	/	tilde.club	70
+i  :config	/	tilde.club	70
+i  (setq initial-buffer-choice (lambda ()	/	tilde.club	70
+i                              (get-buffer-create "*dashboard*")	/	tilde.club	70
+i                              (dashboard-refresh-buffer))))	/	tilde.club	70
+i	/	tilde.club	70
+iStraight is used because the package is not published in an	/	tilde.club	70
+iEmacs package archive. Feel free to adapt this configuration	/	tilde.club	70
+iif you wish.	/	tilde.club	70
+i	/	tilde.club	70
+i## Overview	/	tilde.club	70
+i	/	tilde.club	70
+iHere is what the dashboard might look like with dashboard-	/	tilde.club	70
+iddnet items.	/	tilde.club	70
+i	/	tilde.club	70
+i/dashboard-ddnet-screenshot.png	/	tilde.club	70
+I/dashboard-ddnet-screenshot.png	/~theobori/dashboard-ddnet-screenshot.png	tilde.club	70
+i	/	tilde.club	70
+iMost of the elements are push-button widgets, so they are	/	tilde.club	70
+iclickable and open the URLs associated with these elements	/	tilde.club	70
+iin an external web browser.	/	tilde.club	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iIt was interesting to dig into the dashboard source code to	/	tilde.club	70
+iunderstand how the package works and handles certain things,	/	tilde.club	70
+isuch as the icons associated with certain sections.	/	tilde.club	70
 

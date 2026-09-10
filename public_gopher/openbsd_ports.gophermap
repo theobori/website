@@ -1,169 +1,169 @@
-i## title: Porting X11 applications to OpenBSD	/	tilde.team	70
-i## date: "2024-03-15"	/	tilde.team	70
-i	/	tilde.team	70
-iI was getting interested in BSD systems, more specifically	/	tilde.team	70
-iOpenBSD, its firewall (pf) and more generally its security.	/	tilde.team	70
-iThen I wanted to use some programs with a graphical	/	tilde.team	70
-iinterface such as xclicker. But it doesn't exist on the	/	tilde.team	70
-idistribution, so I wanted to integrate it.	/	tilde.team	70
-i	/	tilde.team	70
-iBy the way, there's a site that explains why OpenBSD is	/	tilde.team	70
-igreat (why-openbsd.rocks).	/	tilde.team	70
+i## title: Porting X11 applications to OpenBSD	/	tilde.club	70
+i## date: "2024-03-15"	/	tilde.club	70
+i	/	tilde.club	70
+iI was getting interested in BSD systems, more specifically	/	tilde.club	70
+iOpenBSD, its firewall (pf) and more generally its security.	/	tilde.club	70
+iThen I wanted to use some programs with a graphical	/	tilde.club	70
+iinterface such as xclicker. But it doesn't exist on the	/	tilde.club	70
+idistribution, so I wanted to integrate it.	/	tilde.club	70
+i	/	tilde.club	70
+iBy the way, there's a site that explains why OpenBSD is	/	tilde.club	70
+igreat (why-openbsd.rocks).	/	tilde.club	70
 hwhy-openbsd.rocks	URL:https://why-openbsd.rocks/fact	why-openbsd.rocks	443
-i	/	tilde.team	70
-iI thought it could be interesting to port/package some games	/	tilde.team	70
-iI've played during my childhood such as Super Mario War or	/	tilde.team	70
-iVVVVVV.	/	tilde.team	70
+i	/	tilde.club	70
+iI thought it could be interesting to port/package some games	/	tilde.club	70
+iI've played during my childhood such as Super Mario War or	/	tilde.club	70
+iVVVVVV.	/	tilde.club	70
 hSuper Mario War	URL:http://smwstuff.net	smwstuff.net	80
 hVVVVVV	URL:https://thelettervsixtim.es/index.html	thelettervsixtim.es	443
-i	/	tilde.team	70
-iBefore making the game compatible with the distribution,	/	tilde.team	70
-iit's best to fetch the port tree (doc) and read the official	/	tilde.team	70
-idocumentation (doc) to get the essentials.	/	tilde.team	70
+i	/	tilde.club	70
+iBefore making the game compatible with the distribution,	/	tilde.club	70
+iit's best to fetch the port tree (doc) and read the official	/	tilde.club	70
+idocumentation (doc) to get the essentials.	/	tilde.club	70
 hdoc	URL:https://www.openbsd.org/faq/ports/ports.html	www.openbsd.org	443
 hdoc	URL:https://www.openbsd.org/faq/ports/guide.html	www.openbsd.org	443
-i	/	tilde.team	70
-i## OpenBSD environment	/	tilde.team	70
-i	/	tilde.team	70
-iMy test environment is a virtual machine managed by virt-	/	tilde.team	70
-imanager (using libvirt to interact with KVM) on which	/	tilde.team	70
-iOpenBSD 7.4 has been installed, following the steps here.	/	tilde.team	70
+i	/	tilde.club	70
+i## OpenBSD environment	/	tilde.club	70
+i	/	tilde.club	70
+iMy test environment is a virtual machine managed by virt-	/	tilde.club	70
+imanager (using libvirt to interact with KVM) on which	/	tilde.club	70
+iOpenBSD 7.4 has been installed, following the steps here.	/	tilde.club	70
 hOpenBSD 7.4	URL:https://www.openbsd.org/74.html	www.openbsd.org	443
 hhere	URL:https://www.openbsdhandbook.com/installation/	www.openbsdhandbook.com	443
-i	/	tilde.team	70
-iTo manage X displays, I used xenodm which is installed by	/	tilde.team	70
-idefault on OpenBSD. You can activate its system service with	/	tilde.team	70
-ithe following command.	/	tilde.team	70
-i	/	tilde.team	70
-ircctl enable xenodm	/	tilde.team	70
-i	/	tilde.team	70
-iAnd for the windows manager, there's a basic one (cwm) but I	/	tilde.team	70
-iopted for i3wm anyway.	/	tilde.team	70
-i	/	tilde.team	70
-i## Porting VVVVVV	/	tilde.team	70
-i	/	tilde.team	70
-iFew years ago, VVVVVV has released an open source version	/	tilde.team	70
-i(engine + levels). The game binary requires a data.zip file	/	tilde.team	70
-iwhich must be in the same folder, luckily there are options	/	tilde.team	70
-ito specify in which folders to look for the fonts and	/	tilde.team	70
-ilanguages.	/	tilde.team	70
-i	/	tilde.team	70
-iSo that the user doesn't have to fill in all this	/	tilde.team	70
-iinformation himself, I've created a shell script with the	/	tilde.team	70
-iappropriate values.	/	tilde.team	70
-i	/	tilde.team	70
-i#!/bin/sh	/	tilde.team	70
-i	/	tilde.team	70
-iNAME=VVVVVV	/	tilde.team	70
-iGAMES_DIR=${TRUEPREFIX}/games/${NAME}	/	tilde.team	70
-iSHARE_DIR=${TRUEPREFIX}/share/${NAME}	/	tilde.team	70
-i	/	tilde.team	70
-icd ${GAMES_DIR}	/	tilde.team	70
-i	/	tilde.team	70
-iexec ./${NAME} 	/	tilde.team	70
-i     -fontsdir ${SHARE_DIR}/fonts 	/	tilde.team	70
-i     -langdir ${SHARE_DIR}/lang 	/	tilde.team	70
-i     ${@}	/	tilde.team	70
-i	/	tilde.team	70
-iNote that ${TRUEPREFIX} is not defined in the script, this	/	tilde.team	70
-iis normal, it will be replaced by ${SUBST_CMD} defined in	/	tilde.team	70
-i/usr/ports/infrastructure/mk/bsd.port.mk.	/	tilde.team	70
-i	/	tilde.team	70
-iThis is what the game's makefile looks like.	/	tilde.team	70
-i	/	tilde.team	70
-iCOMMENT=    puzzle-platform game	/	tilde.team	70
-i	/	tilde.team	70
-iV=        2.4.1	/	tilde.team	70
-iNAME=        VVVVVV	/	tilde.team	70
-iPKGNAME=     ${NAME}-${V}	/	tilde.team	70
-i	/	tilde.team	70
-iCATEGORIES=    games	/	tilde.team	70
-i	/	tilde.team	70
-iHOMEPAGE=    http://thelettervsixtim.es	/	tilde.team	70
-i	/	tilde.team	70
-iMAINTAINER=    Theo Bori <nagi@tilde.team>	/	tilde.team	70
-i	/	tilde.team	70
-iEXTRACT_SUFX=    .zip	/	tilde.team	70
-i	/	tilde.team	70
-iWRKSRC=        ${WRKDIST}/${NAME}/desktop_version	/	tilde.team	70
-i	/	tilde.team	70
-iSITES=	/	tilde.team	70
-ihttps://github.com/terrycavanagh/${NAME}/releases/download/${V}/	/	tilde.team	70
-iSITES.a=    ${HOMEPAGE}/makeandplay/	/	tilde.team	70
-i	/	tilde.team	70
-iDISTFILES=    ${PKGNAME}${EXTRACT_SUFX}	/	tilde.team	70
-iDISTFILES.a=    vvvvvv-mp-linux-02132024${EXTRACT_SUFX}	/	tilde.team	70
-i	/	tilde.team	70
-i# Bsd-like	/	tilde.team	70
-iPERMIT_PACKAGE=    Yes	/	tilde.team	70
-i	/	tilde.team	70
-iWANTLIB+=    c SDL2 physfs tinyxml2 FAudio	/	tilde.team	70
-i	/	tilde.team	70
-iLIB_DEPENDS=    devel/sdl2 	/	tilde.team	70
-i        devel/physfs 	/	tilde.team	70
-i        audio/faudio 	/	tilde.team	70
-i        textproc/tinyxml2	/	tilde.team	70
-i	/	tilde.team	70
-iCXXFLAGS+=     -I${PREFIX}/include	/	tilde.team	70
-i	/	tilde.team	70
-iMODULES=    devel/cmake	/	tilde.team	70
-i	/	tilde.team	70
-iCONFIGURE_ARGS=        -DBUNDLE_DEPENDENCIES="OFF"	/	tilde.team	70
-i	/	tilde.team	70
-ido-extract:	/	tilde.team	70
-i    unzip ${FULLDISTDIR}/${PKGNAME}${EXTRACT_SUFX} -d ${WRKDIR}/	/	tilde.team	70
-i    unzip ${FULLDISTDIR}/vvvvvv-mp-linux-02132024${EXTRACT_SUFX} -d	/	tilde.team	70
-i${WRKDIR}/${PKGNAME}-data	/	tilde.team	70
-i	/	tilde.team	70
-ido-install:	/	tilde.team	70
-i    ${INSTALL_DATA_DIR} ${PREFIX}/games/${NAME}	/	tilde.team	70
-i    ${INSTALL_PROGRAM} ${WRKBUILD}/${NAME}	/	tilde.team	70
-i${PREFIX}/games/${NAME}/${NAME}	/	tilde.team	70
-i	/	tilde.team	70
-i    ${SUBST_CMD} -c -m 755 ${FILESDIR}/${NAME}	/	tilde.team	70
-i${PREFIX}/bin/${NAME}	/	tilde.team	70
-i	/	tilde.team	70
-ipost-install:	/	tilde.team	70
-i    ${INSTALL_DATA} ${WRKDIR}/${PKGNAME}-data/data.zip	/	tilde.team	70
-i${PREFIX}/games/${NAME}	/	tilde.team	70
-i	/	tilde.team	70
-i    ${INSTALL_DATA_DIR} ${PREFIX}/share/${NAME}	/	tilde.team	70
-i	/	tilde.team	70
-i.for d in lang licenses fonts	/	tilde.team	70
-i    cp -r ${WRKDIR}/${PKGNAME}-data/${d} ${PREFIX}/share/${NAME}	/	tilde.team	70
-i.endfor	/	tilde.team	70
-i	/	tilde.team	70
-i.include <bsd.port.mk>	/	tilde.team	70
-i	/	tilde.team	70
-iAs you can see, I had to override some of the BSD port	/	tilde.team	70
-imakefile targets, because, actually this ports is a little	/	tilde.team	70
-ibit special. It must download multiple distfiles from	/	tilde.team	70
-idifferent sites (see below).	/	tilde.team	70
-i	/	tilde.team	70
-iSITES=	/	tilde.team	70
-ihttps://github.com/terrycavanagh/${NAME}/releases/download/${V}/	/	tilde.team	70
-iSITES.a=    ${HOMEPAGE}/makeandplay/	/	tilde.team	70
-i	/	tilde.team	70
-iDISTFILES=    ${PKGNAME}${EXTRACT_SUFX}	/	tilde.team	70
-iDISTFILES.a=    vvvvvv-mp-linux-02132024${EXTRACT_SUFX}	/	tilde.team	70
-i	/	tilde.team	70
-iMoreover, there were conflicts with the extracted files	/	tilde.team	70
-inames, so I had to rename the directory containing data.zip.	/	tilde.team	70
-i	/	tilde.team	70
-ido-extract:	/	tilde.team	70
-i    unzip ${FULLDISTDIR}/${PKGNAME}${EXTRACT_SUFX} -d ${WRKDIR}/	/	tilde.team	70
-i    unzip ${FULLDISTDIR}/vvvvvv-mp-linux-02132024${EXTRACT_SUFX} -d	/	tilde.team	70
-i${WRKDIR}/${PKGNAME}-data	/	tilde.team	70
-i	/	tilde.team	70
-iAlso, we didn't want to build the dependencies using the	/	tilde.team	70
-igithub modules, because obviously, the released zip file	/	tilde.team	70
-idoesn't have a .git folder inside.	/	tilde.team	70
-i	/	tilde.team	70
-iI've also patched a few source files, the full port is	/	tilde.team	70
-iavailable  here.	/	tilde.team	70
+i	/	tilde.club	70
+iTo manage X displays, I used xenodm which is installed by	/	tilde.club	70
+idefault on OpenBSD. You can activate its system service with	/	tilde.club	70
+ithe following command.	/	tilde.club	70
+i	/	tilde.club	70
+ircctl enable xenodm	/	tilde.club	70
+i	/	tilde.club	70
+iAnd for the windows manager, there's a basic one (cwm) but I	/	tilde.club	70
+iopted for i3wm anyway.	/	tilde.club	70
+i	/	tilde.club	70
+i## Porting VVVVVV	/	tilde.club	70
+i	/	tilde.club	70
+iFew years ago, VVVVVV has released an open source version	/	tilde.club	70
+i(engine + levels). The game binary requires a data.zip file	/	tilde.club	70
+iwhich must be in the same folder, luckily there are options	/	tilde.club	70
+ito specify in which folders to look for the fonts and	/	tilde.club	70
+ilanguages.	/	tilde.club	70
+i	/	tilde.club	70
+iSo that the user doesn't have to fill in all this	/	tilde.club	70
+iinformation himself, I've created a shell script with the	/	tilde.club	70
+iappropriate values.	/	tilde.club	70
+i	/	tilde.club	70
+i#!/bin/sh	/	tilde.club	70
+i	/	tilde.club	70
+iNAME=VVVVVV	/	tilde.club	70
+iGAMES_DIR=${TRUEPREFIX}/games/${NAME}	/	tilde.club	70
+iSHARE_DIR=${TRUEPREFIX}/share/${NAME}	/	tilde.club	70
+i	/	tilde.club	70
+icd ${GAMES_DIR}	/	tilde.club	70
+i	/	tilde.club	70
+iexec ./${NAME} 	/	tilde.club	70
+i     -fontsdir ${SHARE_DIR}/fonts 	/	tilde.club	70
+i     -langdir ${SHARE_DIR}/lang 	/	tilde.club	70
+i     ${@}	/	tilde.club	70
+i	/	tilde.club	70
+iNote that ${TRUEPREFIX} is not defined in the script, this	/	tilde.club	70
+iis normal, it will be replaced by ${SUBST_CMD} defined in	/	tilde.club	70
+i/usr/ports/infrastructure/mk/bsd.port.mk.	/	tilde.club	70
+i	/	tilde.club	70
+iThis is what the game's makefile looks like.	/	tilde.club	70
+i	/	tilde.club	70
+iCOMMENT=    puzzle-platform game	/	tilde.club	70
+i	/	tilde.club	70
+iV=        2.4.1	/	tilde.club	70
+iNAME=        VVVVVV	/	tilde.club	70
+iPKGNAME=     ${NAME}-${V}	/	tilde.club	70
+i	/	tilde.club	70
+iCATEGORIES=    games	/	tilde.club	70
+i	/	tilde.club	70
+iHOMEPAGE=    http://thelettervsixtim.es	/	tilde.club	70
+i	/	tilde.club	70
+iMAINTAINER=    Theo Bori <nagi@tilde.team>	/	tilde.club	70
+i	/	tilde.club	70
+iEXTRACT_SUFX=    .zip	/	tilde.club	70
+i	/	tilde.club	70
+iWRKSRC=        ${WRKDIST}/${NAME}/desktop_version	/	tilde.club	70
+i	/	tilde.club	70
+iSITES=	/	tilde.club	70
+ihttps://github.com/terrycavanagh/${NAME}/releases/download/${V}/	/	tilde.club	70
+iSITES.a=    ${HOMEPAGE}/makeandplay/	/	tilde.club	70
+i	/	tilde.club	70
+iDISTFILES=    ${PKGNAME}${EXTRACT_SUFX}	/	tilde.club	70
+iDISTFILES.a=    vvvvvv-mp-linux-02132024${EXTRACT_SUFX}	/	tilde.club	70
+i	/	tilde.club	70
+i# Bsd-like	/	tilde.club	70
+iPERMIT_PACKAGE=    Yes	/	tilde.club	70
+i	/	tilde.club	70
+iWANTLIB+=    c SDL2 physfs tinyxml2 FAudio	/	tilde.club	70
+i	/	tilde.club	70
+iLIB_DEPENDS=    devel/sdl2 	/	tilde.club	70
+i        devel/physfs 	/	tilde.club	70
+i        audio/faudio 	/	tilde.club	70
+i        textproc/tinyxml2	/	tilde.club	70
+i	/	tilde.club	70
+iCXXFLAGS+=     -I${PREFIX}/include	/	tilde.club	70
+i	/	tilde.club	70
+iMODULES=    devel/cmake	/	tilde.club	70
+i	/	tilde.club	70
+iCONFIGURE_ARGS=        -DBUNDLE_DEPENDENCIES="OFF"	/	tilde.club	70
+i	/	tilde.club	70
+ido-extract:	/	tilde.club	70
+i    unzip ${FULLDISTDIR}/${PKGNAME}${EXTRACT_SUFX} -d ${WRKDIR}/	/	tilde.club	70
+i    unzip ${FULLDISTDIR}/vvvvvv-mp-linux-02132024${EXTRACT_SUFX} -d	/	tilde.club	70
+i${WRKDIR}/${PKGNAME}-data	/	tilde.club	70
+i	/	tilde.club	70
+ido-install:	/	tilde.club	70
+i    ${INSTALL_DATA_DIR} ${PREFIX}/games/${NAME}	/	tilde.club	70
+i    ${INSTALL_PROGRAM} ${WRKBUILD}/${NAME}	/	tilde.club	70
+i${PREFIX}/games/${NAME}/${NAME}	/	tilde.club	70
+i	/	tilde.club	70
+i    ${SUBST_CMD} -c -m 755 ${FILESDIR}/${NAME}	/	tilde.club	70
+i${PREFIX}/bin/${NAME}	/	tilde.club	70
+i	/	tilde.club	70
+ipost-install:	/	tilde.club	70
+i    ${INSTALL_DATA} ${WRKDIR}/${PKGNAME}-data/data.zip	/	tilde.club	70
+i${PREFIX}/games/${NAME}	/	tilde.club	70
+i	/	tilde.club	70
+i    ${INSTALL_DATA_DIR} ${PREFIX}/share/${NAME}	/	tilde.club	70
+i	/	tilde.club	70
+i.for d in lang licenses fonts	/	tilde.club	70
+i    cp -r ${WRKDIR}/${PKGNAME}-data/${d} ${PREFIX}/share/${NAME}	/	tilde.club	70
+i.endfor	/	tilde.club	70
+i	/	tilde.club	70
+i.include <bsd.port.mk>	/	tilde.club	70
+i	/	tilde.club	70
+iAs you can see, I had to override some of the BSD port	/	tilde.club	70
+imakefile targets, because, actually this ports is a little	/	tilde.club	70
+ibit special. It must download multiple distfiles from	/	tilde.club	70
+idifferent sites (see below).	/	tilde.club	70
+i	/	tilde.club	70
+iSITES=	/	tilde.club	70
+ihttps://github.com/terrycavanagh/${NAME}/releases/download/${V}/	/	tilde.club	70
+iSITES.a=    ${HOMEPAGE}/makeandplay/	/	tilde.club	70
+i	/	tilde.club	70
+iDISTFILES=    ${PKGNAME}${EXTRACT_SUFX}	/	tilde.club	70
+iDISTFILES.a=    vvvvvv-mp-linux-02132024${EXTRACT_SUFX}	/	tilde.club	70
+i	/	tilde.club	70
+iMoreover, there were conflicts with the extracted files	/	tilde.club	70
+inames, so I had to rename the directory containing data.zip.	/	tilde.club	70
+i	/	tilde.club	70
+ido-extract:	/	tilde.club	70
+i    unzip ${FULLDISTDIR}/${PKGNAME}${EXTRACT_SUFX} -d ${WRKDIR}/	/	tilde.club	70
+i    unzip ${FULLDISTDIR}/vvvvvv-mp-linux-02132024${EXTRACT_SUFX} -d	/	tilde.club	70
+i${WRKDIR}/${PKGNAME}-data	/	tilde.club	70
+i	/	tilde.club	70
+iAlso, we didn't want to build the dependencies using the	/	tilde.club	70
+igithub modules, because obviously, the released zip file	/	tilde.club	70
+idoesn't have a .git folder inside.	/	tilde.club	70
+i	/	tilde.club	70
+iI've also patched a few source files, the full port is	/	tilde.club	70
+iavailable  here.	/	tilde.club	70
 hhere	URL:https://github.com/theobori/openbsd-ports/tree/main/games/VVVVVV	github.com	443
-i	/	tilde.team	70
-i## Links	/	tilde.team	70
-i	/	tilde.team	70
-iMy OpenBSD ports	/	tilde.team	70
+i	/	tilde.club	70
+i## Links	/	tilde.club	70
+i	/	tilde.club	70
+iMy OpenBSD ports	/	tilde.club	70
 hMy OpenBSD ports	URL:https://github.com/theobori/openbsd-ports	github.com	443

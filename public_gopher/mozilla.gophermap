@@ -1,118 +1,118 @@
-i## title: NGINX for Mozilla HTTP Observatory	/	tilde.team	70
-i## date: "2023-10-23"	/	tilde.team	70
-i	/	tilde.team	70
-iWebsite security, whether in terms of cookies or HTTP	/	tilde.team	70
-iheaders, is still very important. A good way to measure the	/	tilde.team	70
-isecurity of your website is with Mozilla Observatory.	/	tilde.team	70
-i	/	tilde.team	70
-iThis is a tool set up by Mozilla in the form of a website.	/	tilde.team	70
-iIt assigns a security rating based on predefined criteria,	/	tilde.team	70
-iand documents configurations that can improve this rating.	/	tilde.team	70
-i	/	tilde.team	70
-iFor the technical part with NGINX, I've chosen to use this	/	tilde.team	70
-iwebsite as an example, which has obtained a satisfactory	/	tilde.team	70
-isecurity rating.	/	tilde.team	70
-1this website	/~nagi	tilde.team	70
-i	/	tilde.team	70
-i/theoboricafe_a.png	/	tilde.team	70
-I/theoboricafe_a.png	/~nagi/theoboricafe_a.png	tilde.team	70
-i	/	tilde.team	70
-i## NGINX security	/	tilde.team	70
-i	/	tilde.team	70
-i### HTTP to HTTPS redirection	/	tilde.team	70
-i	/	tilde.team	70
-iThe first thing to do with NGINX is to redirect HTTP traffic	/	tilde.team	70
-ito an HTTPS port.	/	tilde.team	70
-i	/	tilde.team	70
-iserver {	/	tilde.team	70
-i  listen 80;	/	tilde.team	70
-i  listen [::]:80;	/	tilde.team	70
-i	/	tilde.team	70
-i  return 301 https://$host$request_uri;	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iThe HTTP 301 status code is used to tell the browser to	/	tilde.team	70
-iredirect to another URL.	/	tilde.team	70
-i	/	tilde.team	70
-i### SSL parameters	/	tilde.team	70
-i	/	tilde.team	70
-issl_session_timeout 1d;	/	tilde.team	70
-i	/	tilde.team	70
-i# Disable SSL session tickets	/	tilde.team	70
-issl_session_tickets off;	/	tilde.team	70
-i	/	tilde.team	70
-i# Enable and verify SSL stapling	/	tilde.team	70
-issl_stapling on;	/	tilde.team	70
-issl_stapling_verify on;	/	tilde.team	70
-i	/	tilde.team	70
-i# Stapling certificate	/	tilde.team	70
-issl_trusted_certificate /path/fullchain.pem;	/	tilde.team	70
-i	/	tilde.team	70
-i# Specific DNS server for the resolver	/	tilde.team	70
-iresolver 1.1.1.1;	/	tilde.team	70
-iresolver_timeout 5s;	/	tilde.team	70
-i	/	tilde.team	70
-iEnabling stapling reduces latency for the client. This is	/	tilde.team	70
-ibecause the SSL certificate's validity status is checked by	/	tilde.team	70
-ithe server, not by the client browser. This information is	/	tilde.team	70
-ithen added to the certificate by the server.	/	tilde.team	70
-i	/	tilde.team	70
-i### HTTP basics security headers	/	tilde.team	70
-i	/	tilde.team	70
-i# Instructs the browser to use HTTPS	/	tilde.team	70
-iadd_header Strict-Transport-Security "max-age=63072000" always;	/	tilde.team	70
-i	/	tilde.team	70
-i# Enables a cross-site scripting (XSS) protection feature	/	tilde.team	70
-iadd_header X-XSS-Protection "1; mode=block";	/	tilde.team	70
-i	/	tilde.team	70
-i# Disables resource content type guessing	/	tilde.team	70
-iadd_header X-Content-Type-Options "nosniff";	/	tilde.team	70
-i	/	tilde.team	70
-i# Controls how the Referer header is sent in requests	/	tilde.team	70
-iadd_header Referrer-Policy "no-referrer";	/	tilde.team	70
-i	/	tilde.team	70
-i# Defines the permissions for specific web features	/	tilde.team	70
-iadd_header Permissions-Policy "microphone=(),	/	tilde.team	70
-igeolocation=()";	/	tilde.team	70
-i	/	tilde.team	70
-i# Disables embed iframe of this website on another website	/	tilde.team	70
-iadd_header X-Frame-Options "DENY";	/	tilde.team	70
-i	/	tilde.team	70
-iAlso, another important point checked by Mozilla Observatory	/	tilde.team	70
-iis the Content Security Policies. It is an added layer of	/	tilde.team	70
-isecurity that helps to detect and mitigate certain types of	/	tilde.team	70
-iattacks like XSS and data injection attacks.	/	tilde.team	70
-i	/	tilde.team	70
-i### Dynamic Content Security Policies	/	tilde.team	70
-i	/	tilde.team	70
-isub_filter_once off;	/	tilde.team	70
-isub_filter nonce_value $ssl_session_id;	/	tilde.team	70
-i	/	tilde.team	70
-iadd_header Content-Security-Policy "default-src 'none'; font-src	/	tilde.team	70
-i'self'; style-src 'self'; media-src 'self'; frame-ancestors	/	tilde.team	70
-i'self'; base-uri 'none'; form-action 'none'; style-src-elem	/	tilde.team	70
-i'self' 'nonce-$ssl_session_id'; img-src 'self'; script-src	/	tilde.team	70
-i'self' 'unsafe-hashes' 'sha256-	/	tilde.team	70
-i2daR3BDHUgNt2bWp/u+3CNDJtsIDrpz+22+QPnNNS5c='; connect-src	/	tilde.team	70
-i'self'";	/	tilde.team	70
-i	/	tilde.team	70
-isub_filter is a directive from the ngx_http_sub_module NGINX	/	tilde.team	70
-imodule. It is used to replace a string by a specific value	/	tilde.team	70
-iin the HTTP response.	/	tilde.team	70
-i	/	tilde.team	70
-iIn effect, here I'm generating a random value with NGINX	/	tilde.team	70
-ithat will replace nonce_value associated with the nonce	/	tilde.team	70
-iattribute placed, in our context, on HTML <style> tags.	/	tilde.team	70
-i	/	tilde.team	70
-iNGINX will generate a new nonce value for each SSL session.	/	tilde.team	70
-i	/	tilde.team	70
-i<style nonce="nonce_value"></style>	/	tilde.team	70
-i	/	tilde.team	70
-iThe CSP header in the HTTP response will therefore indicate	/	tilde.team	70
-ithat style tags with the nonce attribute and the value	/	tilde.team	70
-igenerated by NGINX are authorized. This allows certain CSS	/	tilde.team	70
-isources to be authorized.	/	tilde.team	70
-i	/	tilde.team	70
-iJust like sha256-2daR3BDHUgNt2bWp/u+3CNDJtsIDrpz+22+QPnNNS5c=	/	tilde.team	70
-iwhich represents and authorizes a JavaScript source to be	/	tilde.team	70
-iloaded by the browser.	/	tilde.team	70
+i## title: NGINX for Mozilla HTTP Observatory	/	tilde.club	70
+i## date: "2023-10-23"	/	tilde.club	70
+i	/	tilde.club	70
+iWebsite security, whether in terms of cookies or HTTP	/	tilde.club	70
+iheaders, is still very important. A good way to measure the	/	tilde.club	70
+isecurity of your website is with Mozilla Observatory.	/	tilde.club	70
+i	/	tilde.club	70
+iThis is a tool set up by Mozilla in the form of a website.	/	tilde.club	70
+iIt assigns a security rating based on predefined criteria,	/	tilde.club	70
+iand documents configurations that can improve this rating.	/	tilde.club	70
+i	/	tilde.club	70
+iFor the technical part with NGINX, I've chosen to use this	/	tilde.club	70
+iwebsite as an example, which has obtained a satisfactory	/	tilde.club	70
+isecurity rating.	/	tilde.club	70
+1this website	/~theobori	tilde.club	70
+i	/	tilde.club	70
+i/theoboricafe_a.png	/	tilde.club	70
+I/theoboricafe_a.png	/~theobori/theoboricafe_a.png	tilde.club	70
+i	/	tilde.club	70
+i## NGINX security	/	tilde.club	70
+i	/	tilde.club	70
+i### HTTP to HTTPS redirection	/	tilde.club	70
+i	/	tilde.club	70
+iThe first thing to do with NGINX is to redirect HTTP traffic	/	tilde.club	70
+ito an HTTPS port.	/	tilde.club	70
+i	/	tilde.club	70
+iserver {	/	tilde.club	70
+i  listen 80;	/	tilde.club	70
+i  listen [::]:80;	/	tilde.club	70
+i	/	tilde.club	70
+i  return 301 https://$host$request_uri;	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iThe HTTP 301 status code is used to tell the browser to	/	tilde.club	70
+iredirect to another URL.	/	tilde.club	70
+i	/	tilde.club	70
+i### SSL parameters	/	tilde.club	70
+i	/	tilde.club	70
+issl_session_timeout 1d;	/	tilde.club	70
+i	/	tilde.club	70
+i# Disable SSL session tickets	/	tilde.club	70
+issl_session_tickets off;	/	tilde.club	70
+i	/	tilde.club	70
+i# Enable and verify SSL stapling	/	tilde.club	70
+issl_stapling on;	/	tilde.club	70
+issl_stapling_verify on;	/	tilde.club	70
+i	/	tilde.club	70
+i# Stapling certificate	/	tilde.club	70
+issl_trusted_certificate /path/fullchain.pem;	/	tilde.club	70
+i	/	tilde.club	70
+i# Specific DNS server for the resolver	/	tilde.club	70
+iresolver 1.1.1.1;	/	tilde.club	70
+iresolver_timeout 5s;	/	tilde.club	70
+i	/	tilde.club	70
+iEnabling stapling reduces latency for the client. This is	/	tilde.club	70
+ibecause the SSL certificate's validity status is checked by	/	tilde.club	70
+ithe server, not by the client browser. This information is	/	tilde.club	70
+ithen added to the certificate by the server.	/	tilde.club	70
+i	/	tilde.club	70
+i### HTTP basics security headers	/	tilde.club	70
+i	/	tilde.club	70
+i# Instructs the browser to use HTTPS	/	tilde.club	70
+iadd_header Strict-Transport-Security "max-age=63072000" always;	/	tilde.club	70
+i	/	tilde.club	70
+i# Enables a cross-site scripting (XSS) protection feature	/	tilde.club	70
+iadd_header X-XSS-Protection "1; mode=block";	/	tilde.club	70
+i	/	tilde.club	70
+i# Disables resource content type guessing	/	tilde.club	70
+iadd_header X-Content-Type-Options "nosniff";	/	tilde.club	70
+i	/	tilde.club	70
+i# Controls how the Referer header is sent in requests	/	tilde.club	70
+iadd_header Referrer-Policy "no-referrer";	/	tilde.club	70
+i	/	tilde.club	70
+i# Defines the permissions for specific web features	/	tilde.club	70
+iadd_header Permissions-Policy "microphone=(),	/	tilde.club	70
+igeolocation=()";	/	tilde.club	70
+i	/	tilde.club	70
+i# Disables embed iframe of this website on another website	/	tilde.club	70
+iadd_header X-Frame-Options "DENY";	/	tilde.club	70
+i	/	tilde.club	70
+iAlso, another important point checked by Mozilla Observatory	/	tilde.club	70
+iis the Content Security Policies. It is an added layer of	/	tilde.club	70
+isecurity that helps to detect and mitigate certain types of	/	tilde.club	70
+iattacks like XSS and data injection attacks.	/	tilde.club	70
+i	/	tilde.club	70
+i### Dynamic Content Security Policies	/	tilde.club	70
+i	/	tilde.club	70
+isub_filter_once off;	/	tilde.club	70
+isub_filter nonce_value $ssl_session_id;	/	tilde.club	70
+i	/	tilde.club	70
+iadd_header Content-Security-Policy "default-src 'none'; font-src	/	tilde.club	70
+i'self'; style-src 'self'; media-src 'self'; frame-ancestors	/	tilde.club	70
+i'self'; base-uri 'none'; form-action 'none'; style-src-elem	/	tilde.club	70
+i'self' 'nonce-$ssl_session_id'; img-src 'self'; script-src	/	tilde.club	70
+i'self' 'unsafe-hashes' 'sha256-	/	tilde.club	70
+i2daR3BDHUgNt2bWp/u+3CNDJtsIDrpz+22+QPnNNS5c='; connect-src	/	tilde.club	70
+i'self'";	/	tilde.club	70
+i	/	tilde.club	70
+isub_filter is a directive from the ngx_http_sub_module NGINX	/	tilde.club	70
+imodule. It is used to replace a string by a specific value	/	tilde.club	70
+iin the HTTP response.	/	tilde.club	70
+i	/	tilde.club	70
+iIn effect, here I'm generating a random value with NGINX	/	tilde.club	70
+ithat will replace nonce_value associated with the nonce	/	tilde.club	70
+iattribute placed, in our context, on HTML <style> tags.	/	tilde.club	70
+i	/	tilde.club	70
+iNGINX will generate a new nonce value for each SSL session.	/	tilde.club	70
+i	/	tilde.club	70
+i<style nonce="nonce_value"></style>	/	tilde.club	70
+i	/	tilde.club	70
+iThe CSP header in the HTTP response will therefore indicate	/	tilde.club	70
+ithat style tags with the nonce attribute and the value	/	tilde.club	70
+igenerated by NGINX are authorized. This allows certain CSS	/	tilde.club	70
+isources to be authorized.	/	tilde.club	70
+i	/	tilde.club	70
+iJust like sha256-2daR3BDHUgNt2bWp/u+3CNDJtsIDrpz+22+QPnNNS5c=	/	tilde.club	70
+iwhich represents and authorizes a JavaScript source to be	/	tilde.club	70
+iloaded by the browser.	/	tilde.club	70

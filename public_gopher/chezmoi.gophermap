@@ -1,77 +1,77 @@
-i## title: Manage dotfiles with chezmoi	/	tilde.team	70
-i## date: "2024-03-10"	/	tilde.team	70
-i	/	tilde.team	70
-iTo give a bit of context, I had automated the deployment of	/	tilde.team	70
-ithe configuration of my Linux environment with an Ansible	/	tilde.team	70
-iplaybook (repository). This setup is compatible with almost	/	tilde.team	70
-iall Linux distributions (probably UNIX too) but I was	/	tilde.team	70
-ilooking for something lighter and simpler.	/	tilde.team	70
+i## title: Manage dotfiles with chezmoi	/	tilde.club	70
+i## date: "2024-03-10"	/	tilde.club	70
+i	/	tilde.club	70
+iTo give a bit of context, I had automated the deployment of	/	tilde.club	70
+ithe configuration of my Linux environment with an Ansible	/	tilde.club	70
+iplaybook (repository). This setup is compatible with almost	/	tilde.club	70
+iall Linux distributions (probably UNIX too) but I was	/	tilde.club	70
+ilooking for something lighter and simpler.	/	tilde.club	70
 hrepository	URL:https://github.com/theobori/self-config	github.com	443
-i	/	tilde.team	70
-iI found by chance chezmoi which is able to manage dotfiles	/	tilde.team	70
-ias well as some other configurations which could be linked	/	tilde.team	70
-ito these dotfiles. The tool allows you to update files on	/	tilde.team	70
-iseveral different machines, it's very complete, simple and	/	tilde.team	70
-ieffective.	/	tilde.team	70
+i	/	tilde.club	70
+iI found by chance chezmoi which is able to manage dotfiles	/	tilde.club	70
+ias well as some other configurations which could be linked	/	tilde.club	70
+ito these dotfiles. The tool allows you to update files on	/	tilde.club	70
+iseveral different machines, it's very complete, simple and	/	tilde.club	70
+ieffective.	/	tilde.club	70
 hchezmoi	URL:https://chezmoi.io	chezmoi.io	443
-i	/	tilde.team	70
-iSome people pair it with Ansible but I prefer to use the	/	tilde.team	70
-isolution in a very simple way, with the tool's native	/	tilde.team	70
-ifeatures (scripting and templating).	/	tilde.team	70
-i	/	tilde.team	70
-iSomething interesting about chezmoi is that it supports file	/	tilde.team	70
-iencryption with modern tools like age. This is very useful	/	tilde.team	70
-ifor certain sensitive data such as SSH private keys. So you	/	tilde.team	70
-ican add configuration so that the tool can encrypt and	/	tilde.team	70
-idecrypt.	/	tilde.team	70
+i	/	tilde.club	70
+iSome people pair it with Ansible but I prefer to use the	/	tilde.club	70
+isolution in a very simple way, with the tool's native	/	tilde.club	70
+ifeatures (scripting and templating).	/	tilde.club	70
+i	/	tilde.club	70
+iSomething interesting about chezmoi is that it supports file	/	tilde.club	70
+iencryption with modern tools like age. This is very useful	/	tilde.club	70
+ifor certain sensitive data such as SSH private keys. So you	/	tilde.club	70
+ican add configuration so that the tool can encrypt and	/	tilde.club	70
+idecrypt.	/	tilde.club	70
 hchezmoi	URL:https://chezmoi.io	chezmoi.io	443
 hage	URL:https://age-encryption.org	age-encryption.org	443
-i	/	tilde.team	70
-iMy configuration template looks like this (below) in the	/	tilde.team	70
-i.chezmoi.yaml.tmpl file.	/	tilde.team	70
-i	/	tilde.team	70
-i{% raw %}	/	tilde.team	70
-i{{ $has_age := false }}	/	tilde.team	70
-i{{ $sudo := "sudo" }}	/	tilde.team	70
-i{{ $font := "Comic Code" }}	/	tilde.team	70
-i	/	tilde.team	70
-i{{ if stdinIsATTY }}	/	tilde.team	70
-i{{ $has_age = promptBool "do you have age " }}	/	tilde.team	70
-i	/	tilde.team	70
-i{{- $sudo_choices := list "sudo" "doas" -}}	/	tilde.team	70
-i{{- $sudo = promptChoiceOnce . "choice" "choose"	/	tilde.team	70
-i$sudo_choices -}}	/	tilde.team	70
-i	/	tilde.team	70
-i{{ $font = promptString "font name " }}	/	tilde.team	70
-i{{ end }}	/	tilde.team	70
-i	/	tilde.team	70
-i{{ if $has_age }}	/	tilde.team	70
-iencryption: "age"	/	tilde.team	70
-iage:	/	tilde.team	70
-i    identity: "/home/nagi/.config/age/key.txt"	/	tilde.team	70
-i    recipient:	/	tilde.team	70
-i"age14m06fd3svs9neg2w97ccw3c8470hckl95qxr6jw8fgm4ex65352q6tun06"	/	tilde.team	70
-i{{ end }}	/	tilde.team	70
-i	/	tilde.team	70
-idata:	/	tilde.team	70
-i    sudo: {{ $sudo }}	/	tilde.team	70
-i    font: {{ $font }}	/	tilde.team	70
-i	/	tilde.team	70
-i{% endraw %}	/	tilde.team	70
-i	/	tilde.team	70
-iFor the moment the repository is only compatible with Fedora	/	tilde.team	70
-iand Arch Linux, however it is easy to implement other	/	tilde.team	70
-idistributions.	/	tilde.team	70
-i	/	tilde.team	70
-i## Apply from a different machine	/	tilde.team	70
-i	/	tilde.team	70
-iTo apply my configuration from another machine, simply run	/	tilde.team	70
-ithe following commands.	/	tilde.team	70
-i	/	tilde.team	70
-ichezmoi init https://github.com/theobori/dotfiles.git	/	tilde.team	70
-ichezmoi apply -v	/	tilde.team	70
-i	/	tilde.team	70
-i## Links	/	tilde.team	70
-i	/	tilde.team	70
-ihttps://github.com/theobori/dotfiles	/	tilde.team	70
+i	/	tilde.club	70
+iMy configuration template looks like this (below) in the	/	tilde.club	70
+i.chezmoi.yaml.tmpl file.	/	tilde.club	70
+i	/	tilde.club	70
+i{% raw %}	/	tilde.club	70
+i{{ $has_age := false }}	/	tilde.club	70
+i{{ $sudo := "sudo" }}	/	tilde.club	70
+i{{ $font := "Comic Code" }}	/	tilde.club	70
+i	/	tilde.club	70
+i{{ if stdinIsATTY }}	/	tilde.club	70
+i{{ $has_age = promptBool "do you have age " }}	/	tilde.club	70
+i	/	tilde.club	70
+i{{- $sudo_choices := list "sudo" "doas" -}}	/	tilde.club	70
+i{{- $sudo = promptChoiceOnce . "choice" "choose"	/	tilde.club	70
+i$sudo_choices -}}	/	tilde.club	70
+i	/	tilde.club	70
+i{{ $font = promptString "font name " }}	/	tilde.club	70
+i{{ end }}	/	tilde.club	70
+i	/	tilde.club	70
+i{{ if $has_age }}	/	tilde.club	70
+iencryption: "age"	/	tilde.club	70
+iage:	/	tilde.club	70
+i    identity: "/home/nagi/.config/age/key.txt"	/	tilde.club	70
+i    recipient:	/	tilde.club	70
+i"age14m06fd3svs9neg2w97ccw3c8470hckl95qxr6jw8fgm4ex65352q6tun06"	/	tilde.club	70
+i{{ end }}	/	tilde.club	70
+i	/	tilde.club	70
+idata:	/	tilde.club	70
+i    sudo: {{ $sudo }}	/	tilde.club	70
+i    font: {{ $font }}	/	tilde.club	70
+i	/	tilde.club	70
+i{% endraw %}	/	tilde.club	70
+i	/	tilde.club	70
+iFor the moment the repository is only compatible with Fedora	/	tilde.club	70
+iand Arch Linux, however it is easy to implement other	/	tilde.club	70
+idistributions.	/	tilde.club	70
+i	/	tilde.club	70
+i## Apply from a different machine	/	tilde.club	70
+i	/	tilde.club	70
+iTo apply my configuration from another machine, simply run	/	tilde.club	70
+ithe following commands.	/	tilde.club	70
+i	/	tilde.club	70
+ichezmoi init https://github.com/theobori/dotfiles.git	/	tilde.club	70
+ichezmoi apply -v	/	tilde.club	70
+i	/	tilde.club	70
+i## Links	/	tilde.club	70
+i	/	tilde.club	70
+ihttps://github.com/theobori/dotfiles	/	tilde.club	70
 hhttps://github.com/theobori/dotfiles	URL:https://github.com/theobori/dotfiles	github.com	443

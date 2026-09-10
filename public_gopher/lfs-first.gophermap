@@ -1,192 +1,192 @@
-i## title: My first Linux From Scratch system	/	tilde.team	70
-i## date: "2025-03-29"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iIn this blog post, I will refer to Linux From Scratch by	/	tilde.team	70
-iwriting "LFS".	/	tilde.team	70
+i## title: My first Linux From Scratch system	/	tilde.club	70
+i## date: "2025-03-29"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iIn this blog post, I will refer to Linux From Scratch by	/	tilde.club	70
+iwriting "LFS".	/	tilde.club	70
 hLinux From Scratch	URL:https://www.linuxfromscratch.org	www.linuxfromscratch.org	443
-i	/	tilde.team	70
-iI heard about LFS by stumbling across a podcast by Brodie	/	tilde.team	70
-iRobertson. I've been curious and made me want to build my	/	tilde.team	70
-iown Linux system.	/	tilde.team	70
+i	/	tilde.club	70
+iI heard about LFS by stumbling across a podcast by Brodie	/	tilde.club	70
+iRobertson. I've been curious and made me want to build my	/	tilde.club	70
+iown Linux system.	/	tilde.club	70
 hpodcast	URL:https://www.youtube.com/watch?v=TkkKNfYKJJg	www.youtube.com	443
-i	/	tilde.team	70
-i## What is LFS?	/	tilde.team	70
-i	/	tilde.team	70
-iIt's a book that explains how to build your own Linux system	/	tilde.team	70
-ifrom scratch using a host system. An interesting feature is	/	tilde.team	70
-ithat everything is built from source code.	/	tilde.team	70
-i	/	tilde.team	70
-i## My objectives	/	tilde.team	70
-i	/	tilde.team	70
-iIn reading LFS, I have some very specific goals. I'd like my	/	tilde.team	70
-isystem to be able to run my favorite games, i.e. DDNet and	/	tilde.team	70
-iQuake I. To do this, I'll need a kernel that can communicate	/	tilde.team	70
-iwith my hardware, at least the video, audio and network	/	tilde.team	70
-iparts, so that I can access the Internet, etc.	/	tilde.team	70
+i	/	tilde.club	70
+i## What is LFS?	/	tilde.club	70
+i	/	tilde.club	70
+iIt's a book that explains how to build your own Linux system	/	tilde.club	70
+ifrom scratch using a host system. An interesting feature is	/	tilde.club	70
+ithat everything is built from source code.	/	tilde.club	70
+i	/	tilde.club	70
+i## My objectives	/	tilde.club	70
+i	/	tilde.club	70
+iIn reading LFS, I have some very specific goals. I'd like my	/	tilde.club	70
+isystem to be able to run my favorite games, i.e. DDNet and	/	tilde.club	70
+iQuake I. To do this, I'll need a kernel that can communicate	/	tilde.club	70
+iwith my hardware, at least the video, audio and network	/	tilde.club	70
+iparts, so that I can access the Internet, etc.	/	tilde.club	70
 hDDNet	URL:https://ddnet.org/	ddnet.org	443
-i	/	tilde.team	70
-iI'd also like to have a simple, lightweight desktop	/	tilde.team	70
-ienvironment based on the graphics server Xorg.	/	tilde.team	70
+i	/	tilde.club	70
+iI'd also like to have a simple, lightweight desktop	/	tilde.club	70
+ienvironment based on the graphics server Xorg.	/	tilde.club	70
 hXorg	URL:https://www.x.org/wiki/	www.x.org	443
-i	/	tilde.team	70
-iAnd most important of all, I'd like to be able to boot into	/	tilde.team	70
-imy system directly on my computer.	/	tilde.team	70
-i	/	tilde.team	70
-i## Building LFS	/	tilde.team	70
-i	/	tilde.team	70
-iSo I started reading the book and setting up my system. More	/	tilde.team	70
-iprecisely, I chose version 12.2 with systemd (French	/	tilde.team	70
-iversion) as init daemon and with Linux version 6.10.5. In	/	tilde.team	70
-ithis section, I'm not going to reexplain all the steps in	/	tilde.team	70
-ithe book, just highlight the most important ones in my	/	tilde.team	70
-iopinion.	/	tilde.team	70
+i	/	tilde.club	70
+iAnd most important of all, I'd like to be able to boot into	/	tilde.club	70
+imy system directly on my computer.	/	tilde.club	70
+i	/	tilde.club	70
+i## Building LFS	/	tilde.club	70
+i	/	tilde.club	70
+iSo I started reading the book and setting up my system. More	/	tilde.club	70
+iprecisely, I chose version 12.2 with systemd (French	/	tilde.club	70
+iversion) as init daemon and with Linux version 6.10.5. In	/	tilde.club	70
+ithis section, I'm not going to reexplain all the steps in	/	tilde.club	70
+ithe book, just highlight the most important ones in my	/	tilde.club	70
+iopinion.	/	tilde.club	70
 hversion 12.2 with systemd (French version)	URL:https://fr.linuxfromscratch.org/view/lfs-12.2-systemd-fr/	fr.linuxfromscratch.org	443
-i	/	tilde.team	70
-i### Disk partitioning	/	tilde.team	70
-i	/	tilde.team	70
-iI chose to make a single 40GiB ext4 partition on my laptop's	/	tilde.team	70
-ihard disk. I declared it in my NixOS configuration, with	/	tilde.team	70
-ipartitioning handled by the NixOS disko module.	/	tilde.team	70
+i	/	tilde.club	70
+i### Disk partitioning	/	tilde.club	70
+i	/	tilde.club	70
+iI chose to make a single 40GiB ext4 partition on my laptop's	/	tilde.club	70
+ihard disk. I declared it in my NixOS configuration, with	/	tilde.club	70
+ipartitioning handled by the NixOS disko module.	/	tilde.club	70
 hNixOS	URL:https://nixos.org	nixos.org	443
 hNixOS	URL:https://nixos.org	nixos.org	443
 hdisko	URL:https://github.com/nix-community/disko	github.com	443
-i	/	tilde.team	70
-ilfs = {	/	tilde.team	70
-i  name = "LFS";	/	tilde.team	70
-i  size = "40G";	/	tilde.team	70
-i  content = {	/	tilde.team	70
-i    type = "filesystem";	/	tilde.team	70
-i    format = "ext4";	/	tilde.team	70
-i    mountpoint = "/mnt/lfs";	/	tilde.team	70
-i  };	/	tilde.team	70
-i};	/	tilde.team	70
-i	/	tilde.team	70
-i### Compiling the compiler compiling a compiler	/	tilde.team	70
-i	/	tilde.team	70
-iAn important part of LFS is cross-compiling. The aim is to	/	tilde.team	70
-ibuild the tools of the construction chain dedicated to my	/	tilde.team	70
-iLFS system. This cross-compilation is "false", i.e. in the	/	tilde.team	70
-iend, the hardware of my host system and that of my LFS	/	tilde.team	70
-isystem are the same. Only the target system changes.	/	tilde.team	70
-i	/	tilde.team	70
-iHere's a diagram representing the cross-compilation steps,	/	tilde.team	70
-iwhere each rectangle represents a compiler containing a	/	tilde.team	70
-isource platform to destination platform relationship.	/	tilde.team	70
-i	/	tilde.team	70
-i/lfs_cross-compilation.png	/	tilde.team	70
-I/lfs_cross-compilation.png	/~nagi/lfs_cross-compilation.png	tilde.team	70
-i	/	tilde.team	70
-i### Basic softwares and configuration	/	tilde.team	70
-i	/	tilde.team	70
-iAfter entering my new system (chroot), I was able to	/	tilde.team	70
-iestablish a base.	/	tilde.team	70
-i	/	tilde.team	70
-iI installed all the basic tools you'd want on a Linux system	/	tilde.team	70
-iand wrote configuration files for the various applications	/	tilde.team	70
-iand services (systemd, network, shells, time, language,	/	tilde.team	70
-ietc.).	/	tilde.team	70
-i	/	tilde.team	70
-i### Linux	/	tilde.team	70
-i	/	tilde.team	70
-iI built Linux by passing the right values to its parameters,	/	tilde.team	70
-iso as to be as compatible as possible with my hardware.	/	tilde.team	70
-i	/	tilde.team	70
-iI activated the right drivers to communicate with my network	/	tilde.team	70
-icard and audio hardware. By default, I was missing a few	/	tilde.team	70
-ifirmwares that needed to be loaded, so I embedded them in	/	tilde.team	70
-ithe kernel.	/	tilde.team	70
-i	/	tilde.team	70
-iOnce built and installed on my LFS system, all that's left	/	tilde.team	70
-ito do is load Linux.	/	tilde.team	70
-i	/	tilde.team	70
-i### Boot	/	tilde.team	70
-i	/	tilde.team	70
-iTo be able to boot on my LFS system, I added an entry for	/	tilde.team	70
-ithe GRUB managed by my main NixOS system. To do this, I	/	tilde.team	70
-irebuilt my NixOS system using os-pober, as shown below.	/	tilde.team	70
+i	/	tilde.club	70
+ilfs = {	/	tilde.club	70
+i  name = "LFS";	/	tilde.club	70
+i  size = "40G";	/	tilde.club	70
+i  content = {	/	tilde.club	70
+i    type = "filesystem";	/	tilde.club	70
+i    format = "ext4";	/	tilde.club	70
+i    mountpoint = "/mnt/lfs";	/	tilde.club	70
+i  };	/	tilde.club	70
+i};	/	tilde.club	70
+i	/	tilde.club	70
+i### Compiling the compiler compiling a compiler	/	tilde.club	70
+i	/	tilde.club	70
+iAn important part of LFS is cross-compiling. The aim is to	/	tilde.club	70
+ibuild the tools of the construction chain dedicated to my	/	tilde.club	70
+iLFS system. This cross-compilation is "false", i.e. in the	/	tilde.club	70
+iend, the hardware of my host system and that of my LFS	/	tilde.club	70
+isystem are the same. Only the target system changes.	/	tilde.club	70
+i	/	tilde.club	70
+iHere's a diagram representing the cross-compilation steps,	/	tilde.club	70
+iwhere each rectangle represents a compiler containing a	/	tilde.club	70
+isource platform to destination platform relationship.	/	tilde.club	70
+i	/	tilde.club	70
+i/lfs_cross-compilation.png	/	tilde.club	70
+I/lfs_cross-compilation.png	/~theobori/lfs_cross-compilation.png	tilde.club	70
+i	/	tilde.club	70
+i### Basic softwares and configuration	/	tilde.club	70
+i	/	tilde.club	70
+iAfter entering my new system (chroot), I was able to	/	tilde.club	70
+iestablish a base.	/	tilde.club	70
+i	/	tilde.club	70
+iI installed all the basic tools you'd want on a Linux system	/	tilde.club	70
+iand wrote configuration files for the various applications	/	tilde.club	70
+iand services (systemd, network, shells, time, language,	/	tilde.club	70
+ietc.).	/	tilde.club	70
+i	/	tilde.club	70
+i### Linux	/	tilde.club	70
+i	/	tilde.club	70
+iI built Linux by passing the right values to its parameters,	/	tilde.club	70
+iso as to be as compatible as possible with my hardware.	/	tilde.club	70
+i	/	tilde.club	70
+iI activated the right drivers to communicate with my network	/	tilde.club	70
+icard and audio hardware. By default, I was missing a few	/	tilde.club	70
+ifirmwares that needed to be loaded, so I embedded them in	/	tilde.club	70
+ithe kernel.	/	tilde.club	70
+i	/	tilde.club	70
+iOnce built and installed on my LFS system, all that's left	/	tilde.club	70
+ito do is load Linux.	/	tilde.club	70
+i	/	tilde.club	70
+i### Boot	/	tilde.club	70
+i	/	tilde.club	70
+iTo be able to boot on my LFS system, I added an entry for	/	tilde.club	70
+ithe GRUB managed by my main NixOS system. To do this, I	/	tilde.club	70
+irebuilt my NixOS system using os-pober, as shown below.	/	tilde.club	70
 hNixOS	URL:https://nixos.org	nixos.org	443
 hNixOS	URL:https://nixos.org	nixos.org	443
-i	/	tilde.team	70
-iloader.grub = {	/	tilde.team	70
-i  useOSProber = true;	/	tilde.team	70
-i};	/	tilde.team	70
-i	/	tilde.team	70
-i## Beyond LFS	/	tilde.team	70
-i	/	tilde.team	70
-iNow that I have a basic system that I can boot, the goal is	/	tilde.team	70
-ito have a desktop environment before I can play.	/	tilde.team	70
-i	/	tilde.team	70
-iI had to build the entire graphics system X and its	/	tilde.team	70
-idependencies, before building the window manager i3, then	/	tilde.team	70
-iKDE Plasma 6 and finally Xfce.	/	tilde.team	70
+i	/	tilde.club	70
+iloader.grub = {	/	tilde.club	70
+i  useOSProber = true;	/	tilde.club	70
+i};	/	tilde.club	70
+i	/	tilde.club	70
+i## Beyond LFS	/	tilde.club	70
+i	/	tilde.club	70
+iNow that I have a basic system that I can boot, the goal is	/	tilde.club	70
+ito have a desktop environment before I can play.	/	tilde.club	70
+i	/	tilde.club	70
+iI had to build the entire graphics system X and its	/	tilde.club	70
+idependencies, before building the window manager i3, then	/	tilde.club	70
+iKDE Plasma 6 and finally Xfce.	/	tilde.club	70
 hX	URL:https://fr.wikipedia.org/wiki/X_Window_System	fr.wikipedia.org	443
 hi3	URL:https://i3wm.org/	i3wm.org	443
 hKDE Plasma 6	URL:https://kde.org/fr/announcements/plasma/6/6.2.0/	kde.org	443
 hXfce	URL:https://www.xfce.org	www.xfce.org	443
-i	/	tilde.team	70
-iI'm obviously skipping all the sub-dependencies, network	/	tilde.team	70
-iconfiguration (DHCP client, tools, etc.), security (Linux	/	tilde.team	70
-iPAM), etc.	/	tilde.team	70
-i	/	tilde.team	70
-iBelow is an overview of my main desktop envinronnement.	/	tilde.team	70
-i	/	tilde.team	70
-i/lfs_xfce.png	/	tilde.team	70
-I/lfs_xfce.png	/~nagi/lfs_xfce.png	tilde.team	70
-i	/	tilde.team	70
-iSo I end up on Xfce, download the latest version of DDNet,	/	tilde.team	70
-ipatch the source code as I didn't want to use the libnotify	/	tilde.team	70
-ilibrary, compile and launch the game.	/	tilde.team	70
+i	/	tilde.club	70
+iI'm obviously skipping all the sub-dependencies, network	/	tilde.club	70
+iconfiguration (DHCP client, tools, etc.), security (Linux	/	tilde.club	70
+iPAM), etc.	/	tilde.club	70
+i	/	tilde.club	70
+iBelow is an overview of my main desktop envinronnement.	/	tilde.club	70
+i	/	tilde.club	70
+i/lfs_xfce.png	/	tilde.club	70
+I/lfs_xfce.png	/~theobori/lfs_xfce.png	tilde.club	70
+i	/	tilde.club	70
+iSo I end up on Xfce, download the latest version of DDNet,	/	tilde.club	70
+ipatch the source code as I didn't want to use the libnotify	/	tilde.club	70
+ilibrary, compile and launch the game.	/	tilde.club	70
 hXfce	URL:https://www.xfce.org	www.xfce.org	443
 hDDNet	URL:https://ddnet.org	ddnet.org	443
-i	/	tilde.team	70
-iThe application is functional, I can join a game via the	/	tilde.team	70
-iInternet and the game sound comes out of my laptop speakers!	/	tilde.team	70
-iBelow is a screenshot with the game running.	/	tilde.team	70
-i	/	tilde.team	70
-i/lfs_ddnet.png	/	tilde.team	70
-I/lfs_ddnet.png	/~nagi/lfs_ddnet.png	tilde.team	70
-i	/	tilde.team	70
-iThe same for Quake I through VkQuake, a preview below.	/	tilde.team	70
+i	/	tilde.club	70
+iThe application is functional, I can join a game via the	/	tilde.club	70
+iInternet and the game sound comes out of my laptop speakers!	/	tilde.club	70
+iBelow is a screenshot with the game running.	/	tilde.club	70
+i	/	tilde.club	70
+i/lfs_ddnet.png	/	tilde.club	70
+I/lfs_ddnet.png	/~theobori/lfs_ddnet.png	tilde.club	70
+i	/	tilde.club	70
+iThe same for Quake I through VkQuake, a preview below.	/	tilde.club	70
 hVkQuake	URL:https://github.com/Novum/vkQuake	github.com	443
-i	/	tilde.team	70
-i/lfs_quake.png	/	tilde.team	70
-I/lfs_quake.png	/~nagi/lfs_quake.png	tilde.team	70
-i	/	tilde.team	70
-i## Little hack	/	tilde.team	70
-i	/	tilde.team	70
-iTo avoid having to manage all the packages by hand, I	/	tilde.team	70
-idecided to install a package manager, but not just any	/	tilde.team	70
-ipackage manager, Nix. It will allow me to have fully	/	tilde.team	70
-ifunctional immutable packages.	/	tilde.team	70
+i	/	tilde.club	70
+i/lfs_quake.png	/	tilde.club	70
+I/lfs_quake.png	/~theobori/lfs_quake.png	tilde.club	70
+i	/	tilde.club	70
+i## Little hack	/	tilde.club	70
+i	/	tilde.club	70
+iTo avoid having to manage all the packages by hand, I	/	tilde.club	70
+idecided to install a package manager, but not just any	/	tilde.club	70
+ipackage manager, Nix. It will allow me to have fully	/	tilde.club	70
+ifunctional immutable packages.	/	tilde.club	70
 hNix	URL:https://github.com/NixOS/nix	github.com	443
-i	/	tilde.team	70
-iI installed it with the DeterminateSystems installer.	/	tilde.team	70
+i	/	tilde.club	70
+iI installed it with the DeterminateSystems installer.	/	tilde.club	70
 hDeterminateSystems	URL:https://github.com/DeterminateSystems/nix-installer	github.com	443
-i	/	tilde.team	70
-iIt allowed me to build very complicated packages such as	/	tilde.team	70
-iFirefox, here's a preview.	/	tilde.team	70
+i	/	tilde.club	70
+iIt allowed me to build very complicated packages such as	/	tilde.club	70
+iFirefox, here's a preview.	/	tilde.club	70
 hFirefox	URL:https://www.mozilla.org/fr/firefox	www.mozilla.org	443
-i	/	tilde.team	70
-i/lfs_firefox.png	/	tilde.team	70
-I/lfs_firefox.png	/~nagi/lfs_firefox.png	tilde.team	70
-i	/	tilde.team	70
-i## Is it worth it?	/	tilde.team	70
-i	/	tilde.team	70
-iReading and putting LFS into practice takes a long time, but	/	tilde.team	70
-iit's definitely worth it! I was able to learn some very	/	tilde.team	70
-iinteresting and useful new things about the world of Linux	/	tilde.team	70
-iand now I understand more precisely how Linux and UNIX	/	tilde.team	70
-isystems work.	/	tilde.team	70
-i	/	tilde.team	70
-iI recommend the experience to all curious people who want to	/	tilde.team	70
-ihave their own Linux system. The result is very satisfying,	/	tilde.team	70
-iand it's even possible to use an LFS system as your main	/	tilde.team	70
-isystem!	/	tilde.team	70
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iI loved reading the book and setting up everything myself,	/	tilde.team	70
-iand I intend to keep my LFS system and continue modifying	/	tilde.team	70
-iit.	/	tilde.team	70
+i	/	tilde.club	70
+i/lfs_firefox.png	/	tilde.club	70
+I/lfs_firefox.png	/~theobori/lfs_firefox.png	tilde.club	70
+i	/	tilde.club	70
+i## Is it worth it?	/	tilde.club	70
+i	/	tilde.club	70
+iReading and putting LFS into practice takes a long time, but	/	tilde.club	70
+iit's definitely worth it! I was able to learn some very	/	tilde.club	70
+iinteresting and useful new things about the world of Linux	/	tilde.club	70
+iand now I understand more precisely how Linux and UNIX	/	tilde.club	70
+isystems work.	/	tilde.club	70
+i	/	tilde.club	70
+iI recommend the experience to all curious people who want to	/	tilde.club	70
+ihave their own Linux system. The result is very satisfying,	/	tilde.club	70
+iand it's even possible to use an LFS system as your main	/	tilde.club	70
+isystem!	/	tilde.club	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iI loved reading the book and setting up everything myself,	/	tilde.club	70
+iand I intend to keep my LFS system and continue modifying	/	tilde.club	70
+iit.	/	tilde.club	70

@@ -1,208 +1,208 @@
-i## title: Teeworlds utilities	/	tilde.team	70
-i## date: "2023-07-26"	/	tilde.team	70
-i	/	tilde.team	70
-iThis idea came to me when I was looking for a Teeworlds skin	/	tilde.team	70
-irenderer.	/	tilde.team	70
-i	/	tilde.team	70
-iThe ones that existed didn't suit me, as they didn't really	/	tilde.team	70
-irespect the in-game rendering. Either the feet were too far	/	tilde.team	70
-iout or the colors were wrong.	/	tilde.team	70
-i	/	tilde.team	70
-iSo I decided to make my own toolbox to manipulate Teeworlds	/	tilde.team	70
-iassets, which we use on teedata.net and for the Teedata	/	tilde.team	70
-iDiscord bot.	/	tilde.team	70
+i## title: Teeworlds utilities	/	tilde.club	70
+i## date: "2023-07-26"	/	tilde.club	70
+i	/	tilde.club	70
+iThis idea came to me when I was looking for a Teeworlds skin	/	tilde.club	70
+irenderer.	/	tilde.club	70
+i	/	tilde.club	70
+iThe ones that existed didn't suit me, as they didn't really	/	tilde.club	70
+irespect the in-game rendering. Either the feet were too far	/	tilde.club	70
+iout or the colors were wrong.	/	tilde.club	70
+i	/	tilde.club	70
+iSo I decided to make my own toolbox to manipulate Teeworlds	/	tilde.club	70
+iassets, which we use on teedata.net and for the Teedata	/	tilde.club	70
+iDiscord bot.	/	tilde.club	70
 hteedata.net	URL:https://teedata.net	teedata.net	443
-i	/	tilde.team	70
-iIndirectly, other people use it, for example, to render	/	tilde.team	70
-iskins in a Discord channel that displays messages in real	/	tilde.team	70
-itime (fokkonaut's Discord server) or in other projects like	/	tilde.team	70
-iTeeAssembler 2.0 that used some part of the Teeworlds	/	tilde.team	70
-iutilities code.	/	tilde.team	70
+i	/	tilde.club	70
+iIndirectly, other people use it, for example, to render	/	tilde.club	70
+iskins in a Discord channel that displays messages in real	/	tilde.club	70
+itime (fokkonaut's Discord server) or in other projects like	/	tilde.club	70
+iTeeAssembler 2.0 that used some part of the Teeworlds	/	tilde.club	70
+iutilities code.	/	tilde.club	70
 hTeeAssembler 2.0	URL:https://teeassembler.developer.li/	teeassembler.developer.li	443
-i	/	tilde.team	70
-i  /fokkonaut_bridge.png	/	tilde.team	70
-I/fokkonaut_bridge.png	/~nagi/fokkonaut_bridge.png	tilde.team	70
-i	/	tilde.team	70
-i## Use case examples	/	tilde.team	70
-i### Teeworlds skin rendering	/	tilde.team	70
-i	/	tilde.team	70
-iRender a Teeworlds 4K skin with default and custom colors.	/	tilde.team	70
-i	/	tilde.team	70
-iimport {	/	tilde.team	70
-i  Skin,	/	tilde.team	70
-i  ColorCode,	/	tilde.team	70
-i  ColorRGB	/	tilde.team	70
-i} from 'teeworlds-utilities';	/	tilde.team	70
-i	/	tilde.team	70
-iconst renderTest = async () => {	/	tilde.team	70
-i  const skin = new Skin();	/	tilde.team	70
-i	/	tilde.team	70
-i  await	/	tilde.team	70
-iskin.load('https://api.skins.tw/database/skins/96AATxN3DEzcGww4QhmduFCsPzaxhZO7Tq6Lh9OI.png');	/	tilde.team	70
-i	/	tilde.team	70
-i  skin	/	tilde.team	70
-i    .render()	/	tilde.team	70
-i    .saveRenderAs('default.png', true)	/	tilde.team	70
-i    .colorTee(	/	tilde.team	70
-i      new ColorCode(6619008),	/	tilde.team	70
-i      new ColorRGB(136, 113, 255),	/	tilde.team	70
-i    )	/	tilde.team	70
-i    .render()	/	tilde.team	70
-i    .saveRenderAs('color.png', true);	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-itry {	/	tilde.team	70
-i  renderTest();	/	tilde.team	70
-i} catch (err) {	/	tilde.team	70
-i  console.error(err);	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-i### Result (4K)	/	tilde.team	70
-i	/	tilde.team	70
-i/render_default.png	/	tilde.team	70
-i/render_color.png	/	tilde.team	70
-I/render_default.png	/~nagi/render_default.png	tilde.team	70
-I/render_color.png	/~nagi/render_color.png	tilde.team	70
-i	/	tilde.team	70
-i### Scene	/	tilde.team	70
-i	/	tilde.team	70
-iA custom scene including a rendered skin.	/	tilde.team	70
-i	/	tilde.team	70
-iimport { Scene } from 'teeworlds-utilities';	/	tilde.team	70
-i	/	tilde.team	70
-iconst sceneTest = async () => {	/	tilde.team	70
-i  const scene = new Scene(	/	tilde.team	70
-i    'data/scenes/schemes/example.json'	/	tilde.team	70
-i  ).preprocess();	/	tilde.team	70
-i	/	tilde.team	70
-i  await scene.renderScene();	/	tilde.team	70
-i  scene.saveScene('scene.png')	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-isceneTest();	/	tilde.team	70
-i	/	tilde.team	70
-i### Result	/	tilde.team	70
-i	/	tilde.team	70
-i/scene.png	/	tilde.team	70
-I/scene.png	/~nagi/scene.png	tilde.team	70
-i	/	tilde.team	70
-i### Merge asset parts	/	tilde.team	70
-i	/	tilde.team	70
-iHere we are going to merge specific parts from a skin	/	tilde.team	70
-i(right) to another (left).	/	tilde.team	70
-iAny Teeworlds asset should works.	/	tilde.team	70
-i	/	tilde.team	70
-i/teedata_skin.png	/	tilde.team	70
-i/alien_skin.png	/	tilde.team	70
-I/teedata_skin.png	/~nagi/teedata_skin.png	tilde.team	70
-I/alien_skin.png	/~nagi/alien_skin.png	tilde.team	70
-i	/	tilde.team	70
-iimport {	/	tilde.team	70
-i  Skin,	/	tilde.team	70
-i  SkinPart	/	tilde.team	70
-i} from 'teeworlds-utilities';	/	tilde.team	70
-i	/	tilde.team	70
-iconst mergeTest = async () => {	/	tilde.team	70
-i  const teedata = new Skin();	/	tilde.team	70
-i  await	/	tilde.team	70
-iteedata.load('https://teedata.net/databasev2/skins/teedata/teedata.png');	/	tilde.team	70
-i	/	tilde.team	70
-i  const sunny = new Skin();	/	tilde.team	70
-i  await	/	tilde.team	70
-isunny.load('https://teedata.net/databasev2/skins/irradiated%20sunny/irradiated%20sunny.png');	/	tilde.team	70
-i	/	tilde.team	70
-i  teedata	/	tilde.team	70
-i    .copyParts(	/	tilde.team	70
-i      sunny,	/	tilde.team	70
-i      SkinPart.FOOT,	/	tilde.team	70
-i      SkinPart.FOOT_SHADOW,	/	tilde.team	70
-i      SkinPart.DEFAULT_EYE,	/	tilde.team	70
-i      SkinPart.ANGRY_EYE,	/	tilde.team	70
-i      SkinPart.BLINK_EYE,	/	tilde.team	70
-i      SkinPart.CROSS_EYE,	/	tilde.team	70
-i      SkinPart.HAPPY_EYE,	/	tilde.team	70
-i      SkinPart.SCARY_EYE,	/	tilde.team	70
-i      SkinPart.HAND_SHADOW,	/	tilde.team	70
-i      SkinPart.HAND,	/	tilde.team	70
-i    )	/	tilde.team	70
-i    .setEyeAssetPart(SkinPart.ANGRY_EYE)	/	tilde.team	70
-i    .render()	/	tilde.team	70
-i    .saveAs('skin.png')	/	tilde.team	70
-i    .saveRenderAs('rendered_skin.png', true)	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-itry {	/	tilde.team	70
-i  mergeTest();	/	tilde.team	70
-i} catch (err) {	/	tilde.team	70
-i  console.error(err);	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-i### Result	/	tilde.team	70
-i	/	tilde.team	70
-i/render_new_skin.png	/	tilde.team	70
-i/new_skin.png	/	tilde.team	70
-I/render_new_skin.png	/~nagi/render_new_skin.png	tilde.team	70
-I/new_skin.png	/~nagi/new_skin.png	tilde.team	70
-i	/	tilde.team	70
-i### More skin configuration	/	tilde.team	70
-i	/	tilde.team	70
-iHere we are using the SkinFull object to render some in-game	/	tilde.team	70
-ifeature like the weapon, hands and emote.	/	tilde.team	70
-i	/	tilde.team	70
-iimport {	/	tilde.team	70
-i  Skin,	/	tilde.team	70
-i  Gameskin,	/	tilde.team	70
-i  ColorRGB,	/	tilde.team	70
-i  Emoticon,	/	tilde.team	70
-i  SkinFull,	/	tilde.team	70
-i  GameskinPart,	/	tilde.team	70
-i  EmoticonPart	/	tilde.team	70
-i} from 'teeworlds-utilities';	/	tilde.team	70
-i	/	tilde.team	70
-iconst fullSkinRenderConfiguration = async () => {	/	tilde.team	70
-i  const teedataSunny = new Skin();	/	tilde.team	70
-i  await teedataSunny.load('skin.png');	/	tilde.team	70
-i	/	tilde.team	70
-i  const napolitano = new Gameskin();	/	tilde.team	70
-i  await	/	tilde.team	70
-inapolitano.load('https://teedata.net/databasev2/gameskins/napolitano/napolitano.png');	/	tilde.team	70
-i	/	tilde.team	70
-i  const emoticon = new Emoticon();	/	tilde.team	70
-i  await	/	tilde.team	70
-iemoticon.load('https://teedata.net/databasev2/emoticons/default/default.png');	/	tilde.team	70
-i	/	tilde.team	70
-i  teedataSunny	/	tilde.team	70
-i    .colorTee(	/	tilde.team	70
-i      new ColorRGB(255, 255, 255),	/	tilde.team	70
-i      new ColorRGB(255, 255, 255),	/	tilde.team	70
-i    )	/	tilde.team	70
-i    .setOrientation(345);	/	tilde.team	70
-i	/	tilde.team	70
-i  new SkinFull()	/	tilde.team	70
-i    .setSkin(teedataSunny)	/	tilde.team	70
-i    .setGameskin(napolitano, GameskinPart.HAMMER)	/	tilde.team	70
-i    .setEmoticon(emoticon, EmoticonPart.PART_1_2)	/	tilde.team	70
-i    .process()	/	tilde.team	70
-i    .saveAs('skin_with_weapon_and_emote.png', true);	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-itry {	/	tilde.team	70
-i  fullSkinRenderConfiguration();	/	tilde.team	70
-i} catch (err) {	/	tilde.team	70
-i  console.error(err);	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-i### Result	/	tilde.team	70
-i	/	tilde.team	70
-i/skin_with_weapon_and_emote.png	/	tilde.team	70
-I/skin_with_weapon_and_emote.png	/~nagi/skin_with_weapon_and_emote.png	tilde.team	70
-i	/	tilde.team	70
-i### Other possible result	/	tilde.team	70
-i	/	tilde.team	70
-i/board.png	/	tilde.team	70
-I/board.png	/~nagi/board.png	tilde.team	70
-i	/	tilde.team	70
-i## Links	/	tilde.team	70
-i	/	tilde.team	70
-ihttps://github.com/teeworlds-utilities/teeworlds-utilities	/	tilde.team	70
+i	/	tilde.club	70
+i  /fokkonaut_bridge.png	/	tilde.club	70
+I/fokkonaut_bridge.png	/~theobori/fokkonaut_bridge.png	tilde.club	70
+i	/	tilde.club	70
+i## Use case examples	/	tilde.club	70
+i### Teeworlds skin rendering	/	tilde.club	70
+i	/	tilde.club	70
+iRender a Teeworlds 4K skin with default and custom colors.	/	tilde.club	70
+i	/	tilde.club	70
+iimport {	/	tilde.club	70
+i  Skin,	/	tilde.club	70
+i  ColorCode,	/	tilde.club	70
+i  ColorRGB	/	tilde.club	70
+i} from 'teeworlds-utilities';	/	tilde.club	70
+i	/	tilde.club	70
+iconst renderTest = async () => {	/	tilde.club	70
+i  const skin = new Skin();	/	tilde.club	70
+i	/	tilde.club	70
+i  await	/	tilde.club	70
+iskin.load('https://api.skins.tw/database/skins/96AATxN3DEzcGww4QhmduFCsPzaxhZO7Tq6Lh9OI.png');	/	tilde.club	70
+i	/	tilde.club	70
+i  skin	/	tilde.club	70
+i    .render()	/	tilde.club	70
+i    .saveRenderAs('default.png', true)	/	tilde.club	70
+i    .colorTee(	/	tilde.club	70
+i      new ColorCode(6619008),	/	tilde.club	70
+i      new ColorRGB(136, 113, 255),	/	tilde.club	70
+i    )	/	tilde.club	70
+i    .render()	/	tilde.club	70
+i    .saveRenderAs('color.png', true);	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+itry {	/	tilde.club	70
+i  renderTest();	/	tilde.club	70
+i} catch (err) {	/	tilde.club	70
+i  console.error(err);	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+i### Result (4K)	/	tilde.club	70
+i	/	tilde.club	70
+i/render_default.png	/	tilde.club	70
+i/render_color.png	/	tilde.club	70
+I/render_default.png	/~theobori/render_default.png	tilde.club	70
+I/render_color.png	/~theobori/render_color.png	tilde.club	70
+i	/	tilde.club	70
+i### Scene	/	tilde.club	70
+i	/	tilde.club	70
+iA custom scene including a rendered skin.	/	tilde.club	70
+i	/	tilde.club	70
+iimport { Scene } from 'teeworlds-utilities';	/	tilde.club	70
+i	/	tilde.club	70
+iconst sceneTest = async () => {	/	tilde.club	70
+i  const scene = new Scene(	/	tilde.club	70
+i    'data/scenes/schemes/example.json'	/	tilde.club	70
+i  ).preprocess();	/	tilde.club	70
+i	/	tilde.club	70
+i  await scene.renderScene();	/	tilde.club	70
+i  scene.saveScene('scene.png')	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+isceneTest();	/	tilde.club	70
+i	/	tilde.club	70
+i### Result	/	tilde.club	70
+i	/	tilde.club	70
+i/scene.png	/	tilde.club	70
+I/scene.png	/~theobori/scene.png	tilde.club	70
+i	/	tilde.club	70
+i### Merge asset parts	/	tilde.club	70
+i	/	tilde.club	70
+iHere we are going to merge specific parts from a skin	/	tilde.club	70
+i(right) to another (left).	/	tilde.club	70
+iAny Teeworlds asset should works.	/	tilde.club	70
+i	/	tilde.club	70
+i/teedata_skin.png	/	tilde.club	70
+i/alien_skin.png	/	tilde.club	70
+I/teedata_skin.png	/~theobori/teedata_skin.png	tilde.club	70
+I/alien_skin.png	/~theobori/alien_skin.png	tilde.club	70
+i	/	tilde.club	70
+iimport {	/	tilde.club	70
+i  Skin,	/	tilde.club	70
+i  SkinPart	/	tilde.club	70
+i} from 'teeworlds-utilities';	/	tilde.club	70
+i	/	tilde.club	70
+iconst mergeTest = async () => {	/	tilde.club	70
+i  const teedata = new Skin();	/	tilde.club	70
+i  await	/	tilde.club	70
+iteedata.load('https://teedata.net/databasev2/skins/teedata/teedata.png');	/	tilde.club	70
+i	/	tilde.club	70
+i  const sunny = new Skin();	/	tilde.club	70
+i  await	/	tilde.club	70
+isunny.load('https://teedata.net/databasev2/skins/irradiated%20sunny/irradiated%20sunny.png');	/	tilde.club	70
+i	/	tilde.club	70
+i  teedata	/	tilde.club	70
+i    .copyParts(	/	tilde.club	70
+i      sunny,	/	tilde.club	70
+i      SkinPart.FOOT,	/	tilde.club	70
+i      SkinPart.FOOT_SHADOW,	/	tilde.club	70
+i      SkinPart.DEFAULT_EYE,	/	tilde.club	70
+i      SkinPart.ANGRY_EYE,	/	tilde.club	70
+i      SkinPart.BLINK_EYE,	/	tilde.club	70
+i      SkinPart.CROSS_EYE,	/	tilde.club	70
+i      SkinPart.HAPPY_EYE,	/	tilde.club	70
+i      SkinPart.SCARY_EYE,	/	tilde.club	70
+i      SkinPart.HAND_SHADOW,	/	tilde.club	70
+i      SkinPart.HAND,	/	tilde.club	70
+i    )	/	tilde.club	70
+i    .setEyeAssetPart(SkinPart.ANGRY_EYE)	/	tilde.club	70
+i    .render()	/	tilde.club	70
+i    .saveAs('skin.png')	/	tilde.club	70
+i    .saveRenderAs('rendered_skin.png', true)	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+itry {	/	tilde.club	70
+i  mergeTest();	/	tilde.club	70
+i} catch (err) {	/	tilde.club	70
+i  console.error(err);	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+i### Result	/	tilde.club	70
+i	/	tilde.club	70
+i/render_new_skin.png	/	tilde.club	70
+i/new_skin.png	/	tilde.club	70
+I/render_new_skin.png	/~theobori/render_new_skin.png	tilde.club	70
+I/new_skin.png	/~theobori/new_skin.png	tilde.club	70
+i	/	tilde.club	70
+i### More skin configuration	/	tilde.club	70
+i	/	tilde.club	70
+iHere we are using the SkinFull object to render some in-game	/	tilde.club	70
+ifeature like the weapon, hands and emote.	/	tilde.club	70
+i	/	tilde.club	70
+iimport {	/	tilde.club	70
+i  Skin,	/	tilde.club	70
+i  Gameskin,	/	tilde.club	70
+i  ColorRGB,	/	tilde.club	70
+i  Emoticon,	/	tilde.club	70
+i  SkinFull,	/	tilde.club	70
+i  GameskinPart,	/	tilde.club	70
+i  EmoticonPart	/	tilde.club	70
+i} from 'teeworlds-utilities';	/	tilde.club	70
+i	/	tilde.club	70
+iconst fullSkinRenderConfiguration = async () => {	/	tilde.club	70
+i  const teedataSunny = new Skin();	/	tilde.club	70
+i  await teedataSunny.load('skin.png');	/	tilde.club	70
+i	/	tilde.club	70
+i  const napolitano = new Gameskin();	/	tilde.club	70
+i  await	/	tilde.club	70
+inapolitano.load('https://teedata.net/databasev2/gameskins/napolitano/napolitano.png');	/	tilde.club	70
+i	/	tilde.club	70
+i  const emoticon = new Emoticon();	/	tilde.club	70
+i  await	/	tilde.club	70
+iemoticon.load('https://teedata.net/databasev2/emoticons/default/default.png');	/	tilde.club	70
+i	/	tilde.club	70
+i  teedataSunny	/	tilde.club	70
+i    .colorTee(	/	tilde.club	70
+i      new ColorRGB(255, 255, 255),	/	tilde.club	70
+i      new ColorRGB(255, 255, 255),	/	tilde.club	70
+i    )	/	tilde.club	70
+i    .setOrientation(345);	/	tilde.club	70
+i	/	tilde.club	70
+i  new SkinFull()	/	tilde.club	70
+i    .setSkin(teedataSunny)	/	tilde.club	70
+i    .setGameskin(napolitano, GameskinPart.HAMMER)	/	tilde.club	70
+i    .setEmoticon(emoticon, EmoticonPart.PART_1_2)	/	tilde.club	70
+i    .process()	/	tilde.club	70
+i    .saveAs('skin_with_weapon_and_emote.png', true);	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+itry {	/	tilde.club	70
+i  fullSkinRenderConfiguration();	/	tilde.club	70
+i} catch (err) {	/	tilde.club	70
+i  console.error(err);	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+i### Result	/	tilde.club	70
+i	/	tilde.club	70
+i/skin_with_weapon_and_emote.png	/	tilde.club	70
+I/skin_with_weapon_and_emote.png	/~theobori/skin_with_weapon_and_emote.png	tilde.club	70
+i	/	tilde.club	70
+i### Other possible result	/	tilde.club	70
+i	/	tilde.club	70
+i/board.png	/	tilde.club	70
+I/board.png	/~theobori/board.png	tilde.club	70
+i	/	tilde.club	70
+i## Links	/	tilde.club	70
+i	/	tilde.club	70
+ihttps://github.com/teeworlds-utilities/teeworlds-utilities	/	tilde.club	70
 hhttps://github.com/teeworlds-utilities/teeworlds-utilities	URL:https://github.com/teeworlds-utilities/teeworlds-utilities	github.com	443

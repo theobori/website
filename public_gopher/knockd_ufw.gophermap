@@ -1,138 +1,138 @@
-i## title: OpenSSH port knocking with UFW	/	tilde.team	70
-i## date: "2023-10-21"	/	tilde.team	70
-i	/	tilde.team	70
-i/openssh.png	/	tilde.team	70
-I/openssh.png	/~nagi/openssh.png	tilde.team	70
-i	/	tilde.team	70
-iThere are quite a few known methods for securing an OpenSSH	/	tilde.team	70
-iserver that you should already be familiar with, such as	/	tilde.team	70
-idisabling remote root access, disabling password login or	/	tilde.team	70
-ichanging the port (22 by default).	/	tilde.team	70
-i	/	tilde.team	70
-iAnother highly effective method applicable to SSH ports is	/	tilde.team	70
-iport knocking.	/	tilde.team	70
-i	/	tilde.team	70
-iPort knocking is a method of opening ports on a machine by	/	tilde.team	70
-imaking a series of connections to closed ports. The firewall	/	tilde.team	70
-iwill then react accordingly.	/	tilde.team	70
-i	/	tilde.team	70
-iThis is very useful, as it allows you to keep your SSH port	/	tilde.team	70
-iclosed, so it won't show up on port scans (nmap or other).	/	tilde.team	70
-i	/	tilde.team	70
-iThis can be done directly by configuring iptables, but I've	/	tilde.team	70
-iopted to use ufw coupled with knockd.	/	tilde.team	70
-i	/	tilde.team	70
-i## How does it work ?	/	tilde.team	70
-i	/	tilde.team	70
-iknockd is the port-knock server that will run on the target	/	tilde.team	70
-imachine as a daemon. It is going to handle the connection on	/	tilde.team	70
-ithe specified ports in the configuration.	/	tilde.team	70
-i	/	tilde.team	70
-iufw, our netfilter firewall program, will be called by	/	tilde.team	70
-iknockd and in ou case edit iptables rules.	/	tilde.team	70
-i	/	tilde.team	70
-i## Installation	/	tilde.team	70
-i	/	tilde.team	70
-iThe whole installation have been done on a Debian system	/	tilde.team	70
-i(Debian 12).	/	tilde.team	70
-i	/	tilde.team	70
-iSo first, install the packages for both of them	/	tilde.team	70
-iapt install ufw knockd	/	tilde.team	70
-i	/	tilde.team	70
-i## Configuration	/	tilde.team	70
-i	/	tilde.team	70
-iNow, let's see how to configure this tools. I assume that	/	tilde.team	70
-iyou are using Systemd.	/	tilde.team	70
-i	/	tilde.team	70
-i### ufw	/	tilde.team	70
-i	/	tilde.team	70
-iThe default ufw configuration is enough to perform port	/	tilde.team	70
-iknocking, it should be as the following. ufw has to be	/	tilde.team	70
-ienabled to show its default policies.	/	tilde.team	70
-i	/	tilde.team	70
-iufw enable	/	tilde.team	70
-iufw status verbose | grep Default	/	tilde.team	70
-i	/	tilde.team	70
-iOutput	/	tilde.team	70
-i	/	tilde.team	70
-iDefault: deny (incoming), allow (outgoing), deny (routed)	/	tilde.team	70
-i	/	tilde.team	70
-iIf it is not the case, you can change the default policies.	/	tilde.team	70
-i	/	tilde.team	70
-iufw default allow incoming	/	tilde.team	70
-iufw default deny outgoing	/	tilde.team	70
-i	/	tilde.team	70
-iOnce it is done, you can reload the ufw configuration to	/	tilde.team	70
-imake sure the modifications take effect immediatly.	/	tilde.team	70
-i	/	tilde.team	70
-iufw reload	/	tilde.team	70
-i	/	tilde.team	70
-i### knockd	/	tilde.team	70
-i	/	tilde.team	70
-iFirst of all, make sure that you are using the network	/	tilde.team	70
-iinterface you want.	/	tilde.team	70
-i	/	tilde.team	70
-iIn /etc/default/knockd, you can edit the knockd options that	/	tilde.team	70
-iwill be used with the executed command by the Systemd	/	tilde.team	70
-iservice.	/	tilde.team	70
-i	/	tilde.team	70
-i...	/	tilde.team	70
-i# command line options	/	tilde.team	70
-iKNOCKD_OPTS="-i eth0"	/	tilde.team	70
-i	/	tilde.team	70
-iNow we describe how will knockd act by editing	/	tilde.team	70
-i/etc/knockd.conf.	/	tilde.team	70
-i	/	tilde.team	70
-iHere is an example of what could be done, in this example	/	tilde.team	70
-iour SSH port is 47612.	/	tilde.team	70
-i	/	tilde.team	70
-i[options]	/	tilde.team	70
-i    UseSyslog	/	tilde.team	70
-i	/	tilde.team	70
-i[openSSH]	/	tilde.team	70
-i    sequence = 7264,3981,5410	/	tilde.team	70
-i    seq_timeout = 5	/	tilde.team	70
-i    start_command = ufw allow from %IP% to any port 47612	/	tilde.team	70
-i	/	tilde.team	70
-i[tmpOpenSSH]	/	tilde.team	70
-i    sequence = 8792,6137,2058	/	tilde.team	70
-i    seq_timeout = 5	/	tilde.team	70
-i    start_command = ufw allow from %IP% to any port 47612	/	tilde.team	70
-i    tcpflags = syn	/	tilde.team	70
-i    cmd_timeout = 10	/	tilde.team	70
-i    stop_command = ufw delete allow from %IP% to any port	/	tilde.team	70
-i47612	/	tilde.team	70
-i	/	tilde.team	70
-i[closeSSH]	/	tilde.team	70
-i    sequence = 4496,1625,7349	/	tilde.team	70
-i    seq_timeout = 5	/	tilde.team	70
-i    start_command = ufw delete allow from %IP% to any port	/	tilde.team	70
-i47612	/	tilde.team	70
-i	/	tilde.team	70
-iIn this configuration are described three knockd knocks.	/	tilde.team	70
-i	/	tilde.team	70
-iopenSSH will add a new ufw rule to allow the client IP	/	tilde.team	70
-iaddress on the port 47612 after the received TCP sequence	/	tilde.team	70
-i7264,3981,5410.	/	tilde.team	70
-i	/	tilde.team	70
-itmpOpenSSH will add a ufw rule that allowed the client IP	/	tilde.team	70
-iaddress on the port 47612 after the received TCP sequence	/	tilde.team	70
-i8792,6137,2058. This rule is going to timeout and then be	/	tilde.team	70
-iremoved after 10 seconds	/	tilde.team	70
-i	/	tilde.team	70
-icloseSSH will remove a ufw rule that allowed the client IP	/	tilde.team	70
-iaddress on the port 47612 after the received TCP sequence	/	tilde.team	70
-i4496,1625,7349.	/	tilde.team	70
-i	/	tilde.team	70
-iYou can finally start the port-knock server.	/	tilde.team	70
-i	/	tilde.team	70
-isystemctl restart knockd	/	tilde.team	70
-i	/	tilde.team	70
-i## Usage	/	tilde.team	70
-i	/	tilde.team	70
-iNow everything is setup, you can use the port-knock client	/	tilde.team	70
-iknock (from the package knockd) to perform TCP connections	/	tilde.team	70
-ion your target machine.	/	tilde.team	70
-i	/	tilde.team	70
-iAs example:	/	tilde.team	70
-iknock -v localhost 7264 3981 5410	/	tilde.team	70
+i## title: OpenSSH port knocking with UFW	/	tilde.club	70
+i## date: "2023-10-21"	/	tilde.club	70
+i	/	tilde.club	70
+i/openssh.png	/	tilde.club	70
+I/openssh.png	/~theobori/openssh.png	tilde.club	70
+i	/	tilde.club	70
+iThere are quite a few known methods for securing an OpenSSH	/	tilde.club	70
+iserver that you should already be familiar with, such as	/	tilde.club	70
+idisabling remote root access, disabling password login or	/	tilde.club	70
+ichanging the port (22 by default).	/	tilde.club	70
+i	/	tilde.club	70
+iAnother highly effective method applicable to SSH ports is	/	tilde.club	70
+iport knocking.	/	tilde.club	70
+i	/	tilde.club	70
+iPort knocking is a method of opening ports on a machine by	/	tilde.club	70
+imaking a series of connections to closed ports. The firewall	/	tilde.club	70
+iwill then react accordingly.	/	tilde.club	70
+i	/	tilde.club	70
+iThis is very useful, as it allows you to keep your SSH port	/	tilde.club	70
+iclosed, so it won't show up on port scans (nmap or other).	/	tilde.club	70
+i	/	tilde.club	70
+iThis can be done directly by configuring iptables, but I've	/	tilde.club	70
+iopted to use ufw coupled with knockd.	/	tilde.club	70
+i	/	tilde.club	70
+i## How does it work ?	/	tilde.club	70
+i	/	tilde.club	70
+iknockd is the port-knock server that will run on the target	/	tilde.club	70
+imachine as a daemon. It is going to handle the connection on	/	tilde.club	70
+ithe specified ports in the configuration.	/	tilde.club	70
+i	/	tilde.club	70
+iufw, our netfilter firewall program, will be called by	/	tilde.club	70
+iknockd and in ou case edit iptables rules.	/	tilde.club	70
+i	/	tilde.club	70
+i## Installation	/	tilde.club	70
+i	/	tilde.club	70
+iThe whole installation have been done on a Debian system	/	tilde.club	70
+i(Debian 12).	/	tilde.club	70
+i	/	tilde.club	70
+iSo first, install the packages for both of them	/	tilde.club	70
+iapt install ufw knockd	/	tilde.club	70
+i	/	tilde.club	70
+i## Configuration	/	tilde.club	70
+i	/	tilde.club	70
+iNow, let's see how to configure this tools. I assume that	/	tilde.club	70
+iyou are using Systemd.	/	tilde.club	70
+i	/	tilde.club	70
+i### ufw	/	tilde.club	70
+i	/	tilde.club	70
+iThe default ufw configuration is enough to perform port	/	tilde.club	70
+iknocking, it should be as the following. ufw has to be	/	tilde.club	70
+ienabled to show its default policies.	/	tilde.club	70
+i	/	tilde.club	70
+iufw enable	/	tilde.club	70
+iufw status verbose | grep Default	/	tilde.club	70
+i	/	tilde.club	70
+iOutput	/	tilde.club	70
+i	/	tilde.club	70
+iDefault: deny (incoming), allow (outgoing), deny (routed)	/	tilde.club	70
+i	/	tilde.club	70
+iIf it is not the case, you can change the default policies.	/	tilde.club	70
+i	/	tilde.club	70
+iufw default allow incoming	/	tilde.club	70
+iufw default deny outgoing	/	tilde.club	70
+i	/	tilde.club	70
+iOnce it is done, you can reload the ufw configuration to	/	tilde.club	70
+imake sure the modifications take effect immediatly.	/	tilde.club	70
+i	/	tilde.club	70
+iufw reload	/	tilde.club	70
+i	/	tilde.club	70
+i### knockd	/	tilde.club	70
+i	/	tilde.club	70
+iFirst of all, make sure that you are using the network	/	tilde.club	70
+iinterface you want.	/	tilde.club	70
+i	/	tilde.club	70
+iIn /etc/default/knockd, you can edit the knockd options that	/	tilde.club	70
+iwill be used with the executed command by the Systemd	/	tilde.club	70
+iservice.	/	tilde.club	70
+i	/	tilde.club	70
+i...	/	tilde.club	70
+i# command line options	/	tilde.club	70
+iKNOCKD_OPTS="-i eth0"	/	tilde.club	70
+i	/	tilde.club	70
+iNow we describe how will knockd act by editing	/	tilde.club	70
+i/etc/knockd.conf.	/	tilde.club	70
+i	/	tilde.club	70
+iHere is an example of what could be done, in this example	/	tilde.club	70
+iour SSH port is 47612.	/	tilde.club	70
+i	/	tilde.club	70
+i[options]	/	tilde.club	70
+i    UseSyslog	/	tilde.club	70
+i	/	tilde.club	70
+i[openSSH]	/	tilde.club	70
+i    sequence = 7264,3981,5410	/	tilde.club	70
+i    seq_timeout = 5	/	tilde.club	70
+i    start_command = ufw allow from %IP% to any port 47612	/	tilde.club	70
+i	/	tilde.club	70
+i[tmpOpenSSH]	/	tilde.club	70
+i    sequence = 8792,6137,2058	/	tilde.club	70
+i    seq_timeout = 5	/	tilde.club	70
+i    start_command = ufw allow from %IP% to any port 47612	/	tilde.club	70
+i    tcpflags = syn	/	tilde.club	70
+i    cmd_timeout = 10	/	tilde.club	70
+i    stop_command = ufw delete allow from %IP% to any port	/	tilde.club	70
+i47612	/	tilde.club	70
+i	/	tilde.club	70
+i[closeSSH]	/	tilde.club	70
+i    sequence = 4496,1625,7349	/	tilde.club	70
+i    seq_timeout = 5	/	tilde.club	70
+i    start_command = ufw delete allow from %IP% to any port	/	tilde.club	70
+i47612	/	tilde.club	70
+i	/	tilde.club	70
+iIn this configuration are described three knockd knocks.	/	tilde.club	70
+i	/	tilde.club	70
+iopenSSH will add a new ufw rule to allow the client IP	/	tilde.club	70
+iaddress on the port 47612 after the received TCP sequence	/	tilde.club	70
+i7264,3981,5410.	/	tilde.club	70
+i	/	tilde.club	70
+itmpOpenSSH will add a ufw rule that allowed the client IP	/	tilde.club	70
+iaddress on the port 47612 after the received TCP sequence	/	tilde.club	70
+i8792,6137,2058. This rule is going to timeout and then be	/	tilde.club	70
+iremoved after 10 seconds	/	tilde.club	70
+i	/	tilde.club	70
+icloseSSH will remove a ufw rule that allowed the client IP	/	tilde.club	70
+iaddress on the port 47612 after the received TCP sequence	/	tilde.club	70
+i4496,1625,7349.	/	tilde.club	70
+i	/	tilde.club	70
+iYou can finally start the port-knock server.	/	tilde.club	70
+i	/	tilde.club	70
+isystemctl restart knockd	/	tilde.club	70
+i	/	tilde.club	70
+i## Usage	/	tilde.club	70
+i	/	tilde.club	70
+iNow everything is setup, you can use the port-knock client	/	tilde.club	70
+iknock (from the package knockd) to perform TCP connections	/	tilde.club	70
+ion your target machine.	/	tilde.club	70
+i	/	tilde.club	70
+iAs example:	/	tilde.club	70
+iknock -v localhost 7264 3981 5410	/	tilde.club	70

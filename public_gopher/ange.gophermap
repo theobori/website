@@ -1,116 +1,116 @@
-i## title: My Gopher webring application	/	tilde.team	70
-i## date: "2026-06-13"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iI've visited many webrings available on the Internet, the	/	tilde.team	70
-ihacker webring, xxiivv, noai, geekring, etc. These are all	/	tilde.team	70
-iwebrings designed for HTTP(S) only, but these days, I visit	/	tilde.team	70
-ia lot of Gopher websites. So I wanted to write a Gopher	/	tilde.team	70
-iapplication to implement a Gopher webring. To meet my needs,	/	tilde.team	70
-iI created the ange project, pronounced \ɑ̃ʒ\, which	/	tilde.team	70
-icorresponds to the word angel.	/	tilde.team	70
+i## title: My Gopher webring application	/	tilde.club	70
+i## date: "2026-06-13"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iI've visited many webrings available on the Internet, the	/	tilde.club	70
+ihacker webring, xxiivv, noai, geekring, etc. These are all	/	tilde.club	70
+iwebrings designed for HTTP(S) only, but these days, I visit	/	tilde.club	70
+ia lot of Gopher websites. So I wanted to write a Gopher	/	tilde.club	70
+iapplication to implement a Gopher webring. To meet my needs,	/	tilde.club	70
+iI created the ange project, pronounced \ɑ̃ʒ\, which	/	tilde.club	70
+icorresponds to the word angel.	/	tilde.club	70
 hthe hacker webring	URL:https://ring.acab.dev/	ring.acab.dev	443
 hxxiivv	URL:https://webring.xxiivv.com	webring.xxiivv.com	443
 hnoai	URL:https://baccyflap.com/noai	baccyflap.com	443
 hgeekring	URL:https://geekring.net/	geekring.net	443
 hange	URL:https://github.com/theobori/ange	github.com	443
-i	/	tilde.team	70
-i## What is a webring	/	tilde.team	70
-i	/	tilde.team	70
-iA webring is a chained list in which each node contains	/	tilde.team	70
-iinformation about a website and its neighbors in the list.	/	tilde.team	70
-iBelow is a graph representing a webring example.	/	tilde.team	70
-i	/	tilde.team	70
-i/webring.png	/	tilde.team	70
-I/webring.png	/~nagi/webring.png	tilde.team	70
-i	/	tilde.team	70
-i## My goal	/	tilde.team	70
-i	/	tilde.team	70
-iMy goal is to build a Gopher application that can manage a	/	tilde.team	70
-ipersistent webring. Users should be able to submit a request	/	tilde.team	70
-ito join, and there should also be an admin section to review	/	tilde.team	70
-iuser requests.	/	tilde.team	70
-i	/	tilde.team	70
-i## Gopher Form	/	tilde.team	70
-i	/	tilde.team	70
-iFor this project to work, I need to create forms for users.	/	tilde.team	70
-iSo I wrote the fleur-form project. It's a plugin for the	/	tilde.team	70
-irouters in the fleur project, it allows you to create forms	/	tilde.team	70
-iwith multiple text fields for the user, which isn't natively	/	tilde.team	70
-ipossible with Gopher and gophermap. Below is an image of an	/	tilde.team	70
-iexample form.	/	tilde.team	70
+i	/	tilde.club	70
+i## What is a webring	/	tilde.club	70
+i	/	tilde.club	70
+iA webring is a chained list in which each node contains	/	tilde.club	70
+iinformation about a website and its neighbors in the list.	/	tilde.club	70
+iBelow is a graph representing a webring example.	/	tilde.club	70
+i	/	tilde.club	70
+i/webring.png	/	tilde.club	70
+I/webring.png	/~theobori/webring.png	tilde.club	70
+i	/	tilde.club	70
+i## My goal	/	tilde.club	70
+i	/	tilde.club	70
+iMy goal is to build a Gopher application that can manage a	/	tilde.club	70
+ipersistent webring. Users should be able to submit a request	/	tilde.club	70
+ito join, and there should also be an admin section to review	/	tilde.club	70
+iuser requests.	/	tilde.club	70
+i	/	tilde.club	70
+i## Gopher Form	/	tilde.club	70
+i	/	tilde.club	70
+iFor this project to work, I need to create forms for users.	/	tilde.club	70
+iSo I wrote the fleur-form project. It's a plugin for the	/	tilde.club	70
+irouters in the fleur project, it allows you to create forms	/	tilde.club	70
+iwith multiple text fields for the user, which isn't natively	/	tilde.club	70
+ipossible with Gopher and gophermap. Below is an image of an	/	tilde.club	70
+iexample form.	/	tilde.club	70
 hfleur-form	URL:https://github.com/theobori/fleur-form	github.com	443
 hfleur	URL:https://github.com/theobori/fleur	github.com	443
-i	/	tilde.team	70
-i/fleur-form_example.png	/	tilde.team	70
-I/fleur-form_example.png	/~nagi/fleur-form_example.png	tilde.team	70
-i	/	tilde.team	70
-i## Based on fleur	/	tilde.team	70
-i	/	tilde.team	70
-iAnge is primarily based on the fleur framework and the fleur	/	tilde.team	70
-irouter plugin called fleur-form.	/	tilde.team	70
-i	/	tilde.team	70
-i/ange-dependencies.png	/	tilde.team	70
-I/ange-dependencies.png	/~nagi/ange-dependencies.png	tilde.team	70
-i	/	tilde.team	70
-i## How it works	/	tilde.team	70
-i	/	tilde.team	70
-iThe system is intentionally quite simple. The chain of	/	tilde.team	70
-iGopherspaces is stored persistently using SQLite3. Users can	/	tilde.team	70
-iperform operations on the webring via Gopher requests	/	tilde.team	70
-ispecifying specific paths. Each node of the webring has a	/	tilde.team	70
-iunique ID and a unique token. The token can be used by the	/	tilde.team	70
-iusers to remove their gopherspace from the webring.	/	tilde.team	70
+i	/	tilde.club	70
+i/fleur-form_example.png	/	tilde.club	70
+I/fleur-form_example.png	/~theobori/fleur-form_example.png	tilde.club	70
+i	/	tilde.club	70
+i## Based on fleur	/	tilde.club	70
+i	/	tilde.club	70
+iAnge is primarily based on the fleur framework and the fleur	/	tilde.club	70
+irouter plugin called fleur-form.	/	tilde.club	70
+i	/	tilde.club	70
+i/ange-dependencies.png	/	tilde.club	70
+I/ange-dependencies.png	/~theobori/ange-dependencies.png	tilde.club	70
+i	/	tilde.club	70
+i## How it works	/	tilde.club	70
+i	/	tilde.club	70
+iThe system is intentionally quite simple. The chain of	/	tilde.club	70
+iGopherspaces is stored persistently using SQLite3. Users can	/	tilde.club	70
+iperform operations on the webring via Gopher requests	/	tilde.club	70
+ispecifying specific paths. Each node of the webring has a	/	tilde.club	70
+iunique ID and a unique token. The token can be used by the	/	tilde.club	70
+iusers to remove their gopherspace from the webring.	/	tilde.club	70
 hSQLite3	URL:https://sqlite.org/	sqlite.org	443
-i	/	tilde.team	70
-iFor more technical details, please refer to the project	/	tilde.team	70
-idocumentation.	/	tilde.team	70
+i	/	tilde.club	70
+iFor more technical details, please refer to the project	/	tilde.club	70
+idocumentation.	/	tilde.club	70
 hproject documentation	URL:https://github.com/theobori/ange/blob/main/README.md	github.com	443
-i	/	tilde.team	70
-i### Webring members	/	tilde.team	70
-i	/	tilde.team	70
-iAfter submitting a request to join the webring, the idea is	/	tilde.team	70
-ifor users to add a section representing their node in the	/	tilde.team	70
-iwebring to their website. Here is an example.	/	tilde.team	70
-i	/	tilde.team	70
-i1Previous    /webring/previous/your_id    webring-url    70	/	tilde.team	70
-i1Webring title    /    webring-url    70	/	tilde.team	70
-i1Next    /webring/next/your_id    webring-url    70	/	tilde.team	70
-i1Random    /webring/random    webring-url    70	/	tilde.team	70
-i	/	tilde.team	70
-i## Accessibility	/	tilde.team	70
-i	/	tilde.team	70
-iAnge provides a set of features that make it easy to create	/	tilde.team	70
-iand manage your own webring. It follows the same approach as	/	tilde.team	70
-ithe fleur project. It is easy to understand and very simple	/	tilde.team	70
-ito set up.	/	tilde.team	70
-i	/	tilde.team	70
-iSpecifically, someone wishing to use ange to create a Gopher	/	tilde.team	70
-iwebring would simply need to install ange on their machine	/	tilde.team	70
-iusing the command line recommended in the project	/	tilde.team	70
-idocumentation. Then, if necessary, customize the file named	/	tilde.team	70
-igophermap in the root of the chosen directory, and finally	/	tilde.team	70
-irun ange.	/	tilde.team	70
-i	/	tilde.team	70
-i## Overview	/	tilde.team	70
-i	/	tilde.team	70
-iHere's what ange looks like with the gophermap file provided	/	tilde.team	70
-iby the project.	/	tilde.team	70
-i	/	tilde.team	70
-i/ange-zero-gopherspaces.png	/	tilde.team	70
-I/ange-zero-gopherspaces.png	/~nagi/ange-zero-gopherspaces.png	tilde.team	70
-i	/	tilde.team	70
-iAnd here's an example of Gopherspaces accepted into the	/	tilde.team	70
-iwebring.	/	tilde.team	70
-i	/	tilde.team	70
-i/ange-two-gopherspaces.png	/	tilde.team	70
-I/ange-two-gopherspaces.png	/~nagi/ange-two-gopherspaces.png	tilde.team	70
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iImplementing a webring helped me better understand how they	/	tilde.team	70
-igenerally work, it was pretty fun. During my research, I	/	tilde.team	70
-iwasn't able to find any existing Gopher webrings. If you	/	tilde.team	70
-iknow of any, please feel free to contact me to discuss them.	/	tilde.team	70
+i	/	tilde.club	70
+i### Webring members	/	tilde.club	70
+i	/	tilde.club	70
+iAfter submitting a request to join the webring, the idea is	/	tilde.club	70
+ifor users to add a section representing their node in the	/	tilde.club	70
+iwebring to their website. Here is an example.	/	tilde.club	70
+i	/	tilde.club	70
+i1Previous    /webring/previous/your_id    webring-url    70	/	tilde.club	70
+i1Webring title    /    webring-url    70	/	tilde.club	70
+i1Next    /webring/next/your_id    webring-url    70	/	tilde.club	70
+i1Random    /webring/random    webring-url    70	/	tilde.club	70
+i	/	tilde.club	70
+i## Accessibility	/	tilde.club	70
+i	/	tilde.club	70
+iAnge provides a set of features that make it easy to create	/	tilde.club	70
+iand manage your own webring. It follows the same approach as	/	tilde.club	70
+ithe fleur project. It is easy to understand and very simple	/	tilde.club	70
+ito set up.	/	tilde.club	70
+i	/	tilde.club	70
+iSpecifically, someone wishing to use ange to create a Gopher	/	tilde.club	70
+iwebring would simply need to install ange on their machine	/	tilde.club	70
+iusing the command line recommended in the project	/	tilde.club	70
+idocumentation. Then, if necessary, customize the file named	/	tilde.club	70
+igophermap in the root of the chosen directory, and finally	/	tilde.club	70
+irun ange.	/	tilde.club	70
+i	/	tilde.club	70
+i## Overview	/	tilde.club	70
+i	/	tilde.club	70
+iHere's what ange looks like with the gophermap file provided	/	tilde.club	70
+iby the project.	/	tilde.club	70
+i	/	tilde.club	70
+i/ange-zero-gopherspaces.png	/	tilde.club	70
+I/ange-zero-gopherspaces.png	/~theobori/ange-zero-gopherspaces.png	tilde.club	70
+i	/	tilde.club	70
+iAnd here's an example of Gopherspaces accepted into the	/	tilde.club	70
+iwebring.	/	tilde.club	70
+i	/	tilde.club	70
+i/ange-two-gopherspaces.png	/	tilde.club	70
+I/ange-two-gopherspaces.png	/~theobori/ange-two-gopherspaces.png	tilde.club	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iImplementing a webring helped me better understand how they	/	tilde.club	70
+igenerally work, it was pretty fun. During my research, I	/	tilde.club	70
+iwasn't able to find any existing Gopher webrings. If you	/	tilde.club	70
+iknow of any, please feel free to contact me to discuss them.	/	tilde.club	70
 

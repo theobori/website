@@ -1,153 +1,153 @@
-i## title: Play Teeworlds through Docker	/	tilde.team	70
-i## date: "2023-10-24"	/	tilde.team	70
-i	/	tilde.team	70
-iMany Teeworlds servers currently in use are containerized.	/	tilde.team	70
-iHowever, it is also possible to containerize the Teeworlds	/	tilde.team	70
-iclient using Docker.	/	tilde.team	70
-i	/	tilde.team	70
-iThe Dockerfile is available below, it compiles and executes	/	tilde.team	70
-ithe ELF file in the Docker container. I've also published	/	tilde.team	70
-ithe image on Docker's public registry, Docker Hub.	/	tilde.team	70
-i	/	tilde.team	70
-i## Build the Docker image	/	tilde.team	70
-i	/	tilde.team	70
-iSo there are two methods to get the Docker image, you can	/	tilde.team	70
-idownload it or building it yourself.	/	tilde.team	70
-i	/	tilde.team	70
-i### Pull from Docker Hub	/	tilde.team	70
-i	/	tilde.team	70
-idocker pull b0thr34l/teeworlds:1.0	/	tilde.team	70
-i	/	tilde.team	70
-i### Build from source	/	tilde.team	70
-i	/	tilde.team	70
-iFROM ubuntu:20.04 as build	/	tilde.team	70
-i	/	tilde.team	70
-i# Avoid tz stuck at installation	/	tilde.team	70
-iARG DEBIAN_FRONTEND=noninteractive	/	tilde.team	70
-iENV TZ=Europe/Moscow	/	tilde.team	70
-i	/	tilde.team	70
-i# Install dependencies to build binaries	/	tilde.team	70
-iRUN apt-get update -y && 	/	tilde.team	70
-i    apt-get -y install --no-install-recommends 	/	tilde.team	70
-i    ca-certificates 	/	tilde.team	70
-i    build-essential 	/	tilde.team	70
-i    cmake 	/	tilde.team	70
-i    git 	/	tilde.team	70
-i    libfreetype6-dev 	/	tilde.team	70
-i    libsdl2-dev 	/	tilde.team	70
-i    libpnglite-dev 	/	tilde.team	70
-i    libwavpack-dev	/	tilde.team	70
-i	/	tilde.team	70
-i# Clone the git repository	/	tilde.team	70
-iRUN git clone https://github.com/teeworlds/teeworlds /client	/	tilde.team	70
-i	/	tilde.team	70
-i# Go into the build directory	/	tilde.team	70
-iWORKDIR /client	/	tilde.team	70
-i	/	tilde.team	70
-i# Compile client only	/	tilde.team	70
-iRUN mkdir -p build && 	/	tilde.team	70
-i    cd build && 	/	tilde.team	70
-i    cmake .. && 	/	tilde.team	70
-i    make teeworlds	/	tilde.team	70
-i	/	tilde.team	70
-iFROM ubuntu:20.04 as run	/	tilde.team	70
-i	/	tilde.team	70
-i# Install the shared library	/	tilde.team	70
-iRUN apt-get update -y && 	/	tilde.team	70
-i    apt-get -y install --no-install-recommends 	/	tilde.team	70
-i    libfreetype6 	/	tilde.team	70
-i    libsdl2-2.0-0 	/	tilde.team	70
-i    libpnglite0 	/	tilde.team	70
-i    libwavpack1 	/	tilde.team	70
-i    libopengl0 	/	tilde.team	70
-i    libgl1	/	tilde.team	70
-i	/	tilde.team	70
-i# Create a new user	/	tilde.team	70
-iRUN useradd -ms /bin/bash tee	/	tilde.team	70
-i	/	tilde.team	70
-iUSER tee	/	tilde.team	70
-i	/	tilde.team	70
-iWORKDIR /teeworlds	/	tilde.team	70
-i	/	tilde.team	70
-i# Copy the output files	/	tilde.team	70
-iCOPY --from=build /client/build/data ./data	/	tilde.team	70
-iCOPY --from=build /client/build/teeworlds .	/	tilde.team	70
-i	/	tilde.team	70
-iCMD [ "./teeworlds" ]	/	tilde.team	70
-i	/	tilde.team	70
-i## Create and start the Docker container	/	tilde.team	70
-i	/	tilde.team	70
-iNow we can create and start a new container with the	/	tilde.team	70
-iteeworlds client image we just created or downloaded.	/	tilde.team	70
-i	/	tilde.team	70
-iI consider that you're using X as your windowing system,	/	tilde.team	70
-irather than something like Wayland or something else.	/	tilde.team	70
-i	/	tilde.team	70
-i### X display server	/	tilde.team	70
-i	/	tilde.team	70
-iSo that the game can work and we can play it. I assume you	/	tilde.team	70
-iare using an X display server and that it is listening at a	/	tilde.team	70
-iUNIX domain socket.	/	tilde.team	70
-i	/	tilde.team	70
-iThat is why we are forwarding the /tmp/.X11-unix/ directory	/	tilde.team	70
-ithat contains the UNIX domain socket(s) for the X server.	/	tilde.team	70
-i	/	tilde.team	70
-iThe DISPLAY environment variable is going to target the UNIX	/	tilde.team	70
-isocket that we are using. This means that, technically, the	/	tilde.team	70
-icontainer will be able to write data to this UNIX socket,	/	tilde.team	70
-iand thus create a new window.	/	tilde.team	70
-i	/	tilde.team	70
-iMake sure that your X server controll is configured	/	tilde.team	70
-icorrectly before running the Docker container. If you just	/	tilde.team	70
-iwant to try you could disable entirely the policies but it	/	tilde.team	70
-iis not recommended.	/	tilde.team	70
-i	/	tilde.team	70
-ixhost +	/	tilde.team	70
-i	/	tilde.team	70
-iInstead, you should add a single local user.	/	tilde.team	70
-i	/	tilde.team	70
-ixhost +si:localuser:$USER	/	tilde.team	70
-i	/	tilde.team	70
-i### Storage configuration	/	tilde.team	70
-i	/	tilde.team	70
-iTeeworlds uses a specific location to store its data, it is	/	tilde.team	70
-idescribed in a file named storage.cfg that we can find on	/	tilde.team	70
-ithe offical Teeworlds GitHub repository.	/	tilde.team	70
+i## title: Play Teeworlds through Docker	/	tilde.club	70
+i## date: "2023-10-24"	/	tilde.club	70
+i	/	tilde.club	70
+iMany Teeworlds servers currently in use are containerized.	/	tilde.club	70
+iHowever, it is also possible to containerize the Teeworlds	/	tilde.club	70
+iclient using Docker.	/	tilde.club	70
+i	/	tilde.club	70
+iThe Dockerfile is available below, it compiles and executes	/	tilde.club	70
+ithe ELF file in the Docker container. I've also published	/	tilde.club	70
+ithe image on Docker's public registry, Docker Hub.	/	tilde.club	70
+i	/	tilde.club	70
+i## Build the Docker image	/	tilde.club	70
+i	/	tilde.club	70
+iSo there are two methods to get the Docker image, you can	/	tilde.club	70
+idownload it or building it yourself.	/	tilde.club	70
+i	/	tilde.club	70
+i### Pull from Docker Hub	/	tilde.club	70
+i	/	tilde.club	70
+idocker pull b0thr34l/teeworlds:1.0	/	tilde.club	70
+i	/	tilde.club	70
+i### Build from source	/	tilde.club	70
+i	/	tilde.club	70
+iFROM ubuntu:20.04 as build	/	tilde.club	70
+i	/	tilde.club	70
+i# Avoid tz stuck at installation	/	tilde.club	70
+iARG DEBIAN_FRONTEND=noninteractive	/	tilde.club	70
+iENV TZ=Europe/Moscow	/	tilde.club	70
+i	/	tilde.club	70
+i# Install dependencies to build binaries	/	tilde.club	70
+iRUN apt-get update -y && 	/	tilde.club	70
+i    apt-get -y install --no-install-recommends 	/	tilde.club	70
+i    ca-certificates 	/	tilde.club	70
+i    build-essential 	/	tilde.club	70
+i    cmake 	/	tilde.club	70
+i    git 	/	tilde.club	70
+i    libfreetype6-dev 	/	tilde.club	70
+i    libsdl2-dev 	/	tilde.club	70
+i    libpnglite-dev 	/	tilde.club	70
+i    libwavpack-dev	/	tilde.club	70
+i	/	tilde.club	70
+i# Clone the git repository	/	tilde.club	70
+iRUN git clone https://github.com/teeworlds/teeworlds /client	/	tilde.club	70
+i	/	tilde.club	70
+i# Go into the build directory	/	tilde.club	70
+iWORKDIR /client	/	tilde.club	70
+i	/	tilde.club	70
+i# Compile client only	/	tilde.club	70
+iRUN mkdir -p build && 	/	tilde.club	70
+i    cd build && 	/	tilde.club	70
+i    cmake .. && 	/	tilde.club	70
+i    make teeworlds	/	tilde.club	70
+i	/	tilde.club	70
+iFROM ubuntu:20.04 as run	/	tilde.club	70
+i	/	tilde.club	70
+i# Install the shared library	/	tilde.club	70
+iRUN apt-get update -y && 	/	tilde.club	70
+i    apt-get -y install --no-install-recommends 	/	tilde.club	70
+i    libfreetype6 	/	tilde.club	70
+i    libsdl2-2.0-0 	/	tilde.club	70
+i    libpnglite0 	/	tilde.club	70
+i    libwavpack1 	/	tilde.club	70
+i    libopengl0 	/	tilde.club	70
+i    libgl1	/	tilde.club	70
+i	/	tilde.club	70
+i# Create a new user	/	tilde.club	70
+iRUN useradd -ms /bin/bash tee	/	tilde.club	70
+i	/	tilde.club	70
+iUSER tee	/	tilde.club	70
+i	/	tilde.club	70
+iWORKDIR /teeworlds	/	tilde.club	70
+i	/	tilde.club	70
+i# Copy the output files	/	tilde.club	70
+iCOPY --from=build /client/build/data ./data	/	tilde.club	70
+iCOPY --from=build /client/build/teeworlds .	/	tilde.club	70
+i	/	tilde.club	70
+iCMD [ "./teeworlds" ]	/	tilde.club	70
+i	/	tilde.club	70
+i## Create and start the Docker container	/	tilde.club	70
+i	/	tilde.club	70
+iNow we can create and start a new container with the	/	tilde.club	70
+iteeworlds client image we just created or downloaded.	/	tilde.club	70
+i	/	tilde.club	70
+iI consider that you're using X as your windowing system,	/	tilde.club	70
+irather than something like Wayland or something else.	/	tilde.club	70
+i	/	tilde.club	70
+i### X display server	/	tilde.club	70
+i	/	tilde.club	70
+iSo that the game can work and we can play it. I assume you	/	tilde.club	70
+iare using an X display server and that it is listening at a	/	tilde.club	70
+iUNIX domain socket.	/	tilde.club	70
+i	/	tilde.club	70
+iThat is why we are forwarding the /tmp/.X11-unix/ directory	/	tilde.club	70
+ithat contains the UNIX domain socket(s) for the X server.	/	tilde.club	70
+i	/	tilde.club	70
+iThe DISPLAY environment variable is going to target the UNIX	/	tilde.club	70
+isocket that we are using. This means that, technically, the	/	tilde.club	70
+icontainer will be able to write data to this UNIX socket,	/	tilde.club	70
+iand thus create a new window.	/	tilde.club	70
+i	/	tilde.club	70
+iMake sure that your X server controll is configured	/	tilde.club	70
+icorrectly before running the Docker container. If you just	/	tilde.club	70
+iwant to try you could disable entirely the policies but it	/	tilde.club	70
+iis not recommended.	/	tilde.club	70
+i	/	tilde.club	70
+ixhost +	/	tilde.club	70
+i	/	tilde.club	70
+iInstead, you should add a single local user.	/	tilde.club	70
+i	/	tilde.club	70
+ixhost +si:localuser:$USER	/	tilde.club	70
+i	/	tilde.club	70
+i### Storage configuration	/	tilde.club	70
+i	/	tilde.club	70
+iTeeworlds uses a specific location to store its data, it is	/	tilde.club	70
+idescribed in a file named storage.cfg that we can find on	/	tilde.club	70
+ithe offical Teeworlds GitHub repository.	/	tilde.club	70
 hoffical Teeworlds GitHub repository	URL:https://github.com/teeworlds/teeworlds/blob/master/storage.cfg	github.com	443
-i	/	tilde.team	70
-iWe are looking for $USERDIR, we are going to mount this	/	tilde.team	70
-idirectory into our Docker container.	/	tilde.team	70
-i	/	tilde.team	70
-iThe first option is to create a new Docker volume containing	/	tilde.team	70
-ithe Teeworlds user data. We don't want to override the	/	tilde.team	70
-icontainer directory, so we will create a shared Docker	/	tilde.team	70
-ivolume.	/	tilde.team	70
-i	/	tilde.team	70
-i#!/bin/sh	/	tilde.team	70
-i	/	tilde.team	70
-iTW_USERDIR=$HOME/.config/teeworlds-userdir	/	tilde.team	70
-iTW_DOCKER_VOLUME=teeworlds-userdir	/	tilde.team	70
-i	/	tilde.team	70
-imkdir -p ${TW_USERDIR}	/	tilde.team	70
-i	/	tilde.team	70
-idocker volume create 	/	tilde.team	70
-i    --driver local 	/	tilde.team	70
-i    --opt type=none 	/	tilde.team	70
-i    --opt device=${TW_USERDIR} 	/	tilde.team	70
-i    --opt o=bind 	/	tilde.team	70
-i    ${TW_DOCKER_VOLUME}	/	tilde.team	70
-i	/	tilde.team	70
-idocker run -it 	/	tilde.team	70
-i    -e "DISPLAY=$DISPLAY" 	/	tilde.team	70
-i    -v "/tmp/.X11-unix:/tmp/.X11-unix" 	/	tilde.team	70
-i    -v "${TW_DOCKER_VOLUME}:/home/tee/.local/share/teeworlds"	/	tilde.team	70
-i	/	tilde.team	70
-i    --device "/dev/snd" 	/	tilde.team	70
-i    --device "/dev/dri" 	/	tilde.team	70
-i    b0thr34l/teeworlds:1.0	/	tilde.team	70
-i	/	tilde.team	70
-iIf you already had Teeworlds data in an user directory on	/	tilde.team	70
-iyour host system. You can mount a volume directly without	/	tilde.team	70
-icreating a Docker volume, as shown in the example below.	/	tilde.team	70
-i	/	tilde.team	70
-i-v "$HOME/.teeworlds:/home/tee/.local/share/teeworlds"	/	tilde.team	70
+i	/	tilde.club	70
+iWe are looking for $USERDIR, we are going to mount this	/	tilde.club	70
+idirectory into our Docker container.	/	tilde.club	70
+i	/	tilde.club	70
+iThe first option is to create a new Docker volume containing	/	tilde.club	70
+ithe Teeworlds user data. We don't want to override the	/	tilde.club	70
+icontainer directory, so we will create a shared Docker	/	tilde.club	70
+ivolume.	/	tilde.club	70
+i	/	tilde.club	70
+i#!/bin/sh	/	tilde.club	70
+i	/	tilde.club	70
+iTW_USERDIR=$HOME/.config/teeworlds-userdir	/	tilde.club	70
+iTW_DOCKER_VOLUME=teeworlds-userdir	/	tilde.club	70
+i	/	tilde.club	70
+imkdir -p ${TW_USERDIR}	/	tilde.club	70
+i	/	tilde.club	70
+idocker volume create 	/	tilde.club	70
+i    --driver local 	/	tilde.club	70
+i    --opt type=none 	/	tilde.club	70
+i    --opt device=${TW_USERDIR} 	/	tilde.club	70
+i    --opt o=bind 	/	tilde.club	70
+i    ${TW_DOCKER_VOLUME}	/	tilde.club	70
+i	/	tilde.club	70
+idocker run -it 	/	tilde.club	70
+i    -e "DISPLAY=$DISPLAY" 	/	tilde.club	70
+i    -v "/tmp/.X11-unix:/tmp/.X11-unix" 	/	tilde.club	70
+i    -v "${TW_DOCKER_VOLUME}:/home/tee/.local/share/teeworlds"	/	tilde.club	70
+i	/	tilde.club	70
+i    --device "/dev/snd" 	/	tilde.club	70
+i    --device "/dev/dri" 	/	tilde.club	70
+i    b0thr34l/teeworlds:1.0	/	tilde.club	70
+i	/	tilde.club	70
+iIf you already had Teeworlds data in an user directory on	/	tilde.club	70
+iyour host system. You can mount a volume directly without	/	tilde.club	70
+icreating a Docker volume, as shown in the example below.	/	tilde.club	70
+i	/	tilde.club	70
+i-v "$HOME/.teeworlds:/home/tee/.local/share/teeworlds"	/	tilde.club	70

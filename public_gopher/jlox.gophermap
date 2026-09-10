@@ -1,140 +1,140 @@
-i## title: My Tree-Walker Lox interpreter	/	tilde.team	70
-i## date: "2024-03-22"	/	tilde.team	70
-i	/	tilde.team	70
-iI wanted to learn more about designing an interpreter, so I	/	tilde.team	70
-ilooked around and found the free "Crafting Interpreters" by	/	tilde.team	70
-iRobert Nystrom.	/	tilde.team	70
-i	/	tilde.team	70
-iI read parts I and II, which focus on concepts, common	/	tilde.team	70
-itechniques and language behavior. Since I have recently read	/	tilde.team	70
-ithese parts, writing helps me to better understand and even	/	tilde.team	70
-ire-understand certain things.	/	tilde.team	70
-i	/	tilde.team	70
-iThe aim was to have a Lox interpreter that at least	/	tilde.team	70
-isupported functions and closures, so we could have a taste	/	tilde.team	70
-iof the basics.	/	tilde.team	70
-i	/	tilde.team	70
-i## What is lox ?	/	tilde.team	70
-i	/	tilde.team	70
-iTo sum up this page, Lox is a small, high-level scripting	/	tilde.team	70
-ilanguage, with dynamic types and automatic memory	/	tilde.team	70
-imanagement. It is similar to Javascript, Lua and Scheme.	/	tilde.team	70
+i## title: My Tree-Walker Lox interpreter	/	tilde.club	70
+i## date: "2024-03-22"	/	tilde.club	70
+i	/	tilde.club	70
+iI wanted to learn more about designing an interpreter, so I	/	tilde.club	70
+ilooked around and found the free "Crafting Interpreters" by	/	tilde.club	70
+iRobert Nystrom.	/	tilde.club	70
+i	/	tilde.club	70
+iI read parts I and II, which focus on concepts, common	/	tilde.club	70
+itechniques and language behavior. Since I have recently read	/	tilde.club	70
+ithese parts, writing helps me to better understand and even	/	tilde.club	70
+ire-understand certain things.	/	tilde.club	70
+i	/	tilde.club	70
+iThe aim was to have a Lox interpreter that at least	/	tilde.club	70
+isupported functions and closures, so we could have a taste	/	tilde.club	70
+iof the basics.	/	tilde.club	70
+i	/	tilde.club	70
+i## What is lox ?	/	tilde.club	70
+i	/	tilde.club	70
+iTo sum up this page, Lox is a small, high-level scripting	/	tilde.club	70
+ilanguage, with dynamic types and automatic memory	/	tilde.club	70
+imanagement. It is similar to Javascript, Lua and Scheme.	/	tilde.club	70
 hthis page	URL:https://craftinginterpreters.com/the-lox-language.html	craftinginterpreters.com	443
-i	/	tilde.team	70
-iA cool fact is that Lox is Turing complete, it means it is	/	tilde.team	70
-iable to run a Turing machine.	/	tilde.team	70
-i	/	tilde.team	70
-i## Essentials basics	/	tilde.team	70
-i	/	tilde.team	70
-iI've learned some important key concepts, and here are a few	/	tilde.team	70
-iof the most important.	/	tilde.team	70
-i	/	tilde.team	70
-i/mountain_lang.png	/	tilde.team	70
-I/mountain_lang.png	/~nagi/mountain_lang.png	tilde.team	70
-i	/	tilde.team	70
-i### Scanning	/	tilde.team	70
-i	/	tilde.team	70
-iScanning is also known as lexing or lexical analysis. It	/	tilde.team	70
-itakes a linear stream of characters and chunks them into	/	tilde.team	70
-itokens (words).	/	tilde.team	70
-i	/	tilde.team	70
-iThe scanner must group characters into the smalles possible	/	tilde.team	70
-isequence that represents something. This blobs of characters	/	tilde.team	70
-iare called lexemes.	/	tilde.team	70
-i	/	tilde.team	70
-i### Parsing	/	tilde.team	70
-i	/	tilde.team	70
-iIt takes the flat sequence of tokens and builds a tree	/	tilde.team	70
-istructure that represent the nested nature of the grammar.	/	tilde.team	70
-iThis three is called an Abstract Syntax Tree (AST)	/	tilde.team	70
-i	/	tilde.team	70
-iThe Lox interpreter I made is a Tree-Walk Interpreter, it	/	tilde.team	70
-imeans it traverses the AST one branch and leaf at a time and	/	tilde.team	70
-iit evaluates.	/	tilde.team	70
-i	/	tilde.team	70
-i### Context-Free Grammars	/	tilde.team	70
-i	/	tilde.team	70
-iIt is a formal grammar, it allows us to define an infinite	/	tilde.team	70
-iset of rules that are in the grammar, it specicies which	/	tilde.team	70
-istrings are valid and which are not.	/	tilde.team	70
-i	/	tilde.team	70
-i### Rules for grammars	/	tilde.team	70
-i	/	tilde.team	70
-iWe use rules to generate strings that are in the grammar, it	/	tilde.team	70
-iis called derivation, each is derived from an existing rule	/	tilde.team	70
-ion the grammar.	/	tilde.team	70
-i	/	tilde.team	70
-i“The rules are called productions because they produce	/	tilde.team	70
-istrings in the grammar”	/	tilde.team	70
-i	/	tilde.team	70
-iEach production has a head (its name) and a body (a list of	/	tilde.team	70
-isymbols).	/	tilde.team	70
-i	/	tilde.team	70
-iA symbol can be:	/	tilde.team	70
-i- A terminal, it is like an endpoint, it simply produces it.	/	tilde.team	70
-i- A non-terminal, it refers to other rule in the grammar.	/	tilde.team	70
-i	/	tilde.team	70
-iA grammar example from the book, see below.	/	tilde.team	70
-i	/	tilde.team	70
-ibreakfast → protein ( "with" breakfast "on the side" )?	/	tilde.team	70
-i          | bread ;	/	tilde.team	70
-i	/	tilde.team	70
-iprotein → "really"+ "crispy" "bacon"	/	tilde.team	70
-i        | "sausage"	/	tilde.team	70
-i        | ( "scrambled" | "poached" | "fried" ) "eggs" ;	/	tilde.team	70
-i	/	tilde.team	70
-ibread → "toast" | "biscuits" | "English muffin" ;	/	tilde.team	70
-i	/	tilde.team	70
-iThe ponctuations is based on the regex behaviors, as	/	tilde.team	70
-iexample, the ? means it is optional.	/	tilde.team	70
-i	/	tilde.team	70
-iSo here, a valid strings could be the one below.	/	tilde.team	70
-i	/	tilde.team	70
-i"poached" "eggs" "with" "toast" "on the side"	/	tilde.team	70
-i	/	tilde.team	70
-i### Recursive Descent Parsing	/	tilde.team	70
-i	/	tilde.team	70
-iThe best explanation here is probably the one in the book.	/	tilde.team	70
-i	/	tilde.team	70
-i“Recursive descent is considered a top-down parser because it	/	tilde.team	70
-istarts from the top or outermost grammar rule (here	/	tilde.team	70
-iexpression ) and works its way down into the nested	/	tilde.team	70
-isubexpressions before finally reaching the leaves of the	/	tilde.team	70
-isyntax tree.”	/	tilde.team	70
-i	/	tilde.team	70
-i## Examples	/	tilde.team	70
-i	/	tilde.team	70
-iHere are some Lox examples that can be evaluated by my	/	tilde.team	70
-iinterpreter.	/	tilde.team	70
-i	/	tilde.team	70
-ivar b = 1;	/	tilde.team	70
-ivar a = "hello";	/	tilde.team	70
-i	/	tilde.team	70
-i{	/	tilde.team	70
-i    var a = b + b;	/	tilde.team	70
-i	/	tilde.team	70
-i    print a;	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iprint a;	/	tilde.team	70
-i	/	tilde.team	70
-ifun fibonacci(n) {	/	tilde.team	70
-i    if (n <= 1) return n;	/	tilde.team	70
-i    return fibonacci(n - 1) + fibonacci(n - 2);	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iprint fibonacci(5);	/	tilde.team	70
-i	/	tilde.team	70
-iprint "helo" + "world";	/	tilde.team	70
-i	/	tilde.team	70
-ifun echo(n) {	/	tilde.team	70
-i    print n;	/	tilde.team	70
-i    return n;	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iprint echo(echo(1) + echo(2)) + echo(echo(4) + echo(5));	/	tilde.team	70
-i	/	tilde.team	70
-i## Links	/	tilde.team	70
-i	/	tilde.team	70
-ihttps://github.com/theobori/tinylox	/	tilde.team	70
+i	/	tilde.club	70
+iA cool fact is that Lox is Turing complete, it means it is	/	tilde.club	70
+iable to run a Turing machine.	/	tilde.club	70
+i	/	tilde.club	70
+i## Essentials basics	/	tilde.club	70
+i	/	tilde.club	70
+iI've learned some important key concepts, and here are a few	/	tilde.club	70
+iof the most important.	/	tilde.club	70
+i	/	tilde.club	70
+i/mountain_lang.png	/	tilde.club	70
+I/mountain_lang.png	/~theobori/mountain_lang.png	tilde.club	70
+i	/	tilde.club	70
+i### Scanning	/	tilde.club	70
+i	/	tilde.club	70
+iScanning is also known as lexing or lexical analysis. It	/	tilde.club	70
+itakes a linear stream of characters and chunks them into	/	tilde.club	70
+itokens (words).	/	tilde.club	70
+i	/	tilde.club	70
+iThe scanner must group characters into the smalles possible	/	tilde.club	70
+isequence that represents something. This blobs of characters	/	tilde.club	70
+iare called lexemes.	/	tilde.club	70
+i	/	tilde.club	70
+i### Parsing	/	tilde.club	70
+i	/	tilde.club	70
+iIt takes the flat sequence of tokens and builds a tree	/	tilde.club	70
+istructure that represent the nested nature of the grammar.	/	tilde.club	70
+iThis three is called an Abstract Syntax Tree (AST)	/	tilde.club	70
+i	/	tilde.club	70
+iThe Lox interpreter I made is a Tree-Walk Interpreter, it	/	tilde.club	70
+imeans it traverses the AST one branch and leaf at a time and	/	tilde.club	70
+iit evaluates.	/	tilde.club	70
+i	/	tilde.club	70
+i### Context-Free Grammars	/	tilde.club	70
+i	/	tilde.club	70
+iIt is a formal grammar, it allows us to define an infinite	/	tilde.club	70
+iset of rules that are in the grammar, it specicies which	/	tilde.club	70
+istrings are valid and which are not.	/	tilde.club	70
+i	/	tilde.club	70
+i### Rules for grammars	/	tilde.club	70
+i	/	tilde.club	70
+iWe use rules to generate strings that are in the grammar, it	/	tilde.club	70
+iis called derivation, each is derived from an existing rule	/	tilde.club	70
+ion the grammar.	/	tilde.club	70
+i	/	tilde.club	70
+i“The rules are called productions because they produce	/	tilde.club	70
+istrings in the grammar”	/	tilde.club	70
+i	/	tilde.club	70
+iEach production has a head (its name) and a body (a list of	/	tilde.club	70
+isymbols).	/	tilde.club	70
+i	/	tilde.club	70
+iA symbol can be:	/	tilde.club	70
+i- A terminal, it is like an endpoint, it simply produces it.	/	tilde.club	70
+i- A non-terminal, it refers to other rule in the grammar.	/	tilde.club	70
+i	/	tilde.club	70
+iA grammar example from the book, see below.	/	tilde.club	70
+i	/	tilde.club	70
+ibreakfast → protein ( "with" breakfast "on the side" )?	/	tilde.club	70
+i          | bread ;	/	tilde.club	70
+i	/	tilde.club	70
+iprotein → "really"+ "crispy" "bacon"	/	tilde.club	70
+i        | "sausage"	/	tilde.club	70
+i        | ( "scrambled" | "poached" | "fried" ) "eggs" ;	/	tilde.club	70
+i	/	tilde.club	70
+ibread → "toast" | "biscuits" | "English muffin" ;	/	tilde.club	70
+i	/	tilde.club	70
+iThe ponctuations is based on the regex behaviors, as	/	tilde.club	70
+iexample, the ? means it is optional.	/	tilde.club	70
+i	/	tilde.club	70
+iSo here, a valid strings could be the one below.	/	tilde.club	70
+i	/	tilde.club	70
+i"poached" "eggs" "with" "toast" "on the side"	/	tilde.club	70
+i	/	tilde.club	70
+i### Recursive Descent Parsing	/	tilde.club	70
+i	/	tilde.club	70
+iThe best explanation here is probably the one in the book.	/	tilde.club	70
+i	/	tilde.club	70
+i“Recursive descent is considered a top-down parser because it	/	tilde.club	70
+istarts from the top or outermost grammar rule (here	/	tilde.club	70
+iexpression ) and works its way down into the nested	/	tilde.club	70
+isubexpressions before finally reaching the leaves of the	/	tilde.club	70
+isyntax tree.”	/	tilde.club	70
+i	/	tilde.club	70
+i## Examples	/	tilde.club	70
+i	/	tilde.club	70
+iHere are some Lox examples that can be evaluated by my	/	tilde.club	70
+iinterpreter.	/	tilde.club	70
+i	/	tilde.club	70
+ivar b = 1;	/	tilde.club	70
+ivar a = "hello";	/	tilde.club	70
+i	/	tilde.club	70
+i{	/	tilde.club	70
+i    var a = b + b;	/	tilde.club	70
+i	/	tilde.club	70
+i    print a;	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iprint a;	/	tilde.club	70
+i	/	tilde.club	70
+ifun fibonacci(n) {	/	tilde.club	70
+i    if (n <= 1) return n;	/	tilde.club	70
+i    return fibonacci(n - 1) + fibonacci(n - 2);	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iprint fibonacci(5);	/	tilde.club	70
+i	/	tilde.club	70
+iprint "helo" + "world";	/	tilde.club	70
+i	/	tilde.club	70
+ifun echo(n) {	/	tilde.club	70
+i    print n;	/	tilde.club	70
+i    return n;	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iprint echo(echo(1) + echo(2)) + echo(echo(4) + echo(5));	/	tilde.club	70
+i	/	tilde.club	70
+i## Links	/	tilde.club	70
+i	/	tilde.club	70
+ihttps://github.com/theobori/tinylox	/	tilde.club	70
 hhttps://github.com/theobori/tinylox	URL:https://github.com/theobori/tinylox	github.com	443

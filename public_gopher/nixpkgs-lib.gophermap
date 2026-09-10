@@ -1,172 +1,172 @@
-i## title: Nix functions in pure Python	/	tilde.team	70
-i## date: "2026-04-30"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iI often come up with new ideas for computer projects when	/	tilde.team	70
-iI'm bored and browsing the internet. One day, I had the idea	/	tilde.team	70
-ito port the library component of nixpkgs to pure Python. I	/	tilde.team	70
-isimply wanted to be able to use functions in nixpkgs from	/	tilde.team	70
-iwithin Python. It's a pretty old project, but I still think	/	tilde.team	70
-iit's cool, which is why I wanted to talk about it in this	/	tilde.team	70
-ishort blog post.	/	tilde.team	70
-i	/	tilde.team	70
-i## My goal	/	tilde.team	70
-i	/	tilde.team	70
-iThe main goal of this project is to keep myself busy. I've	/	tilde.team	70
-ialways thought the lib.fixedPoints.fix nixpkgs function was	/	tilde.team	70
-icool, so I wanted to at least be able to use that function	/	tilde.team	70
-iin Python.	/	tilde.team	70
-i	/	tilde.team	70
-iJust to clarify, my goal isn't to call NixCpp functions from	/	tilde.team	70
-iPython, there is already the python-nix project for that. I	/	tilde.team	70
-iwant to rewrite the logic of Nix functions in pure Python,	/	tilde.team	70
-iwith no dependencies other than the Python interpreter.	/	tilde.team	70
+i## title: Nix functions in pure Python	/	tilde.club	70
+i## date: "2026-04-30"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iI often come up with new ideas for computer projects when	/	tilde.club	70
+iI'm bored and browsing the internet. One day, I had the idea	/	tilde.club	70
+ito port the library component of nixpkgs to pure Python. I	/	tilde.club	70
+isimply wanted to be able to use functions in nixpkgs from	/	tilde.club	70
+iwithin Python. It's a pretty old project, but I still think	/	tilde.club	70
+iit's cool, which is why I wanted to talk about it in this	/	tilde.club	70
+ishort blog post.	/	tilde.club	70
+i	/	tilde.club	70
+i## My goal	/	tilde.club	70
+i	/	tilde.club	70
+iThe main goal of this project is to keep myself busy. I've	/	tilde.club	70
+ialways thought the lib.fixedPoints.fix nixpkgs function was	/	tilde.club	70
+icool, so I wanted to at least be able to use that function	/	tilde.club	70
+iin Python.	/	tilde.club	70
+i	/	tilde.club	70
+iJust to clarify, my goal isn't to call NixCpp functions from	/	tilde.club	70
+iPython, there is already the python-nix project for that. I	/	tilde.club	70
+iwant to rewrite the logic of Nix functions in pure Python,	/	tilde.club	70
+iwith no dependencies other than the Python interpreter.	/	tilde.club	70
 hNixCpp	URL:https://github.com/NixOS/nix	github.com	443
 hpython-nix	URL:https://github.com/tweag/python-nix	github.com	443
-i	/	tilde.team	70
-i## Nixpkgs	/	tilde.team	70
-i	/	tilde.team	70
-iI've mentioned nixpkgs several times before, but what	/	tilde.team	70
-iexactly is it? It's a GitHub repository for NixOS that	/	tilde.team	70
-icontains the official collection of Nix and NixOS	/	tilde.team	70
-iexpressions. These expressions include Nix packages, NixOS	/	tilde.team	70
-imodules, functions, and more.	/	tilde.team	70
+i	/	tilde.club	70
+i## Nixpkgs	/	tilde.club	70
+i	/	tilde.club	70
+iI've mentioned nixpkgs several times before, but what	/	tilde.club	70
+iexactly is it? It's a GitHub repository for NixOS that	/	tilde.club	70
+icontains the official collection of Nix and NixOS	/	tilde.club	70
+iexpressions. These expressions include Nix packages, NixOS	/	tilde.club	70
+imodules, functions, and more.	/	tilde.club	70
 hGitHub repository	URL:https://github.com/NixOS/nixpkgs	github.com	443
-i	/	tilde.team	70
-i### Library section	/	tilde.team	70
-i	/	tilde.team	70
-iThe part of nixpkgs that I want to implement in Python is	/	tilde.team	70
-ithe library section; some functions cannot be implemented	/	tilde.team	70
-ibecause they depend on NixCpp.	/	tilde.team	70
+i	/	tilde.club	70
+i### Library section	/	tilde.club	70
+i	/	tilde.club	70
+iThe part of nixpkgs that I want to implement in Python is	/	tilde.club	70
+ithe library section; some functions cannot be implemented	/	tilde.club	70
+ibecause they depend on NixCpp.	/	tilde.club	70
 hlibrary section	URL:https://github.com/NixOS/nixpkgs/tree/master/lib	github.com	443
 hNixCpp	URL:https://github.com/NixOS/nix	github.com	443
-i	/	tilde.team	70
-i## Laziness bypass	/	tilde.team	70
-i	/	tilde.team	70
-iThe Nix interpreter has a somewhat special way of evaluating	/	tilde.team	70
-iexpressions; it uses what is known as lazy evaluation. This	/	tilde.team	70
-imeans expressions are only evaluated when the interpreter	/	tilde.team	70
-ineeds their value. The Python interpreter does not have this	/	tilde.team	70
-iproperty, and certain functions in the lib section of	/	tilde.team	70
-inixpkgs require laziness, notably the lib.fixedPoints.fix	/	tilde.team	70
-inixpkgs function. That is why I had to find a solution to	/	tilde.team	70
-isimulate a form of laziness.	/	tilde.team	70
+i	/	tilde.club	70
+i## Laziness bypass	/	tilde.club	70
+i	/	tilde.club	70
+iThe Nix interpreter has a somewhat special way of evaluating	/	tilde.club	70
+iexpressions; it uses what is known as lazy evaluation. This	/	tilde.club	70
+imeans expressions are only evaluated when the interpreter	/	tilde.club	70
+ineeds their value. The Python interpreter does not have this	/	tilde.club	70
+iproperty, and certain functions in the lib section of	/	tilde.club	70
+inixpkgs require laziness, notably the lib.fixedPoints.fix	/	tilde.club	70
+inixpkgs function. That is why I had to find a solution to	/	tilde.club	70
+isimulate a form of laziness.	/	tilde.club	70
 hPython interpreter	URL:https://github.com/python/cpython	github.com	443
-i	/	tilde.team	70
-i### Fix function	/	tilde.team	70
-i	/	tilde.team	70
-iThis is a function in nixpkgs that allows you to find the	/	tilde.team	70
-ifixed point of a function. This function relies entirely on	/	tilde.team	70
-ithe lazy property of the Nix interpreter. Below is its	/	tilde.team	70
-idefinition in Nix.	/	tilde.team	70
-i	/	tilde.team	70
-ifix =	/	tilde.team	70
-i  f:	/	tilde.team	70
-i  let	/	tilde.team	70
-i    x = f x;	/	tilde.team	70
-i  in	/	tilde.team	70
-i  x;	/	tilde.team	70
-i	/	tilde.team	70
-iBelow are a few examples of how to call the function.	/	tilde.team	70
-i	/	tilde.team	70
-inix-repl> lib.fix (self: {a = 1; b = self.a + 1})	/	tilde.team	70
-i{	/	tilde.team	70
-i  a = 1;	/	tilde.team	70
-i  b = 2;	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-inix-repl> lib.fix (self: [1 ((lib.elemAt self 0) + 1)])	/	tilde.team	70
-i[	/	tilde.team	70
-i  1	/	tilde.team	70
-i  2	/	tilde.team	70
-i]	/	tilde.team	70
-i	/	tilde.team	70
-inix-repl> lib.fix (lib.fix (f: self: {a = 1; b = self.a +	/	tilde.team	70
-i1;}))	/	tilde.team	70
-i{	/	tilde.team	70
-i  a = 1;	/	tilde.team	70
-i  b = 2;	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iAnd here is my Python implementation.	/	tilde.team	70
-i	/	tilde.team	70
-idef fix(f: Callable) -> Any:	/	tilde.team	70
-i    """Compute the least fixed point of a function"""	/	tilde.team	70
-i	/	tilde.team	70
-i    # Evaluates with the stub value	/	tilde.team	70
-i    result = f(StubSequence())	/	tilde.team	70
-i    # Final evaluation	/	tilde.team	70
-i    result = f(result)	/	tilde.team	70
-i	/	tilde.team	70
-i    return result	/	tilde.team	70
-i	/	tilde.team	70
-i### Little hack	/	tilde.team	70
-i	/	tilde.team	70
-iThe hack involves evaluating the function f, passed as an	/	tilde.team	70
-iargument, once by passing it a class that returns default	/	tilde.team	70
-ivalues for its special Python methods. This way, we can	/	tilde.team	70
-iretrieve the default values needed for the final evaluation.	/	tilde.team	70
-i	/	tilde.team	70
-i### Example	/	tilde.team	70
-i	/	tilde.team	70
-iFor example, let's take the following Python function.	/	tilde.team	70
-i	/	tilde.team	70
-ig = lambda self: {"a": 1, "b": self["a"] + 1}	/	tilde.team	70
-i	/	tilde.team	70
-iYou can imagine that this will produce something like this	/	tilde.team	70
-iin the fix function.	/	tilde.team	70
-i	/	tilde.team	70
-i# fix(g)	/	tilde.team	70
-iresult = f(StubSequence())	/	tilde.team	70
-iresult = f({"a": 1, "b": 0 + 1})	/	tilde.team	70
-iresult = {"a": 1, "b": 2}	/	tilde.team	70
-i	/	tilde.team	70
-iIt also works with lists and functions, as shown below.	/	tilde.team	70
-i	/	tilde.team	70
-ifix(lambda self: [1, 2, 3, self[0] + self[1])	/	tilde.team	70
-ifix(fix(lambda x: lambda f: [1, 2, 3, f[0] + f[1]))	/	tilde.team	70
-i	/	tilde.team	70
-i### Technical limitation	/	tilde.team	70
-i	/	tilde.team	70
-iSince this approach isn't true laziness, it obviously has a	/	tilde.team	70
-ilimitation. It doesn't allow for correctly resolving chains	/	tilde.team	70
-iwith a depth greater than one. That is, in a list or	/	tilde.team	70
-idictionary, a variable cannot depend on more than one other	/	tilde.team	70
-ivariable. I think it's technically possible to work around	/	tilde.team	70
-ithis problem, for example by keeping track of dependency	/	tilde.team	70
-ichains in a graph; if you're interested, you can try	/	tilde.team	70
-iimplementing it in the project.	/	tilde.team	70
+i	/	tilde.club	70
+i### Fix function	/	tilde.club	70
+i	/	tilde.club	70
+iThis is a function in nixpkgs that allows you to find the	/	tilde.club	70
+ifixed point of a function. This function relies entirely on	/	tilde.club	70
+ithe lazy property of the Nix interpreter. Below is its	/	tilde.club	70
+idefinition in Nix.	/	tilde.club	70
+i	/	tilde.club	70
+ifix =	/	tilde.club	70
+i  f:	/	tilde.club	70
+i  let	/	tilde.club	70
+i    x = f x;	/	tilde.club	70
+i  in	/	tilde.club	70
+i  x;	/	tilde.club	70
+i	/	tilde.club	70
+iBelow are a few examples of how to call the function.	/	tilde.club	70
+i	/	tilde.club	70
+inix-repl> lib.fix (self: {a = 1; b = self.a + 1})	/	tilde.club	70
+i{	/	tilde.club	70
+i  a = 1;	/	tilde.club	70
+i  b = 2;	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+inix-repl> lib.fix (self: [1 ((lib.elemAt self 0) + 1)])	/	tilde.club	70
+i[	/	tilde.club	70
+i  1	/	tilde.club	70
+i  2	/	tilde.club	70
+i]	/	tilde.club	70
+i	/	tilde.club	70
+inix-repl> lib.fix (lib.fix (f: self: {a = 1; b = self.a +	/	tilde.club	70
+i1;}))	/	tilde.club	70
+i{	/	tilde.club	70
+i  a = 1;	/	tilde.club	70
+i  b = 2;	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iAnd here is my Python implementation.	/	tilde.club	70
+i	/	tilde.club	70
+idef fix(f: Callable) -> Any:	/	tilde.club	70
+i    """Compute the least fixed point of a function"""	/	tilde.club	70
+i	/	tilde.club	70
+i    # Evaluates with the stub value	/	tilde.club	70
+i    result = f(StubSequence())	/	tilde.club	70
+i    # Final evaluation	/	tilde.club	70
+i    result = f(result)	/	tilde.club	70
+i	/	tilde.club	70
+i    return result	/	tilde.club	70
+i	/	tilde.club	70
+i### Little hack	/	tilde.club	70
+i	/	tilde.club	70
+iThe hack involves evaluating the function f, passed as an	/	tilde.club	70
+iargument, once by passing it a class that returns default	/	tilde.club	70
+ivalues for its special Python methods. This way, we can	/	tilde.club	70
+iretrieve the default values needed for the final evaluation.	/	tilde.club	70
+i	/	tilde.club	70
+i### Example	/	tilde.club	70
+i	/	tilde.club	70
+iFor example, let's take the following Python function.	/	tilde.club	70
+i	/	tilde.club	70
+ig = lambda self: {"a": 1, "b": self["a"] + 1}	/	tilde.club	70
+i	/	tilde.club	70
+iYou can imagine that this will produce something like this	/	tilde.club	70
+iin the fix function.	/	tilde.club	70
+i	/	tilde.club	70
+i# fix(g)	/	tilde.club	70
+iresult = f(StubSequence())	/	tilde.club	70
+iresult = f({"a": 1, "b": 0 + 1})	/	tilde.club	70
+iresult = {"a": 1, "b": 2}	/	tilde.club	70
+i	/	tilde.club	70
+iIt also works with lists and functions, as shown below.	/	tilde.club	70
+i	/	tilde.club	70
+ifix(lambda self: [1, 2, 3, self[0] + self[1])	/	tilde.club	70
+ifix(fix(lambda x: lambda f: [1, 2, 3, f[0] + f[1]))	/	tilde.club	70
+i	/	tilde.club	70
+i### Technical limitation	/	tilde.club	70
+i	/	tilde.club	70
+iSince this approach isn't true laziness, it obviously has a	/	tilde.club	70
+ilimitation. It doesn't allow for correctly resolving chains	/	tilde.club	70
+iwith a depth greater than one. That is, in a list or	/	tilde.club	70
+idictionary, a variable cannot depend on more than one other	/	tilde.club	70
+ivariable. I think it's technically possible to work around	/	tilde.club	70
+ithis problem, for example by keeping track of dependency	/	tilde.club	70
+ichains in a graph; if you're interested, you can try	/	tilde.club	70
+iimplementing it in the project.	/	tilde.club	70
 hthe project	URL:https://github.com/theobori/nixpkgs-lib	github.com	443
-i	/	tilde.team	70
-i## Function calling style	/	tilde.team	70
-i	/	tilde.team	70
-iTechnically, all functions with more than one argument are	/	tilde.team	70
-icurried, so they must be called as follows.	/	tilde.team	70
-i	/	tilde.team	70
-ifind_single(lambda x: x == 3)("none")("multiple")([1, 9])	/	tilde.team	70
-i	/	tilde.team	70
-iBut in this module, the functions, although curried, can be	/	tilde.team	70
-icalled in any way.	/	tilde.team	70
-i	/	tilde.team	70
-i# A more comfortable calling style, still returning a	/	tilde.team	70
-ifunction that return a function	/	tilde.team	70
-ifirst_part = find_single(lambda x: x == 3, "none")	/	tilde.team	70
-i# More explicit calling style	/	tilde.team	70
-ifirst_part("multiple")([1, 9])	/	tilde.team	70
-i	/	tilde.team	70
-i## Progress	/	tilde.team	70
-i	/	tilde.team	70
-iI've implemented a number of the features I wanted, 55.93% to	/	tilde.team	70
-ibe exact. Detailed progress is available in the project	/	tilde.team	70
-idocumentation. This progress report is generated using a	/	tilde.team	70
-iscript that I wrote in Python.	/	tilde.team	70
+i	/	tilde.club	70
+i## Function calling style	/	tilde.club	70
+i	/	tilde.club	70
+iTechnically, all functions with more than one argument are	/	tilde.club	70
+icurried, so they must be called as follows.	/	tilde.club	70
+i	/	tilde.club	70
+ifind_single(lambda x: x == 3)("none")("multiple")([1, 9])	/	tilde.club	70
+i	/	tilde.club	70
+iBut in this module, the functions, although curried, can be	/	tilde.club	70
+icalled in any way.	/	tilde.club	70
+i	/	tilde.club	70
+i# A more comfortable calling style, still returning a	/	tilde.club	70
+ifunction that return a function	/	tilde.club	70
+ifirst_part = find_single(lambda x: x == 3, "none")	/	tilde.club	70
+i# More explicit calling style	/	tilde.club	70
+ifirst_part("multiple")([1, 9])	/	tilde.club	70
+i	/	tilde.club	70
+i## Progress	/	tilde.club	70
+i	/	tilde.club	70
+iI've implemented a number of the features I wanted, 55.93% to	/	tilde.club	70
+ibe exact. Detailed progress is available in the project	/	tilde.club	70
+idocumentation. This progress report is generated using a	/	tilde.club	70
+iscript that I wrote in Python.	/	tilde.club	70
 hproject documentation	URL:https://github.com/theobori/nixpkgs-lib/tree/main/README.md	github.com	443
 ha script	URL:https://github.com/theobori/nixpkgs-lib/blob/main/nixpkgs_lib/scripts/statistics.py	github.com	443
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iIt's a pretty fun and laid-back project that helps me pass	/	tilde.team	70
-ithe time sometimes. The only downside is certain differences	/	tilde.team	70
-ibetween Python and Nix, such as Nix's lazy evaluation, which	/	tilde.team	70
-ican make porting to Python complicated.	/	tilde.team	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iIt's a pretty fun and laid-back project that helps me pass	/	tilde.club	70
+ithe time sometimes. The only downside is certain differences	/	tilde.club	70
+ibetween Python and Nix, such as Nix's lazy evaluation, which	/	tilde.club	70
+ican make porting to Python complicated.	/	tilde.club	70

@@ -1,127 +1,127 @@
-i## title: My Gopherspace garden	/	tilde.team	70
-i## date: "2026-01-08"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iRecently, I went back into Gopherspace and saw websites like	/	tilde.team	70
-ibaud.baby with the phlog named FAX SEX. I found it very	/	tilde.team	70
-ielegant and inspiring, so I immersed myself in this	/	tilde.team	70
-iuniverse.	/	tilde.team	70
+i## title: My Gopherspace garden	/	tilde.club	70
+i## date: "2026-01-08"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iRecently, I went back into Gopherspace and saw websites like	/	tilde.club	70
+ibaud.baby with the phlog named FAX SEX. I found it very	/	tilde.club	70
+ielegant and inspiring, so I immersed myself in this	/	tilde.club	70
+iuniverse.	/	tilde.club	70
 hGopherspace	URL:https://fr.wikipedia.org/wiki/Gopher	fr.wikipedia.org	443
 1baud.baby		baud.baby	70
-i	/	tilde.team	70
-iI want to modify my gph files that reflect my website	/	tilde.team	70
-itheobori.cafe. These files had been automatically translated	/	tilde.team	70
-iwith a shell script that transforms Markdown into gph. It	/	tilde.team	70
-iwas syntactically correct, but the format was not very	/	tilde.team	70
-ielegant.	/	tilde.team	70
+i	/	tilde.club	70
+iI want to modify my gph files that reflect my website	/	tilde.club	70
+itheobori.cafe. These files had been automatically translated	/	tilde.club	70
+iwith a shell script that transforms Markdown into gph. It	/	tilde.club	70
+iwas syntactically correct, but the format was not very	/	tilde.club	70
+ielegant.	/	tilde.club	70
 htheobori.cafe	URL:https://theobori.cafe	theobori.cafe	443
-i	/	tilde.team	70
-i## My goal	/	tilde.team	70
-i	/	tilde.team	70
-iMy primary goal is to refactor my Gopher files. To do this,	/	tilde.team	70
-iI want to create a dedicated project that will produce a CLI	/	tilde.team	70
-icapable of translating Markdown with a bit of HTML into	/	tilde.team	70
-igophermap, gph and txt. It's common to see files with these	/	tilde.team	70
-iformats in Gopherspace.	/	tilde.team	70
-i	/	tilde.team	70
-iIn particular, I'd like to manually modify the home page and	/	tilde.team	70
-ithe index page for blog posts.	/	tilde.team	70
-i	/	tilde.team	70
-i## Project lueur	/	tilde.team	70
-i	/	tilde.team	70
-iThis project is called lueur, pronounced \lɥœʁ\, which is a	/	tilde.team	70
-iFrench word for vivid, momentary expression.	/	tilde.team	70
-i	/	tilde.team	70
-i### How it works	/	tilde.team	70
-i	/	tilde.team	70
-iThe way the project works is deliberately very simple: I	/	tilde.team	70
-iretrieve the text in Markdown format, which can contain	/	tilde.team	70
-iHTML. The text is then passed to the Markdown parser, which	/	tilde.team	70
-ireturns an AST that is traversed to produce the final	/	tilde.team	70
-ioutput. The goldmark project was used to parse the Markdown	/	tilde.team	70
-iand the Go Networking project for the HTML.	/	tilde.team	70
+i	/	tilde.club	70
+i## My goal	/	tilde.club	70
+i	/	tilde.club	70
+iMy primary goal is to refactor my Gopher files. To do this,	/	tilde.club	70
+iI want to create a dedicated project that will produce a CLI	/	tilde.club	70
+icapable of translating Markdown with a bit of HTML into	/	tilde.club	70
+igophermap, gph and txt. It's common to see files with these	/	tilde.club	70
+iformats in Gopherspace.	/	tilde.club	70
+i	/	tilde.club	70
+iIn particular, I'd like to manually modify the home page and	/	tilde.club	70
+ithe index page for blog posts.	/	tilde.club	70
+i	/	tilde.club	70
+i## Project lueur	/	tilde.club	70
+i	/	tilde.club	70
+iThis project is called lueur, pronounced \lɥœʁ\, which is a	/	tilde.club	70
+iFrench word for vivid, momentary expression.	/	tilde.club	70
+i	/	tilde.club	70
+i### How it works	/	tilde.club	70
+i	/	tilde.club	70
+iThe way the project works is deliberately very simple: I	/	tilde.club	70
+iretrieve the text in Markdown format, which can contain	/	tilde.club	70
+iHTML. The text is then passed to the Markdown parser, which	/	tilde.club	70
+ireturns an AST that is traversed to produce the final	/	tilde.club	70
+ioutput. The goldmark project was used to parse the Markdown	/	tilde.club	70
+iand the Go Networking project for the HTML.	/	tilde.club	70
 hgoldmark	URL:https://github.com/yuin/goldmark	github.com	443
 hGo Networking	URL:https://cs.opensource.google/go/x/net/+/master:html/	cs.opensource.google	443
-i	/	tilde.team	70
-i### Contributing	/	tilde.team	70
-i	/	tilde.team	70
-iThe project is under construction. Anyone is free to	/	tilde.team	70
-icontribute to the source code. For more details, please	/	tilde.team	70
-ivisit the GitHub repository.	/	tilde.team	70
+i	/	tilde.club	70
+i### Contributing	/	tilde.club	70
+i	/	tilde.club	70
+iThe project is under construction. Anyone is free to	/	tilde.club	70
+icontribute to the source code. For more details, please	/	tilde.club	70
+ivisit the GitHub repository.	/	tilde.club	70
 hGitHub repository	URL:https://github.com/theobori/lueur	github.com	443
-i	/	tilde.team	70
-i## Rewriting my files	/	tilde.team	70
-i	/	tilde.team	70
-iI automated the rewriting of my files with the lueur	/	tilde.team	70
-iproject, it helped me transform my blog posts from Markdown	/	tilde.team	70
-iformat to gph format.	/	tilde.team	70
-i	/	tilde.team	70
-iHowever, I wrote the home page, i.e. the index.gph file, and	/	tilde.team	70
-ithe posts.gph file by hand. Here's what these two pages look	/	tilde.team	70
-ilike on my website through the Gopher client Gophie. Below	/	tilde.team	70
-iis the home page.	/	tilde.team	70
+i	/	tilde.club	70
+i## Rewriting my files	/	tilde.club	70
+i	/	tilde.club	70
+iI automated the rewriting of my files with the lueur	/	tilde.club	70
+iproject, it helped me transform my blog posts from Markdown	/	tilde.club	70
+iformat to gph format.	/	tilde.club	70
+i	/	tilde.club	70
+iHowever, I wrote the home page, i.e. the index.gph file, and	/	tilde.club	70
+ithe posts.gph file by hand. Here's what these two pages look	/	tilde.club	70
+ilike on my website through the Gopher client Gophie. Below	/	tilde.club	70
+iis the home page.	/	tilde.club	70
 hGophie	URL:https://gophie.org/	gophie.org	443
-i	/	tilde.team	70
-i/my-gph-homepage.png	/	tilde.team	70
-I/my-gph-homepage.png	/~nagi/my-gph-homepage.png	tilde.team	70
-i	/	tilde.team	70
-iAnd below the blog posts index.	/	tilde.team	70
-i	/	tilde.team	70
-i/my-gph-posts.png	/	tilde.team	70
-I/my-gph-posts.png	/~nagi/my-gph-posts.png	tilde.team	70
-i	/	tilde.team	70
-i## Why use Gopher	/	tilde.team	70
-i	/	tilde.team	70
-iOne might ask why use Gopher in 2026, whether to write a	/	tilde.team	70
-iphlog, art, intimde diary or anything else. In my opinion,	/	tilde.team	70
-ithe author of baud.baby explains it perfectly in this post.	/	tilde.team	70
-iAs he says, for older people it may be nostalgia for old	/	tilde.team	70
-itechnologies, others like the simplicity of the protocol and	/	tilde.team	70
-ifile format.	/	tilde.team	70
+i	/	tilde.club	70
+i/my-gph-homepage.png	/	tilde.club	70
+I/my-gph-homepage.png	/~theobori/my-gph-homepage.png	tilde.club	70
+i	/	tilde.club	70
+iAnd below the blog posts index.	/	tilde.club	70
+i	/	tilde.club	70
+i/my-gph-posts.png	/	tilde.club	70
+I/my-gph-posts.png	/~theobori/my-gph-posts.png	tilde.club	70
+i	/	tilde.club	70
+i## Why use Gopher	/	tilde.club	70
+i	/	tilde.club	70
+iOne might ask why use Gopher in 2026, whether to write a	/	tilde.club	70
+iphlog, art, intimde diary or anything else. In my opinion,	/	tilde.club	70
+ithe author of baud.baby explains it perfectly in this post.	/	tilde.club	70
+iAs he says, for older people it may be nostalgia for old	/	tilde.club	70
+itechnologies, others like the simplicity of the protocol and	/	tilde.club	70
+ifile format.	/	tilde.club	70
 1baud.baby		baud.baby	70
 0post	/phlog/fs20170616.txt	baud.baby:70	70
-i	/	tilde.team	70
-iI also think that people like to be able to express	/	tilde.team	70
-ithemselves in a secret place, away from the general public.	/	tilde.team	70
-i	/	tilde.team	70
-i## Why I use Gopher	/	tilde.team	70
-i	/	tilde.team	70
-iI like the fact that it's a remote corner of the Internet	/	tilde.team	70
-ithat's hard to get to. I think it makes the experience	/	tilde.team	70
-iinteresting. It's rare for someone to stumble across a	/	tilde.team	70
-iGopher website by chance; you have to be curious and often	/	tilde.team	70
-ipassionate.	/	tilde.team	70
-i	/	tilde.team	70
-iThe community aspect appeals to me, in fact most of the	/	tilde.team	70
-iGopher servers currently running are managed by pubnixes,	/	tilde.team	70
-iand my files are themselves behind the tilde.pink server.	/	tilde.team	70
+i	/	tilde.club	70
+iI also think that people like to be able to express	/	tilde.club	70
+ithemselves in a secret place, away from the general public.	/	tilde.club	70
+i	/	tilde.club	70
+i## Why I use Gopher	/	tilde.club	70
+i	/	tilde.club	70
+iI like the fact that it's a remote corner of the Internet	/	tilde.club	70
+ithat's hard to get to. I think it makes the experience	/	tilde.club	70
+iinteresting. It's rare for someone to stumble across a	/	tilde.club	70
+iGopher website by chance; you have to be curious and often	/	tilde.club	70
+ipassionate.	/	tilde.club	70
+i	/	tilde.club	70
+iThe community aspect appeals to me, in fact most of the	/	tilde.club	70
+iGopher servers currently running are managed by pubnixes,	/	tilde.club	70
+iand my files are themselves behind the tilde.pink server.	/	tilde.club	70
 htilde.pink	URL:https://tilde.pink	tilde.pink	443
-i	/	tilde.team	70
-iI also like the fact that Gopher websites are only consumed	/	tilde.team	70
-iby humans, because the companies that scrap the content of	/	tilde.team	70
-iwebsites aren't really interested in this protocol. It's too	/	tilde.team	70
-ilittle used and it wouldn't be profitable for them.	/	tilde.team	70
-i	/	tilde.team	70
-iThe Gopher protocol and the documents it carries are very	/	tilde.team	70
-ilight. I find it more interesting to concentrate on content	/	tilde.team	70
-irather than form, unlike most modern HTML pages which are	/	tilde.team	70
-ihighly stylized and carry a lot of elements for the web	/	tilde.team	70
-ibrowser to load. For my personal website, I want this	/	tilde.team	70
-iworkload to be very low.	/	tilde.team	70
-i	/	tilde.team	70
-iI like this simplicity.	/	tilde.team	70
-i	/	tilde.team	70
-i## End of my gemtext files maintenance	/	tilde.team	70
-i	/	tilde.team	70
-iI also really like the Gemini protocol, but I'd rather	/	tilde.team	70
-iconcentrate exclusively on Gopher, so I've deleted my old	/	tilde.team	70
-igemtext files and will only be maintaining my gph files. I	/	tilde.team	70
-iwill still continue to consume content through Gemini but	/	tilde.team	70
-ifor the time being I won't be producing any more.	/	tilde.team	70
+i	/	tilde.club	70
+iI also like the fact that Gopher websites are only consumed	/	tilde.club	70
+iby humans, because the companies that scrap the content of	/	tilde.club	70
+iwebsites aren't really interested in this protocol. It's too	/	tilde.club	70
+ilittle used and it wouldn't be profitable for them.	/	tilde.club	70
+i	/	tilde.club	70
+iThe Gopher protocol and the documents it carries are very	/	tilde.club	70
+ilight. I find it more interesting to concentrate on content	/	tilde.club	70
+irather than form, unlike most modern HTML pages which are	/	tilde.club	70
+ihighly stylized and carry a lot of elements for the web	/	tilde.club	70
+ibrowser to load. For my personal website, I want this	/	tilde.club	70
+iworkload to be very low.	/	tilde.club	70
+i	/	tilde.club	70
+iI like this simplicity.	/	tilde.club	70
+i	/	tilde.club	70
+i## End of my gemtext files maintenance	/	tilde.club	70
+i	/	tilde.club	70
+iI also really like the Gemini protocol, but I'd rather	/	tilde.club	70
+iconcentrate exclusively on Gopher, so I've deleted my old	/	tilde.club	70
+igemtext files and will only be maintaining my gph files. I	/	tilde.club	70
+iwill still continue to consume content through Gemini but	/	tilde.club	70
+ifor the time being I won't be producing any more.	/	tilde.club	70
 hGemini	URL:https://geminiprotocol.net/	geminiprotocol.net	443
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iI love Gopher and its ecosystem more than ever, and I intend	/	tilde.team	70
-ito keep my little part of Gopherspace up to date.	/	tilde.team	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iI love Gopher and its ecosystem more than ever, and I intend	/	tilde.club	70
+ito keep my little part of Gopherspace up to date.	/	tilde.club	70

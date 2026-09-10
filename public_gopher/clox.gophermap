@@ -1,103 +1,103 @@
-i## title: My bytecode VM Lox interpreter	/	tilde.team	70
-i## date: "2024-10-06"	/	tilde.team	70
-i	/	tilde.team	70
-iThe aim of this post is to describe the general operation of	/	tilde.team	70
-ithe program and some of the mechanisms that we consider to	/	tilde.team	70
-ibe of interest. For full details, a link to the source code	/	tilde.team	70
-iis available at the bottom of the page.	/	tilde.team	70
-i	/	tilde.team	70
-iSo I continued with “Crafting Interpreters” by Robert	/	tilde.team	70
-iNystrom after making My Tree-Walker Lox interpreter. In this	/	tilde.team	70
-ipart I tried to do as many challenges as possible and really	/	tilde.team	70
-iunderstand how a VM bytecode works.	/	tilde.team	70
-1My Tree-Walker Lox interpreter	/~nagi/posts/jlox	tilde.team	70
-i	/	tilde.team	70
-iThis version is written in C, which means we have to write a	/	tilde.team	70
-ilot of code ourselves, but we don't use any external	/	tilde.team	70
-ilibraries.	/	tilde.team	70
-i	/	tilde.team	70
-i## Compiler	/	tilde.team	70
-i	/	tilde.team	70
-iThe primary purpose of our compiler is to generate a chunk	/	tilde.team	70
-iof code in bytecode form for interpretation by our bytecode	/	tilde.team	70
-ivirtual machine. Here are a few interesting features of the	/	tilde.team	70
-ifront end.	/	tilde.team	70
-i	/	tilde.team	70
-i### Scanner	/	tilde.team	70
-i	/	tilde.team	70
-iThe token scanner is very classic, with only one thing to	/	tilde.team	70
-isay: the function responsible for identifying the language's	/	tilde.team	70
-inative keywords is very dirty. The author has chosen to use	/	tilde.team	70
-ia large switch statement instead of implementing a sorting	/	tilde.team	70
-ifunction, which is certainly powerful but not very elegant.	/	tilde.team	70
-i	/	tilde.team	70
-i### Parser	/	tilde.team	70
-i	/	tilde.team	70
-iAn interesting point to note is that the author chose not to	/	tilde.team	70
-iuse a syntax tree for the front end. We therefore	/	tilde.team	70
-iimplemented a single-pass compiler (directly converts compile	/	tilde.team	70
-iunits into bytecode).	/	tilde.team	70
-i	/	tilde.team	70
-iWe also implemented a Vaughan Pratt's parser, in our case a	/	tilde.team	70
-i“top-down operator precedence parser”. This means we have to	/	tilde.team	70
-idefine operator precedence in advance. Here's what it looks	/	tilde.team	70
-ilike in code.	/	tilde.team	70
-i	/	tilde.team	70
-itypedef enum {	/	tilde.team	70
-i  PREC_NONE,	/	tilde.team	70
-i  PREC_ASSIGNMENT, // =	/	tilde.team	70
-i  PREC_OR,         // or	/	tilde.team	70
-i  PREC_AND,        // and	/	tilde.team	70
-i  PREC_EQUALITY,   // == !=	/	tilde.team	70
-i  PREC_COMPARISON, // < > <= >=	/	tilde.team	70
-i  PREC_TERM,       // + -	/	tilde.team	70
-i  PREC_FACTOR,     // * /	/	tilde.team	70
-i  PREC_UNARY,      // ! -	/	tilde.team	70
-i  PREC_CALL,       // . ()	/	tilde.team	70
-i  PREC_PRIMARY	/	tilde.team	70
-i} Precedence;	/	tilde.team	70
-i	/	tilde.team	70
-iThis precedence is simply used to control the parsing of	/	tilde.team	70
-iexpressions. A rule with a lower precedence than the last	/	tilde.team	70
-iparsed expression is not allowed.	/	tilde.team	70
-i	/	tilde.team	70
-i## Bytecode	/	tilde.team	70
-i	/	tilde.team	70
-iTo manage conditions, we emit OP_JUMP operation code for	/	tilde.team	70
-iconditions. If a condition expression is evaluated to false,	/	tilde.team	70
-iit jumps to the end of the conditionnal block / expression.	/	tilde.team	70
-iTo do this, we use the concept of backpatching: we overwrite	/	tilde.team	70
-ithe immediate value of the instruction in the chunk during	/	tilde.team	70
-icompilation.	/	tilde.team	70
-i	/	tilde.team	70
-iIn my implementation, all immediate values are encoded on 8	/	tilde.team	70
-ibits, with the exception of constants, which have a size of	/	tilde.team	70
-i24 bits.	/	tilde.team	70
-i	/	tilde.team	70
-i## Virtual Machine	/	tilde.team	70
-i	/	tilde.team	70
-iThe VM is centered on a stack where we push operands, local	/	tilde.team	70
-ivariables, etc..	/	tilde.team	70
-i	/	tilde.team	70
-iEverything at runtime is managed by callframes, even the top-	/	tilde.team	70
-ilevel code is embed within a function object.	/	tilde.team	70
-i	/	tilde.team	70
-i## Example	/	tilde.team	70
-i	/	tilde.team	70
-iHere is a simple Lox example that can be evaluated by my	/	tilde.team	70
-iinterpreter.	/	tilde.team	70
-i	/	tilde.team	70
-ifun fib(n) {	/	tilde.team	70
-i    if (n < 2) {	/	tilde.team	70
-i        return n;	/	tilde.team	70
-i    }	/	tilde.team	70
-i	/	tilde.team	70
-i    return fib(n - 2) + fib(n - 1);	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iprint fib(10);	/	tilde.team	70
-i	/	tilde.team	70
-i## Links	/	tilde.team	70
-i	/	tilde.team	70
-ihttps://github.com/theobori/lox-virtual-machine	/	tilde.team	70
+i## title: My bytecode VM Lox interpreter	/	tilde.club	70
+i## date: "2024-10-06"	/	tilde.club	70
+i	/	tilde.club	70
+iThe aim of this post is to describe the general operation of	/	tilde.club	70
+ithe program and some of the mechanisms that we consider to	/	tilde.club	70
+ibe of interest. For full details, a link to the source code	/	tilde.club	70
+iis available at the bottom of the page.	/	tilde.club	70
+i	/	tilde.club	70
+iSo I continued with “Crafting Interpreters” by Robert	/	tilde.club	70
+iNystrom after making My Tree-Walker Lox interpreter. In this	/	tilde.club	70
+ipart I tried to do as many challenges as possible and really	/	tilde.club	70
+iunderstand how a VM bytecode works.	/	tilde.club	70
+1My Tree-Walker Lox interpreter	/~theobori/posts/jlox	tilde.club	70
+i	/	tilde.club	70
+iThis version is written in C, which means we have to write a	/	tilde.club	70
+ilot of code ourselves, but we don't use any external	/	tilde.club	70
+ilibraries.	/	tilde.club	70
+i	/	tilde.club	70
+i## Compiler	/	tilde.club	70
+i	/	tilde.club	70
+iThe primary purpose of our compiler is to generate a chunk	/	tilde.club	70
+iof code in bytecode form for interpretation by our bytecode	/	tilde.club	70
+ivirtual machine. Here are a few interesting features of the	/	tilde.club	70
+ifront end.	/	tilde.club	70
+i	/	tilde.club	70
+i### Scanner	/	tilde.club	70
+i	/	tilde.club	70
+iThe token scanner is very classic, with only one thing to	/	tilde.club	70
+isay: the function responsible for identifying the language's	/	tilde.club	70
+inative keywords is very dirty. The author has chosen to use	/	tilde.club	70
+ia large switch statement instead of implementing a sorting	/	tilde.club	70
+ifunction, which is certainly powerful but not very elegant.	/	tilde.club	70
+i	/	tilde.club	70
+i### Parser	/	tilde.club	70
+i	/	tilde.club	70
+iAn interesting point to note is that the author chose not to	/	tilde.club	70
+iuse a syntax tree for the front end. We therefore	/	tilde.club	70
+iimplemented a single-pass compiler (directly converts compile	/	tilde.club	70
+iunits into bytecode).	/	tilde.club	70
+i	/	tilde.club	70
+iWe also implemented a Vaughan Pratt's parser, in our case a	/	tilde.club	70
+i“top-down operator precedence parser”. This means we have to	/	tilde.club	70
+idefine operator precedence in advance. Here's what it looks	/	tilde.club	70
+ilike in code.	/	tilde.club	70
+i	/	tilde.club	70
+itypedef enum {	/	tilde.club	70
+i  PREC_NONE,	/	tilde.club	70
+i  PREC_ASSIGNMENT, // =	/	tilde.club	70
+i  PREC_OR,         // or	/	tilde.club	70
+i  PREC_AND,        // and	/	tilde.club	70
+i  PREC_EQUALITY,   // == !=	/	tilde.club	70
+i  PREC_COMPARISON, // < > <= >=	/	tilde.club	70
+i  PREC_TERM,       // + -	/	tilde.club	70
+i  PREC_FACTOR,     // * /	/	tilde.club	70
+i  PREC_UNARY,      // ! -	/	tilde.club	70
+i  PREC_CALL,       // . ()	/	tilde.club	70
+i  PREC_PRIMARY	/	tilde.club	70
+i} Precedence;	/	tilde.club	70
+i	/	tilde.club	70
+iThis precedence is simply used to control the parsing of	/	tilde.club	70
+iexpressions. A rule with a lower precedence than the last	/	tilde.club	70
+iparsed expression is not allowed.	/	tilde.club	70
+i	/	tilde.club	70
+i## Bytecode	/	tilde.club	70
+i	/	tilde.club	70
+iTo manage conditions, we emit OP_JUMP operation code for	/	tilde.club	70
+iconditions. If a condition expression is evaluated to false,	/	tilde.club	70
+iit jumps to the end of the conditionnal block / expression.	/	tilde.club	70
+iTo do this, we use the concept of backpatching: we overwrite	/	tilde.club	70
+ithe immediate value of the instruction in the chunk during	/	tilde.club	70
+icompilation.	/	tilde.club	70
+i	/	tilde.club	70
+iIn my implementation, all immediate values are encoded on 8	/	tilde.club	70
+ibits, with the exception of constants, which have a size of	/	tilde.club	70
+i24 bits.	/	tilde.club	70
+i	/	tilde.club	70
+i## Virtual Machine	/	tilde.club	70
+i	/	tilde.club	70
+iThe VM is centered on a stack where we push operands, local	/	tilde.club	70
+ivariables, etc..	/	tilde.club	70
+i	/	tilde.club	70
+iEverything at runtime is managed by callframes, even the top-	/	tilde.club	70
+ilevel code is embed within a function object.	/	tilde.club	70
+i	/	tilde.club	70
+i## Example	/	tilde.club	70
+i	/	tilde.club	70
+iHere is a simple Lox example that can be evaluated by my	/	tilde.club	70
+iinterpreter.	/	tilde.club	70
+i	/	tilde.club	70
+ifun fib(n) {	/	tilde.club	70
+i    if (n < 2) {	/	tilde.club	70
+i        return n;	/	tilde.club	70
+i    }	/	tilde.club	70
+i	/	tilde.club	70
+i    return fib(n - 2) + fib(n - 1);	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iprint fib(10);	/	tilde.club	70
+i	/	tilde.club	70
+i## Links	/	tilde.club	70
+i	/	tilde.club	70
+ihttps://github.com/theobori/lox-virtual-machine	/	tilde.club	70
 hhttps://github.com/theobori/lox-virtual-machine	URL:https://github.com/theobori/lox-virtual-machine	github.com	443

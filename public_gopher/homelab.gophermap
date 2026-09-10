@@ -1,226 +1,226 @@
-i## title: My homelab	/	tilde.team	70
-i## date: "2024-06-06"	/	tilde.team	70
-i	/	tilde.team	70
-iI've got an old laptop that I don't use anymore, so I	/	tilde.team	70
-ithought I'd turn it into a server and deploy some free, open-	/	tilde.team	70
-isource web services on it.	/	tilde.team	70
-i	/	tilde.team	70
-iThe aim is to create a private homelab, i.e. the machine	/	tilde.team	70
-ishould only be accessible via the local network. None of the	/	tilde.team	70
-iservices are exposed to the Internet, with the exception of	/	tilde.team	70
-iWireguard, which lets me access the services from the	/	tilde.team	70
-ioutside.	/	tilde.team	70
-i	/	tilde.team	70
-iThe aim of this post is to present the main steps I've taken	/	tilde.team	70
-iand explain how the homelab works.	/	tilde.team	70
-i	/	tilde.team	70
-iMy laptop is an ASUS ROG G750 with 8GB of memory and 2 HDDs	/	tilde.team	70
-iof around 600GB each. It hasn't been used for about five or	/	tilde.team	70
-isix years and the battery is dead.	/	tilde.team	70
+i## title: My homelab	/	tilde.club	70
+i## date: "2024-06-06"	/	tilde.club	70
+i	/	tilde.club	70
+iI've got an old laptop that I don't use anymore, so I	/	tilde.club	70
+ithought I'd turn it into a server and deploy some free, open-	/	tilde.club	70
+isource web services on it.	/	tilde.club	70
+i	/	tilde.club	70
+iThe aim is to create a private homelab, i.e. the machine	/	tilde.club	70
+ishould only be accessible via the local network. None of the	/	tilde.club	70
+iservices are exposed to the Internet, with the exception of	/	tilde.club	70
+iWireguard, which lets me access the services from the	/	tilde.club	70
+ioutside.	/	tilde.club	70
+i	/	tilde.club	70
+iThe aim of this post is to present the main steps I've taken	/	tilde.club	70
+iand explain how the homelab works.	/	tilde.club	70
+i	/	tilde.club	70
+iMy laptop is an ASUS ROG G750 with 8GB of memory and 2 HDDs	/	tilde.club	70
+iof around 600GB each. It hasn't been used for about five or	/	tilde.club	70
+isix years and the battery is dead.	/	tilde.club	70
 hASUS ROG G750	URL:https://laptopmedia.com/series/asus-rog-g750/	laptopmedia.com	443
-i	/	tilde.team	70
-i## First steps	/	tilde.team	70
-i	/	tilde.team	70
-iFirst, I decided to make an old USB key bootable. I install	/	tilde.team	70
-iVentoy on it to be able to load different image disks (ISO)	/	tilde.team	70
-iwithout having to rewrite each time directly on the USB key.	/	tilde.team	70
+i	/	tilde.club	70
+i## First steps	/	tilde.club	70
+i	/	tilde.club	70
+iFirst, I decided to make an old USB key bootable. I install	/	tilde.club	70
+iVentoy on it to be able to load different image disks (ISO)	/	tilde.club	70
+iwithout having to rewrite each time directly on the USB key.	/	tilde.club	70
 hVentoy	URL:https://www.ventoy.net/	www.ventoy.net	443
-i	/	tilde.team	70
-iI put Memtest86+ to test the memory, shredos.x86_64 to wipe	/	tilde.team	70
-ithe HDDs and finally Debian 12 which will be the main OS.	/	tilde.team	70
+i	/	tilde.club	70
+iI put Memtest86+ to test the memory, shredos.x86_64 to wipe	/	tilde.club	70
+ithe HDDs and finally Debian 12 which will be the main OS.	/	tilde.club	70
 hMemtest86+	URL:https://www.memtest.org/	www.memtest.org	443
 hshredos.x86_64	URL:https://github.com/PartialVolume/shredos.x86_64	github.com	443
 hDebian 12	URL:https://cdimage.debian.org/debian-cd/12.5.0/amd64/iso-cd/	cdimage.debian.org	443
-i	/	tilde.team	70
-iSo when I boot on the USB key, it loads the "multiboot" boot-	/	tilde.team	70
-iloader (Ventoy) and I can then load one of the three	/	tilde.team	70
-iprograms.	/	tilde.team	70
-i	/	tilde.team	70
-i## Pre configuration	/	tilde.team	70
-i	/	tilde.team	70
-iTo be able to deploy the system configuration and reproduce	/	tilde.team	70
-iit later, I'm writing an Ansible playbook and testing it on	/	tilde.team	70
-ia local VM (virt-manager + KVM).	/	tilde.team	70
-i	/	tilde.team	70
-iThe entire configuration is available at the bottom of the	/	tilde.team	70
-ipage.	/	tilde.team	70
-i	/	tilde.team	70
-i## TLS certificates	/	tilde.team	70
-i	/	tilde.team	70
-iI want communication with web applications to be encrypted	/	tilde.team	70
-iand secure, so I need an HTTPS server, so I need TLS	/	tilde.team	70
-icertificates and, to make things easier, a domain name.	/	tilde.team	70
-i	/	tilde.team	70
-iFor the domain name I used Duck DNS and reserved the sub-	/	tilde.team	70
-idomain theobori.duckdns.org which for the moment corresponds	/	tilde.team	70
-ito the IPv4 of my virtual machine accessible only from the	/	tilde.team	70
-ihost system.	/	tilde.team	70
+i	/	tilde.club	70
+iSo when I boot on the USB key, it loads the "multiboot" boot-	/	tilde.club	70
+iloader (Ventoy) and I can then load one of the three	/	tilde.club	70
+iprograms.	/	tilde.club	70
+i	/	tilde.club	70
+i## Pre configuration	/	tilde.club	70
+i	/	tilde.club	70
+iTo be able to deploy the system configuration and reproduce	/	tilde.club	70
+iit later, I'm writing an Ansible playbook and testing it on	/	tilde.club	70
+ia local VM (virt-manager + KVM).	/	tilde.club	70
+i	/	tilde.club	70
+iThe entire configuration is available at the bottom of the	/	tilde.club	70
+ipage.	/	tilde.club	70
+i	/	tilde.club	70
+i## TLS certificates	/	tilde.club	70
+i	/	tilde.club	70
+iI want communication with web applications to be encrypted	/	tilde.club	70
+iand secure, so I need an HTTPS server, so I need TLS	/	tilde.club	70
+icertificates and, to make things easier, a domain name.	/	tilde.club	70
+i	/	tilde.club	70
+iFor the domain name I used Duck DNS and reserved the sub-	/	tilde.club	70
+idomain theobori.duckdns.org which for the moment corresponds	/	tilde.club	70
+ito the IPv4 of my virtual machine accessible only from the	/	tilde.club	70
+ihost system.	/	tilde.club	70
 hDuck DNS	URL:https://www.duckdns.org/	www.duckdns.org	443
 htheobori.duckdns.org	URL:https://theobori.duckdns.org	theobori.duckdns.org	443
-i	/	tilde.team	70
-iIn fact, I only need to manage one certificate with two	/	tilde.team	70
-iSANs:	/	tilde.team	70
-i- theobori.duckdns.org	/	tilde.team	70
-i- *.theobori.duckdns.org	/	tilde.team	70
-i	/	tilde.team	70
-i## Services	/	tilde.team	70
-i	/	tilde.team	70
-iEvery application is deployed with the Ansible playbook are	/	tilde.team	70
-iconteuneurized and managed with Docker.	/	tilde.team	70
-i	/	tilde.team	70
-iThey are accessible only through port 443 managed by	/	tilde.team	70
-iTraefik. Each sub-domain of theobori.duckdns.org corresponds	/	tilde.team	70
-ito a service, with the exception of the homepage, which is	/	tilde.team	70
-iassociated with the domain itself.	/	tilde.team	70
+i	/	tilde.club	70
+iIn fact, I only need to manage one certificate with two	/	tilde.club	70
+iSANs:	/	tilde.club	70
+i- theobori.duckdns.org	/	tilde.club	70
+i- *.theobori.duckdns.org	/	tilde.club	70
+i	/	tilde.club	70
+i## Services	/	tilde.club	70
+i	/	tilde.club	70
+iEvery application is deployed with the Ansible playbook are	/	tilde.club	70
+iconteuneurized and managed with Docker.	/	tilde.club	70
+i	/	tilde.club	70
+iThey are accessible only through port 443 managed by	/	tilde.club	70
+iTraefik. Each sub-domain of theobori.duckdns.org corresponds	/	tilde.club	70
+ito a service, with the exception of the homepage, which is	/	tilde.club	70
+iassociated with the domain itself.	/	tilde.club	70
 hTraefik	URL:https://traefik.io/	traefik.io	443
 htheobori.duckdns.org	URL:https://theobori.duckdns.org	theobori.duckdns.org	443
-i	/	tilde.team	70
-i## Firewall	/	tilde.team	70
-i	/	tilde.team	70
-iTo filter incoming network traffic, I manipulate iptables	/	tilde.team	70
-iwith the ufw tool. There are only four ports open as	/	tilde.team	70
-ideclared below in the Ansible playbook configuration.	/	tilde.team	70
-i	/	tilde.team	70
-i- role: weareinteractive.ufw	/	tilde.team	70
-i  tags: ufw	/	tilde.team	70
-i  ufw_enabled: true	/	tilde.team	70
-i  ufw_packages: ["ufw"]	/	tilde.team	70
-i  ufw_rules:	/	tilde.team	70
-i  - logging: "full"	/	tilde.team	70
-i  - rule: allow	/	tilde.team	70
-i      to_port: "443"	/	tilde.team	70
-i  - rule: allow	/	tilde.team	70
-i      to_port: "80"	/	tilde.team	70
-i  - rule: allow	/	tilde.team	70
-i    {% raw %} to_port: "{{ ssh_port }}" {% endraw %}	/	tilde.team	70
-i  # Wireguard	/	tilde.team	70
-i  - rule: allow	/	tilde.team	70
-i      to_port: "51820"	/	tilde.team	70
-i      proto: udp	/	tilde.team	70
-i  # Delete default rule	/	tilde.team	70
-i  - rule: allow	/	tilde.team	70
-i      name: Anywhere	/	tilde.team	70
-i      delete: true	/	tilde.team	70
-i  ufw_manage_config: true	/	tilde.team	70
-i  ufw_config:	/	tilde.team	70
-i  IPV6: "yes"	/	tilde.team	70
-i  DEFAULT_INPUT_POLICY: DROP	/	tilde.team	70
-i  DEFAULT_OUTPUT_POLICY: ACCEPT	/	tilde.team	70
-i  DEFAULT_FORWARD_POLICY: DROP	/	tilde.team	70
-i  DEFAULT_APPLICATION_POLICY: SKIP	/	tilde.team	70
-i  MANAGE_BUILTINS: "no"	/	tilde.team	70
-i  IPT_SYSCTL: /etc/ufw/sysctl.conf	/	tilde.team	70
-i  IPT_MODULES: ""	/	tilde.team	70
-i	/	tilde.team	70
-i## Identity provider	/	tilde.team	70
-i	/	tilde.team	70
-iServices with integration for protocols to verify user	/	tilde.team	70
-iidentity or determine permissions are all linked to the	/	tilde.team	70
-iAuthentik user directory.	/	tilde.team	70
+i	/	tilde.club	70
+i## Firewall	/	tilde.club	70
+i	/	tilde.club	70
+iTo filter incoming network traffic, I manipulate iptables	/	tilde.club	70
+iwith the ufw tool. There are only four ports open as	/	tilde.club	70
+ideclared below in the Ansible playbook configuration.	/	tilde.club	70
+i	/	tilde.club	70
+i- role: weareinteractive.ufw	/	tilde.club	70
+i  tags: ufw	/	tilde.club	70
+i  ufw_enabled: true	/	tilde.club	70
+i  ufw_packages: ["ufw"]	/	tilde.club	70
+i  ufw_rules:	/	tilde.club	70
+i  - logging: "full"	/	tilde.club	70
+i  - rule: allow	/	tilde.club	70
+i      to_port: "443"	/	tilde.club	70
+i  - rule: allow	/	tilde.club	70
+i      to_port: "80"	/	tilde.club	70
+i  - rule: allow	/	tilde.club	70
+i    {% raw %} to_port: "{{ ssh_port }}" {% endraw %}	/	tilde.club	70
+i  # Wireguard	/	tilde.club	70
+i  - rule: allow	/	tilde.club	70
+i      to_port: "51820"	/	tilde.club	70
+i      proto: udp	/	tilde.club	70
+i  # Delete default rule	/	tilde.club	70
+i  - rule: allow	/	tilde.club	70
+i      name: Anywhere	/	tilde.club	70
+i      delete: true	/	tilde.club	70
+i  ufw_manage_config: true	/	tilde.club	70
+i  ufw_config:	/	tilde.club	70
+i  IPV6: "yes"	/	tilde.club	70
+i  DEFAULT_INPUT_POLICY: DROP	/	tilde.club	70
+i  DEFAULT_OUTPUT_POLICY: ACCEPT	/	tilde.club	70
+i  DEFAULT_FORWARD_POLICY: DROP	/	tilde.club	70
+i  DEFAULT_APPLICATION_POLICY: SKIP	/	tilde.club	70
+i  MANAGE_BUILTINS: "no"	/	tilde.club	70
+i  IPT_SYSCTL: /etc/ufw/sysctl.conf	/	tilde.club	70
+i  IPT_MODULES: ""	/	tilde.club	70
+i	/	tilde.club	70
+i## Identity provider	/	tilde.club	70
+i	/	tilde.club	70
+iServices with integration for protocols to verify user	/	tilde.club	70
+iidentity or determine permissions are all linked to the	/	tilde.club	70
+iAuthentik user directory.	/	tilde.club	70
 hAuthentik	URL:https://goauthentik.io/	goauthentik.io	443
-i	/	tilde.team	70
-iI needed OAuth2 for Portainer and LDAP for several other	/	tilde.team	70
-iservices such as Owncloud.	/	tilde.team	70
+i	/	tilde.club	70
+iI needed OAuth2 for Portainer and LDAP for several other	/	tilde.club	70
+iservices such as Owncloud.	/	tilde.club	70
 hPortainer	URL:https://www.portainer.io/	www.portainer.io	443
 hOwncloud	URL:https://owncloud.com/	owncloud.com	443
-i	/	tilde.team	70
-iIf I remember correctly, the OAuth2 Outpost is embedded in	/	tilde.team	70
-ithe application by default, whereas the LDAP Outpost had to	/	tilde.team	70
-ibe configured with specific parameters for Docker.	/	tilde.team	70
-i	/	tilde.team	70
-iHere's a diagram of several services trying to retrieve the	/	tilde.team	70
-iidentity of an Authentik user.	/	tilde.team	70
+i	/	tilde.club	70
+iIf I remember correctly, the OAuth2 Outpost is embedded in	/	tilde.club	70
+ithe application by default, whereas the LDAP Outpost had to	/	tilde.club	70
+ibe configured with specific parameters for Docker.	/	tilde.club	70
+i	/	tilde.club	70
+iHere's a diagram of several services trying to retrieve the	/	tilde.club	70
+iidentity of an Authentik user.	/	tilde.club	70
 hAuthentik	URL:https://goauthentik.io/	goauthentik.io	443
-i	/	tilde.team	70
-i/authentik_users.png	/	tilde.team	70
-I/authentik_users.png	/~nagi/authentik_users.png	tilde.team	70
-i	/	tilde.team	70
-i## Access management	/	tilde.team	70
-i	/	tilde.team	70
-iWith Authentik, group policies have been created to	/	tilde.team	70
-iauthorize only certain groups of users to access certain	/	tilde.team	70
-iservices.	/	tilde.team	70
+i	/	tilde.club	70
+i/authentik_users.png	/	tilde.club	70
+I/authentik_users.png	/~theobori/authentik_users.png	tilde.club	70
+i	/	tilde.club	70
+i## Access management	/	tilde.club	70
+i	/	tilde.club	70
+iWith Authentik, group policies have been created to	/	tilde.club	70
+iauthorize only certain groups of users to access certain	/	tilde.club	70
+iservices.	/	tilde.club	70
 hAuthentik	URL:https://goauthentik.io/	goauthentik.io	443
-i	/	tilde.team	70
-iFor example, for Jellyfin, only users in the Jellyfin group	/	tilde.team	70
-iare authorized to connect.	/	tilde.team	70
+i	/	tilde.club	70
+iFor example, for Jellyfin, only users in the Jellyfin group	/	tilde.club	70
+iare authorized to connect.	/	tilde.club	70
 hJellyfin	URL:https://jellyfin.org/	jellyfin.org	443
-i	/	tilde.team	70
-iIn this way, I was able to secure all administration	/	tilde.team	70
-iservices by authorizing only users in groups reserved for	/	tilde.team	70
-iadministration.	/	tilde.team	70
-i	/	tilde.team	70
-iI also used Traefik and Authentik to secure access to	/	tilde.team	70
-iservices not protected by authentication.	/	tilde.team	70
+i	/	tilde.club	70
+iIn this way, I was able to secure all administration	/	tilde.club	70
+iservices by authorizing only users in groups reserved for	/	tilde.club	70
+iadministration.	/	tilde.club	70
+i	/	tilde.club	70
+iI also used Traefik and Authentik to secure access to	/	tilde.club	70
+iservices not protected by authentication.	/	tilde.club	70
 hTraefik	URL:https://traefik.io/	traefik.io	443
 hAuthentik	URL:https://goauthentik.io/	goauthentik.io	443
-i	/	tilde.team	70
-iI added middleware to the reverse proxy to enable HTTP	/	tilde.team	70
-iForwardAuth with Authentik. In practical terms, this places	/	tilde.team	70
-ia connection portal in front of the targeted web services.	/	tilde.team	70
+i	/	tilde.club	70
+iI added middleware to the reverse proxy to enable HTTP	/	tilde.club	70
+iForwardAuth with Authentik. In practical terms, this places	/	tilde.club	70
+ia connection portal in front of the targeted web services.	/	tilde.club	70
 hAuthentik	URL:https://goauthentik.io/	goauthentik.io	443
-i	/	tilde.team	70
-iLet's say I want to access duplicati.theobori.duckdns.org,	/	tilde.team	70
-iit could be schematized as follows.	/	tilde.team	70
+i	/	tilde.club	70
+iLet's say I want to access duplicati.theobori.duckdns.org,	/	tilde.club	70
+iit could be schematized as follows.	/	tilde.club	70
 hduplicati.theobori.duckdns.org	URL:https://duplicati.theobori.duckdns.org	duplicati.theobori.duckdns.org	443
-i	/	tilde.team	70
-i/authentik_proxy.png	/	tilde.team	70
-I/authentik_proxy.png	/~nagi/authentik_proxy.png	tilde.team	70
-i	/	tilde.team	70
-i## Media stack	/	tilde.team	70
-i	/	tilde.team	70
-iOne of the main objectives was to be able to manage movies	/	tilde.team	70
-iand series and watch them from any device on the local	/	tilde.team	70
-inetwork.	/	tilde.team	70
-i	/	tilde.team	70
-iSo I set up a stack for managing and downloading media,	/	tilde.team	70
-iwhich would then be streamed to devices by Jellyfin.	/	tilde.team	70
+i	/	tilde.club	70
+i/authentik_proxy.png	/	tilde.club	70
+I/authentik_proxy.png	/~theobori/authentik_proxy.png	tilde.club	70
+i	/	tilde.club	70
+i## Media stack	/	tilde.club	70
+i	/	tilde.club	70
+iOne of the main objectives was to be able to manage movies	/	tilde.club	70
+iand series and watch them from any device on the local	/	tilde.club	70
+inetwork.	/	tilde.club	70
+i	/	tilde.club	70
+iSo I set up a stack for managing and downloading media,	/	tilde.club	70
+iwhich would then be streamed to devices by Jellyfin.	/	tilde.club	70
 hJellyfin	URL:https://jellyfin.org/	jellyfin.org	443
-i	/	tilde.team	70
-iHere's what the media stack looks like.	/	tilde.team	70
-i	/	tilde.team	70
-i/media_stack.png	/	tilde.team	70
-I/media_stack.png	/~nagi/media_stack.png	tilde.team	70
-i	/	tilde.team	70
-i## Backup and restore	/	tilde.team	70
-i	/	tilde.team	70
-iTo back up container data, I use Duplicati. It lets you	/	tilde.team	70
-iencrypt data and manage retention very easily via a web	/	tilde.team	70
-iinterface.	/	tilde.team	70
+i	/	tilde.club	70
+iHere's what the media stack looks like.	/	tilde.club	70
+i	/	tilde.club	70
+i/media_stack.png	/	tilde.club	70
+I/media_stack.png	/~theobori/media_stack.png	tilde.club	70
+i	/	tilde.club	70
+i## Backup and restore	/	tilde.club	70
+i	/	tilde.club	70
+iTo back up container data, I use Duplicati. It lets you	/	tilde.club	70
+iencrypt data and manage retention very easily via a web	/	tilde.club	70
+iinterface.	/	tilde.club	70
 hDuplicati	URL:https://duplicati.com/	duplicati.com	443
-i	/	tilde.team	70
-iThese backups can then be restored on my old computer.	/	tilde.team	70
-i	/	tilde.team	70
-i## Monitoring	/	tilde.team	70
-i	/	tilde.team	70
-iTo keep abreast of service status, I've opted for Uptime	/	tilde.team	70
-iKuma, which will alert me via Discord when a service is down	/	tilde.team	70
-ifor n seconds.	/	tilde.team	70
+i	/	tilde.club	70
+iThese backups can then be restored on my old computer.	/	tilde.club	70
+i	/	tilde.club	70
+i## Monitoring	/	tilde.club	70
+i	/	tilde.club	70
+iTo keep abreast of service status, I've opted for Uptime	/	tilde.club	70
+iKuma, which will alert me via Discord when a service is down	/	tilde.club	70
+ifor n seconds.	/	tilde.club	70
 hUptime Kuma	URL:https://uptime.kuma.pet/	uptime.kuma.pet	443
-i	/	tilde.team	70
-iI also have a Prometheus and Grafana stack that lets me	/	tilde.team	70
-icollect metrics on the system and on Docker containers. As	/	tilde.team	70
-ifor Uptime Kuma, I'm alerted by Discord according to limits	/	tilde.team	70
-idefined for RAM and available storage space, for example.	/	tilde.team	70
+i	/	tilde.club	70
+iI also have a Prometheus and Grafana stack that lets me	/	tilde.club	70
+icollect metrics on the system and on Docker containers. As	/	tilde.club	70
+ifor Uptime Kuma, I'm alerted by Discord according to limits	/	tilde.club	70
+idefined for RAM and available storage space, for example.	/	tilde.club	70
 hPrometheus	URL:https://prometheus.io/	prometheus.io	443
 hGrafana	URL:https://grafana.com/	grafana.com	443
 hUptime Kuma	URL:https://uptime.kuma.pet/	uptime.kuma.pet	443
-i	/	tilde.team	70
-iThis is how the monitoring stack looks.	/	tilde.team	70
-i	/	tilde.team	70
-i  /monitoring_stack.png	/	tilde.team	70
-I/monitoring_stack.png	/~nagi/monitoring_stack.png	tilde.team	70
-i	/	tilde.team	70
-i## Final home page	/	tilde.team	70
-i	/	tilde.team	70
-iHere's an overview of the dashboard, featuring all the	/	tilde.team	70
-iservices exposed to the local network. In a way it's the end	/	tilde.team	70
-iresult of service implementation.	/	tilde.team	70
-i	/	tilde.team	70
-i/dashy.png	/	tilde.team	70
-I/dashy.png	/~nagi/dashy.png	tilde.team	70
-i	/	tilde.team	70
-i## Links	/	tilde.team	70
-i	/	tilde.team	70
-ihttps://github.com/theobori/homelab	/	tilde.team	70
+i	/	tilde.club	70
+iThis is how the monitoring stack looks.	/	tilde.club	70
+i	/	tilde.club	70
+i  /monitoring_stack.png	/	tilde.club	70
+I/monitoring_stack.png	/~theobori/monitoring_stack.png	tilde.club	70
+i	/	tilde.club	70
+i## Final home page	/	tilde.club	70
+i	/	tilde.club	70
+iHere's an overview of the dashboard, featuring all the	/	tilde.club	70
+iservices exposed to the local network. In a way it's the end	/	tilde.club	70
+iresult of service implementation.	/	tilde.club	70
+i	/	tilde.club	70
+i/dashy.png	/	tilde.club	70
+I/dashy.png	/~theobori/dashy.png	tilde.club	70
+i	/	tilde.club	70
+i## Links	/	tilde.club	70
+i	/	tilde.club	70
+ihttps://github.com/theobori/homelab	/	tilde.club	70
 hhttps://github.com/theobori/homelab	URL:https://github.com/theobori/homelab	github.com	443

@@ -1,148 +1,148 @@
-i## title: My second Linux From Scratch system	/	tilde.team	70
-i## date: "2026-01-02"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iIn this blog post, I will refer to Linux From Scratch by	/	tilde.team	70
-iwriting "LFS".	/	tilde.team	70
+i## title: My second Linux From Scratch system	/	tilde.club	70
+i## date: "2026-01-02"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iIn this blog post, I will refer to Linux From Scratch by	/	tilde.club	70
+iwriting "LFS".	/	tilde.club	70
 hLinux From Scratch	URL:https://www.linuxfromscratch.org	www.linuxfromscratch.org	443
-i	/	tilde.team	70
-iSince I only use my ThinkPad L390, I decided to build a new	/	tilde.team	70
-iLFS system on my other laptop, an Acer Swift 5, to make it a	/	tilde.team	70
-ifunctional, minimalist and controlled station. Indeed, I	/	tilde.team	70
-idon't use this laptop anymore, I find it much less pleasant	/	tilde.team	70
-ithan my ThinkPad, so I might as well have some fun with it.	/	tilde.team	70
-i	/	tilde.team	70
-iIn this blog post I'm not going to talk about every step in	/	tilde.team	70
-ithe process of building an LFS system, just the ones I find	/	tilde.team	70
-irelevant to my hardware and experience.	/	tilde.team	70
-i	/	tilde.team	70
-i## Background	/	tilde.team	70
-i	/	tilde.team	70
-iCurrently, on my ThinkPad, I use NixOS as my daily main	/	tilde.team	70
-ioperating system. I also have the LFS system that I built a	/	tilde.team	70
-ifew months ago, which is still functional but which I rarely	/	tilde.team	70
-iuse.	/	tilde.team	70
-iThen there's the target laptop, my Acer, on which I also	/	tilde.team	70
-ihave NixOS, the computer isn't used but it's perfectly	/	tilde.team	70
-ifunctional.	/	tilde.team	70
-1the LFS system	/~nagi/posts/lfs-first	tilde.team	70
-i	/	tilde.team	70
-i## My goal	/	tilde.team	70
-i	/	tilde.team	70
-iMy goal is to erase all the data on the storage device (NVMe	/	tilde.team	70
-iSSD), then install LFS 12.4-systemd and BLFS 12.4-systemd in	/	tilde.team	70
-iorder to have a graphics environment that allows me to have	/	tilde.team	70
-ia light and fast desktop environment.	/	tilde.team	70
+i	/	tilde.club	70
+iSince I only use my ThinkPad L390, I decided to build a new	/	tilde.club	70
+iLFS system on my other laptop, an Acer Swift 5, to make it a	/	tilde.club	70
+ifunctional, minimalist and controlled station. Indeed, I	/	tilde.club	70
+idon't use this laptop anymore, I find it much less pleasant	/	tilde.club	70
+ithan my ThinkPad, so I might as well have some fun with it.	/	tilde.club	70
+i	/	tilde.club	70
+iIn this blog post I'm not going to talk about every step in	/	tilde.club	70
+ithe process of building an LFS system, just the ones I find	/	tilde.club	70
+irelevant to my hardware and experience.	/	tilde.club	70
+i	/	tilde.club	70
+i## Background	/	tilde.club	70
+i	/	tilde.club	70
+iCurrently, on my ThinkPad, I use NixOS as my daily main	/	tilde.club	70
+ioperating system. I also have the LFS system that I built a	/	tilde.club	70
+ifew months ago, which is still functional but which I rarely	/	tilde.club	70
+iuse.	/	tilde.club	70
+iThen there's the target laptop, my Acer, on which I also	/	tilde.club	70
+ihave NixOS, the computer isn't used but it's perfectly	/	tilde.club	70
+ifunctional.	/	tilde.club	70
+1the LFS system	/~theobori/posts/lfs-first	tilde.club	70
+i	/	tilde.club	70
+i## My goal	/	tilde.club	70
+i	/	tilde.club	70
+iMy goal is to erase all the data on the storage device (NVMe	/	tilde.club	70
+iSSD), then install LFS 12.4-systemd and BLFS 12.4-systemd in	/	tilde.club	70
+iorder to have a graphics environment that allows me to have	/	tilde.club	70
+ia light and fast desktop environment.	/	tilde.club	70
 hLFS 12.4-systemd	URL:https://www.linuxfromscratch.org/lfs/view/stable-systemd/	www.linuxfromscratch.org	443
 hBLFS 12.4-systemd	URL:https://www.linuxfromscratch.org/blfs/view/stable-systemd/	www.linuxfromscratch.org	443
-i	/	tilde.team	70
-i## Preparation	/	tilde.team	70
-i	/	tilde.team	70
-iFirst of all, I erased all data from the SSD in a clean way,	/	tilde.team	70
-iusing shredos.x86_64. I also tested the memory with	/	tilde.team	70
-iMemtest86+.	/	tilde.team	70
+i	/	tilde.club	70
+i## Preparation	/	tilde.club	70
+i	/	tilde.club	70
+iFirst of all, I erased all data from the SSD in a clean way,	/	tilde.club	70
+iusing shredos.x86_64. I also tested the memory with	/	tilde.club	70
+iMemtest86+.	/	tilde.club	70
 hshredos.x86_64	URL:https://github.com/PartialVolume/shredos.x86_64	github.com	443
 hMemtest86+	URL:https://www.memtest.org/	www.memtest.org	443
-i	/	tilde.team	70
-i### Host system	/	tilde.team	70
-i	/	tilde.team	70
-iBasically, I wanted to dedicate all the SSD space to LFS, so	/	tilde.team	70
-iI chose to build my system on the live version of Debian 13.	/	tilde.team	70
-iTo do this, I downloaded a Debian 13 disk image, checked its	/	tilde.team	70
-iauthenticity and installed it on my USB key, on the	/	tilde.team	70
-ipartition used by Ventoy.	/	tilde.team	70
-i	/	tilde.team	70
-i### Partitioning	/	tilde.team	70
-i	/	tilde.team	70
-iMy computer uses UEFI, so I had to create a dedicated	/	tilde.team	70
-ipartition in which to write the necessary EFI applications,	/	tilde.team	70
-iwith the file system mounted in /boot/efi. Below is a	/	tilde.team	70
-isummary of the partitions created from Debian 13 on my SSD	/	tilde.team	70
-ito accommodate LFS.	/	tilde.team	70
-i	/	tilde.team	70
-iNAME        FSTYPE        SIZE MOUNTPOINTS	/	tilde.team	70
-invme0n1                 476,9G	/	tilde.team	70
-i├─nvme0n1p1 vfat          500M /boot	/	tilde.team	70
-i├─nvme0n1p2 vfat          200M /boot/efi	/	tilde.team	70
-i├─nvme0n1p3 ext4          100G /home	/	tilde.team	70
-i├─nvme0n1p4 ext4           60G /sources	/	tilde.team	70
-i├─nvme0n1p5 ext4          100G /	/	tilde.team	70
-i└─nvme0n1p6 swap            2G [SWAP]	/	tilde.team	70
-i	/	tilde.team	70
-iThis is the result of the following command line.	/	tilde.team	70
-i	/	tilde.team	70
-ilsblk -o NAME,FSTYPE,SIZE,MOUNTPOINTS	/	tilde.team	70
-i	/	tilde.team	70
-iFor the /tmp folder, I chose to let systemd manage it using	/	tilde.team	70
-itmpfs.	/	tilde.team	70
-i	/	tilde.team	70
-i## Building the LFS system and minimal configuration	/	tilde.team	70
-i	/	tilde.team	70
-iOnce my disk was partitioned, I was able to build a minimal	/	tilde.team	70
-iLFS system, with basic programs, standard folders, users,	/	tilde.team	70
-iminimal configuration, etc.	/	tilde.team	70
-i	/	tilde.team	70
-i## Building Linux	/	tilde.team	70
-i	/	tilde.team	70
-iTo build Linux, I had to find and download the firmware for	/	tilde.team	70
-imy hardware, then activate the drivers as modules in the	/	tilde.team	70
-iLinux configuration. While configuring the kernel, I	/	tilde.team	70
-idiscovered a rather useful configuration item called	/	tilde.team	70
-iCONFIG_IKCONFIG_PROC, which exposes the configuration	/	tilde.team	70
-ioptions that were used to build the currently running kernel	/	tilde.team	70
-iin /proc/config.gz.	/	tilde.team	70
-i	/	tilde.team	70
-i## GRUB configuration	/	tilde.team	70
-i	/	tilde.team	70
-iUnlike my previous LFS system, where I used the GRUB managed	/	tilde.team	70
-iby NixOS, this time I have to build, install and configure	/	tilde.team	70
-iit myself. Here's my GRUB configuration.	/	tilde.team	70
-i	/	tilde.team	70
-iset default=0	/	tilde.team	70
-iset timeout=5	/	tilde.team	70
-i	/	tilde.team	70
-iinsmod part_gpt	/	tilde.team	70
-iinsmod ext2	/	tilde.team	70
-i	/	tilde.team	70
-isearch --set=root --fs-uuid 8944-1D1F	/	tilde.team	70
-i	/	tilde.team	70
-iinsmod efi_gop	/	tilde.team	70
-iinsmod efi_uga	/	tilde.team	70
-iif loadfont /boot/grub/fonts/unicode.pf2; then	/	tilde.team	70
-i  terminal_output gfxterm	/	tilde.team	70
-ifi	/	tilde.team	70
-i	/	tilde.team	70
-imenuentry "GNU/Linux, Linux 6.16.1-lfs-12.4-systemd" {	/	tilde.team	70
-i  linux   /vmlinuz-6.16.1-lfs-12.4-systemd	/	tilde.team	70
-iroot=PARTUUID=7d866f2d-54b3-43e1-83d7-9fe18cf910d3	/	tilde.team	70
-i  initrd /microcode.img	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-imenuentry "Firmware Setup" {	/	tilde.team	70
-i  fwsetup	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-i## BLFS and desktop environment	/	tilde.team	70
-i	/	tilde.team	70
-iAfter verification, the system boots and works as expected.	/	tilde.team	70
-iNow all that's left to do is follow BLFS through to build	/	tilde.team	70
-iXFCE, installing some additional items for security and the	/	tilde.team	70
-ilike along the way.	/	tilde.team	70
-i	/	tilde.team	70
-iUnlike my first iteration of LFS and BLFS, I took care to	/	tilde.team	70
-irun all the test suites and installed as many optional	/	tilde.team	70
-idependencies as possible. This paid off, as I had almost no	/	tilde.team	70
-ierrors during project builds, installations and executions.	/	tilde.team	70
-i	/	tilde.team	70
-iFinally, I added some essential programs, a web browser, a	/	tilde.team	70
-isound mixer, a text editor and so on. Here's my final	/	tilde.team	70
-idesktop environment.	/	tilde.team	70
-i	/	tilde.team	70
-i/lfs-second-xfce4.png	/	tilde.team	70
-I/lfs-second-xfce4.png	/~nagi/lfs-second-xfce4.png	tilde.team	70
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iOnce again, an interesting experiment that lets me use my	/	tilde.team	70
-iforgotten hardware and build a fully customized system.	/	tilde.team	70
+i	/	tilde.club	70
+i### Host system	/	tilde.club	70
+i	/	tilde.club	70
+iBasically, I wanted to dedicate all the SSD space to LFS, so	/	tilde.club	70
+iI chose to build my system on the live version of Debian 13.	/	tilde.club	70
+iTo do this, I downloaded a Debian 13 disk image, checked its	/	tilde.club	70
+iauthenticity and installed it on my USB key, on the	/	tilde.club	70
+ipartition used by Ventoy.	/	tilde.club	70
+i	/	tilde.club	70
+i### Partitioning	/	tilde.club	70
+i	/	tilde.club	70
+iMy computer uses UEFI, so I had to create a dedicated	/	tilde.club	70
+ipartition in which to write the necessary EFI applications,	/	tilde.club	70
+iwith the file system mounted in /boot/efi. Below is a	/	tilde.club	70
+isummary of the partitions created from Debian 13 on my SSD	/	tilde.club	70
+ito accommodate LFS.	/	tilde.club	70
+i	/	tilde.club	70
+iNAME        FSTYPE        SIZE MOUNTPOINTS	/	tilde.club	70
+invme0n1                 476,9G	/	tilde.club	70
+i├─nvme0n1p1 vfat          500M /boot	/	tilde.club	70
+i├─nvme0n1p2 vfat          200M /boot/efi	/	tilde.club	70
+i├─nvme0n1p3 ext4          100G /home	/	tilde.club	70
+i├─nvme0n1p4 ext4           60G /sources	/	tilde.club	70
+i├─nvme0n1p5 ext4          100G /	/	tilde.club	70
+i└─nvme0n1p6 swap            2G [SWAP]	/	tilde.club	70
+i	/	tilde.club	70
+iThis is the result of the following command line.	/	tilde.club	70
+i	/	tilde.club	70
+ilsblk -o NAME,FSTYPE,SIZE,MOUNTPOINTS	/	tilde.club	70
+i	/	tilde.club	70
+iFor the /tmp folder, I chose to let systemd manage it using	/	tilde.club	70
+itmpfs.	/	tilde.club	70
+i	/	tilde.club	70
+i## Building the LFS system and minimal configuration	/	tilde.club	70
+i	/	tilde.club	70
+iOnce my disk was partitioned, I was able to build a minimal	/	tilde.club	70
+iLFS system, with basic programs, standard folders, users,	/	tilde.club	70
+iminimal configuration, etc.	/	tilde.club	70
+i	/	tilde.club	70
+i## Building Linux	/	tilde.club	70
+i	/	tilde.club	70
+iTo build Linux, I had to find and download the firmware for	/	tilde.club	70
+imy hardware, then activate the drivers as modules in the	/	tilde.club	70
+iLinux configuration. While configuring the kernel, I	/	tilde.club	70
+idiscovered a rather useful configuration item called	/	tilde.club	70
+iCONFIG_IKCONFIG_PROC, which exposes the configuration	/	tilde.club	70
+ioptions that were used to build the currently running kernel	/	tilde.club	70
+iin /proc/config.gz.	/	tilde.club	70
+i	/	tilde.club	70
+i## GRUB configuration	/	tilde.club	70
+i	/	tilde.club	70
+iUnlike my previous LFS system, where I used the GRUB managed	/	tilde.club	70
+iby NixOS, this time I have to build, install and configure	/	tilde.club	70
+iit myself. Here's my GRUB configuration.	/	tilde.club	70
+i	/	tilde.club	70
+iset default=0	/	tilde.club	70
+iset timeout=5	/	tilde.club	70
+i	/	tilde.club	70
+iinsmod part_gpt	/	tilde.club	70
+iinsmod ext2	/	tilde.club	70
+i	/	tilde.club	70
+isearch --set=root --fs-uuid 8944-1D1F	/	tilde.club	70
+i	/	tilde.club	70
+iinsmod efi_gop	/	tilde.club	70
+iinsmod efi_uga	/	tilde.club	70
+iif loadfont /boot/grub/fonts/unicode.pf2; then	/	tilde.club	70
+i  terminal_output gfxterm	/	tilde.club	70
+ifi	/	tilde.club	70
+i	/	tilde.club	70
+imenuentry "GNU/Linux, Linux 6.16.1-lfs-12.4-systemd" {	/	tilde.club	70
+i  linux   /vmlinuz-6.16.1-lfs-12.4-systemd	/	tilde.club	70
+iroot=PARTUUID=7d866f2d-54b3-43e1-83d7-9fe18cf910d3	/	tilde.club	70
+i  initrd /microcode.img	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+imenuentry "Firmware Setup" {	/	tilde.club	70
+i  fwsetup	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+i## BLFS and desktop environment	/	tilde.club	70
+i	/	tilde.club	70
+iAfter verification, the system boots and works as expected.	/	tilde.club	70
+iNow all that's left to do is follow BLFS through to build	/	tilde.club	70
+iXFCE, installing some additional items for security and the	/	tilde.club	70
+ilike along the way.	/	tilde.club	70
+i	/	tilde.club	70
+iUnlike my first iteration of LFS and BLFS, I took care to	/	tilde.club	70
+irun all the test suites and installed as many optional	/	tilde.club	70
+idependencies as possible. This paid off, as I had almost no	/	tilde.club	70
+ierrors during project builds, installations and executions.	/	tilde.club	70
+i	/	tilde.club	70
+iFinally, I added some essential programs, a web browser, a	/	tilde.club	70
+isound mixer, a text editor and so on. Here's my final	/	tilde.club	70
+idesktop environment.	/	tilde.club	70
+i	/	tilde.club	70
+i/lfs-second-xfce4.png	/	tilde.club	70
+I/lfs-second-xfce4.png	/~theobori/lfs-second-xfce4.png	tilde.club	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iOnce again, an interesting experiment that lets me use my	/	tilde.club	70
+iforgotten hardware and build a fully customized system.	/	tilde.club	70

@@ -1,226 +1,226 @@
-i## title: A GNU Emacs experience throught NixOS	/	tilde.team	70
-i## date: "2025-02-26"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iI have always used VSCode as a code editor. I've already	/	tilde.team	70
-itried using Vim, but only for testing purposes and not with	/	tilde.team	70
-ithe aim of changing text editors.	/	tilde.team	70
+i## title: A GNU Emacs experience throught NixOS	/	tilde.club	70
+i## date: "2025-02-26"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iI have always used VSCode as a code editor. I've already	/	tilde.club	70
+itried using Vim, but only for testing purposes and not with	/	tilde.club	70
+ithe aim of changing text editors.	/	tilde.club	70
 hVSCode	URL:https://code.visualstudio.com/	code.visualstudio.com	443
 hVim	URL:https://www.vim.org/	www.vim.org	443
-i	/	tilde.team	70
-iThis time, I decided to use a FLOSS code editor in the	/	tilde.team	70
-iterminal, the aim being to replace VSCode indefinitely. This	/	tilde.team	70
-iblog post is actually written with it.	/	tilde.team	70
+i	/	tilde.club	70
+iThis time, I decided to use a FLOSS code editor in the	/	tilde.club	70
+iterminal, the aim being to replace VSCode indefinitely. This	/	tilde.club	70
+iblog post is actually written with it.	/	tilde.club	70
 hFLOSS	URL:https://www.gnu.org/philosophy/floss-and-foss.html	www.gnu.org	443
 hVSCode	URL:https://code.visualstudio.com/	code.visualstudio.com	443
-i	/	tilde.team	70
-iIt is none other than Emacs. For the convenience of writing	/	tilde.team	70
-iand reading this post, I'll simply write “Emacs” to	/	tilde.team	70
-idesignate the implementation of the GNU project.	/	tilde.team	70
+i	/	tilde.club	70
+iIt is none other than Emacs. For the convenience of writing	/	tilde.club	70
+iand reading this post, I'll simply write “Emacs” to	/	tilde.club	70
+idesignate the implementation of the GNU project.	/	tilde.club	70
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
 himplementation of the GNU	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
-i	/	tilde.team	70
-i## Why	/	tilde.team	70
-i	/	tilde.team	70
-iWhy did I leave VSCode and decide to switch to Emacs?	/	tilde.team	70
+i	/	tilde.club	70
+i## Why	/	tilde.club	70
+i	/	tilde.club	70
+iWhy did I leave VSCode and decide to switch to Emacs?	/	tilde.club	70
 hVSCode	URL:https://code.visualstudio.com/	code.visualstudio.com	443
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
-i	/	tilde.team	70
-i### Leaving VSCode	/	tilde.team	70
-i	/	tilde.team	70
-iBecause it's a RAM-hungry graphics application. You shouldn't	/	tilde.team	70
-ineed that much memory to edit text and connect to an LSP	/	tilde.team	70
-iserver. We're talking about 1.2 GB compared with around 200	/	tilde.team	70
-iMB for the same project.	/	tilde.team	70
-i	/	tilde.team	70
-iAlso, I don't want all the additional features offered, such	/	tilde.team	70
-ias file name and text parsing, to suggest that I download	/	tilde.team	70
-iextensions. I simply need a simple, functional text-editing	/	tilde.team	70
-iapplication. I don't enjoy using VSCode anymore, so it's	/	tilde.team	70
-itime to say goodbye.	/	tilde.team	70
+i	/	tilde.club	70
+i### Leaving VSCode	/	tilde.club	70
+i	/	tilde.club	70
+iBecause it's a RAM-hungry graphics application. You shouldn't	/	tilde.club	70
+ineed that much memory to edit text and connect to an LSP	/	tilde.club	70
+iserver. We're talking about 1.2 GB compared with around 200	/	tilde.club	70
+iMB for the same project.	/	tilde.club	70
+i	/	tilde.club	70
+iAlso, I don't want all the additional features offered, such	/	tilde.club	70
+ias file name and text parsing, to suggest that I download	/	tilde.club	70
+iextensions. I simply need a simple, functional text-editing	/	tilde.club	70
+iapplication. I don't enjoy using VSCode anymore, so it's	/	tilde.club	70
+itime to say goodbye.	/	tilde.club	70
 hVSCode	URL:https://code.visualstudio.com/	code.visualstudio.com	443
-i	/	tilde.team	70
-i### Choosing Emacs	/	tilde.team	70
-i	/	tilde.team	70
-iOf all the text editors out there, I chose Emacs. It's	/	tilde.team	70
-iactually much more than that. In the words of Protesilaos	/	tilde.team	70
-iStavrou.	/	tilde.team	70
+i	/	tilde.club	70
+i### Choosing Emacs	/	tilde.club	70
+i	/	tilde.club	70
+iOf all the text editors out there, I chose Emacs. It's	/	tilde.club	70
+iactually much more than that. In the words of Protesilaos	/	tilde.club	70
+iStavrou.	/	tilde.club	70
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
 hProtesilaos Stavrou	URL:https://protesilaos.com/codelog/2022-03-22-libreplanet-emacs-living-freedom/	protesilaos.com	443
-i“It is a programmable platform where text editing is one of	/	tilde.team	70
-ithe main points of interaction.”	/	tilde.team	70
-i	/	tilde.team	70
-iIndeed, I see Emacs more as an operating system than as a	/	tilde.team	70
-itext editor. The possibilities for configuring and extending	/	tilde.team	70
-iit are virtually infinite.	/	tilde.team	70
+i“It is a programmable platform where text editing is one of	/	tilde.club	70
+ithe main points of interaction.”	/	tilde.club	70
+i	/	tilde.club	70
+iIndeed, I see Emacs more as an operating system than as a	/	tilde.club	70
+itext editor. The possibilities for configuring and extending	/	tilde.club	70
+iit are virtually infinite.	/	tilde.club	70
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
-i	/	tilde.team	70
-iAlso, I find it an excellent UNIX citizen. The default	/	tilde.team	70
-ikeystroke sequences correspond to those used in other	/	tilde.team	70
-iapplications in the terminal. ar example, the moves in a	/	tilde.team	70
-iLinux manual read with the man command or those in the	/	tilde.team	70
-iresults of fzf.	/	tilde.team	70
-i	/	tilde.team	70
-iAnother reason was to be able to modify any behavior, to be	/	tilde.team	70
-iable to have an application that corresponds precisely to	/	tilde.team	70
-iwhat you want to have.	/	tilde.team	70
-i	/	tilde.team	70
-i## Learning	/	tilde.team	70
-i	/	tilde.team	70
-iSo I installed Emacs version 29.4 and started learning how	/	tilde.team	70
-ito use it properly.	/	tilde.team	70
+i	/	tilde.club	70
+iAlso, I find it an excellent UNIX citizen. The default	/	tilde.club	70
+ikeystroke sequences correspond to those used in other	/	tilde.club	70
+iapplications in the terminal. ar example, the moves in a	/	tilde.club	70
+iLinux manual read with the man command or those in the	/	tilde.club	70
+iresults of fzf.	/	tilde.club	70
+i	/	tilde.club	70
+iAnother reason was to be able to modify any behavior, to be	/	tilde.club	70
+iable to have an application that corresponds precisely to	/	tilde.club	70
+iwhat you want to have.	/	tilde.club	70
+i	/	tilde.club	70
+i## Learning	/	tilde.club	70
+i	/	tilde.club	70
+iSo I installed Emacs version 29.4 and started learning how	/	tilde.club	70
+ito use it properly.	/	tilde.club	70
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
-i	/	tilde.team	70
-i### Mastering Emacs, Mickey Pertersen	/	tilde.team	70
-i	/	tilde.team	70
-iThis book explained the important concepts of the	/	tilde.team	70
-iapplication and gave me a solid foundation for getting	/	tilde.team	70
-istarted with Emacs. Certain chapters, such as “The Theory of	/	tilde.team	70
-iMovement” and “The Theory of Editing”, explained to me the	/	tilde.team	70
-ibest practices for efficient and rapid buffering.	/	tilde.team	70
+i	/	tilde.club	70
+i### Mastering Emacs, Mickey Pertersen	/	tilde.club	70
+i	/	tilde.club	70
+iThis book explained the important concepts of the	/	tilde.club	70
+iapplication and gave me a solid foundation for getting	/	tilde.club	70
+istarted with Emacs. Certain chapters, such as “The Theory of	/	tilde.club	70
+iMovement” and “The Theory of Editing”, explained to me the	/	tilde.club	70
+ibest practices for efficient and rapid buffering.	/	tilde.club	70
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
-i	/	tilde.team	70
-iI highly recommend this book for anyone wishing to start	/	tilde.team	70
-ilearning Emacs.	/	tilde.team	70
+i	/	tilde.club	70
+iI highly recommend this book for anyone wishing to start	/	tilde.club	70
+ilearning Emacs.	/	tilde.club	70
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
-i	/	tilde.team	70
-i### Emacs Lisp Intro	/	tilde.team	70
-i	/	tilde.team	70
-iI've also read the “Emacs Lisp Intro” written in Emacs as a	/	tilde.team	70
-imanual. Since most of the code is written in Emacs Lisp,	/	tilde.team	70
-iit's essential to understand the language, or at least know	/	tilde.team	70
-ihow to read it, in order to configure the editor.	/	tilde.team	70
+i	/	tilde.club	70
+i### Emacs Lisp Intro	/	tilde.club	70
+i	/	tilde.club	70
+iI've also read the “Emacs Lisp Intro” written in Emacs as a	/	tilde.club	70
+imanual. Since most of the code is written in Emacs Lisp,	/	tilde.club	70
+iit's essential to understand the language, or at least know	/	tilde.club	70
+ihow to read it, in order to configure the editor.	/	tilde.club	70
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
-i	/	tilde.team	70
-iFor example, I needed to write some to display line numbers	/	tilde.team	70
-iat the start of org-present mode, and to hide them at the end	/	tilde.team	70
-iof minor mode execution.	/	tilde.team	70
+i	/	tilde.club	70
+iFor example, I needed to write some to display line numbers	/	tilde.club	70
+iat the start of org-present mode, and to hide them at the end	/	tilde.club	70
+iof minor mode execution.	/	tilde.club	70
 horg-present	URL:https://github.com/rlister/org-present	github.com	443
-i	/	tilde.team	70
-i### Environment	/	tilde.team	70
-i	/	tilde.team	70
-iAs I said earlier, Emacs is a platform with a whole host of	/	tilde.team	70
-ifeatures. This makes it all the more tempting to leave this	/	tilde.team	70
-ienvironment, which offers numerous possibilities, such as	/	tilde.team	70
-iorganizing a diary, compiling a project, accessing a shell	/	tilde.team	70
-ior terminal emulator, making a presentation, taking notes,	/	tilde.team	70
-imanaging Emacs modes and packages, etc.	/	tilde.team	70
+i	/	tilde.club	70
+i### Environment	/	tilde.club	70
+i	/	tilde.club	70
+iAs I said earlier, Emacs is a platform with a whole host of	/	tilde.club	70
+ifeatures. This makes it all the more tempting to leave this	/	tilde.club	70
+ienvironment, which offers numerous possibilities, such as	/	tilde.club	70
+iorganizing a diary, compiling a project, accessing a shell	/	tilde.club	70
+ior terminal emulator, making a presentation, taking notes,	/	tilde.club	70
+imanaging Emacs modes and packages, etc.	/	tilde.club	70
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
-i	/	tilde.team	70
-iStaying in the same environment made me more productive and	/	tilde.team	70
-ifaster. For computer development, Emacs can be configured	/	tilde.team	70
-ilike an IDE, precisely and fully controlled.	/	tilde.team	70
+i	/	tilde.club	70
+iStaying in the same environment made me more productive and	/	tilde.club	70
+ifaster. For computer development, Emacs can be configured	/	tilde.club	70
+ilike an IDE, precisely and fully controlled.	/	tilde.club	70
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
-i	/	tilde.team	70
-iOne last very important thing to know is that any piece of	/	tilde.team	70
-iEmacs is documented, meaning that whatever I do or try to	/	tilde.team	70
-ido, I can find documentation. Emacs is its own	/	tilde.team	70
-idocumentation.	/	tilde.team	70
+i	/	tilde.club	70
+iOne last very important thing to know is that any piece of	/	tilde.club	70
+iEmacs is documented, meaning that whatever I do or try to	/	tilde.club	70
+ido, I can find documentation. Emacs is its own	/	tilde.club	70
+idocumentation.	/	tilde.club	70
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
-i	/	tilde.team	70
-i## Configuration	/	tilde.team	70
-i	/	tilde.team	70
-i### Via NixOS	/	tilde.team	70
-i	/	tilde.team	70
-iConcerning the tool configuration, being on NixOS, I decided	/	tilde.team	70
-ito use the Emacs module provided by the home-manager. To	/	tilde.team	70
-iremain consistent with my current configuration, which is	/	tilde.team	70
-ihighly modularized, each Emacs package has its own Nix	/	tilde.team	70
-imodule.	/	tilde.team	70
+i	/	tilde.club	70
+i## Configuration	/	tilde.club	70
+i	/	tilde.club	70
+i### Via NixOS	/	tilde.club	70
+i	/	tilde.club	70
+iConcerning the tool configuration, being on NixOS, I decided	/	tilde.club	70
+ito use the Emacs module provided by the home-manager. To	/	tilde.club	70
+iremain consistent with my current configuration, which is	/	tilde.club	70
+ihighly modularized, each Emacs package has its own Nix	/	tilde.club	70
+imodule.	/	tilde.club	70
 hNixOS	URL:https://nixos.org/	nixos.org	443
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
-i	/	tilde.team	70
-iHere's what the file structure looks like.	/	tilde.team	70
-imodules/home/editors/emacs	/	tilde.team	70
-i├── default.nix	/	tilde.team	70
-i└── packages	/	tilde.team	70
-i    ├── auto-save	/	tilde.team	70
-i    │   └── default.nix	/	tilde.team	70
-i    ├── dashboard	/	tilde.team	70
-i    │   └── default.nix	/	tilde.team	70
-i    ├── dired	/	tilde.team	70
-i    │   └── default.nix	/	tilde.team	70
-i    ├── doom-modeline	/	tilde.team	70
-i    │   └── default.nix	/	tilde.team	70
-i    ├── ivy	/	tilde.team	70
-i    │   └── default.nix	/	tilde.team	70
-i    ├── lsp-mode	/	tilde.team	70
-i    │   ├── bash-language-server	/	tilde.team	70
-i    │   │   └── default.nix	/	tilde.team	70
-i    │   ├── default.nix	/	tilde.team	70
-i    │   ├── dockerfile	/	tilde.team	70
-i    │   │   └── default.nix	/	tilde.team	70
-i    │   ├── gopls	/	tilde.team	70
-i    │   │   └── default.nix	/	tilde.team	70
-i...	/	tilde.team	70
-i	/	tilde.team	70
-iThese modules contain the dependencies, i.e. the Emacs	/	tilde.team	70
-ipackages and the Emacs Lisp configuration.	/	tilde.team	70
+i	/	tilde.club	70
+iHere's what the file structure looks like.	/	tilde.club	70
+imodules/home/editors/emacs	/	tilde.club	70
+i├── default.nix	/	tilde.club	70
+i└── packages	/	tilde.club	70
+i    ├── auto-save	/	tilde.club	70
+i    │   └── default.nix	/	tilde.club	70
+i    ├── dashboard	/	tilde.club	70
+i    │   └── default.nix	/	tilde.club	70
+i    ├── dired	/	tilde.club	70
+i    │   └── default.nix	/	tilde.club	70
+i    ├── doom-modeline	/	tilde.club	70
+i    │   └── default.nix	/	tilde.club	70
+i    ├── ivy	/	tilde.club	70
+i    │   └── default.nix	/	tilde.club	70
+i    ├── lsp-mode	/	tilde.club	70
+i    │   ├── bash-language-server	/	tilde.club	70
+i    │   │   └── default.nix	/	tilde.club	70
+i    │   ├── default.nix	/	tilde.club	70
+i    │   ├── dockerfile	/	tilde.club	70
+i    │   │   └── default.nix	/	tilde.club	70
+i    │   ├── gopls	/	tilde.club	70
+i    │   │   └── default.nix	/	tilde.club	70
+i...	/	tilde.club	70
+i	/	tilde.club	70
+iThese modules contain the dependencies, i.e. the Emacs	/	tilde.club	70
+ipackages and the Emacs Lisp configuration.	/	tilde.club	70
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
-i	/	tilde.team	70
-iHere's an example with the org-superstar package.	/	tilde.team	70
+i	/	tilde.club	70
+iHere's an example with the org-superstar package.	/	tilde.club	70
 horg-superstar	URL:https://github.com/integral-dw/org-superstar-mode	github.com	443
-i	/	tilde.team	70
-i{	/	tilde.team	70
-i  config,	/	tilde.team	70
-i  lib,	/	tilde.team	70
-i  namespace,	/	tilde.team	70
-i  ...	/	tilde.team	70
-i}:	/	tilde.team	70
-ilet	/	tilde.team	70
-i  inherit (lib) mkIf;	/	tilde.team	70
-i  inherit (lib.${namespace}) mkBoolOpt;	/	tilde.team	70
-i	/	tilde.team	70
-i  cfg = config.${namespace}.editors.emacs.packages.org-	/	tilde.team	70
-isuperstar;	/	tilde.team	70
-iin	/	tilde.team	70
-i{	/	tilde.team	70
-i  options.${namespace}.editors.emacs.packages.org-superstar =	/	tilde.team	70
-i{	/	tilde.team	70
-i    enable = mkBoolOpt false "Whether or not to enable the	/	tilde.team	70
-iemacs org-superstar package.";	/	tilde.team	70
-i  };	/	tilde.team	70
-i	/	tilde.team	70
-i  config = mkIf cfg.enable {	/	tilde.team	70
-i    programs.emacs = {	/	tilde.team	70
-i      extraPackages = (epkgs: [ epkgs.org-superstar ]);	/	tilde.team	70
-i      extraConfig = ''	/	tilde.team	70
-i        (use-package org-superstar	/	tilde.team	70
-i          :ensure t	/	tilde.team	70
-i          :after org	/	tilde.team	70
-i          :hook (org-mode . org-superstar-mode)	/	tilde.team	70
-i          :custom	/	tilde.team	70
-i            (org-superstar-remove-leading-stars t)	/	tilde.team	70
-i            (org-superstar-headline-bullets-list '("⁖" "✿" "▷"	/	tilde.team	70
-i"✸")))	/	tilde.team	70
-i      '';	/	tilde.team	70
-i    };	/	tilde.team	70
-i  };	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-i## Notes taking on Emacs	/	tilde.team	70
-i	/	tilde.team	70
-iEmacs has a major mode called Org, which modifies Emacs	/	tilde.team	70
-ibehavior to create an environment suited to writing data in	/	tilde.team	70
-iorg format. It integrates perfectly with Emacs other	/	tilde.team	70
-ifeatures and keeps me in the application.	/	tilde.team	70
+i	/	tilde.club	70
+i{	/	tilde.club	70
+i  config,	/	tilde.club	70
+i  lib,	/	tilde.club	70
+i  namespace,	/	tilde.club	70
+i  ...	/	tilde.club	70
+i}:	/	tilde.club	70
+ilet	/	tilde.club	70
+i  inherit (lib) mkIf;	/	tilde.club	70
+i  inherit (lib.${namespace}) mkBoolOpt;	/	tilde.club	70
+i	/	tilde.club	70
+i  cfg = config.${namespace}.editors.emacs.packages.org-	/	tilde.club	70
+isuperstar;	/	tilde.club	70
+iin	/	tilde.club	70
+i{	/	tilde.club	70
+i  options.${namespace}.editors.emacs.packages.org-superstar =	/	tilde.club	70
+i{	/	tilde.club	70
+i    enable = mkBoolOpt false "Whether or not to enable the	/	tilde.club	70
+iemacs org-superstar package.";	/	tilde.club	70
+i  };	/	tilde.club	70
+i	/	tilde.club	70
+i  config = mkIf cfg.enable {	/	tilde.club	70
+i    programs.emacs = {	/	tilde.club	70
+i      extraPackages = (epkgs: [ epkgs.org-superstar ]);	/	tilde.club	70
+i      extraConfig = ''	/	tilde.club	70
+i        (use-package org-superstar	/	tilde.club	70
+i          :ensure t	/	tilde.club	70
+i          :after org	/	tilde.club	70
+i          :hook (org-mode . org-superstar-mode)	/	tilde.club	70
+i          :custom	/	tilde.club	70
+i            (org-superstar-remove-leading-stars t)	/	tilde.club	70
+i            (org-superstar-headline-bullets-list '("⁖" "✿" "▷"	/	tilde.club	70
+i"✸")))	/	tilde.club	70
+i      '';	/	tilde.club	70
+i    };	/	tilde.club	70
+i  };	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+i## Notes taking on Emacs	/	tilde.club	70
+i	/	tilde.club	70
+iEmacs has a major mode called Org, which modifies Emacs	/	tilde.club	70
+ibehavior to create an environment suited to writing data in	/	tilde.club	70
+iorg format. It integrates perfectly with Emacs other	/	tilde.club	70
+ifeatures and keeps me in the application.	/	tilde.club	70
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
 hOrg	URL:https://orgmode.org/	orgmode.org	443
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443
-i	/	tilde.team	70
-iI used to take my notes with Obsidian. I refactored all my	/	tilde.team	70
-inotes and converted them to Org format.	/	tilde.team	70
+i	/	tilde.club	70
+iI used to take my notes with Obsidian. I refactored all my	/	tilde.club	70
+inotes and converted them to Org format.	/	tilde.club	70
 hOrg	URL:https://orgmode.org/	orgmode.org	443
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iFrom now on, I intend to use Emacs as my main text editor,	/	tilde.team	70
-ias well as for note-taking.	/	tilde.team	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iFrom now on, I intend to use Emacs as my main text editor,	/	tilde.club	70
+ias well as for note-taking.	/	tilde.club	70
 hEmacs	URL:https://www.gnu.org/s/emacs/	www.gnu.org	443

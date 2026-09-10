@@ -1,105 +1,105 @@
-i## title: Declarative Vencord configuration on NixOS	/	tilde.team	70
-i## date: "2024-11-01"	/	tilde.team	70
-i	/	tilde.team	70
-iAfter installing Vesktop in the classic way on NixOS, i.e.	/	tilde.team	70
-iby installing the vesktop package in the official Nix	/	tilde.team	70
-iexpressions collection. I wondered if there wasn't a cleaner	/	tilde.team	70
-iway of configuring the application. Because configuring an	/	tilde.team	70
-iapplication on every new system is a pain.	/	tilde.team	70
+i## title: Declarative Vencord configuration on NixOS	/	tilde.club	70
+i## date: "2024-11-01"	/	tilde.club	70
+i	/	tilde.club	70
+iAfter installing Vesktop in the classic way on NixOS, i.e.	/	tilde.club	70
+iby installing the vesktop package in the official Nix	/	tilde.club	70
+iexpressions collection. I wondered if there wasn't a cleaner	/	tilde.club	70
+iway of configuring the application. Because configuring an	/	tilde.club	70
+iapplication on every new system is a pain.	/	tilde.club	70
 hVesktop	URL:https://github.com/Vencord/Vesktop	github.com	443
-i	/	tilde.team	70
-iSo I found Nixcord. It is a home-manager module that allows	/	tilde.team	70
-iyou to declare Vencord parameters and plugins in Nix.	/	tilde.team	70
+i	/	tilde.club	70
+iSo I found Nixcord. It is a home-manager module that allows	/	tilde.club	70
+iyou to declare Vencord parameters and plugins in Nix.	/	tilde.club	70
 hNixcord	URL:https://github.com/KaylorBen/nixcord	github.com	443
 hhome-manager	URL:https://nix-community.github.io/home-manager	nix-community.github.io	443
 hVencord	URL:https://vencord.dev	vencord.dev	443
-i	/	tilde.team	70
-iIt's pretty simple to use and works perfectly. Just add it	/	tilde.team	70
-ito the home-manager's imported modules and activate it.	/	tilde.team	70
-i	/	tilde.team	70
-iI've written my own Nix module that wraps nixcord, so here's	/	tilde.team	70
-iwhat it looks like.	/	tilde.team	70
-i	/	tilde.team	70
-i{	/	tilde.team	70
-i  config,	/	tilde.team	70
-i  lib,	/	tilde.team	70
-i  namespace,	/	tilde.team	70
-i  ...	/	tilde.team	70
-i}:	/	tilde.team	70
-ilet	/	tilde.team	70
-i  inherit (lib) mkIf types strings;	/	tilde.team	70
-i  inherit (lib.${namespace})	/	tilde.team	70
-i    mkBoolOpt	/	tilde.team	70
-i    mkOpt	/	tilde.team	70
-i    enabled	/	tilde.team	70
-i    disabled	/	tilde.team	70
-i    ;	/	tilde.team	70
-i	/	tilde.team	70
-i  cfg = config.${namespace}.messages.discord;	/	tilde.team	70
-i	/	tilde.team	70
-i  trimWith' =	/	tilde.team	70
-i    s:	/	tilde.team	70
-i    strings.trimWith {	/	tilde.team	70
-i      start = true;	/	tilde.team	70
-i      end = true;	/	tilde.team	70
-i    } s;	/	tilde.team	70
-iin	/	tilde.team	70
-i{	/	tilde.team	70
-i  options.${namespace}.messages.discord = with types; {	/	tilde.team	70
-i    enable = mkBoolOpt false "Whether or not to manage	/	tilde.team	70
-idiscord.";	/	tilde.team	70
-i    quickCss = mkOpt str (builtins.readFile ./custom.css)	/	tilde.team	70
-i"Vencord quick CSS.";	/	tilde.team	70
-i    config = mkOpt attrs {	/	tilde.team	70
-i      useQuickCss = ((trimWith' cfg.quickCss) != "");	/	tilde.team	70
-i      plugins = {	/	tilde.team	70
-i        betterFolders = enabled;	/	tilde.team	70
-i        betterRoleContext = enabled;	/	tilde.team	70
-i        crashHandler = enabled;	/	tilde.team	70
-i        memberCount = enabled;	/	tilde.team	70
-i        mentionAvatars = enabled;	/	tilde.team	70
-i        messageLatency = enabled;	/	tilde.team	70
-i        showHiddenThings = enabled;	/	tilde.team	70
-i        showMeYourName = enabled;	/	tilde.team	70
-i        webContextMenus = enabled;	/	tilde.team	70
-i        webKeybinds = enabled;	/	tilde.team	70
-i        webScreenShareFixes = enabled;	/	tilde.team	70
-i        alwaysAnimate = enabled;	/	tilde.team	70
-i      };	/	tilde.team	70
-i    } "Manage the nixcord configuration.";	/	tilde.team	70
-i  };	/	tilde.team	70
-i	/	tilde.team	70
-i  config = mkIf cfg.enable {	/	tilde.team	70
-i    stylix.targets.vesktop.enable = false;	/	tilde.team	70
-i	/	tilde.team	70
-i    programs.nixcord = {	/	tilde.team	70
-i      enable = true;	/	tilde.team	70
-i      discord = disabled;	/	tilde.team	70
-i      vesktop.enable = true;	/	tilde.team	70
-i	/	tilde.team	70
-i      inherit (cfg) config quickCss;	/	tilde.team	70
-i    };	/	tilde.team	70
-i  };	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iWith regard to the above code snippet, please note that in	/	tilde.team	70
-imy case, the home-manager modules are managed by the Snowfall	/	tilde.team	70
-ilib .	/	tilde.team	70
+i	/	tilde.club	70
+iIt's pretty simple to use and works perfectly. Just add it	/	tilde.club	70
+ito the home-manager's imported modules and activate it.	/	tilde.club	70
+i	/	tilde.club	70
+iI've written my own Nix module that wraps nixcord, so here's	/	tilde.club	70
+iwhat it looks like.	/	tilde.club	70
+i	/	tilde.club	70
+i{	/	tilde.club	70
+i  config,	/	tilde.club	70
+i  lib,	/	tilde.club	70
+i  namespace,	/	tilde.club	70
+i  ...	/	tilde.club	70
+i}:	/	tilde.club	70
+ilet	/	tilde.club	70
+i  inherit (lib) mkIf types strings;	/	tilde.club	70
+i  inherit (lib.${namespace})	/	tilde.club	70
+i    mkBoolOpt	/	tilde.club	70
+i    mkOpt	/	tilde.club	70
+i    enabled	/	tilde.club	70
+i    disabled	/	tilde.club	70
+i    ;	/	tilde.club	70
+i	/	tilde.club	70
+i  cfg = config.${namespace}.messages.discord;	/	tilde.club	70
+i	/	tilde.club	70
+i  trimWith' =	/	tilde.club	70
+i    s:	/	tilde.club	70
+i    strings.trimWith {	/	tilde.club	70
+i      start = true;	/	tilde.club	70
+i      end = true;	/	tilde.club	70
+i    } s;	/	tilde.club	70
+iin	/	tilde.club	70
+i{	/	tilde.club	70
+i  options.${namespace}.messages.discord = with types; {	/	tilde.club	70
+i    enable = mkBoolOpt false "Whether or not to manage	/	tilde.club	70
+idiscord.";	/	tilde.club	70
+i    quickCss = mkOpt str (builtins.readFile ./custom.css)	/	tilde.club	70
+i"Vencord quick CSS.";	/	tilde.club	70
+i    config = mkOpt attrs {	/	tilde.club	70
+i      useQuickCss = ((trimWith' cfg.quickCss) != "");	/	tilde.club	70
+i      plugins = {	/	tilde.club	70
+i        betterFolders = enabled;	/	tilde.club	70
+i        betterRoleContext = enabled;	/	tilde.club	70
+i        crashHandler = enabled;	/	tilde.club	70
+i        memberCount = enabled;	/	tilde.club	70
+i        mentionAvatars = enabled;	/	tilde.club	70
+i        messageLatency = enabled;	/	tilde.club	70
+i        showHiddenThings = enabled;	/	tilde.club	70
+i        showMeYourName = enabled;	/	tilde.club	70
+i        webContextMenus = enabled;	/	tilde.club	70
+i        webKeybinds = enabled;	/	tilde.club	70
+i        webScreenShareFixes = enabled;	/	tilde.club	70
+i        alwaysAnimate = enabled;	/	tilde.club	70
+i      };	/	tilde.club	70
+i    } "Manage the nixcord configuration.";	/	tilde.club	70
+i  };	/	tilde.club	70
+i	/	tilde.club	70
+i  config = mkIf cfg.enable {	/	tilde.club	70
+i    stylix.targets.vesktop.enable = false;	/	tilde.club	70
+i	/	tilde.club	70
+i    programs.nixcord = {	/	tilde.club	70
+i      enable = true;	/	tilde.club	70
+i      discord = disabled;	/	tilde.club	70
+i      vesktop.enable = true;	/	tilde.club	70
+i	/	tilde.club	70
+i      inherit (cfg) config quickCss;	/	tilde.club	70
+i    };	/	tilde.club	70
+i  };	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iWith regard to the above code snippet, please note that in	/	tilde.club	70
+imy case, the home-manager modules are managed by the Snowfall	/	tilde.club	70
+ilib .	/	tilde.club	70
 hSnowfall lib	URL:https://snowfall.org/guides/lib/quickstart	snowfall.org	443
-i	/	tilde.team	70
-ienabled = { enable = true; };	/	tilde.team	70
-idisabled = { enable = false; };	/	tilde.team	70
-i	/	tilde.team	70
-iI've explicitly deactivated de Discord which is enabled by	/	tilde.team	70
-idefault, as well as the Vesktop theming by Stylix because	/	tilde.team	70
-ithe Dracula theme (far too cyan-based).	/	tilde.team	70
+i	/	tilde.club	70
+ienabled = { enable = true; };	/	tilde.club	70
+idisabled = { enable = false; };	/	tilde.club	70
+i	/	tilde.club	70
+iI've explicitly deactivated de Discord which is enabled by	/	tilde.club	70
+idefault, as well as the Vesktop theming by Stylix because	/	tilde.club	70
+ithe Dracula theme (far too cyan-based).	/	tilde.club	70
 hStylix	URL:https://stylix.danth.me	stylix.danth.me	443
 hDracula	URL:https://draculatheme.com	draculatheme.com	443
-i	/	tilde.team	70
-iInstead I downloaded draculatheme.com/betterdiscord so as	/	tilde.team	70
-inot to depend on the Internet and activated it with the	/	tilde.team	70
-iquickCss option.	/	tilde.team	70
+i	/	tilde.club	70
+iInstead I downloaded draculatheme.com/betterdiscord so as	/	tilde.club	70
+inot to depend on the Internet and activated it with the	/	tilde.club	70
+iquickCss option.	/	tilde.club	70
 hdraculatheme.com/betterdiscord	URL:https://draculatheme.com/betterdiscord	draculatheme.com	443
-i	/	tilde.team	70
-iNixcord is really great, you really should use it !	/	tilde.team	70
+i	/	tilde.club	70
+iNixcord is really great, you really should use it !	/	tilde.club	70
 hNixcord	URL:https://github.com/KaylorBen/nixcord	github.com	443

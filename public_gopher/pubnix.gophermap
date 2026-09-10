@@ -1,66 +1,66 @@
-i## title: Public access UNIX systems	/	tilde.team	70
-i## date: "2023-10-25"	/	tilde.team	70
-i	/	tilde.team	70
-i/openbsd.png	/	tilde.team	70
-I/openbsd.png	/~nagi/openbsd.png	tilde.team	70
-i	/	tilde.team	70
-iAs I explored the more "hidden" corners of the Internet, I	/	tilde.team	70
-ibegan to find some interesting things. Networks of hand-	/	tilde.team	70
-icrafted sites, neocities, webrings or even websites indexed	/	tilde.team	70
-ion anonymous networks like i2p (The Invisible Internet	/	tilde.team	70
-iProject), and so on.	/	tilde.team	70
-i	/	tilde.team	70
-iThe sources that have taught me the most and that I find	/	tilde.team	70
-imost interesting are the public access UNIX systems, also	/	tilde.team	70
-iknown as pubnixes.	/	tilde.team	70
-i	/	tilde.team	70
-i## Pubnix	/	tilde.team	70
-i	/	tilde.team	70
-iA pubnix is, as the name suggests, a system with a UNIX-based	/	tilde.team	70
-idistribution open to the public. The administrator usually	/	tilde.team	70
-imanages SSH access, which can be obtained on request.	/	tilde.team	70
-i	/	tilde.team	70
-iA common practice is to provide free, open-source services to	/	tilde.team	70
-iusers/members, and sometimes even to the general public.	/	tilde.team	70
-iServer members may therefore be granted an e-mail service,	/	tilde.team	70
-iweb page hosting (HTTP, Gemini, Gopher, etc.), pre-configured	/	tilde.team	70
-iaccess to a server or an IRC channel.	/	tilde.team	70
-i	/	tilde.team	70
-iThese servers promote important values such as open source,	/	tilde.team	70
-iknowledge sharing, program creation/development, community	/	tilde.team	70
-iproject promotion, help, free access, privacy and more.	/	tilde.team	70
-iImportant values that are unfortunately tending to get lost.	/	tilde.team	70
-i	/	tilde.team	70
-i## Tildeverse	/	tilde.team	70
-i	/	tilde.team	70
-i/tildeverse.png	/	tilde.team	70
-I/tildeverse.png	/~nagi/tildeverse.png	tilde.team	70
-i	/	tilde.team	70
-iTildeverse is a loose association of like-minded tilde	/	tilde.team	70
-icommunities and a tilde is a pubnix in the spirit of	/	tilde.team	70
-itilde.club.	/	tilde.team	70
+i## title: Public access UNIX systems	/	tilde.club	70
+i## date: "2023-10-25"	/	tilde.club	70
+i	/	tilde.club	70
+i/openbsd.png	/	tilde.club	70
+I/openbsd.png	/~theobori/openbsd.png	tilde.club	70
+i	/	tilde.club	70
+iAs I explored the more "hidden" corners of the Internet, I	/	tilde.club	70
+ibegan to find some interesting things. Networks of hand-	/	tilde.club	70
+icrafted sites, neocities, webrings or even websites indexed	/	tilde.club	70
+ion anonymous networks like i2p (The Invisible Internet	/	tilde.club	70
+iProject), and so on.	/	tilde.club	70
+i	/	tilde.club	70
+iThe sources that have taught me the most and that I find	/	tilde.club	70
+imost interesting are the public access UNIX systems, also	/	tilde.club	70
+iknown as pubnixes.	/	tilde.club	70
+i	/	tilde.club	70
+i## Pubnix	/	tilde.club	70
+i	/	tilde.club	70
+iA pubnix is, as the name suggests, a system with a UNIX-based	/	tilde.club	70
+idistribution open to the public. The administrator usually	/	tilde.club	70
+imanages SSH access, which can be obtained on request.	/	tilde.club	70
+i	/	tilde.club	70
+iA common practice is to provide free, open-source services to	/	tilde.club	70
+iusers/members, and sometimes even to the general public.	/	tilde.club	70
+iServer members may therefore be granted an e-mail service,	/	tilde.club	70
+iweb page hosting (HTTP, Gemini, Gopher, etc.), pre-configured	/	tilde.club	70
+iaccess to a server or an IRC channel.	/	tilde.club	70
+i	/	tilde.club	70
+iThese servers promote important values such as open source,	/	tilde.club	70
+iknowledge sharing, program creation/development, community	/	tilde.club	70
+iproject promotion, help, free access, privacy and more.	/	tilde.club	70
+iImportant values that are unfortunately tending to get lost.	/	tilde.club	70
+i	/	tilde.club	70
+i## Tildeverse	/	tilde.club	70
+i	/	tilde.club	70
+i/tildeverse.png	/	tilde.club	70
+I/tildeverse.png	/~theobori/tildeverse.png	tilde.club	70
+i	/	tilde.club	70
+iTildeverse is a loose association of like-minded tilde	/	tilde.club	70
+icommunities and a tilde is a pubnix in the spirit of	/	tilde.club	70
+itilde.club.	/	tilde.club	70
 hTildeverse	URL:https://tildeverse.org	tildeverse.org	443
 htilde.club	URL:https://tilde.club	tilde.club	443
-i	/	tilde.team	70
-iIf we take the example of tilde.team, which is part of the	/	tilde.team	70
-iTildeverse, this tilde offers a whole host of free services,	/	tilde.team	70
-isome of them are for the general public. Services requiring	/	tilde.team	70
-iauthentication have been configured to support SSO built	/	tilde.team	70
-iaround system accounts.	/	tilde.team	70
+i	/	tilde.club	70
+iIf we take the example of tilde.team, which is part of the	/	tilde.club	70
+iTildeverse, this tilde offers a whole host of free services,	/	tilde.club	70
+isome of them are for the general public. Services requiring	/	tilde.club	70
+iauthentication have been configured to support SSO built	/	tilde.club	70
+iaround system accounts.	/	tilde.club	70
 htilde.team	URL:https://tilde.team	tilde.team	443
-i	/	tilde.team	70
-iThese include an email server, a private cloud with	/	tilde.team	70
-iNextcloud, a software host with Git repositories called	/	tilde.team	70
-iGitea and a Mastodon instance.	/	tilde.team	70
-i	/	tilde.team	70
-iDocumentation (technical and other) can be consulted on the	/	tilde.team	70
-iwiki and other knowledge can be shared on the forum or by	/	tilde.team	70
-ichatting with other people via the IRC channels.	/	tilde.team	70
+i	/	tilde.club	70
+iThese include an email server, a private cloud with	/	tilde.club	70
+iNextcloud, a software host with Git repositories called	/	tilde.club	70
+iGitea and a Mastodon instance.	/	tilde.club	70
+i	/	tilde.club	70
+iDocumentation (technical and other) can be consulted on the	/	tilde.club	70
+iwiki and other knowledge can be shared on the forum or by	/	tilde.club	70
+ichatting with other people via the IRC channels.	/	tilde.club	70
 hwiki	URL:https://tilde.team/wiki	tilde.team	443
 hforum	URL:https://bbj.tildeverse.org/	bbj.tildeverse.org	443
-i	/	tilde.team	70
-itilde.team is a pubnix among others, it makes people aware	/	tilde.team	70
-iof the use of their data, the software they use and it	/	tilde.team	70
-iproposes alternative solutions to other bigger solutions in	/	tilde.team	70
-igeneral ethically not very correct.	/	tilde.team	70
+i	/	tilde.club	70
+itilde.team is a pubnix among others, it makes people aware	/	tilde.club	70
+iof the use of their data, the software they use and it	/	tilde.club	70
+iproposes alternative solutions to other bigger solutions in	/	tilde.club	70
+igeneral ethically not very correct.	/	tilde.club	70
 htilde.team	URL:https://tilde.team	tilde.team	443

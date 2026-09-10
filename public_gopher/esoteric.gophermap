@@ -1,140 +1,140 @@
-i## title: Esoteric programming languages	/	tilde.team	70
-i## date: "2026-04-28"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iA while back, I became interested in esoteric programming	/	tilde.team	70
-ilanguages. More specifically, I became interested in the	/	tilde.team	70
-imechanisms involved in interpreting and compiling their	/	tilde.team	70
-icode. It's a little-known field in the world of computer	/	tilde.team	70
-iscience, yet I find this culture to be very rich and	/	tilde.team	70
-ichallenging. That's why I wanted to talk about it here, in	/	tilde.team	70
-ithe form of a blog post. This is mainly my personal	/	tilde.team	70
-iperspective and feedback; the views expressed are my own.	/	tilde.team	70
-i	/	tilde.team	70
-i## Definition	/	tilde.team	70
-i	/	tilde.team	70
-iAn esoteric programming language is a programming language	/	tilde.team	70
-idesigned around one or more strange or unusual ideas.	/	tilde.team	70
-iGenerally, these languages are created as a joke or to meet	/	tilde.team	70
-ia challenge, and are not intended to solve any specific	/	tilde.team	70
-iproblem.	/	tilde.team	70
-i	/	tilde.team	70
-i### Example	/	tilde.team	70
-i	/	tilde.team	70
-iOne of the best-known languages is Brainfuck.	/	tilde.team	70
+i## title: Esoteric programming languages	/	tilde.club	70
+i## date: "2026-04-28"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iA while back, I became interested in esoteric programming	/	tilde.club	70
+ilanguages. More specifically, I became interested in the	/	tilde.club	70
+imechanisms involved in interpreting and compiling their	/	tilde.club	70
+icode. It's a little-known field in the world of computer	/	tilde.club	70
+iscience, yet I find this culture to be very rich and	/	tilde.club	70
+ichallenging. That's why I wanted to talk about it here, in	/	tilde.club	70
+ithe form of a blog post. This is mainly my personal	/	tilde.club	70
+iperspective and feedback; the views expressed are my own.	/	tilde.club	70
+i	/	tilde.club	70
+i## Definition	/	tilde.club	70
+i	/	tilde.club	70
+iAn esoteric programming language is a programming language	/	tilde.club	70
+idesigned around one or more strange or unusual ideas.	/	tilde.club	70
+iGenerally, these languages are created as a joke or to meet	/	tilde.club	70
+ia challenge, and are not intended to solve any specific	/	tilde.club	70
+iproblem.	/	tilde.club	70
+i	/	tilde.club	70
+i### Example	/	tilde.club	70
+i	/	tilde.club	70
+iOne of the best-known languages is Brainfuck.	/	tilde.club	70
 hBrainfuck	URL:https://esolangs.org/wiki/Brainfuck	esolangs.org	443
-i	/	tilde.team	70
-i[xmastree.b -- print Christmas tree	/	tilde.team	70
-i(c) 2016 Daniel B. Cristofani	/	tilde.team	70
-ihttp://brainfuck.org/]	/	tilde.team	70
-i	/	tilde.team	70
-i>>>--------<,[<[>++++++++++<-]>>[<------>>-<+],]++>>++<--[<++[+>]>+<<+++<]<	/	tilde.team	70
-i<[>>+[[>>+<<-]<<]>>>>[[<<+>.>-]>>]<.<<<+<<-]>>[<.>--]>.>>.	/	tilde.team	70
-i	/	tilde.team	70
-iBelow is a code example from one of my favorite programming	/	tilde.team	70
-ilanguages, Befunge.	/	tilde.team	70
+i	/	tilde.club	70
+i[xmastree.b -- print Christmas tree	/	tilde.club	70
+i(c) 2016 Daniel B. Cristofani	/	tilde.club	70
+ihttp://brainfuck.org/]	/	tilde.club	70
+i	/	tilde.club	70
+i>>>--------<,[<[>++++++++++<-]>>[<------>>-<+],]++>>++<--[<++[+>]>+<<+++<]<	/	tilde.club	70
+i<[>>+[[>>+<<-]<<]>>>>[[<<+>.>-]>>]<.<<<+<<-]>>[<.>--]>.>>.	/	tilde.club	70
+i	/	tilde.club	70
+iBelow is a code example from one of my favorite programming	/	tilde.club	70
+ilanguages, Befunge.	/	tilde.club	70
 hBefunge	URL:https://esolangs.org/wiki/Befunge	esolangs.org	443
-i	/	tilde.team	70
-ivv  <      <	/	tilde.team	70
-i    2	/	tilde.team	70
-i    ^  v<	/	tilde.team	70
-i v1<?>3v4	/	tilde.team	70
-i    ^   ^	/	tilde.team	70
-i>  >?>  ?>5^	/	tilde.team	70
-i    v   v	/	tilde.team	70
-i v9<?>7v6	/	tilde.team	70
-i    v  v<	/	tilde.team	70
-i    8	/	tilde.team	70
-i    >  >   ^	/	tilde.team	70
-i vv  <      <	/	tilde.team	70
-i     2	/	tilde.team	70
-i     ^  v<	/	tilde.team	70
-i  v1<?>3v4	/	tilde.team	70
-i     ^   ^	/	tilde.team	70
-i >  >?>  ?>5^	/	tilde.team	70
-i     v   v      v          ,*25         <<	/	tilde.team	70
-i  v9<?>7v6                              ,,	/	tilde.team	70
-i     v  v<                              ""	/	tilde.team	70
-i     8                                  ><	/	tilde.team	70
-i     >  >   ^                           ""v	/	tilde.team	70
-i  >*: >0"!rebmun tupnI">:#,_$25*,:&:99p`|^<       _0"!niw	/	tilde.team	70
-iuoY">:#,_$25*,@	/	tilde.team	70
-i      ^         <                       >:99g01-*+^	/	tilde.team	70
-i	/	tilde.team	70
-iI invite you to run the code examples below if you'd like.	/	tilde.team	70
-i	/	tilde.team	70
-i## Culture and Community	/	tilde.team	70
-i	/	tilde.team	70
-iThere are a vast number of esoteric programming languages,	/	tilde.team	70
-iand new ones are created every day, often accompanied by an	/	tilde.team	70
-iinterpreter written by the language's creator.	/	tilde.team	70
-i	/	tilde.team	70
-i### Esolang	/	tilde.team	70
-i	/	tilde.team	70
-iWe are fortunate to have the Esolang website. It is a wiki	/	tilde.team	70
-idedicated to esoteric programming languages, an excellent	/	tilde.team	70
-iresource for their documentation, and one of the main hubs	/	tilde.team	70
-iof this active community. The website allows authors to add	/	tilde.team	70
-iwiki pages to document their languages. These pages are then	/	tilde.team	70
-iindexed on other pages dedicated to listing languages by	/	tilde.team	70
-icategory, paradigm, year, etc.	/	tilde.team	70
+i	/	tilde.club	70
+ivv  <      <	/	tilde.club	70
+i    2	/	tilde.club	70
+i    ^  v<	/	tilde.club	70
+i v1<?>3v4	/	tilde.club	70
+i    ^   ^	/	tilde.club	70
+i>  >?>  ?>5^	/	tilde.club	70
+i    v   v	/	tilde.club	70
+i v9<?>7v6	/	tilde.club	70
+i    v  v<	/	tilde.club	70
+i    8	/	tilde.club	70
+i    >  >   ^	/	tilde.club	70
+i vv  <      <	/	tilde.club	70
+i     2	/	tilde.club	70
+i     ^  v<	/	tilde.club	70
+i  v1<?>3v4	/	tilde.club	70
+i     ^   ^	/	tilde.club	70
+i >  >?>  ?>5^	/	tilde.club	70
+i     v   v      v          ,*25         <<	/	tilde.club	70
+i  v9<?>7v6                              ,,	/	tilde.club	70
+i     v  v<                              ""	/	tilde.club	70
+i     8                                  ><	/	tilde.club	70
+i     >  >   ^                           ""v	/	tilde.club	70
+i  >*: >0"!rebmun tupnI">:#,_$25*,:&:99p`|^<       _0"!niw	/	tilde.club	70
+iuoY">:#,_$25*,@	/	tilde.club	70
+i      ^         <                       >:99g01-*+^	/	tilde.club	70
+i	/	tilde.club	70
+iI invite you to run the code examples below if you'd like.	/	tilde.club	70
+i	/	tilde.club	70
+i## Culture and Community	/	tilde.club	70
+i	/	tilde.club	70
+iThere are a vast number of esoteric programming languages,	/	tilde.club	70
+iand new ones are created every day, often accompanied by an	/	tilde.club	70
+iinterpreter written by the language's creator.	/	tilde.club	70
+i	/	tilde.club	70
+i### Esolang	/	tilde.club	70
+i	/	tilde.club	70
+iWe are fortunate to have the Esolang website. It is a wiki	/	tilde.club	70
+idedicated to esoteric programming languages, an excellent	/	tilde.club	70
+iresource for their documentation, and one of the main hubs	/	tilde.club	70
+iof this active community. The website allows authors to add	/	tilde.club	70
+iwiki pages to document their languages. These pages are then	/	tilde.club	70
+iindexed on other pages dedicated to listing languages by	/	tilde.club	70
+icategory, paradigm, year, etc.	/	tilde.club	70
 hEsolang	URL:https://esolangs.org/	esolangs.org	443
-i	/	tilde.team	70
-iI have used this website extensively as my primary reference	/	tilde.team	70
-ifor esoteric language specifications. The website is	/	tilde.team	70
-icomprehensive and updated daily.	/	tilde.team	70
-i	/	tilde.team	70
-i### Challenge	/	tilde.team	70
-i	/	tilde.team	70
-iSince most of these languages started out as jokes, they are	/	tilde.team	70
-iactually used to create more unusual challenges. As shown in	/	tilde.team	70
-ithis code golf where you have to create a Brainfuck	/	tilde.team	70
-iinterpreter, this YouTube video, or the game Brainfuck	/	tilde.team	70
-iChallenge. This inspired me to create this project, which	/	tilde.team	70
-ibrings together my implementations of interpreters and	/	tilde.team	70
-icompilers for esoteric programming languages.	/	tilde.team	70
+i	/	tilde.club	70
+iI have used this website extensively as my primary reference	/	tilde.club	70
+ifor esoteric language specifications. The website is	/	tilde.club	70
+icomprehensive and updated daily.	/	tilde.club	70
+i	/	tilde.club	70
+i### Challenge	/	tilde.club	70
+i	/	tilde.club	70
+iSince most of these languages started out as jokes, they are	/	tilde.club	70
+iactually used to create more unusual challenges. As shown in	/	tilde.club	70
+ithis code golf where you have to create a Brainfuck	/	tilde.club	70
+iinterpreter, this YouTube video, or the game Brainfuck	/	tilde.club	70
+iChallenge. This inspired me to create this project, which	/	tilde.club	70
+ibrings together my implementations of interpreters and	/	tilde.club	70
+icompilers for esoteric programming languages.	/	tilde.club	70
 hcode golf	URL:https://codegolf.stackexchange.com/questions/84/interpret-brainfuck	codegolf.stackexchange.com	443
 hYouTube video	URL:https://www.youtube.com/watch?v=NFsu2E-45e0	www.youtube.com	443
 hBrainfuck Challenge	URL:https://store.steampowered.com/app/3708560/Brainfuck_Challenge	store.steampowered.com	443
 hthis project	URL:https://github.com/theobori/eso	github.com	443
-i	/	tilde.team	70
-i### Passion and Curiosity	/	tilde.team	70
-i	/	tilde.team	70
-iOne might wonder why people continue to invent new esoteric	/	tilde.team	70
-ilanguages, since there is no financial gain to be had. I	/	tilde.team	70
-ithink the main reasons are passion and curiosity. A passion	/	tilde.team	70
-ifor computer science and programming, and the curiosity to	/	tilde.team	70
-iseek out alternative things on the Internet.	/	tilde.team	70
-i	/	tilde.team	70
-i## Humans Only	/	tilde.team	70
-i	/	tilde.team	70
-iDespite all the hype surrounding generative AI, I get the	/	tilde.team	70
-iimpression that esoteric languages remain a field studied	/	tilde.team	70
-ilargely by human minds alone. This can be explained by the	/	tilde.team	70
-ilack of commercial objectives; after all, the authors and	/	tilde.team	70
-idevelopers of these languages aren't getting paid.	/	tilde.team	70
-iFurthermore, it's a subject that doesn't interest companies	/	tilde.team	70
-ibecause they can't make a profit from it, and it's not a	/	tilde.team	70
-itopic that comes up in business settings either. It's not a	/	tilde.team	70
-imainstream computer science subject, and demand is very low.	/	tilde.team	70
-iIn the end, only enthusiasts and the curious remain, those	/	tilde.team	70
-iwho simply want to have fun.	/	tilde.team	70
-i	/	tilde.team	70
-iAn esoteric programming language that isn't a product of the	/	tilde.team	70
-ihuman mind loses all its charm and appeal. These languages	/	tilde.team	70
-iare complex for the human brain, but much less so for an	/	tilde.team	70
-iartificial brain, such as an LLM.	/	tilde.team	70
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iIt was an interesting experience to explore the world of	/	tilde.team	70
-iesoteric programming languages. I realized there is an	/	tilde.team	70
-iactive community and a large number of software projects. I	/	tilde.team	70
-ididn't delve any deeper, some languages are very complex, but	/	tilde.team	70
-iif you're curious, I invite you to check out the Esolang	/	tilde.team	70
-iwiki.	/	tilde.team	70
+i	/	tilde.club	70
+i### Passion and Curiosity	/	tilde.club	70
+i	/	tilde.club	70
+iOne might wonder why people continue to invent new esoteric	/	tilde.club	70
+ilanguages, since there is no financial gain to be had. I	/	tilde.club	70
+ithink the main reasons are passion and curiosity. A passion	/	tilde.club	70
+ifor computer science and programming, and the curiosity to	/	tilde.club	70
+iseek out alternative things on the Internet.	/	tilde.club	70
+i	/	tilde.club	70
+i## Humans Only	/	tilde.club	70
+i	/	tilde.club	70
+iDespite all the hype surrounding generative AI, I get the	/	tilde.club	70
+iimpression that esoteric languages remain a field studied	/	tilde.club	70
+ilargely by human minds alone. This can be explained by the	/	tilde.club	70
+ilack of commercial objectives; after all, the authors and	/	tilde.club	70
+idevelopers of these languages aren't getting paid.	/	tilde.club	70
+iFurthermore, it's a subject that doesn't interest companies	/	tilde.club	70
+ibecause they can't make a profit from it, and it's not a	/	tilde.club	70
+itopic that comes up in business settings either. It's not a	/	tilde.club	70
+imainstream computer science subject, and demand is very low.	/	tilde.club	70
+iIn the end, only enthusiasts and the curious remain, those	/	tilde.club	70
+iwho simply want to have fun.	/	tilde.club	70
+i	/	tilde.club	70
+iAn esoteric programming language that isn't a product of the	/	tilde.club	70
+ihuman mind loses all its charm and appeal. These languages	/	tilde.club	70
+iare complex for the human brain, but much less so for an	/	tilde.club	70
+iartificial brain, such as an LLM.	/	tilde.club	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iIt was an interesting experience to explore the world of	/	tilde.club	70
+iesoteric programming languages. I realized there is an	/	tilde.club	70
+iactive community and a large number of software projects. I	/	tilde.club	70
+ididn't delve any deeper, some languages are very complex, but	/	tilde.club	70
+iif you're curious, I invite you to check out the Esolang	/	tilde.club	70
+iwiki.	/	tilde.club	70
 hEsolang	URL:https://esolangs.org/	esolangs.org	443
-i	/	tilde.team	70
-iI plan to continue implementing interpreters and compilers	/	tilde.team	70
-ifor esoteric languages in the future!	/	tilde.team	70
+i	/	tilde.club	70
+iI plan to continue implementing interpreters and compilers	/	tilde.club	70
+ifor esoteric languages in the future!	/	tilde.club	70

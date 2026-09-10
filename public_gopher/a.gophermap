@@ -1,160 +1,160 @@
-i## title: My opinionated tool to manage notes	/	tilde.team	70
-i## date: "2026-09-05"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iI was writing some notes in GNU Emacs and thought it might	/	tilde.team	70
-ibe fun to create a small, personal, pocket-sized tool for	/	tilde.team	70
-imanaging notes in a simple way. GNU Emacs is very	/	tilde.team	70
-icomprehensive and well-suited for managing notes, I've been	/	tilde.team	70
-iusing it for several years to write my zettelkasten.	/	tilde.team	70
-iHowever, I wanted to try a different note-taking tool. After	/	tilde.team	70
-idoing some research, I realized it made more sense to write	/	tilde.team	70
-imy own tool that would meet my specific criteria.	/	tilde.team	70
+i## title: My opinionated tool to manage notes	/	tilde.club	70
+i## date: "2026-09-05"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iI was writing some notes in GNU Emacs and thought it might	/	tilde.club	70
+ibe fun to create a small, personal, pocket-sized tool for	/	tilde.club	70
+imanaging notes in a simple way. GNU Emacs is very	/	tilde.club	70
+icomprehensive and well-suited for managing notes, I've been	/	tilde.club	70
+iusing it for several years to write my zettelkasten.	/	tilde.club	70
+iHowever, I wanted to try a different note-taking tool. After	/	tilde.club	70
+idoing some research, I realized it made more sense to write	/	tilde.club	70
+imy own tool that would meet my specific criteria.	/	tilde.club	70
 hGNU Emacs	URL:https://www.gnu.org/software/emacs	www.gnu.org	443
-i	/	tilde.team	70
-iIn this blog post, I explain my research journey leading up	/	tilde.team	70
-ito the creation of my own personal note-taking tool. If you'd	/	tilde.team	70
-ilike more technical details, feel free to check out the	/	tilde.team	70
-iproject's technical documentation available in the GitHub	/	tilde.team	70
-irepository.	/	tilde.team	70
+i	/	tilde.club	70
+iIn this blog post, I explain my research journey leading up	/	tilde.club	70
+ito the creation of my own personal note-taking tool. If you'd	/	tilde.club	70
+ilike more technical details, feel free to check out the	/	tilde.club	70
+iproject's technical documentation available in the GitHub	/	tilde.club	70
+irepository.	/	tilde.club	70
 hGitHub repository	URL:https://github.com/theobori/a	github.com	443
-i	/	tilde.team	70
-i## My needs	/	tilde.team	70
-i	/	tilde.team	70
-iThis section describes my needs.	/	tilde.team	70
-i	/	tilde.team	70
-i### File format independence	/	tilde.team	70
-i	/	tilde.team	70
-iI want the file format of the notes to be independent of the	/	tilde.team	70
-itool. I want to write in Markdown, Org, or even plain text.	/	tilde.team	70
-iThe tool does not support relationships between notes, this	/	tilde.team	70
-ifunctionality will rely entirely on the file format.	/	tilde.team	70
+i	/	tilde.club	70
+i## My needs	/	tilde.club	70
+i	/	tilde.club	70
+iThis section describes my needs.	/	tilde.club	70
+i	/	tilde.club	70
+i### File format independence	/	tilde.club	70
+i	/	tilde.club	70
+iI want the file format of the notes to be independent of the	/	tilde.club	70
+itool. I want to write in Markdown, Org, or even plain text.	/	tilde.club	70
+iThe tool does not support relationships between notes, this	/	tilde.club	70
+ifunctionality will rely entirely on the file format.	/	tilde.club	70
 hMarkdown	URL:https://commonmark.org/	commonmark.org	443
 hOrg	URL:https://orgmode.org/fr/	orgmode.org	443
-i	/	tilde.team	70
-i### File naming scheme	/	tilde.team	70
-i	/	tilde.team	70
-iI want each note to have metadata embedded in its file name.	/	tilde.team	70
-iAt a minimum, I want each note to have a title, tags, and a	/	tilde.team	70
-ifile extension.	/	tilde.team	70
-i	/	tilde.team	70
-i### Flexible file hierarchy	/	tilde.team	70
-i	/	tilde.team	70
-iNote files should be able to reside in a flat directory	/	tilde.team	70
-istructure or in subfolders with an undefined maximum depth.	/	tilde.team	70
-i	/	tilde.team	70
-i### Dedicated query language	/	tilde.team	70
-i	/	tilde.team	70
-iThe idea is to have a dedicated query language for filtering	/	tilde.team	70
-inotes. Ideally, the query should be compiled into bytecode	/	tilde.team	70
-ifor a virtual machine, and then the bytecode should be	/	tilde.team	70
-iexecuted for each note by passing the context. I want to be	/	tilde.team	70
-iable to filter by at least title, tags, and modification	/	tilde.team	70
-idate.	/	tilde.team	70
-i	/	tilde.team	70
-i### Simplicity	/	tilde.team	70
-i	/	tilde.team	70
-iI want the tool to be easy to use and intuitive. I'd like it	/	tilde.team	70
-iso that even if I stop using the tool for three years, I can	/	tilde.team	70
-ifigure out how it works very quickly. It should support only	/	tilde.team	70
-ibasic features, that is, creating, renaming, editing, and	/	tilde.team	70
-ifiltering notes.	/	tilde.team	70
-i	/	tilde.team	70
-i## Search for existing software	/	tilde.team	70
-i	/	tilde.team	70
-iI looked into well-known note-taking software, Obsidian,	/	tilde.team	70
-iNotion, Joplin, but didn't find anything that quite fit the	/	tilde.team	70
-ibill. They were complex, overloaded, commercially oriented,	/	tilde.team	70
-iAI oriented, had unnecessary features, or weren't cross-	/	tilde.team	70
-iplatform. The closest thing to what I'm looking for is zk.	/	tilde.team	70
+i	/	tilde.club	70
+i### File naming scheme	/	tilde.club	70
+i	/	tilde.club	70
+iI want each note to have metadata embedded in its file name.	/	tilde.club	70
+iAt a minimum, I want each note to have a title, tags, and a	/	tilde.club	70
+ifile extension.	/	tilde.club	70
+i	/	tilde.club	70
+i### Flexible file hierarchy	/	tilde.club	70
+i	/	tilde.club	70
+iNote files should be able to reside in a flat directory	/	tilde.club	70
+istructure or in subfolders with an undefined maximum depth.	/	tilde.club	70
+i	/	tilde.club	70
+i### Dedicated query language	/	tilde.club	70
+i	/	tilde.club	70
+iThe idea is to have a dedicated query language for filtering	/	tilde.club	70
+inotes. Ideally, the query should be compiled into bytecode	/	tilde.club	70
+ifor a virtual machine, and then the bytecode should be	/	tilde.club	70
+iexecuted for each note by passing the context. I want to be	/	tilde.club	70
+iable to filter by at least title, tags, and modification	/	tilde.club	70
+idate.	/	tilde.club	70
+i	/	tilde.club	70
+i### Simplicity	/	tilde.club	70
+i	/	tilde.club	70
+iI want the tool to be easy to use and intuitive. I'd like it	/	tilde.club	70
+iso that even if I stop using the tool for three years, I can	/	tilde.club	70
+ifigure out how it works very quickly. It should support only	/	tilde.club	70
+ibasic features, that is, creating, renaming, editing, and	/	tilde.club	70
+ifiltering notes.	/	tilde.club	70
+i	/	tilde.club	70
+i## Search for existing software	/	tilde.club	70
+i	/	tilde.club	70
+iI looked into well-known note-taking software, Obsidian,	/	tilde.club	70
+iNotion, Joplin, but didn't find anything that quite fit the	/	tilde.club	70
+ibill. They were complex, overloaded, commercially oriented,	/	tilde.club	70
+iAI oriented, had unnecessary features, or weren't cross-	/	tilde.club	70
+iplatform. The closest thing to what I'm looking for is zk.	/	tilde.club	70
 hObsidian	URL:https://obsidian.md	obsidian.md	443
 hNotion	URL:https://www.notion.com/fr	www.notion.com	443
 hJoplin	URL:https://joplinapp.org/fr	joplinapp.org	443
 hzk	URL:https://github.com/zk-org/zk	github.com	443
-i	/	tilde.team	70
-i## Inspiration	/	tilde.team	70
-i	/	tilde.team	70
-iI usually use GNU Emacs, so I decided to explore packages	/	tilde.team	70
-ispecialized in note-taking and metadata filtering.	/	tilde.team	70
-i	/	tilde.team	70
-i### denote.el	/	tilde.team	70
-i	/	tilde.team	70
-iDenote.el is the Emacs package that comes closest to what I	/	tilde.team	70
-iwas looking for. It's a simple tool that uses filenames to	/	tilde.team	70
-iinfer certain metadata. I drew inspiration from the filename	/	tilde.team	70
-ischema.	/	tilde.team	70
-i	/	tilde.team	70
-i### org-ql	/	tilde.team	70
-i	/	tilde.team	70
-iI stumbled upon org-ql by chance, it lets you search for	/	tilde.team	70
-inotes using a custom query language that inspired me. It's a	/	tilde.team	70
-ifunctional-style language similar to Emacs Lisp, it's used to	/	tilde.team	70
-ifilter notes by their metadata and implements basic binary	/	tilde.team	70
-ioperations.	/	tilde.team	70
-i	/	tilde.team	70
-i## My personal tool	/	tilde.team	70
-i	/	tilde.team	70
-iSo I wrote a CLI that lets me create, rename, edit, and	/	tilde.team	70
-ifilter my notes using my custom language. Below is an	/	tilde.team	70
-iexample of a language expression.	/	tilde.team	70
-i	/	tilde.team	70
-i(or	/	tilde.team	70
-i  (or 	/	tilde.team	70
-i    (title "title1")	/	tilde.team	70
-i    (title "title2"))	/	tilde.team	70
-i	/	tilde.team	70
-i  (tag "tag1")	/	tilde.team	70
-i	/	tilde.team	70
-i  (if (from-date "2020-01-01")	/	tilde.team	70
-i    (title "title3")	/	tilde.team	70
-i  (title "title4"))	/	tilde.team	70
-i	/	tilde.team	70
-i  (to-date "2020-02-01")	/	tilde.team	70
-i	/	tilde.team	70
-i  (and	/	tilde.team	70
-i    (not (tag "tag2"))	/	tilde.team	70
-i    (tag "tag3")))	/	tilde.team	70
-i	/	tilde.team	70
-i### Usage examples	/	tilde.team	70
-i	/	tilde.team	70
-iThis section provides a few examples of how to use the tool,	/	tilde.team	70
-iwhich you can test directly in the root of the project's Git	/	tilde.team	70
-irepository once the tool is installed.	/	tilde.team	70
-i	/	tilde.team	70
-iBelow is an example of recursively filtering notes in the	/	tilde.team	70
-i'./example' folder and then printing the path associated	/	tilde.team	70
-iwith each note.	/	tilde.team	70
-ia query -r example -q '(or	/	tilde.team	70
-i    (tag "leetcode")	/	tilde.team	70
-i    (tag "medium")	/	tilde.team	70
-i    (tag "hard")	/	tilde.team	70
-i    (title "problem2"))'	/	tilde.team	70
-i	/	tilde.team	70
-iBelow is an example of creating a note interactively in the	/	tilde.team	70
-i'./example' folder.	/	tilde.team	70
-ia create example	/	tilde.team	70
-i	/	tilde.team	70
-iBelow is an example of interactively renaming the note	/	tilde.team	70
-i'./example/aa'.	/	tilde.team	70
-ia rename example/aa	/	tilde.team	70
-i	/	tilde.team	70
-iBelow is an example of interactively filtering notes in the	/	tilde.team	70
-i'./example' directory recursively, followed by printing the	/	tilde.team	70
-ipath associated with each note.	/	tilde.team	70
-ia query -r example	/	tilde.team	70
-i	/	tilde.team	70
-iBelow is an example of interactively filtering notes in the	/	tilde.team	70
-i'./example' directory recursively, followed by editing the	/	tilde.team	70
-ipath associated with each note.	/	tilde.team	70
-i	/	tilde.team	70
-ia query -r example edit	/	tilde.team	70
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iI really enjoyed designing and building my own tool, the	/	tilde.team	70
-imost challenging part was, of course, writing the query	/	tilde.team	70
-ilanguage, whether it was the grammar rules, the parsing, or	/	tilde.team	70
-ithe bytecode virtual machine. The goal is to use it for	/	tilde.team	70
-ifollowing my progress on DSA problems.	/	tilde.team	70
+i	/	tilde.club	70
+i## Inspiration	/	tilde.club	70
+i	/	tilde.club	70
+iI usually use GNU Emacs, so I decided to explore packages	/	tilde.club	70
+ispecialized in note-taking and metadata filtering.	/	tilde.club	70
+i	/	tilde.club	70
+i### denote.el	/	tilde.club	70
+i	/	tilde.club	70
+iDenote.el is the Emacs package that comes closest to what I	/	tilde.club	70
+iwas looking for. It's a simple tool that uses filenames to	/	tilde.club	70
+iinfer certain metadata. I drew inspiration from the filename	/	tilde.club	70
+ischema.	/	tilde.club	70
+i	/	tilde.club	70
+i### org-ql	/	tilde.club	70
+i	/	tilde.club	70
+iI stumbled upon org-ql by chance, it lets you search for	/	tilde.club	70
+inotes using a custom query language that inspired me. It's a	/	tilde.club	70
+ifunctional-style language similar to Emacs Lisp, it's used to	/	tilde.club	70
+ifilter notes by their metadata and implements basic binary	/	tilde.club	70
+ioperations.	/	tilde.club	70
+i	/	tilde.club	70
+i## My personal tool	/	tilde.club	70
+i	/	tilde.club	70
+iSo I wrote a CLI that lets me create, rename, edit, and	/	tilde.club	70
+ifilter my notes using my custom language. Below is an	/	tilde.club	70
+iexample of a language expression.	/	tilde.club	70
+i	/	tilde.club	70
+i(or	/	tilde.club	70
+i  (or 	/	tilde.club	70
+i    (title "title1")	/	tilde.club	70
+i    (title "title2"))	/	tilde.club	70
+i	/	tilde.club	70
+i  (tag "tag1")	/	tilde.club	70
+i	/	tilde.club	70
+i  (if (from-date "2020-01-01")	/	tilde.club	70
+i    (title "title3")	/	tilde.club	70
+i  (title "title4"))	/	tilde.club	70
+i	/	tilde.club	70
+i  (to-date "2020-02-01")	/	tilde.club	70
+i	/	tilde.club	70
+i  (and	/	tilde.club	70
+i    (not (tag "tag2"))	/	tilde.club	70
+i    (tag "tag3")))	/	tilde.club	70
+i	/	tilde.club	70
+i### Usage examples	/	tilde.club	70
+i	/	tilde.club	70
+iThis section provides a few examples of how to use the tool,	/	tilde.club	70
+iwhich you can test directly in the root of the project's Git	/	tilde.club	70
+irepository once the tool is installed.	/	tilde.club	70
+i	/	tilde.club	70
+iBelow is an example of recursively filtering notes in the	/	tilde.club	70
+i'./example' folder and then printing the path associated	/	tilde.club	70
+iwith each note.	/	tilde.club	70
+ia query -r example -q '(or	/	tilde.club	70
+i    (tag "leetcode")	/	tilde.club	70
+i    (tag "medium")	/	tilde.club	70
+i    (tag "hard")	/	tilde.club	70
+i    (title "problem2"))'	/	tilde.club	70
+i	/	tilde.club	70
+iBelow is an example of creating a note interactively in the	/	tilde.club	70
+i'./example' folder.	/	tilde.club	70
+ia create example	/	tilde.club	70
+i	/	tilde.club	70
+iBelow is an example of interactively renaming the note	/	tilde.club	70
+i'./example/aa'.	/	tilde.club	70
+ia rename example/aa	/	tilde.club	70
+i	/	tilde.club	70
+iBelow is an example of interactively filtering notes in the	/	tilde.club	70
+i'./example' directory recursively, followed by printing the	/	tilde.club	70
+ipath associated with each note.	/	tilde.club	70
+ia query -r example	/	tilde.club	70
+i	/	tilde.club	70
+iBelow is an example of interactively filtering notes in the	/	tilde.club	70
+i'./example' directory recursively, followed by editing the	/	tilde.club	70
+ipath associated with each note.	/	tilde.club	70
+i	/	tilde.club	70
+ia query -r example edit	/	tilde.club	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iI really enjoyed designing and building my own tool, the	/	tilde.club	70
+imost challenging part was, of course, writing the query	/	tilde.club	70
+ilanguage, whether it was the grammar rules, the parsing, or	/	tilde.club	70
+ithe bytecode virtual machine. The goal is to use it for	/	tilde.club	70
+ifollowing my progress on DSA problems.	/	tilde.club	70
 

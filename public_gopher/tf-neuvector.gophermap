@@ -1,102 +1,102 @@
-i## title: My Terraform NeuVector provider	/	tilde.team	70
-i## date: "2023-06-04"	/	tilde.team	70
-i	/	tilde.team	70
-iThis project is used to manage NeuVector's configuration and	/	tilde.team	70
-iits most revelant resources. I was asked to automate the	/	tilde.team	70
-iconfiguration of the solution in a fairly specific context.	/	tilde.team	70
-iInitially, I had made a rather well-organized bash script	/	tilde.team	70
-ithat could apply these resources, but not destroy them.	/	tilde.team	70
-i	/	tilde.team	70
-iI then asked around and very quickly found Terraform. So I	/	tilde.team	70
-ilearned how to use it and made a module that could manage	/	tilde.team	70
-iany NeuVector resource, including creation and destruction	/	tilde.team	70
-ionly.	/	tilde.team	70
-i	/	tilde.team	70
-iA huge problem was the token that NeuVector provides tends	/	tilde.team	70
-ito timeout quite quickly (300 seconds by default).	/	tilde.team	70
-i	/	tilde.team	70
-iSo I decided to create a Terraform provider to handle all	/	tilde.team	70
-ithis cleanly. The language best suited for this is Go, so I	/	tilde.team	70
-ilearned it. Hashicorp explains that it's best to separate	/	tilde.team	70
-ithe client library from the provider.	/	tilde.team	70
-i	/	tilde.team	70
-i/terraform_provider.png	/	tilde.team	70
-I/terraform_provider.png	/~nagi/terraform_provider.png	tilde.team	70
-i	/	tilde.team	70
-iSo I created a Go SDK for NeuVector before using it in the	/	tilde.team	70
-iprovider.	/	tilde.team	70
-i	/	tilde.team	70
-iNow the provider is able to fully manage the implemented	/	tilde.team	70
-iresources (create, delete, update and import).	/	tilde.team	70
-i	/	tilde.team	70
-i## Use cases	/	tilde.team	70
-i	/	tilde.team	70
-iThe provider Terraform block looks like below.	/	tilde.team	70
-i	/	tilde.team	70
-iterraform {	/	tilde.team	70
-i  required_providers {	/	tilde.team	70
-i    neuvector = {	/	tilde.team	70
-i      source = "theobori/neuvector"	/	tilde.team	70
-i      version = "0.4.1"	/	tilde.team	70
-i    }	/	tilde.team	70
-i  }	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iprovider "neuvector" {	/	tilde.team	70
-i  base_url = "https://127.0.0.1:10443/v1/"	/	tilde.team	70
-i  username = "admin"	/	tilde.team	70
-i  password = "admin"	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iOnce it is declared in the configuration, you can start	/	tilde.team	70
-iusing it as you want. Here's a Terraform example that could	/	tilde.team	70
-ibe applied after installing NeuVector.	/	tilde.team	70
-i	/	tilde.team	70
-iresource "neuvector_eula" "eula" {	/	tilde.team	70
-i    accepted = true	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iresource "neuvector_registry" "registry_test" {	/	tilde.team	70
-i  name                   = "docker.io"	/	tilde.team	70
-i  registry_type          = "Docker Registry"	/	tilde.team	70
-i  filters                = ["*"]	/	tilde.team	70
-i  registry               =	/	tilde.team	70
-i"https://registry.hub.docker.com/"	/	tilde.team	70
-i  rescan_after_db_update = true	/	tilde.team	70
-i  auth_with_token        = false	/	tilde.team	70
-i  scan_layers            = true	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iresource "neuvector_group" "group_test" {	/	tilde.team	70
-i  name = "mytestgroup"	/	tilde.team	70
-i	/	tilde.team	70
-i  criteria {	/	tilde.team	70
-i    key   = "pattern"	/	tilde.team	70
-i    value = "[a-z]"	/	tilde.team	70
-i    op    = "regex"	/	tilde.team	70
-i  }	/	tilde.team	70
-i	/	tilde.team	70
-i  criteria {	/	tilde.team	70
-i    key   = "namespace"	/	tilde.team	70
-i    value = "example"	/	tilde.team	70
-i    op    = "="	/	tilde.team	70
-i  }	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-idata "neuvector_group_metadata" "group_metadata" {	/	tilde.team	70
-i    name = neuvector_group.group_test.id	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iresource "neuvector_service_config" "service_config_test" {	/	tilde.team	70
-i  services =	/	tilde.team	70
-idata.neuvector_group_services.group_metadata.services	/	tilde.team	70
-i	/	tilde.team	70
-i  not_scored = true	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-i## Links	/	tilde.team	70
-i	/	tilde.team	70
-ihttps://github.com/theobori/terraform-provider-neuvector	/	tilde.team	70
-ihttps://registry.terraform.io/providers/theobori/neuvector	/	tilde.team	70
+i## title: My Terraform NeuVector provider	/	tilde.club	70
+i## date: "2023-06-04"	/	tilde.club	70
+i	/	tilde.club	70
+iThis project is used to manage NeuVector's configuration and	/	tilde.club	70
+iits most revelant resources. I was asked to automate the	/	tilde.club	70
+iconfiguration of the solution in a fairly specific context.	/	tilde.club	70
+iInitially, I had made a rather well-organized bash script	/	tilde.club	70
+ithat could apply these resources, but not destroy them.	/	tilde.club	70
+i	/	tilde.club	70
+iI then asked around and very quickly found Terraform. So I	/	tilde.club	70
+ilearned how to use it and made a module that could manage	/	tilde.club	70
+iany NeuVector resource, including creation and destruction	/	tilde.club	70
+ionly.	/	tilde.club	70
+i	/	tilde.club	70
+iA huge problem was the token that NeuVector provides tends	/	tilde.club	70
+ito timeout quite quickly (300 seconds by default).	/	tilde.club	70
+i	/	tilde.club	70
+iSo I decided to create a Terraform provider to handle all	/	tilde.club	70
+ithis cleanly. The language best suited for this is Go, so I	/	tilde.club	70
+ilearned it. Hashicorp explains that it's best to separate	/	tilde.club	70
+ithe client library from the provider.	/	tilde.club	70
+i	/	tilde.club	70
+i/terraform_provider.png	/	tilde.club	70
+I/terraform_provider.png	/~theobori/terraform_provider.png	tilde.club	70
+i	/	tilde.club	70
+iSo I created a Go SDK for NeuVector before using it in the	/	tilde.club	70
+iprovider.	/	tilde.club	70
+i	/	tilde.club	70
+iNow the provider is able to fully manage the implemented	/	tilde.club	70
+iresources (create, delete, update and import).	/	tilde.club	70
+i	/	tilde.club	70
+i## Use cases	/	tilde.club	70
+i	/	tilde.club	70
+iThe provider Terraform block looks like below.	/	tilde.club	70
+i	/	tilde.club	70
+iterraform {	/	tilde.club	70
+i  required_providers {	/	tilde.club	70
+i    neuvector = {	/	tilde.club	70
+i      source = "theobori/neuvector"	/	tilde.club	70
+i      version = "0.4.1"	/	tilde.club	70
+i    }	/	tilde.club	70
+i  }	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iprovider "neuvector" {	/	tilde.club	70
+i  base_url = "https://127.0.0.1:10443/v1/"	/	tilde.club	70
+i  username = "admin"	/	tilde.club	70
+i  password = "admin"	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iOnce it is declared in the configuration, you can start	/	tilde.club	70
+iusing it as you want. Here's a Terraform example that could	/	tilde.club	70
+ibe applied after installing NeuVector.	/	tilde.club	70
+i	/	tilde.club	70
+iresource "neuvector_eula" "eula" {	/	tilde.club	70
+i    accepted = true	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iresource "neuvector_registry" "registry_test" {	/	tilde.club	70
+i  name                   = "docker.io"	/	tilde.club	70
+i  registry_type          = "Docker Registry"	/	tilde.club	70
+i  filters                = ["*"]	/	tilde.club	70
+i  registry               =	/	tilde.club	70
+i"https://registry.hub.docker.com/"	/	tilde.club	70
+i  rescan_after_db_update = true	/	tilde.club	70
+i  auth_with_token        = false	/	tilde.club	70
+i  scan_layers            = true	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iresource "neuvector_group" "group_test" {	/	tilde.club	70
+i  name = "mytestgroup"	/	tilde.club	70
+i	/	tilde.club	70
+i  criteria {	/	tilde.club	70
+i    key   = "pattern"	/	tilde.club	70
+i    value = "[a-z]"	/	tilde.club	70
+i    op    = "regex"	/	tilde.club	70
+i  }	/	tilde.club	70
+i	/	tilde.club	70
+i  criteria {	/	tilde.club	70
+i    key   = "namespace"	/	tilde.club	70
+i    value = "example"	/	tilde.club	70
+i    op    = "="	/	tilde.club	70
+i  }	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+idata "neuvector_group_metadata" "group_metadata" {	/	tilde.club	70
+i    name = neuvector_group.group_test.id	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iresource "neuvector_service_config" "service_config_test" {	/	tilde.club	70
+i  services =	/	tilde.club	70
+idata.neuvector_group_services.group_metadata.services	/	tilde.club	70
+i	/	tilde.club	70
+i  not_scored = true	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+i## Links	/	tilde.club	70
+i	/	tilde.club	70
+ihttps://github.com/theobori/terraform-provider-neuvector	/	tilde.club	70
+ihttps://registry.terraform.io/providers/theobori/neuvector	/	tilde.club	70
 hhttps://github.com/theobori/terraform-provider-neuvector	URL:https://github.com/theobori/terraform-provider-neuvector	github.com	443
 hhttps://registry.terraform.io/providers/theobori/neuvector	URL:https://registry.terraform.io/providers/theobori/neuvector/latest	registry.terraform.io	443

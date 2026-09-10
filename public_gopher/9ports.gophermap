@@ -1,143 +1,143 @@
-i## title: Porting Plan 9 applications to UNIX	/	tilde.team	70
-i## date: "2026-01-09"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iI wanted to play Sudoku, so I looked for a graphical	/	tilde.team	70
-iapplication to play it, something light and simple, but I	/	tilde.team	70
-icouldn't find anything. There is GNOME Sudoku, but I don't	/	tilde.team	70
-ilike GNOME and I don't want to have GTK applications, so I	/	tilde.team	70
-ididn't install it and stopped my search.	/	tilde.team	70
+i## title: Porting Plan 9 applications to UNIX	/	tilde.club	70
+i## date: "2026-01-09"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iI wanted to play Sudoku, so I looked for a graphical	/	tilde.club	70
+iapplication to play it, something light and simple, but I	/	tilde.club	70
+icouldn't find anything. There is GNOME Sudoku, but I don't	/	tilde.club	70
+ilike GNOME and I don't want to have GTK applications, so I	/	tilde.club	70
+ididn't install it and stopped my search.	/	tilde.club	70
 hGNOME Sudoku	URL:https://gitlab.gnome.org/GNOME/gnome-sudoku	gitlab.gnome.org	443
-i	/	tilde.team	70
-iLater, while hanging out on the mastodon merveilles.town	/	tilde.team	70
-iinstance, I found a post with a screenshot showing a	/	tilde.team	70
-igraphical Sudoku running on Plan 9. I really liked its	/	tilde.team	70
-iaesthetics, colors and simplicity.	/	tilde.team	70
-i	/	tilde.team	70
-iThe problem is, I use NixOS on a daily basis and the	/	tilde.team	70
-iapplication isn't compatible with UNIX, only with Plan 9. So	/	tilde.team	70
-iI decided to create a project to port Plan 9 applications to	/	tilde.team	70
-iUNIX.	/	tilde.team	70
-i	/	tilde.team	70
-i## My goal	/	tilde.team	70
-i	/	tilde.team	70
-iMy main goal is to be able to play Plan 9 Sudoku on my UNIX	/	tilde.team	70
-isystem, but also to be able to run other Plan 9	/	tilde.team	70
-iapplications, such as catclock.	/	tilde.team	70
-i	/	tilde.team	70
-i## Strategy	/	tilde.team	70
-i	/	tilde.team	70
-iThere is a project Plan 9 from User Space (plan9port) which	/	tilde.team	70
-ihas ported many Plan 9 programs to UNIX systems, including	/	tilde.team	70
-ithe main Plan 9 libraries.	/	tilde.team	70
+i	/	tilde.club	70
+iLater, while hanging out on the mastodon merveilles.town	/	tilde.club	70
+iinstance, I found a post with a screenshot showing a	/	tilde.club	70
+igraphical Sudoku running on Plan 9. I really liked its	/	tilde.club	70
+iaesthetics, colors and simplicity.	/	tilde.club	70
+i	/	tilde.club	70
+iThe problem is, I use NixOS on a daily basis and the	/	tilde.club	70
+iapplication isn't compatible with UNIX, only with Plan 9. So	/	tilde.club	70
+iI decided to create a project to port Plan 9 applications to	/	tilde.club	70
+iUNIX.	/	tilde.club	70
+i	/	tilde.club	70
+i## My goal	/	tilde.club	70
+i	/	tilde.club	70
+iMy main goal is to be able to play Plan 9 Sudoku on my UNIX	/	tilde.club	70
+isystem, but also to be able to run other Plan 9	/	tilde.club	70
+iapplications, such as catclock.	/	tilde.club	70
+i	/	tilde.club	70
+i## Strategy	/	tilde.club	70
+i	/	tilde.club	70
+iThere is a project Plan 9 from User Space (plan9port) which	/	tilde.club	70
+ihas ported many Plan 9 programs to UNIX systems, including	/	tilde.club	70
+ithe main Plan 9 libraries.	/	tilde.club	70
 hPlan 9 from User Space	URL:https://9fans.github.io/plan9port	9fans.github.io	443
-i	/	tilde.team	70
-iThe idea is to make the desired Plan 9 programs compatible	/	tilde.team	70
-iwith plan9port and adapt them if necessary.	/	tilde.team	70
-i	/	tilde.team	70
-i## Getting started	/	tilde.team	70
-i	/	tilde.team	70
-iTo build the project you need GNU Make, Plan 9 from User	/	tilde.team	70
-iSpace and its dependencies for building programs (compiler,	/	tilde.team	70
-ilinker, etc.). Then you can run the following command line.	/	tilde.team	70
+i	/	tilde.club	70
+iThe idea is to make the desired Plan 9 programs compatible	/	tilde.club	70
+iwith plan9port and adapt them if necessary.	/	tilde.club	70
+i	/	tilde.club	70
+i## Getting started	/	tilde.club	70
+i	/	tilde.club	70
+iTo build the project you need GNU Make, Plan 9 from User	/	tilde.club	70
+iSpace and its dependencies for building programs (compiler,	/	tilde.club	70
+ilinker, etc.). Then you can run the following command line.	/	tilde.club	70
 hPlan 9 from User Space	URL:https://github.com/9fans/plan9port	github.com	443
-i	/	tilde.team	70
-iexport PREFIX=/usr	/	tilde.team	70
-imake && make install # Build and install every project	/	tilde.team	70
-i	/	tilde.team	70
-i## Lifecycle management	/	tilde.team	70
-i	/	tilde.team	70
-iEach ported program is treated as a project in its own	/	tilde.team	70
-iright, with a dedicated folder at the project root,	/	tilde.team	70
-icontaining the source files, an mkfile with the	/	tilde.team	70
-iall,clean,install and nuke targets, and a Makefile that	/	tilde.team	70
-iserves as the interface to the mkfile. The design of the	/	tilde.team	70
-iported projects, their folders and files is such that the	/	tilde.team	70
-ilifecycle of each of them is as independent as possible.	/	tilde.team	70
-i	/	tilde.team	70
-iThe PREFIX environment variable is at the heart of ported	/	tilde.team	70
-iprogram lifecycle management. Its value defines the prefix	/	tilde.team	70
-iof their installation path, and is used by mkfiles, while	/	tilde.team	70
-iMakefiles provide a default value.	/	tilde.team	70
-i	/	tilde.team	70
-iThe PREFIX value SHOULD be the same for all targets.	/	tilde.team	70
-i	/	tilde.team	70
-i### Root mkfile and Makefile	/	tilde.team	70
-i	/	tilde.team	70
-iThe mkfile and Makefile at the root of the project enable	/	tilde.team	70
-iall projects to be managed together. So, for example, the	/	tilde.team	70
-icommand line below will build and install projects in the	/	tilde.team	70
-i/tmp folder.	/	tilde.team	70
-i	/	tilde.team	70
-iexport PREFIX=/tmp	/	tilde.team	70
-imake clean && make install	/	tilde.team	70
-i	/	tilde.team	70
-iWithout make, with mk.	/	tilde.team	70
-i	/	tilde.team	70
-iexport PREFIX=/tmp	/	tilde.team	70
-i9 mk clean && 9 mk install	/	tilde.team	70
-i	/	tilde.team	70
-iThen you can, for example, launch a catclock with the	/	tilde.team	70
-ifollowing command line.	/	tilde.team	70
-i	/	tilde.team	70
-i9 /tmp/bin/catclock	/	tilde.team	70
-i	/	tilde.team	70
-i## Source code	/	tilde.team	70
-i	/	tilde.team	70
-iThe code for ported projects was retrieved from	/	tilde.team	70
-ihttps://9p.io/sources/plan9 and 9front for projects that do	/	tilde.team	70
-inot exist in Plan 9.	/	tilde.team	70
+i	/	tilde.club	70
+iexport PREFIX=/usr	/	tilde.club	70
+imake && make install # Build and install every project	/	tilde.club	70
+i	/	tilde.club	70
+i## Lifecycle management	/	tilde.club	70
+i	/	tilde.club	70
+iEach ported program is treated as a project in its own	/	tilde.club	70
+iright, with a dedicated folder at the project root,	/	tilde.club	70
+icontaining the source files, an mkfile with the	/	tilde.club	70
+iall,clean,install and nuke targets, and a Makefile that	/	tilde.club	70
+iserves as the interface to the mkfile. The design of the	/	tilde.club	70
+iported projects, their folders and files is such that the	/	tilde.club	70
+ilifecycle of each of them is as independent as possible.	/	tilde.club	70
+i	/	tilde.club	70
+iThe PREFIX environment variable is at the heart of ported	/	tilde.club	70
+iprogram lifecycle management. Its value defines the prefix	/	tilde.club	70
+iof their installation path, and is used by mkfiles, while	/	tilde.club	70
+iMakefiles provide a default value.	/	tilde.club	70
+i	/	tilde.club	70
+iThe PREFIX value SHOULD be the same for all targets.	/	tilde.club	70
+i	/	tilde.club	70
+i### Root mkfile and Makefile	/	tilde.club	70
+i	/	tilde.club	70
+iThe mkfile and Makefile at the root of the project enable	/	tilde.club	70
+iall projects to be managed together. So, for example, the	/	tilde.club	70
+icommand line below will build and install projects in the	/	tilde.club	70
+i/tmp folder.	/	tilde.club	70
+i	/	tilde.club	70
+iexport PREFIX=/tmp	/	tilde.club	70
+imake clean && make install	/	tilde.club	70
+i	/	tilde.club	70
+iWithout make, with mk.	/	tilde.club	70
+i	/	tilde.club	70
+iexport PREFIX=/tmp	/	tilde.club	70
+i9 mk clean && 9 mk install	/	tilde.club	70
+i	/	tilde.club	70
+iThen you can, for example, launch a catclock with the	/	tilde.club	70
+ifollowing command line.	/	tilde.club	70
+i	/	tilde.club	70
+i9 /tmp/bin/catclock	/	tilde.club	70
+i	/	tilde.club	70
+i## Source code	/	tilde.club	70
+i	/	tilde.club	70
+iThe code for ported projects was retrieved from	/	tilde.club	70
+ihttps://9p.io/sources/plan9 and 9front for projects that do	/	tilde.club	70
+inot exist in Plan 9.	/	tilde.club	70
 hhttps://9p.io/sources/plan9	URL:https://9p.io/sources/plan9	9p.io	443
 h9front	URL:https://git.9front.org/plan9front/9front/30d6e6879e9acff30267a146ecb956ac470a38db/files.html	git.9front.org	443
 hPlan 9	URL:https://9p.io/plan9/	9p.io	443
-i	/	tilde.team	70
-i### Modifying	/	tilde.team	70
-i	/	tilde.team	70
-iTo enable projects to be built, installed and run,	/	tilde.team	70
-imodifications have been made to the source code. Some of	/	tilde.team	70
-ithese fix problems of logic, others are necessary to keep	/	tilde.team	70
-ithe construction through GNU Make coherent.	/	tilde.team	70
-i	/	tilde.team	70
-i## Compatibility	/	tilde.team	70
-i	/	tilde.team	70
-iBuilds and installation and project execution have so far	/	tilde.team	70
-ionly been tested for the x86_64-linux platform.	/	tilde.team	70
-i	/	tilde.team	70
-iBuilds and installation are tested using a GitHub Action	/	tilde.team	70
-iworkflow for x86_64-linux, aarch64-linux and aarch64-darwin	/	tilde.team	70
-iplatforms.	/	tilde.team	70
+i	/	tilde.club	70
+i### Modifying	/	tilde.club	70
+i	/	tilde.club	70
+iTo enable projects to be built, installed and run,	/	tilde.club	70
+imodifications have been made to the source code. Some of	/	tilde.club	70
+ithese fix problems of logic, others are necessary to keep	/	tilde.club	70
+ithe construction through GNU Make coherent.	/	tilde.club	70
+i	/	tilde.club	70
+i## Compatibility	/	tilde.club	70
+i	/	tilde.club	70
+iBuilds and installation and project execution have so far	/	tilde.club	70
+ionly been tested for the x86_64-linux platform.	/	tilde.club	70
+i	/	tilde.club	70
+iBuilds and installation are tested using a GitHub Action	/	tilde.club	70
+iworkflow for x86_64-linux, aarch64-linux and aarch64-darwin	/	tilde.club	70
+iplatforms.	/	tilde.club	70
 hworkflow	URL:https://github.com/theobori/9ports/blob/main/.github/workflows/check_then_build.yml	github.com	443
-i	/	tilde.team	70
-i## Nix	/	tilde.team	70
-i	/	tilde.team	70
-iA Nix Flake is provided, exposing Nix packages representing	/	tilde.team	70
-ieach of the ported projects and the packages named all and	/	tilde.team	70
-idefault enabling them to be managed together.	/	tilde.team	70
-i	/	tilde.team	70
-iFor example, you can launch a catclock with the following	/	tilde.team	70
-icommand line.	/	tilde.team	70
-i	/	tilde.team	70
-inix run github:theobori/9ports#catclock	/	tilde.team	70
-i	/	tilde.team	70
-i## Results	/	tilde.team	70
-i	/	tilde.team	70
-iBelow are sudoku and some other graphics applications	/	tilde.team	70
-irunning on my NixOS system.	/	tilde.team	70
-i	/	tilde.team	70
-i/9ports-running-applications.png	/	tilde.team	70
-I/9ports-running-applications.png	/~nagi/9ports-running-applications.png	tilde.team	70
-i	/	tilde.team	70
-i## Contributing	/	tilde.team	70
-i	/	tilde.team	70
-iAnyone is free to contribute to the source code, many	/	tilde.team	70
-iprojects have still not been ported. For more details,	/	tilde.team	70
-iplease visit the GitHub repository.	/	tilde.team	70
+i	/	tilde.club	70
+i## Nix	/	tilde.club	70
+i	/	tilde.club	70
+iA Nix Flake is provided, exposing Nix packages representing	/	tilde.club	70
+ieach of the ported projects and the packages named all and	/	tilde.club	70
+idefault enabling them to be managed together.	/	tilde.club	70
+i	/	tilde.club	70
+iFor example, you can launch a catclock with the following	/	tilde.club	70
+icommand line.	/	tilde.club	70
+i	/	tilde.club	70
+inix run github:theobori/9ports#catclock	/	tilde.club	70
+i	/	tilde.club	70
+i## Results	/	tilde.club	70
+i	/	tilde.club	70
+iBelow are sudoku and some other graphics applications	/	tilde.club	70
+irunning on my NixOS system.	/	tilde.club	70
+i	/	tilde.club	70
+i/9ports-running-applications.png	/	tilde.club	70
+I/9ports-running-applications.png	/~theobori/9ports-running-applications.png	tilde.club	70
+i	/	tilde.club	70
+i## Contributing	/	tilde.club	70
+i	/	tilde.club	70
+iAnyone is free to contribute to the source code, many	/	tilde.club	70
+iprojects have still not been ported. For more details,	/	tilde.club	70
+iplease visit the GitHub repository.	/	tilde.club	70
 hGitHub repository	URL:https://github.com/theobori/9ports	github.com	443
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iI can now play Sudoku on my UNIX system. I'm really enjoying	/	tilde.team	70
-ithe 9ports project, and I'm thinking of porting other	/	tilde.team	70
-iapplications, like those on the Plan 9 forks, such as	/	tilde.team	70
-i9front.	/	tilde.team	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iI can now play Sudoku on my UNIX system. I'm really enjoying	/	tilde.club	70
+ithe 9ports project, and I'm thinking of porting other	/	tilde.club	70
+iapplications, like those on the Plan 9 forks, such as	/	tilde.club	70
+i9front.	/	tilde.club	70

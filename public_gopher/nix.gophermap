@@ -1,509 +1,509 @@
-i## title: My Nix exploration	/	tilde.team	70
-i## date: "2024-06-24"	/	tilde.team	70
-i	/	tilde.team	70
-i/nix_logo.svg	/	tilde.team	70
-I/nix_logo.svg	/~nagi/nix_logo.svg	tilde.team	70
-i	/	tilde.team	70
-iHere I share some notes and other things I've learned about	/	tilde.team	70
-iNix that I find interesting. The content of this post is	/	tilde.team	70
-imainly about me learning Nix, it's not about understanding	/	tilde.team	70
-ithe whole tool and language.	/	tilde.team	70
-i	/	tilde.team	70
-iAlso, it's important to note that I use Nix as a non-NixOS	/	tilde.team	70
-iuser.	/	tilde.team	70
-i	/	tilde.team	70
-i## What is Nix?	/	tilde.team	70
-i	/	tilde.team	70
-iNix is actually several things! It's a cross platform	/	tilde.team	70
-ipackage manager. It would be a little more accurate to say	/	tilde.team	70
-ithat it's a deployment tool used as a package manager.	/	tilde.team	70
-i	/	tilde.team	70
-iAnd it's also a purely functional programming language,	/	tilde.team	70
-idynamically typed and lazily evaluated.	/	tilde.team	70
-i	/	tilde.team	70
-i## Learning the programming language	/	tilde.team	70
-i	/	tilde.team	70
-iI started by learning the basics of the language and then	/	tilde.team	70
-iwent on to explore it in a bit more depth.	/	tilde.team	70
-i	/	tilde.team	70
-i### The basics	/	tilde.team	70
-i	/	tilde.team	70
-iI read Nix language basics and to get used to the language I	/	tilde.team	70
-ipractised with A tour of Nix which has several levels of	/	tilde.team	70
-idifficulty from "easy" to "hard".	/	tilde.team	70
+i## title: My Nix exploration	/	tilde.club	70
+i## date: "2024-06-24"	/	tilde.club	70
+i	/	tilde.club	70
+i/nix_logo.svg	/	tilde.club	70
+I/nix_logo.svg	/~theobori/nix_logo.svg	tilde.club	70
+i	/	tilde.club	70
+iHere I share some notes and other things I've learned about	/	tilde.club	70
+iNix that I find interesting. The content of this post is	/	tilde.club	70
+imainly about me learning Nix, it's not about understanding	/	tilde.club	70
+ithe whole tool and language.	/	tilde.club	70
+i	/	tilde.club	70
+iAlso, it's important to note that I use Nix as a non-NixOS	/	tilde.club	70
+iuser.	/	tilde.club	70
+i	/	tilde.club	70
+i## What is Nix?	/	tilde.club	70
+i	/	tilde.club	70
+iNix is actually several things! It's a cross platform	/	tilde.club	70
+ipackage manager. It would be a little more accurate to say	/	tilde.club	70
+ithat it's a deployment tool used as a package manager.	/	tilde.club	70
+i	/	tilde.club	70
+iAnd it's also a purely functional programming language,	/	tilde.club	70
+idynamically typed and lazily evaluated.	/	tilde.club	70
+i	/	tilde.club	70
+i## Learning the programming language	/	tilde.club	70
+i	/	tilde.club	70
+iI started by learning the basics of the language and then	/	tilde.club	70
+iwent on to explore it in a bit more depth.	/	tilde.club	70
+i	/	tilde.club	70
+i### The basics	/	tilde.club	70
+i	/	tilde.club	70
+iI read Nix language basics and to get used to the language I	/	tilde.club	70
+ipractised with A tour of Nix which has several levels of	/	tilde.club	70
+idifficulty from "easy" to "hard".	/	tilde.club	70
 hNix language basics	URL:https://nix.dev/tutorials/nix-language#reading-nix-language	nix.dev	443
 hA tour of Nix	URL:https://nixcloud.io/tour	nixcloud.io	443
-i	/	tilde.team	70
-iOne interesting thing about this language is that it has	/	tilde.team	70
-ionly one argument per function. To simulate several	/	tilde.team	70
-iarguments, you can, for example, write a function with one	/	tilde.team	70
-iargument that returns a function with one argument that	/	tilde.team	70
-ireturns a function with one argument, and so on. The syntax	/	tilde.team	70
-iof the language makes it easy to do this.	/	tilde.team	70
-i	/	tilde.team	70
-iI was taught that it has a name, it's called Currying. It's	/	tilde.team	70
-ithe transformation of a function with several arguments into	/	tilde.team	70
-ia function with one argument that returns a function on the	/	tilde.team	70
-irest of the arguments. Here's an example with arguments 3	/	tilde.team	70
-iand 4.	/	tilde.team	70
+i	/	tilde.club	70
+iOne interesting thing about this language is that it has	/	tilde.club	70
+ionly one argument per function. To simulate several	/	tilde.club	70
+iarguments, you can, for example, write a function with one	/	tilde.club	70
+iargument that returns a function with one argument that	/	tilde.club	70
+ireturns a function with one argument, and so on. The syntax	/	tilde.club	70
+iof the language makes it easy to do this.	/	tilde.club	70
+i	/	tilde.club	70
+iI was taught that it has a name, it's called Currying. It's	/	tilde.club	70
+ithe transformation of a function with several arguments into	/	tilde.club	70
+ia function with one argument that returns a function on the	/	tilde.club	70
+irest of the arguments. Here's an example with arguments 3	/	tilde.club	70
+iand 4.	/	tilde.club	70
 hCurrying	URL:https://en.wikipedia.org/wiki/Currying	en.wikipedia.org	443
-i	/	tilde.team	70
-inix-repl> (a: b: a + b) 3 4	/	tilde.team	70
-i7	/	tilde.team	70
-i	/	tilde.team	70
-iA Python equivalent might be something like the following.	/	tilde.team	70
-i	/	tilde.team	70
-i>>> (lambda a: lambda b: a + b)(3)(4)	/	tilde.team	70
-i7	/	tilde.team	70
-i	/	tilde.team	70
-iAnother solution that is often used, particularly in	/	tilde.team	70
-iNixpkgs, is to have an attribute set as a parameter to the	/	tilde.team	70
-ifunction, and to use the attributes as arguments. For	/	tilde.team	70
-iexample, this might look like the expression below.	/	tilde.team	70
+i	/	tilde.club	70
+inix-repl> (a: b: a + b) 3 4	/	tilde.club	70
+i7	/	tilde.club	70
+i	/	tilde.club	70
+iA Python equivalent might be something like the following.	/	tilde.club	70
+i	/	tilde.club	70
+i>>> (lambda a: lambda b: a + b)(3)(4)	/	tilde.club	70
+i7	/	tilde.club	70
+i	/	tilde.club	70
+iAnother solution that is often used, particularly in	/	tilde.club	70
+iNixpkgs, is to have an attribute set as a parameter to the	/	tilde.club	70
+ifunction, and to use the attributes as arguments. For	/	tilde.club	70
+iexample, this might look like the expression below.	/	tilde.club	70
 hNixpkgs	URL:https://github.com/NixOS/nixpkgs	github.com	443
-i	/	tilde.team	70
-inix-repl> ({a, b}: a + b){a = 3; b = 4;}	/	tilde.team	70
-i7	/	tilde.team	70
-i	/	tilde.team	70
-i### Fake dynamic binding	/	tilde.team	70
-i	/	tilde.team	70
-iAlthough the blog post How to Fake Dynamic Binding in Nix	/	tilde.team	70
-italks about this very well, I find it interesting to offer	/	tilde.team	70
-imy own thoughts and approach.	/	tilde.team	70
+i	/	tilde.club	70
+inix-repl> ({a, b}: a + b){a = 3; b = 4;}	/	tilde.club	70
+i7	/	tilde.club	70
+i	/	tilde.club	70
+i### Fake dynamic binding	/	tilde.club	70
+i	/	tilde.club	70
+iAlthough the blog post How to Fake Dynamic Binding in Nix	/	tilde.club	70
+italks about this very well, I find it interesting to offer	/	tilde.club	70
+imy own thoughts and approach.	/	tilde.club	70
 hHow to Fake Dynamic Binding in Nix	URL:http://r6.ca/blog/20140422T142911Z.html	r6.ca	80
-i	/	tilde.team	70
-iThe language is statically scoped, i.e. binding decisions	/	tilde.team	70
-iare made according to the scope at declaration time.	/	tilde.team	70
-i	/	tilde.team	70
-iLet's look at the rec keyword, which allows an attribute set	/	tilde.team	70
-ito access its own attributes (recursive binding). Here's an	/	tilde.team	70
-iexample.	/	tilde.team	70
-i	/	tilde.team	70
-inix-repl> rec { a = 1; b = a + 1;}	/	tilde.team	70
-i{	/	tilde.team	70
-i  a = 1;	/	tilde.team	70
-i  b = 2;	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iThis is an interesting feature, but it remains static	/	tilde.team	70
-ibecause the binding is done before the runtime. This poses	/	tilde.team	70
-iproblems, particularly when it comes to overriding	/	tilde.team	70
-iattributes, as shown in the example below.	/	tilde.team	70
-i	/	tilde.team	70
-inix-repl> rec { a = 1; b = a + 1; } // { a = 10; }	/	tilde.team	70
-i{	/	tilde.team	70
-i  a = 10;	/	tilde.team	70
-i  b = 2;	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iIn this example, we would like b to be equal to 11, not 2.	/	tilde.team	70
-i	/	tilde.team	70
-iTo solve this problem, we can look at the concept of a fixed	/	tilde.team	70
-ipoint. A fixed point is a value of x that validates the	/	tilde.team	70
-iequation x = f(x).	/	tilde.team	70
-i	/	tilde.team	70
-iWe can therefore write the following function.	/	tilde.team	70
-i	/	tilde.team	70
-inix-repl> fix = f: let	/	tilde.team	70
-i  result = f result;	/	tilde.team	70
-iin	/	tilde.team	70
-i  result	/	tilde.team	70
-i	/	tilde.team	70
-iSo here we have the function fix which takes a function f as	/	tilde.team	70
-ia parameter and returns the fixed point result of the	/	tilde.team	70
-ifunction f.	/	tilde.team	70
-i	/	tilde.team	70
-iYou might be tempted to say that the f function calls itself	/	tilde.team	70
-iad infinitum (f(f(f(f(..))))), but Nix evaluates expressions	/	tilde.team	70
-ilazily, so this isn't the case.	/	tilde.team	70
-i	/	tilde.team	70
-iWe can literally see that the f function returns a fixed	/	tilde.team	70
-ipoint (result), because result = f result, which respects	/	tilde.team	70
-ithe definition of a fixed point.	/	tilde.team	70
-i	/	tilde.team	70
-iThe fix function will allow us to emulate the rec keyword,	/	tilde.team	70
-ias shown in the example below.	/	tilde.team	70
-inix-repl> fix (self: { a = 3; b = 4; c = self.a + self.b; })	/	tilde.team	70
-i{	/	tilde.team	70
-i  a = 3;	/	tilde.team	70
-i  b = 4;	/	tilde.team	70
-i  c = 7;	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iTo better understand how it works, I've written the result	/	tilde.team	70
-iof the fix function differently with the argument used	/	tilde.team	70
-ipreviously.	/	tilde.team	70
-i	/	tilde.team	70
-inix-repl> let	/	tilde.team	70
-i  result = { a = 3; b = 4; c = result.a + result.b;};	/	tilde.team	70
-iin	/	tilde.team	70
-i  { a = 3; b = 4; c = result.a + result.b;}	/	tilde.team	70
-i{	/	tilde.team	70
-i  a = 3;	/	tilde.team	70
-i  b = 4;	/	tilde.team	70
-i  c = 7;	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iFinally, I've written the following function, which will	/	tilde.team	70
-iallow the attributes to be overridden dynamically as	/	tilde.team	70
-iinitially intended.	/	tilde.team	70
-i	/	tilde.team	70
-inix-repl> fix = let	/	tilde.team	70
-i  fixWithOverride = f: overrides: let	/	tilde.team	70
-i      result = (f result) // overrides;	/	tilde.team	70
-i    in	/	tilde.team	70
-i      result // { override = x: fixWithOverride f x; };	/	tilde.team	70
-iin	/	tilde.team	70
-if: fixWithOverride f {}	/	tilde.team	70
-i	/	tilde.team	70
-iattrFunction = self: { a = 3; b = 4; c = self.a+self.b; }	/	tilde.team	70
-i	/	tilde.team	70
-iattrFunctionFixedPoint = fix attrFunction	/	tilde.team	70
-i	/	tilde.team	70
-inix-repl> attrFunctionFixedPoint	/	tilde.team	70
-i{	/	tilde.team	70
-i  a = 3;	/	tilde.team	70
-i  b = 4;	/	tilde.team	70
-i  c = 7;	/	tilde.team	70
-i  override = «lambda override @ «string»:5:30»;	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-inix-repl> attrFunctionFixedPoint.override { b = 1; }	/	tilde.team	70
-i{	/	tilde.team	70
-i  a = 3;	/	tilde.team	70
-i  b = 1;	/	tilde.team	70
-i  c = 4;	/	tilde.team	70
-i  override = «lambda override @ «string»:5:30»;	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-i## The essential Nix tool	/	tilde.team	70
-i	/	tilde.team	70
-iAs already mentioned, the main use of Nix is cross platform	/	tilde.team	70
-ipackage management. In this section I'm just trying to share	/	tilde.team	70
-iand summarise some of the essential parts of my notes. If	/	tilde.team	70
-iyou want more details, I recommend you read the excellent	/	tilde.team	70
-iNix Pills. It's rather long but well worth the read!	/	tilde.team	70
+i	/	tilde.club	70
+iThe language is statically scoped, i.e. binding decisions	/	tilde.club	70
+iare made according to the scope at declaration time.	/	tilde.club	70
+i	/	tilde.club	70
+iLet's look at the rec keyword, which allows an attribute set	/	tilde.club	70
+ito access its own attributes (recursive binding). Here's an	/	tilde.club	70
+iexample.	/	tilde.club	70
+i	/	tilde.club	70
+inix-repl> rec { a = 1; b = a + 1;}	/	tilde.club	70
+i{	/	tilde.club	70
+i  a = 1;	/	tilde.club	70
+i  b = 2;	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iThis is an interesting feature, but it remains static	/	tilde.club	70
+ibecause the binding is done before the runtime. This poses	/	tilde.club	70
+iproblems, particularly when it comes to overriding	/	tilde.club	70
+iattributes, as shown in the example below.	/	tilde.club	70
+i	/	tilde.club	70
+inix-repl> rec { a = 1; b = a + 1; } // { a = 10; }	/	tilde.club	70
+i{	/	tilde.club	70
+i  a = 10;	/	tilde.club	70
+i  b = 2;	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iIn this example, we would like b to be equal to 11, not 2.	/	tilde.club	70
+i	/	tilde.club	70
+iTo solve this problem, we can look at the concept of a fixed	/	tilde.club	70
+ipoint. A fixed point is a value of x that validates the	/	tilde.club	70
+iequation x = f(x).	/	tilde.club	70
+i	/	tilde.club	70
+iWe can therefore write the following function.	/	tilde.club	70
+i	/	tilde.club	70
+inix-repl> fix = f: let	/	tilde.club	70
+i  result = f result;	/	tilde.club	70
+iin	/	tilde.club	70
+i  result	/	tilde.club	70
+i	/	tilde.club	70
+iSo here we have the function fix which takes a function f as	/	tilde.club	70
+ia parameter and returns the fixed point result of the	/	tilde.club	70
+ifunction f.	/	tilde.club	70
+i	/	tilde.club	70
+iYou might be tempted to say that the f function calls itself	/	tilde.club	70
+iad infinitum (f(f(f(f(..))))), but Nix evaluates expressions	/	tilde.club	70
+ilazily, so this isn't the case.	/	tilde.club	70
+i	/	tilde.club	70
+iWe can literally see that the f function returns a fixed	/	tilde.club	70
+ipoint (result), because result = f result, which respects	/	tilde.club	70
+ithe definition of a fixed point.	/	tilde.club	70
+i	/	tilde.club	70
+iThe fix function will allow us to emulate the rec keyword,	/	tilde.club	70
+ias shown in the example below.	/	tilde.club	70
+inix-repl> fix (self: { a = 3; b = 4; c = self.a + self.b; })	/	tilde.club	70
+i{	/	tilde.club	70
+i  a = 3;	/	tilde.club	70
+i  b = 4;	/	tilde.club	70
+i  c = 7;	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iTo better understand how it works, I've written the result	/	tilde.club	70
+iof the fix function differently with the argument used	/	tilde.club	70
+ipreviously.	/	tilde.club	70
+i	/	tilde.club	70
+inix-repl> let	/	tilde.club	70
+i  result = { a = 3; b = 4; c = result.a + result.b;};	/	tilde.club	70
+iin	/	tilde.club	70
+i  { a = 3; b = 4; c = result.a + result.b;}	/	tilde.club	70
+i{	/	tilde.club	70
+i  a = 3;	/	tilde.club	70
+i  b = 4;	/	tilde.club	70
+i  c = 7;	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iFinally, I've written the following function, which will	/	tilde.club	70
+iallow the attributes to be overridden dynamically as	/	tilde.club	70
+iinitially intended.	/	tilde.club	70
+i	/	tilde.club	70
+inix-repl> fix = let	/	tilde.club	70
+i  fixWithOverride = f: overrides: let	/	tilde.club	70
+i      result = (f result) // overrides;	/	tilde.club	70
+i    in	/	tilde.club	70
+i      result // { override = x: fixWithOverride f x; };	/	tilde.club	70
+iin	/	tilde.club	70
+if: fixWithOverride f {}	/	tilde.club	70
+i	/	tilde.club	70
+iattrFunction = self: { a = 3; b = 4; c = self.a+self.b; }	/	tilde.club	70
+i	/	tilde.club	70
+iattrFunctionFixedPoint = fix attrFunction	/	tilde.club	70
+i	/	tilde.club	70
+inix-repl> attrFunctionFixedPoint	/	tilde.club	70
+i{	/	tilde.club	70
+i  a = 3;	/	tilde.club	70
+i  b = 4;	/	tilde.club	70
+i  c = 7;	/	tilde.club	70
+i  override = «lambda override @ «string»:5:30»;	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+inix-repl> attrFunctionFixedPoint.override { b = 1; }	/	tilde.club	70
+i{	/	tilde.club	70
+i  a = 3;	/	tilde.club	70
+i  b = 1;	/	tilde.club	70
+i  c = 4;	/	tilde.club	70
+i  override = «lambda override @ «string»:5:30»;	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+i## The essential Nix tool	/	tilde.club	70
+i	/	tilde.club	70
+iAs already mentioned, the main use of Nix is cross platform	/	tilde.club	70
+ipackage management. In this section I'm just trying to share	/	tilde.club	70
+iand summarise some of the essential parts of my notes. If	/	tilde.club	70
+iyou want more details, I recommend you read the excellent	/	tilde.club	70
+iNix Pills. It's rather long but well worth the read!	/	tilde.club	70
 hNix Pills	URL:https://nixos.org/guides/nix-pills/	nixos.org	443
-i	/	tilde.team	70
-i### How does it work ?	/	tilde.team	70
-i	/	tilde.team	70
-iTo sum up, I'd say that the Nix language has a very	/	tilde.team	70
-iinteresting native function called derivation (see	/	tilde.team	70
-idocumentation) on which many Nix expressions are based. I'm	/	tilde.team	70
-inot going to redefine the term because the documentation has	/	tilde.team	70
-ia very comprehensible version, but the important thing to	/	tilde.team	70
-iremember is that a derivation is a construction	/	tilde.team	70
-ispecification, it's an immutable Nix building block. With	/	tilde.team	70
-ianother package manager, you could see it as a literal	/	tilde.team	70
-ipackage.	/	tilde.team	70
+i	/	tilde.club	70
+i### How does it work ?	/	tilde.club	70
+i	/	tilde.club	70
+iTo sum up, I'd say that the Nix language has a very	/	tilde.club	70
+iinteresting native function called derivation (see	/	tilde.club	70
+idocumentation) on which many Nix expressions are based. I'm	/	tilde.club	70
+inot going to redefine the term because the documentation has	/	tilde.club	70
+ia very comprehensible version, but the important thing to	/	tilde.club	70
+iremember is that a derivation is a construction	/	tilde.club	70
+ispecification, it's an immutable Nix building block. With	/	tilde.club	70
+ianother package manager, you could see it as a literal	/	tilde.club	70
+ipackage.	/	tilde.club	70
 hsee documentation	URL:https://nix.dev/manual/nix/2.22/language/derivations	nix.dev	443
-i	/	tilde.team	70
-iNix technology will enable us to build these derivations, in	/	tilde.team	70
-ithe following stages.	/	tilde.team	70
-i	/	tilde.team	70
-i/nix_graph.png	/	tilde.team	70
-I/nix_graph.png	/~nagi/nix_graph.png	tilde.team	70
-i	/	tilde.team	70
-iThe .drv files contain specifications on how to build the	/	tilde.team	70
-iderivation, they are intermediate files comparable to .o	/	tilde.team	70
-ifiles, and the .nix files are comparable to .c files.	/	tilde.team	70
-i	/	tilde.team	70
-iThe construction result is immutable and will be stored in	/	tilde.team	70
-i/nix/store/, a synchronisation with the SQLite database. I	/	tilde.team	70
-isaid it was immutable, in fact it is because Nix creates a	/	tilde.team	70
-ihash for the path in the /nix/store/ from the input	/	tilde.team	70
-iderivation (not from the construction result).	/	tilde.team	70
+i	/	tilde.club	70
+iNix technology will enable us to build these derivations, in	/	tilde.club	70
+ithe following stages.	/	tilde.club	70
+i	/	tilde.club	70
+i/nix_graph.png	/	tilde.club	70
+I/nix_graph.png	/~theobori/nix_graph.png	tilde.club	70
+i	/	tilde.club	70
+iThe .drv files contain specifications on how to build the	/	tilde.club	70
+iderivation, they are intermediate files comparable to .o	/	tilde.club	70
+ifiles, and the .nix files are comparable to .c files.	/	tilde.club	70
+i	/	tilde.club	70
+iThe construction result is immutable and will be stored in	/	tilde.club	70
+i/nix/store/, a synchronisation with the SQLite database. I	/	tilde.club	70
+isaid it was immutable, in fact it is because Nix creates a	/	tilde.club	70
+ihash for the path in the /nix/store/ from the input	/	tilde.club	70
+iderivation (not from the construction result).	/	tilde.club	70
 hSQLite	URL:https://www.sqlite.org/	www.sqlite.org	443
-i	/	tilde.team	70
-iIt's pretty hard to imagine all this, so I'll give you a	/	tilde.team	70
-iconcrete example. Let's imagine I want to create a	/	tilde.team	70
-iderivation for the famous software GNU Hello. The Nix	/	tilde.team	70
-iderivation could look something like this.	/	tilde.team	70
+i	/	tilde.club	70
+iIt's pretty hard to imagine all this, so I'll give you a	/	tilde.club	70
+iconcrete example. Let's imagine I want to create a	/	tilde.club	70
+iderivation for the famous software GNU Hello. The Nix	/	tilde.club	70
+iderivation could look something like this.	/	tilde.club	70
 hGNU Hello	URL:https://www.gnu.org/software/hello/	www.gnu.org	443
-i	/	tilde.team	70
-i# default.nix	/	tilde.team	70
-i	/	tilde.team	70
-ilet	/	tilde.team	70
-i  pkgs = import <nixpkgs> { };	/	tilde.team	70
-iin	/	tilde.team	70
-i  {	/	tilde.team	70
-i    hello = pkgs.stdenv.mkDerivation {	/	tilde.team	70
-i      pname = "hello";	/	tilde.team	70
-i      version = "2.12.1";	/	tilde.team	70
-i	/	tilde.team	70
-i      src = fetchTarball {	/	tilde.team	70
-i        url = "https://ftp.gnu.org/gnu/hello/hello-	/	tilde.team	70
-i2.12.1.tar.gz";	/	tilde.team	70
-i        sha256 =	/	tilde.team	70
-i"1kJjhtlsAkpNB7f6tZEs+dbKd8z7KoNHyDHEJ0tmhnc=";	/	tilde.team	70
-i      };	/	tilde.team	70
-i    };	/	tilde.team	70
-i  }	/	tilde.team	70
-i	/	tilde.team	70
-i“The mkDerivation function is based on the derivation	/	tilde.team	70
-ibuiltin function.”	/	tilde.team	70
-i	/	tilde.team	70
-iIt can be built with the following command.	/	tilde.team	70
-i	/	tilde.team	70
-inix-build	/	tilde.team	70
-i	/	tilde.team	70
-iThe build result has been created in	/	tilde.team	70
-i/nix/store/x9cc4jsylk5q01iaxmxf941b59chws5h-hello-2.12.1 and a	/	tilde.team	70
-isymbolic link named result pointing to this folder has been	/	tilde.team	70
-icreated in the current folder. We can then find the binary	/	tilde.team	70
-iin ./result/bin/hello.	/	tilde.team	70
-i	/	tilde.team	70
-iBefore the build, a .drv file was created, which can be	/	tilde.team	70
-ifound by running the following command.	/	tilde.team	70
-inix derivation show ./result | jq "keys[0]"	/	tilde.team	70
-i	/	tilde.team	70
-iThe full path to the .drv file is found in the first key of	/	tilde.team	70
-ithe JSON object, so the path to the .drv file is	/	tilde.team	70
-i/nix/store/dp5z62k3chf019biikg77p2acmz17phx-hello-2.12.1.drv.	/	tilde.team	70
-i	/	tilde.team	70
-iAs it is in binary format we can use nix derivation show to	/	tilde.team	70
-idisplay the construction information it contains with the	/	tilde.team	70
-ifollowing command.	/	tilde.team	70
-i	/	tilde.team	70
-inix derivation show (nix derivation show ./result | jq	/	tilde.team	70
-i"keys[0]" | tr -d "\"")	/	tilde.team	70
-i# Or	/	tilde.team	70
-inix derivation show	/	tilde.team	70
-i/nix/store/dp5z62k3chf019biikg77p2acmz17phx-hello-2.12.1.drv	/	tilde.team	70
-i# ^	/	tilde.team	70
-i# | Same output	/	tilde.team	70
-i# v	/	tilde.team	70
-inix derivation show ./result	/	tilde.team	70
-i	/	tilde.team	70
-i### Nixpkgs	/	tilde.team	70
-i	/	tilde.team	70
-iIn the Nix expression used previously (the GNU Hello	/	tilde.team	70
-iderivation), I used the mkDerivation function from stdenv.	/	tilde.team	70
+i	/	tilde.club	70
+i# default.nix	/	tilde.club	70
+i	/	tilde.club	70
+ilet	/	tilde.club	70
+i  pkgs = import <nixpkgs> { };	/	tilde.club	70
+iin	/	tilde.club	70
+i  {	/	tilde.club	70
+i    hello = pkgs.stdenv.mkDerivation {	/	tilde.club	70
+i      pname = "hello";	/	tilde.club	70
+i      version = "2.12.1";	/	tilde.club	70
+i	/	tilde.club	70
+i      src = fetchTarball {	/	tilde.club	70
+i        url = "https://ftp.gnu.org/gnu/hello/hello-	/	tilde.club	70
+i2.12.1.tar.gz";	/	tilde.club	70
+i        sha256 =	/	tilde.club	70
+i"1kJjhtlsAkpNB7f6tZEs+dbKd8z7KoNHyDHEJ0tmhnc=";	/	tilde.club	70
+i      };	/	tilde.club	70
+i    };	/	tilde.club	70
+i  }	/	tilde.club	70
+i	/	tilde.club	70
+i“The mkDerivation function is based on the derivation	/	tilde.club	70
+ibuiltin function.”	/	tilde.club	70
+i	/	tilde.club	70
+iIt can be built with the following command.	/	tilde.club	70
+i	/	tilde.club	70
+inix-build	/	tilde.club	70
+i	/	tilde.club	70
+iThe build result has been created in	/	tilde.club	70
+i/nix/store/x9cc4jsylk5q01iaxmxf941b59chws5h-hello-2.12.1 and a	/	tilde.club	70
+isymbolic link named result pointing to this folder has been	/	tilde.club	70
+icreated in the current folder. We can then find the binary	/	tilde.club	70
+iin ./result/bin/hello.	/	tilde.club	70
+i	/	tilde.club	70
+iBefore the build, a .drv file was created, which can be	/	tilde.club	70
+ifound by running the following command.	/	tilde.club	70
+inix derivation show ./result | jq "keys[0]"	/	tilde.club	70
+i	/	tilde.club	70
+iThe full path to the .drv file is found in the first key of	/	tilde.club	70
+ithe JSON object, so the path to the .drv file is	/	tilde.club	70
+i/nix/store/dp5z62k3chf019biikg77p2acmz17phx-hello-2.12.1.drv.	/	tilde.club	70
+i	/	tilde.club	70
+iAs it is in binary format we can use nix derivation show to	/	tilde.club	70
+idisplay the construction information it contains with the	/	tilde.club	70
+ifollowing command.	/	tilde.club	70
+i	/	tilde.club	70
+inix derivation show (nix derivation show ./result | jq	/	tilde.club	70
+i"keys[0]" | tr -d "\"")	/	tilde.club	70
+i# Or	/	tilde.club	70
+inix derivation show	/	tilde.club	70
+i/nix/store/dp5z62k3chf019biikg77p2acmz17phx-hello-2.12.1.drv	/	tilde.club	70
+i# ^	/	tilde.club	70
+i# | Same output	/	tilde.club	70
+i# v	/	tilde.club	70
+inix derivation show ./result	/	tilde.club	70
+i	/	tilde.club	70
+i### Nixpkgs	/	tilde.club	70
+i	/	tilde.club	70
+iIn the Nix expression used previously (the GNU Hello	/	tilde.club	70
+iderivation), I used the mkDerivation function from stdenv.	/	tilde.club	70
 hGNU Hello	URL:https://www.gnu.org/software/hello/	www.gnu.org	443
-i	/	tilde.team	70
-iThis function is not builtin, it comes from the pkgs	/	tilde.team	70
-iidentifier which has the value import <nixpkgs> { };.	/	tilde.team	70
-i	/	tilde.team	70
-iBefore explaining this import, I think it's very important	/	tilde.team	70
-ito understand what Nixpkgs is. It's a Git repository that	/	tilde.team	70
-icontains all the Nix expressions and modules. When this	/	tilde.team	70
-ifolder is evaluated, it produces an attribute set containing	/	tilde.team	70
-istdenv, which is itself an attribute set containing our	/	tilde.team	70
-imkDerivation function.	/	tilde.team	70
+i	/	tilde.club	70
+iThis function is not builtin, it comes from the pkgs	/	tilde.club	70
+iidentifier which has the value import <nixpkgs> { };.	/	tilde.club	70
+i	/	tilde.club	70
+iBefore explaining this import, I think it's very important	/	tilde.club	70
+ito understand what Nixpkgs is. It's a Git repository that	/	tilde.club	70
+icontains all the Nix expressions and modules. When this	/	tilde.club	70
+ifolder is evaluated, it produces an attribute set containing	/	tilde.club	70
+istdenv, which is itself an attribute set containing our	/	tilde.club	70
+imkDerivation function.	/	tilde.club	70
 hNixpkgs	URL:https://github.com/NixOS/nixpkgs	github.com	443
-i	/	tilde.team	70
-iGetting back to pkgs, <nixpkgs> is just a special Nix	/	tilde.team	70
-isyntax, which, when evaluated, gives a path to a folder	/	tilde.team	70
-icontaining a collection of Nix expressions, i.e. Nixpkgs.	/	tilde.team	70
-i	/	tilde.team	70
-iIncidentally <nixpkgs> has an equivalence in Nix as shown	/	tilde.team	70
-ibelow.	/	tilde.team	70
-i	/	tilde.team	70
-inix-repl> <nixpkgs>	/	tilde.team	70
-i/home/nagi/.nix-defexpr/channels/nixpkgs	/	tilde.team	70
-i	/	tilde.team	70
-inix-repl> builtins.findFile builtins.nixPath "nixpkgs"	/	tilde.team	70
-i/home/nagi/.nix-defexpr/channels/nixpkg	/	tilde.team	70
-i	/	tilde.team	70
-inix-repl> :p builtins.nixPath	/	tilde.team	70
-i[	/	tilde.team	70
-i  {	/	tilde.team	70
-i    path = "/home/nagi/.nix-defexpr/channels";	/	tilde.team	70
-i    prefix = "";	/	tilde.team	70
-i  }	/	tilde.team	70
-i]	/	tilde.team	70
-i	/	tilde.team	70
-i### Managing multiple Python versions	/	tilde.team	70
-i	/	tilde.team	70
-iOne of the advantages of Nix is that it naturally offers the	/	tilde.team	70
-ipossibility of managing several versions of the same	/	tilde.team	70
-iapplication. Taking Python as an example, let's say I want a	/	tilde.team	70
-iNix shell with version 3.7 and version 3.13.	/	tilde.team	70
+i	/	tilde.club	70
+iGetting back to pkgs, <nixpkgs> is just a special Nix	/	tilde.club	70
+isyntax, which, when evaluated, gives a path to a folder	/	tilde.club	70
+icontaining a collection of Nix expressions, i.e. Nixpkgs.	/	tilde.club	70
+i	/	tilde.club	70
+iIncidentally <nixpkgs> has an equivalence in Nix as shown	/	tilde.club	70
+ibelow.	/	tilde.club	70
+i	/	tilde.club	70
+inix-repl> <nixpkgs>	/	tilde.club	70
+i/home/nagi/.nix-defexpr/channels/nixpkgs	/	tilde.club	70
+i	/	tilde.club	70
+inix-repl> builtins.findFile builtins.nixPath "nixpkgs"	/	tilde.club	70
+i/home/nagi/.nix-defexpr/channels/nixpkg	/	tilde.club	70
+i	/	tilde.club	70
+inix-repl> :p builtins.nixPath	/	tilde.club	70
+i[	/	tilde.club	70
+i  {	/	tilde.club	70
+i    path = "/home/nagi/.nix-defexpr/channels";	/	tilde.club	70
+i    prefix = "";	/	tilde.club	70
+i  }	/	tilde.club	70
+i]	/	tilde.club	70
+i	/	tilde.club	70
+i### Managing multiple Python versions	/	tilde.club	70
+i	/	tilde.club	70
+iOne of the advantages of Nix is that it naturally offers the	/	tilde.club	70
+ipossibility of managing several versions of the same	/	tilde.club	70
+iapplication. Taking Python as an example, let's say I want a	/	tilde.club	70
+iNix shell with version 3.7 and version 3.13.	/	tilde.club	70
 hPython	URL:https://www.python.org/	www.python.org	443
-i	/	tilde.team	70
-iTo do this, we can check for which version of Nixpkgs Python	/	tilde.team	70
-iwas built on version 3.7 and target a specific version of	/	tilde.team	70
-iNixpkgs in our Nix expression.	/	tilde.team	70
+i	/	tilde.club	70
+iTo do this, we can check for which version of Nixpkgs Python	/	tilde.club	70
+iwas built on version 3.7 and target a specific version of	/	tilde.club	70
+iNixpkgs in our Nix expression.	/	tilde.club	70
 hNixpkgs	URL:https://github.com/NixOS/nixpkgs	github.com	443
 hNixpkgs	URL:https://github.com/NixOS/nixpkgs	github.com	443
-i	/	tilde.team	70
-iTo do this, there's the flox tool which works very well, but	/	tilde.team	70
-ito make it easier to understand I prefer to use nixhub.io.	/	tilde.team	70
+i	/	tilde.club	70
+iTo do this, there's the flox tool which works very well, but	/	tilde.club	70
+ito make it easier to understand I prefer to use nixhub.io.	/	tilde.club	70
 hflox	URL:https://floxdev.com/	floxdev.com	443
 hnixhub.io	URL:https://www.nixhub.io	www.nixhub.io	443
-i	/	tilde.team	70
-iSo I'm looking for a version of the Nix packages that	/	tilde.team	70
-icorresponds to Python version 3.7, and I find	/	tilde.team	70
-inixpkgs/aca0bbe791c220f8360bd0dd8e9dce161253b341#python37.	/	tilde.team	70
-i	/	tilde.team	70
-i# shell.nix	/	tilde.team	70
-i	/	tilde.team	70
-ilet	/	tilde.team	70
-i  pkgs = import (fetchTarball	/	tilde.team	70
-i"https://github.com/NixOS/nixpkgs/tarball/nixos-23.11") { };	/	tilde.team	70
-i  nixpkgs-python = import (fetchTarball	/	tilde.team	70
-i"https://github.com/NixOS/nixpkgs/archive/aca0bbe791c220f8360bd0dd8e9dce161253b341.tar.gz")	/	tilde.team	70
-i{ };	/	tilde.team	70
-iin	/	tilde.team	70
-i  pkgs.mkShell {	/	tilde.team	70
-i    buildInputs = [	/	tilde.team	70
-i      nixpkgs-python.python37	/	tilde.team	70
-i      pkgs.python313	/	tilde.team	70
-i    ];	/	tilde.team	70
-i  }	/	tilde.team	70
-i	/	tilde.team	70
-iYou can build Python derivations and enter a Nix shell with	/	tilde.team	70
-ithe following command.	/	tilde.team	70
-i	/	tilde.team	70
-inix-shell	/	tilde.team	70
-i	/	tilde.team	70
-iAnd we see that we have access to the two versions requested	/	tilde.team	70
-iwith the commands python3.7 and python3.13 !	/	tilde.team	70
-i	/	tilde.team	70
-i## A Virtual environment in Python with Nix flakes	/	tilde.team	70
-i	/	tilde.team	70
-iI've recently created a development environment with Nix	/	tilde.team	70
-iflakes (see documentation), it's very handy as it provides a	/	tilde.team	70
-iready to use environment for Python 3.11 with the desired	/	tilde.team	70
-imodules.	/	tilde.team	70
+i	/	tilde.club	70
+iSo I'm looking for a version of the Nix packages that	/	tilde.club	70
+icorresponds to Python version 3.7, and I find	/	tilde.club	70
+inixpkgs/aca0bbe791c220f8360bd0dd8e9dce161253b341#python37.	/	tilde.club	70
+i	/	tilde.club	70
+i# shell.nix	/	tilde.club	70
+i	/	tilde.club	70
+ilet	/	tilde.club	70
+i  pkgs = import (fetchTarball	/	tilde.club	70
+i"https://github.com/NixOS/nixpkgs/tarball/nixos-23.11") { };	/	tilde.club	70
+i  nixpkgs-python = import (fetchTarball	/	tilde.club	70
+i"https://github.com/NixOS/nixpkgs/archive/aca0bbe791c220f8360bd0dd8e9dce161253b341.tar.gz")	/	tilde.club	70
+i{ };	/	tilde.club	70
+iin	/	tilde.club	70
+i  pkgs.mkShell {	/	tilde.club	70
+i    buildInputs = [	/	tilde.club	70
+i      nixpkgs-python.python37	/	tilde.club	70
+i      pkgs.python313	/	tilde.club	70
+i    ];	/	tilde.club	70
+i  }	/	tilde.club	70
+i	/	tilde.club	70
+iYou can build Python derivations and enter a Nix shell with	/	tilde.club	70
+ithe following command.	/	tilde.club	70
+i	/	tilde.club	70
+inix-shell	/	tilde.club	70
+i	/	tilde.club	70
+iAnd we see that we have access to the two versions requested	/	tilde.club	70
+iwith the commands python3.7 and python3.13 !	/	tilde.club	70
+i	/	tilde.club	70
+i## A Virtual environment in Python with Nix flakes	/	tilde.club	70
+i	/	tilde.club	70
+iI've recently created a development environment with Nix	/	tilde.club	70
+iflakes (see documentation), it's very handy as it provides a	/	tilde.club	70
+iready to use environment for Python 3.11 with the desired	/	tilde.club	70
+imodules.	/	tilde.club	70
 hsee documentation	URL:https://nixos.wiki/wiki/Flakes	nixos.wiki	443
-i	/	tilde.team	70
-iBelow is a Nix expression I wrote for the Python module	/	tilde.team	70
-icallviz, it has all the necessary dependencies and a virtual	/	tilde.team	70
-iPython environment.	/	tilde.team	70
+i	/	tilde.club	70
+iBelow is a Nix expression I wrote for the Python module	/	tilde.club	70
+icallviz, it has all the necessary dependencies and a virtual	/	tilde.club	70
+iPython environment.	/	tilde.club	70
 hcallviz	URL:https://pypi.org/project/callviz/	pypi.org	443
-i	/	tilde.team	70
-i# flake.nix	/	tilde.team	70
-i	/	tilde.team	70
-i{	/	tilde.team	70
-i  inputs = {	/	tilde.team	70
-i    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";	/	tilde.team	70
-i  };	/	tilde.team	70
-i	/	tilde.team	70
-i  outputs =	/	tilde.team	70
-i    { self, nixpkgs }:	/	tilde.team	70
-i    let	/	tilde.team	70
-i      supportedSystems = [	/	tilde.team	70
-i        "x86_64-linux"	/	tilde.team	70
-i        "aarch64-linux"	/	tilde.team	70
-i        "x86_64-darwin"	/	tilde.team	70
-i        "aarch64-darwin"	/	tilde.team	70
-i      ];	/	tilde.team	70
-i	/	tilde.team	70
-i      forEachSupportedSystem =	/	tilde.team	70
-i        f: nixpkgs.lib.genAttrs supportedSystems (system: f	/	tilde.team	70
-i{ pkgs = import nixpkgs { inherit system; }; });	/	tilde.team	70
-i    in	/	tilde.team	70
-i    {	/	tilde.team	70
-i      # ...	/	tilde.team	70
-i      # I usually also declare a default package, a code	/	tilde.team	70
-ichecker and formatter	/	tilde.team	70
-i      devShells = forEachSupportedSystem (	/	tilde.team	70
-i        { pkgs }:	/	tilde.team	70
-i        {	/	tilde.team	70
-i          default = pkgs.mkShell {	/	tilde.team	70
-i            venvDir = ".venv";	/	tilde.team	70
-i            packages =	/	tilde.team	70
-i              with pkgs;	/	tilde.team	70
-i              [	/	tilde.team	70
-i                python3	/	tilde.team	70
-i                graphviz	/	tilde.team	70
-i              ]	/	tilde.team	70
-i              ++ (with pkgs.python3Packages; [	/	tilde.team	70
-i                pip	/	tilde.team	70
-i                venvShellHook	/	tilde.team	70
-i                graphviz	/	tilde.team	70
-i              ]);	/	tilde.team	70
-i          };	/	tilde.team	70
-i        }	/	tilde.team	70
-i      );	/	tilde.team	70
-i    };	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iNote that the default package and the default development	/	tilde.team	70
-ishell are compatible with all systems (supportedSystems)!	/	tilde.team	70
-i	/	tilde.team	70
-iTo realise the derivations and enter the Nix shell, I can	/	tilde.team	70
-irun the following command.	/	tilde.team	70
-inix develop	/	tilde.team	70
-i	/	tilde.team	70
-i## Nixpkgs contribution	/	tilde.team	70
-i	/	tilde.team	70
-iOnce I'd finished exploring and learning Nix, I wanted to	/	tilde.team	70
-imake a package for Super Mario War and add it to Nixpkgs.	/	tilde.team	70
+i	/	tilde.club	70
+i# flake.nix	/	tilde.club	70
+i	/	tilde.club	70
+i{	/	tilde.club	70
+i  inputs = {	/	tilde.club	70
+i    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";	/	tilde.club	70
+i  };	/	tilde.club	70
+i	/	tilde.club	70
+i  outputs =	/	tilde.club	70
+i    { self, nixpkgs }:	/	tilde.club	70
+i    let	/	tilde.club	70
+i      supportedSystems = [	/	tilde.club	70
+i        "x86_64-linux"	/	tilde.club	70
+i        "aarch64-linux"	/	tilde.club	70
+i        "x86_64-darwin"	/	tilde.club	70
+i        "aarch64-darwin"	/	tilde.club	70
+i      ];	/	tilde.club	70
+i	/	tilde.club	70
+i      forEachSupportedSystem =	/	tilde.club	70
+i        f: nixpkgs.lib.genAttrs supportedSystems (system: f	/	tilde.club	70
+i{ pkgs = import nixpkgs { inherit system; }; });	/	tilde.club	70
+i    in	/	tilde.club	70
+i    {	/	tilde.club	70
+i      # ...	/	tilde.club	70
+i      # I usually also declare a default package, a code	/	tilde.club	70
+ichecker and formatter	/	tilde.club	70
+i      devShells = forEachSupportedSystem (	/	tilde.club	70
+i        { pkgs }:	/	tilde.club	70
+i        {	/	tilde.club	70
+i          default = pkgs.mkShell {	/	tilde.club	70
+i            venvDir = ".venv";	/	tilde.club	70
+i            packages =	/	tilde.club	70
+i              with pkgs;	/	tilde.club	70
+i              [	/	tilde.club	70
+i                python3	/	tilde.club	70
+i                graphviz	/	tilde.club	70
+i              ]	/	tilde.club	70
+i              ++ (with pkgs.python3Packages; [	/	tilde.club	70
+i                pip	/	tilde.club	70
+i                venvShellHook	/	tilde.club	70
+i                graphviz	/	tilde.club	70
+i              ]);	/	tilde.club	70
+i          };	/	tilde.club	70
+i        }	/	tilde.club	70
+i      );	/	tilde.club	70
+i    };	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iNote that the default package and the default development	/	tilde.club	70
+ishell are compatible with all systems (supportedSystems)!	/	tilde.club	70
+i	/	tilde.club	70
+iTo realise the derivations and enter the Nix shell, I can	/	tilde.club	70
+irun the following command.	/	tilde.club	70
+inix develop	/	tilde.club	70
+i	/	tilde.club	70
+i## Nixpkgs contribution	/	tilde.club	70
+i	/	tilde.club	70
+iOnce I'd finished exploring and learning Nix, I wanted to	/	tilde.club	70
+imake a package for Super Mario War and add it to Nixpkgs.	/	tilde.club	70
 hSuper Mario War	URL:http://smwstuff.net/game	smwstuff.net	80
 hNixpkgs	URL:https://github.com/NixOS/nixpkgs	github.com	443
-i	/	tilde.team	70
-iHere's what the package looks like.	/	tilde.team	70
-i	/	tilde.team	70
-i{	/	tilde.team	70
-i  lib,	/	tilde.team	70
-i  stdenv,	/	tilde.team	70
-i  fetchFromGitHub,	/	tilde.team	70
-i  cmake,	/	tilde.team	70
-i  pkg-config,	/	tilde.team	70
-i  enet,	/	tilde.team	70
-i  yaml-cpp,	/	tilde.team	70
-i  SDL2,	/	tilde.team	70
-i  SDL2_image,	/	tilde.team	70
-i  SDL2_mixer,	/	tilde.team	70
-i  zlib,	/	tilde.team	70
-i  unstableGitUpdater,	/	tilde.team	70
-i  makeWrapper,	/	tilde.team	70
-i}:	/	tilde.team	70
-i	/	tilde.team	70
-istdenv.mkDerivation (finalAttrs: {	/	tilde.team	70
-i  pname = "supermariowar";	/	tilde.team	70
-i  version = "2024-unstable-2025-06-18";	/	tilde.team	70
-i	/	tilde.team	70
-i  src = fetchFromGitHub {	/	tilde.team	70
-i    owner = "mmatyas";	/	tilde.team	70
-i    repo = "supermariowar";	/	tilde.team	70
-i    rev = "71383b07b99a52b57be79cf371ab718337365019";	/	tilde.team	70
-i    hash = "sha256-	/	tilde.team	70
-iPjweE8cGAp8V4LY0/6QzLekQ80Q1qbwDiiSzDirA29s=";	/	tilde.team	70
-i    fetchSubmodules = true;	/	tilde.team	70
-i  };	/	tilde.team	70
-i	/	tilde.team	70
-i  nativeBuildInputs = [	/	tilde.team	70
-i    cmake	/	tilde.team	70
-i    pkg-config	/	tilde.team	70
-i    makeWrapper	/	tilde.team	70
-i  ];	/	tilde.team	70
-i	/	tilde.team	70
-i  buildInputs = [	/	tilde.team	70
-i    enet	/	tilde.team	70
-i    yaml-cpp	/	tilde.team	70
-i    SDL2	/	tilde.team	70
-i    SDL2_image	/	tilde.team	70
-i    SDL2_mixer	/	tilde.team	70
-i    zlib	/	tilde.team	70
-i  ];	/	tilde.team	70
-i	/	tilde.team	70
-i  cmakeFlags = [ "-DBUILD_STATIC_LIBS=OFF" ];	/	tilde.team	70
-i	/	tilde.team	70
-i  postInstall = ''	/	tilde.team	70
-i    mkdir -p $out/bin	/	tilde.team	70
-i	/	tilde.team	70
-i    for app in smw smw-leveledit smw-worldedit; do	/	tilde.team	70
-i      makeWrapper $out/games/$app $out/bin/$app 	/	tilde.team	70
-i        --add-flags "--datadir $out/share/games/smw"	/	tilde.team	70
-i    done	/	tilde.team	70
-i	/	tilde.team	70
-i    ln -s $out/games/smw-server $out/bin/smw-server	/	tilde.team	70
-i  '';	/	tilde.team	70
-i	/	tilde.team	70
-i  passthru.updateScript = unstableGitUpdater { };	/	tilde.team	70
-i	/	tilde.team	70
-i  meta = {	/	tilde.team	70
-i    description = "Fan-made multiplayer Super Mario Bros.	/	tilde.team	70
-istyle deathmatch game";	/	tilde.team	70
-i    homepage = "https://github.com/mmatyas/supermariowar";	/	tilde.team	70
-i    changelog =	/	tilde.team	70
-i"https://github.com/mmatyas/supermariowar/blob/${finalAttrs.src.rev}/CHANGELOG";	/	tilde.team	70
-i    license = lib.licenses.gpl2Plus;	/	tilde.team	70
-i    maintainers = with lib.maintainers; [ theobori ];	/	tilde.team	70
-i    mainProgram = "smw";	/	tilde.team	70
-i    platforms = lib.platforms.linux;	/	tilde.team	70
-i  };	/	tilde.team	70
-i})	/	tilde.team	70
+i	/	tilde.club	70
+iHere's what the package looks like.	/	tilde.club	70
+i	/	tilde.club	70
+i{	/	tilde.club	70
+i  lib,	/	tilde.club	70
+i  stdenv,	/	tilde.club	70
+i  fetchFromGitHub,	/	tilde.club	70
+i  cmake,	/	tilde.club	70
+i  pkg-config,	/	tilde.club	70
+i  enet,	/	tilde.club	70
+i  yaml-cpp,	/	tilde.club	70
+i  SDL2,	/	tilde.club	70
+i  SDL2_image,	/	tilde.club	70
+i  SDL2_mixer,	/	tilde.club	70
+i  zlib,	/	tilde.club	70
+i  unstableGitUpdater,	/	tilde.club	70
+i  makeWrapper,	/	tilde.club	70
+i}:	/	tilde.club	70
+i	/	tilde.club	70
+istdenv.mkDerivation (finalAttrs: {	/	tilde.club	70
+i  pname = "supermariowar";	/	tilde.club	70
+i  version = "2024-unstable-2025-06-18";	/	tilde.club	70
+i	/	tilde.club	70
+i  src = fetchFromGitHub {	/	tilde.club	70
+i    owner = "mmatyas";	/	tilde.club	70
+i    repo = "supermariowar";	/	tilde.club	70
+i    rev = "71383b07b99a52b57be79cf371ab718337365019";	/	tilde.club	70
+i    hash = "sha256-	/	tilde.club	70
+iPjweE8cGAp8V4LY0/6QzLekQ80Q1qbwDiiSzDirA29s=";	/	tilde.club	70
+i    fetchSubmodules = true;	/	tilde.club	70
+i  };	/	tilde.club	70
+i	/	tilde.club	70
+i  nativeBuildInputs = [	/	tilde.club	70
+i    cmake	/	tilde.club	70
+i    pkg-config	/	tilde.club	70
+i    makeWrapper	/	tilde.club	70
+i  ];	/	tilde.club	70
+i	/	tilde.club	70
+i  buildInputs = [	/	tilde.club	70
+i    enet	/	tilde.club	70
+i    yaml-cpp	/	tilde.club	70
+i    SDL2	/	tilde.club	70
+i    SDL2_image	/	tilde.club	70
+i    SDL2_mixer	/	tilde.club	70
+i    zlib	/	tilde.club	70
+i  ];	/	tilde.club	70
+i	/	tilde.club	70
+i  cmakeFlags = [ "-DBUILD_STATIC_LIBS=OFF" ];	/	tilde.club	70
+i	/	tilde.club	70
+i  postInstall = ''	/	tilde.club	70
+i    mkdir -p $out/bin	/	tilde.club	70
+i	/	tilde.club	70
+i    for app in smw smw-leveledit smw-worldedit; do	/	tilde.club	70
+i      makeWrapper $out/games/$app $out/bin/$app 	/	tilde.club	70
+i        --add-flags "--datadir $out/share/games/smw"	/	tilde.club	70
+i    done	/	tilde.club	70
+i	/	tilde.club	70
+i    ln -s $out/games/smw-server $out/bin/smw-server	/	tilde.club	70
+i  '';	/	tilde.club	70
+i	/	tilde.club	70
+i  passthru.updateScript = unstableGitUpdater { };	/	tilde.club	70
+i	/	tilde.club	70
+i  meta = {	/	tilde.club	70
+i    description = "Fan-made multiplayer Super Mario Bros.	/	tilde.club	70
+istyle deathmatch game";	/	tilde.club	70
+i    homepage = "https://github.com/mmatyas/supermariowar";	/	tilde.club	70
+i    changelog =	/	tilde.club	70
+i"https://github.com/mmatyas/supermariowar/blob/${finalAttrs.src.rev}/CHANGELOG";	/	tilde.club	70
+i    license = lib.licenses.gpl2Plus;	/	tilde.club	70
+i    maintainers = with lib.maintainers; [ theobori ];	/	tilde.club	70
+i    mainProgram = "smw";	/	tilde.club	70
+i    platforms = lib.platforms.linux;	/	tilde.club	70
+i  };	/	tilde.club	70
+i})	/	tilde.club	70

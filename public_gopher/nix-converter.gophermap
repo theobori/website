@@ -1,126 +1,126 @@
-i## title: My Nix converter tool	/	tilde.team	70
-i## date: "2025-12-16"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iLast year I wanted to convert my Nix code into YAML and	/	tilde.team	70
-iTOML. So I went looking for an all-in-one CLI tool capable of	/	tilde.team	70
-iconverting a configuration language into Nix and vice-versa.	/	tilde.team	70
-iUnfortunately, I couldn't find what I was looking for, so I	/	tilde.team	70
-idecided to create my own tool.	/	tilde.team	70
-i	/	tilde.team	70
-i## Presentation	/	tilde.team	70
-i	/	tilde.team	70
-iThe tool is called nix-converter. It's a command-line	/	tilde.team	70
-iinterface written in Go that converts various configuration	/	tilde.team	70
-ilanguages (YAML, TOML, etc.) to Nix and vice versa.	/	tilde.team	70
+i## title: My Nix converter tool	/	tilde.club	70
+i## date: "2025-12-16"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iLast year I wanted to convert my Nix code into YAML and	/	tilde.club	70
+iTOML. So I went looking for an all-in-one CLI tool capable of	/	tilde.club	70
+iconverting a configuration language into Nix and vice-versa.	/	tilde.club	70
+iUnfortunately, I couldn't find what I was looking for, so I	/	tilde.club	70
+idecided to create my own tool.	/	tilde.club	70
+i	/	tilde.club	70
+i## Presentation	/	tilde.club	70
+i	/	tilde.club	70
+iThe tool is called nix-converter. It's a command-line	/	tilde.club	70
+iinterface written in Go that converts various configuration	/	tilde.club	70
+ilanguages (YAML, TOML, etc.) to Nix and vice versa.	/	tilde.club	70
 hnix-converter	URL:https://github.com/theobori/nix-converter	github.com	443
-i	/	tilde.team	70
-i## How it works	/	tilde.team	70
-i	/	tilde.team	70
-iLet's assume we have a source language called A and a	/	tilde.team	70
-idestination language called B.	/	tilde.team	70
-i	/	tilde.team	70
-iFirst, I use external Go libraries to retrieve a syntactic	/	tilde.team	70
-iabstract representing the code of language A. In a second	/	tilde.team	70
-istep, I traverse the retrieved tree, which allows me to	/	tilde.team	70
-iproduce the code for language B in string form. Finally,	/	tilde.team	70
-ionce the traversal is complete, the final code is written to	/	tilde.team	70
-ithe process's standard output. Note that conversions are	/	tilde.team	70
-istatic only, i.e. expressions will not be evaluated, apart	/	tilde.team	70
-ifrom a few exceptions.	/	tilde.team	70
-i	/	tilde.team	70
-iThe only exception to these steps is the transformation of	/	tilde.team	70
-iNix code into TOML code. Instead of retrieving a string	/	tilde.team	70
-iafter the tree traverse, I retrieve a Go data structure that	/	tilde.team	70
-iis used by a specialized TOML marshaller.	/	tilde.team	70
-i	/	tilde.team	70
-i## Examples of transformations	/	tilde.team	70
-i	/	tilde.team	70
-iLet's take a simple example with the JSON code below.	/	tilde.team	70
-i	/	tilde.team	70
-i{	/	tilde.team	70
-i  "fruits": [	/	tilde.team	70
-i    "Apple",	/	tilde.team	70
-i    "Banana",	/	tilde.team	70
-i    "Orange",	/	tilde.team	70
-i    1,	/	tilde.team	70
-i    2,	/	tilde.team	70
-i    -1	/	tilde.team	70
-i  ],	/	tilde.team	70
-i  "abc": {	/	tilde.team	70
-i    "c": "c",	/	tilde.team	70
-i    "b": "b",	/	tilde.team	70
-i    "a": "a"	/	tilde.team	70
-i  },	/	tilde.team	70
-i  "": 1,	/	tilde.team	70
-i  "123": "",	/	tilde.team	70
-i  "f123": ""	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iTo convert it into Nix code, you can use the command line	/	tilde.team	70
-ibelow, which also includes parameters for sorting iterators	/	tilde.team	70
-i(lists and hash tables) and ignoring double-quotation marks	/	tilde.team	70
-ifor keys.	/	tilde.team	70
-i	/	tilde.team	70
-inix-converter -f file.json -l json -unsafe-keys -sort-iterators	/	tilde.team	70
-i"all"	/	tilde.team	70
-i	/	tilde.team	70
-iOnce launched, you get the Nix code below.	/	tilde.team	70
-i	/	tilde.team	70
-i{	/	tilde.team	70
-i  "" = 1;	/	tilde.team	70
-i  "123" = "";	/	tilde.team	70
-i  abc = {	/	tilde.team	70
-i    a = "a";	/	tilde.team	70
-i    b = "b";	/	tilde.team	70
-i    c = "c";	/	tilde.team	70
-i  };	/	tilde.team	70
-i  f123 = "";	/	tilde.team	70
-i  fruits = [	/	tilde.team	70
-i    "Apple"	/	tilde.team	70
-i    "Banana"	/	tilde.team	70
-i    "Orange"	/	tilde.team	70
-i    (-1)	/	tilde.team	70
-i    1	/	tilde.team	70
-i    2	/	tilde.team	70
-i  ];	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iIf we wish, we can convert this Nix code again, for example	/	tilde.team	70
-iwith the command line below.	/	tilde.team	70
-i	/	tilde.team	70
-inix-converter -f file.nix -l toml -from-nix	/	tilde.team	70
-i	/	tilde.team	70
-iHere's how it would look below.	/	tilde.team	70
-i	/	tilde.team	70
-i"" = 1	/	tilde.team	70
-i123 = ""	/	tilde.team	70
-if123 = ""	/	tilde.team	70
-ifruits = ["Apple", "Banana", "Orange", -1, 1, 2]	/	tilde.team	70
-i	/	tilde.team	70
-i[abc]	/	tilde.team	70
-i  a = "a"	/	tilde.team	70
-i  b = "b"	/	tilde.team	70
-i  c = "c"	/	tilde.team	70
-i	/	tilde.team	70
-i## Testing the tool	/	tilde.team	70
-i	/	tilde.team	70
-iIf you're curious and just want to test the tool, you can	/	tilde.team	70
-ifor example use the Nix package with the latest version of	/	tilde.team	70
-ithe tool in the Nix Flake of the GitHub repository, as	/	tilde.team	70
-ibelow.	/	tilde.team	70
-i	/	tilde.team	70
-inix run github:theobori/nix-converter -- -help	/	tilde.team	70
-i	/	tilde.team	70
-i## Contributing	/	tilde.team	70
-i	/	tilde.team	70
-iAnyone is free to contribute to the source code. For more	/	tilde.team	70
-idetails, please visit the GitHub repository.	/	tilde.team	70
+i	/	tilde.club	70
+i## How it works	/	tilde.club	70
+i	/	tilde.club	70
+iLet's assume we have a source language called A and a	/	tilde.club	70
+idestination language called B.	/	tilde.club	70
+i	/	tilde.club	70
+iFirst, I use external Go libraries to retrieve a syntactic	/	tilde.club	70
+iabstract representing the code of language A. In a second	/	tilde.club	70
+istep, I traverse the retrieved tree, which allows me to	/	tilde.club	70
+iproduce the code for language B in string form. Finally,	/	tilde.club	70
+ionce the traversal is complete, the final code is written to	/	tilde.club	70
+ithe process's standard output. Note that conversions are	/	tilde.club	70
+istatic only, i.e. expressions will not be evaluated, apart	/	tilde.club	70
+ifrom a few exceptions.	/	tilde.club	70
+i	/	tilde.club	70
+iThe only exception to these steps is the transformation of	/	tilde.club	70
+iNix code into TOML code. Instead of retrieving a string	/	tilde.club	70
+iafter the tree traverse, I retrieve a Go data structure that	/	tilde.club	70
+iis used by a specialized TOML marshaller.	/	tilde.club	70
+i	/	tilde.club	70
+i## Examples of transformations	/	tilde.club	70
+i	/	tilde.club	70
+iLet's take a simple example with the JSON code below.	/	tilde.club	70
+i	/	tilde.club	70
+i{	/	tilde.club	70
+i  "fruits": [	/	tilde.club	70
+i    "Apple",	/	tilde.club	70
+i    "Banana",	/	tilde.club	70
+i    "Orange",	/	tilde.club	70
+i    1,	/	tilde.club	70
+i    2,	/	tilde.club	70
+i    -1	/	tilde.club	70
+i  ],	/	tilde.club	70
+i  "abc": {	/	tilde.club	70
+i    "c": "c",	/	tilde.club	70
+i    "b": "b",	/	tilde.club	70
+i    "a": "a"	/	tilde.club	70
+i  },	/	tilde.club	70
+i  "": 1,	/	tilde.club	70
+i  "123": "",	/	tilde.club	70
+i  "f123": ""	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iTo convert it into Nix code, you can use the command line	/	tilde.club	70
+ibelow, which also includes parameters for sorting iterators	/	tilde.club	70
+i(lists and hash tables) and ignoring double-quotation marks	/	tilde.club	70
+ifor keys.	/	tilde.club	70
+i	/	tilde.club	70
+inix-converter -f file.json -l json -unsafe-keys -sort-iterators	/	tilde.club	70
+i"all"	/	tilde.club	70
+i	/	tilde.club	70
+iOnce launched, you get the Nix code below.	/	tilde.club	70
+i	/	tilde.club	70
+i{	/	tilde.club	70
+i  "" = 1;	/	tilde.club	70
+i  "123" = "";	/	tilde.club	70
+i  abc = {	/	tilde.club	70
+i    a = "a";	/	tilde.club	70
+i    b = "b";	/	tilde.club	70
+i    c = "c";	/	tilde.club	70
+i  };	/	tilde.club	70
+i  f123 = "";	/	tilde.club	70
+i  fruits = [	/	tilde.club	70
+i    "Apple"	/	tilde.club	70
+i    "Banana"	/	tilde.club	70
+i    "Orange"	/	tilde.club	70
+i    (-1)	/	tilde.club	70
+i    1	/	tilde.club	70
+i    2	/	tilde.club	70
+i  ];	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iIf we wish, we can convert this Nix code again, for example	/	tilde.club	70
+iwith the command line below.	/	tilde.club	70
+i	/	tilde.club	70
+inix-converter -f file.nix -l toml -from-nix	/	tilde.club	70
+i	/	tilde.club	70
+iHere's how it would look below.	/	tilde.club	70
+i	/	tilde.club	70
+i"" = 1	/	tilde.club	70
+i123 = ""	/	tilde.club	70
+if123 = ""	/	tilde.club	70
+ifruits = ["Apple", "Banana", "Orange", -1, 1, 2]	/	tilde.club	70
+i	/	tilde.club	70
+i[abc]	/	tilde.club	70
+i  a = "a"	/	tilde.club	70
+i  b = "b"	/	tilde.club	70
+i  c = "c"	/	tilde.club	70
+i	/	tilde.club	70
+i## Testing the tool	/	tilde.club	70
+i	/	tilde.club	70
+iIf you're curious and just want to test the tool, you can	/	tilde.club	70
+ifor example use the Nix package with the latest version of	/	tilde.club	70
+ithe tool in the Nix Flake of the GitHub repository, as	/	tilde.club	70
+ibelow.	/	tilde.club	70
+i	/	tilde.club	70
+inix run github:theobori/nix-converter -- -help	/	tilde.club	70
+i	/	tilde.club	70
+i## Contributing	/	tilde.club	70
+i	/	tilde.club	70
+iAnyone is free to contribute to the source code. For more	/	tilde.club	70
+idetails, please visit the GitHub repository.	/	tilde.club	70
 hGitHub repository	URL:https://github.com/theobori/nix-converter	github.com	443
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-inix-converter is a simple and useful tool that I enjoy using	/	tilde.team	70
-iwhen I need to convert Nix code.	/	tilde.team	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+inix-converter is a simple and useful tool that I enjoy using	/	tilde.club	70
+iwhen I need to convert Nix code.	/	tilde.club	70
 hnix-converter	URL:https://github.com/theobori/nix-converter	github.com	443

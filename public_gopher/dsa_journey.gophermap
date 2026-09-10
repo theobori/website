@@ -1,90 +1,90 @@
-i## title: My algorithms and data structures journey	/	tilde.team	70
-i## date: "2025-11-03"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iAt the end of 2023, during the month of December, I decided	/	tilde.team	70
-ito do the Advent of Code puzzles. As I thought about these	/	tilde.team	70
-ialgorithmic puzzles, I realized that I lacked knowledge. I	/	tilde.team	70
-icould solve the problems, but mostly intuitively. I went	/	tilde.team	70
-iuntil day 19 and then stopped for lack of motivation, but I	/	tilde.team	70
-iwanted a slightly more rigorous approach with a more solid	/	tilde.team	70
-itheoretical basis.	/	tilde.team	70
+i## title: My algorithms and data structures journey	/	tilde.club	70
+i## date: "2025-11-03"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iAt the end of 2023, during the month of December, I decided	/	tilde.club	70
+ito do the Advent of Code puzzles. As I thought about these	/	tilde.club	70
+ialgorithmic puzzles, I realized that I lacked knowledge. I	/	tilde.club	70
+icould solve the problems, but mostly intuitively. I went	/	tilde.club	70
+iuntil day 19 and then stopped for lack of motivation, but I	/	tilde.club	70
+iwanted a slightly more rigorous approach with a more solid	/	tilde.club	70
+itheoretical basis.	/	tilde.club	70
 hAdvent of Code	URL:https://adventofcode.com/2023	adventofcode.com	443
 huntil day 19	URL:https://github.com/theobori/aoc/tree/main/2023	github.com	443
-i	/	tilde.team	70
-iMy goal is not to become an expert in algorithms and data	/	tilde.team	70
-istructure. Rather, I want to be more relevant in their	/	tilde.team	70
-iimplementation in real needs and have a better algorithmic	/	tilde.team	70
-ireading on IT projects.	/	tilde.team	70
-i	/	tilde.team	70
-i## Searching for learning resources	/	tilde.team	70
-i	/	tilde.team	70
-iI've been looking for resources on the Internet that could	/	tilde.team	70
-igive me a solid grounding in the basics of algortihmics and	/	tilde.team	70
-idata structure, but also in algorithmic problem solving. I	/	tilde.team	70
-iwant to be more efficient on certain projects like the	/	tilde.team	70
-iAdvent of Code.	/	tilde.team	70
+i	/	tilde.club	70
+iMy goal is not to become an expert in algorithms and data	/	tilde.club	70
+istructure. Rather, I want to be more relevant in their	/	tilde.club	70
+iimplementation in real needs and have a better algorithmic	/	tilde.club	70
+ireading on IT projects.	/	tilde.club	70
+i	/	tilde.club	70
+i## Searching for learning resources	/	tilde.club	70
+i	/	tilde.club	70
+iI've been looking for resources on the Internet that could	/	tilde.club	70
+igive me a solid grounding in the basics of algortihmics and	/	tilde.club	70
+idata structure, but also in algorithmic problem solving. I	/	tilde.club	70
+iwant to be more efficient on certain projects like the	/	tilde.club	70
+iAdvent of Code.	/	tilde.club	70
 hAdvent of Code	URL:https://adventofcode.com	adventofcode.com	443
-i	/	tilde.team	70
-i### First iteration	/	tilde.team	70
-i	/	tilde.team	70
-iThe first training course I found was from neetcode.io,	/	tilde.team	70
-iwhich unfortunately didn't suit my way of learning. It was	/	tilde.team	70
-imainly videos with someone explaining technical concepts on	/	tilde.team	70
-ia digital whiteboard. It was roughly composed as follows:	/	tilde.team	70
-ifirst there was the theory, then examples with use cases,	/	tilde.team	70
-iand LeetCode links to problems to put the theory into	/	tilde.team	70
-ipractice.	/	tilde.team	70
+i	/	tilde.club	70
+i### First iteration	/	tilde.club	70
+i	/	tilde.club	70
+iThe first training course I found was from neetcode.io,	/	tilde.club	70
+iwhich unfortunately didn't suit my way of learning. It was	/	tilde.club	70
+imainly videos with someone explaining technical concepts on	/	tilde.club	70
+ia digital whiteboard. It was roughly composed as follows:	/	tilde.club	70
+ifirst there was the theory, then examples with use cases,	/	tilde.club	70
+iand LeetCode links to problems to put the theory into	/	tilde.club	70
+ipractice.	/	tilde.club	70
 hneetcode.io	URL:https://neetcode.io	neetcode.io	443
 hLeetCode	URL:https://leetcode.com	leetcode.com	443
-i	/	tilde.team	70
-iI progressed by about 75% on the beginners' course and	/	tilde.team	70
-iquickly left the advanced algorithms course, which didn't	/	tilde.team	70
-imeet my needs. I went on to pursue my other projects and put	/	tilde.team	70
-ialgorithms and data structures on the back burner.	/	tilde.team	70
-i	/	tilde.team	70
-iIt wasn't until the end of 2024 that I got back into it with	/	tilde.team	70
-ithe Advent of Code 2024 which I fully completed.	/	tilde.team	70
+i	/	tilde.club	70
+iI progressed by about 75% on the beginners' course and	/	tilde.club	70
+iquickly left the advanced algorithms course, which didn't	/	tilde.club	70
+imeet my needs. I went on to pursue my other projects and put	/	tilde.club	70
+ialgorithms and data structures on the back burner.	/	tilde.club	70
+i	/	tilde.club	70
+iIt wasn't until the end of 2024 that I got back into it with	/	tilde.club	70
+ithe Advent of Code 2024 which I fully completed.	/	tilde.club	70
 hAdvent of Code 2024	URL:https://adventofcode.com/2024	adventofcode.com	443
 hfully completed	URL:https://github.com/theobori/aoc/tree/main/2024	github.com	443
-i	/	tilde.team	70
-i### Final iteration	/	tilde.team	70
-i	/	tilde.team	70
-iShortly afterwards, I decided to look for a new course. In	/	tilde.team	70
-imy search I came across LeetCode's. In my opinion, it's the	/	tilde.team	70
-iperfect resource! All the essential terms and fundamentals	/	tilde.team	70
-iare clearly defined, there are partial exercises and quizzes	/	tilde.team	70
-ito check your understanding of the course. I'd recommend it	/	tilde.team	70
-ito anyone who wants to improve or practice their algorithmic	/	tilde.team	70
-iskills.	/	tilde.team	70
+i	/	tilde.club	70
+i### Final iteration	/	tilde.club	70
+i	/	tilde.club	70
+iShortly afterwards, I decided to look for a new course. In	/	tilde.club	70
+imy search I came across LeetCode's. In my opinion, it's the	/	tilde.club	70
+iperfect resource! All the essential terms and fundamentals	/	tilde.club	70
+iare clearly defined, there are partial exercises and quizzes	/	tilde.club	70
+ito check your understanding of the course. I'd recommend it	/	tilde.club	70
+ito anyone who wants to improve or practice their algorithmic	/	tilde.club	70
+iskills.	/	tilde.club	70
 hLeetCode's	URL:https://leetcode.com	leetcode.com	443
-i	/	tilde.team	70
-iThis resource has given me a solid grounding in algortihm	/	tilde.team	70
-itheory, data structures and their uses. I took notes based	/	tilde.team	70
-ion it in French.	/	tilde.team	70
+i	/	tilde.club	70
+iThis resource has given me a solid grounding in algortihm	/	tilde.club	70
+itheory, data structures and their uses. I took notes based	/	tilde.club	70
+ion it in French.	/	tilde.club	70
 hnotes based on it	URL:https://zettel.theobori.cafe/Structure%20de%20donn%C3%A9es%20et%20algorithme	zettel.theobori.cafe	443
-i	/	tilde.team	70
-i## The results	/	tilde.team	70
-i	/	tilde.team	70
-iI've become better at this discipline than I was before, and	/	tilde.team	70
-iit's very useful.	/	tilde.team	70
-i	/	tilde.team	70
-iIt allows me to be more relevant in writing and reading	/	tilde.team	70
-iprofessional and personal computer code. My brain will	/	tilde.team	70
-inaturally think of mechanisms and concepts that it knows and	/	tilde.team	70
-ihas memorized. For example, many times I've seen AI-generated	/	tilde.team	70
-icode that wasn't optimized, even on small blocks of code.	/	tilde.team	70
-iI've also had the opportunity to optimize execution times on	/	tilde.team	70
-iprofessional projects.	/	tilde.team	70
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iI think anyone working in tech should have a good grounding	/	tilde.team	70
-iin algorithms, especially computer developers. It's	/	tilde.team	70
-iessential for understanding how the machine works and being	/	tilde.team	70
-itechnically relevant. It helps avoid obvious problems in	/	tilde.team	70
-iproduction, such as over-consumption of CPU or memory.	/	tilde.team	70
-i	/	tilde.team	70
-iLearning algorithms and data structures is time well spent,	/	tilde.team	70
-iand will always be useful.	/	tilde.team	70
+i	/	tilde.club	70
+i## The results	/	tilde.club	70
+i	/	tilde.club	70
+iI've become better at this discipline than I was before, and	/	tilde.club	70
+iit's very useful.	/	tilde.club	70
+i	/	tilde.club	70
+iIt allows me to be more relevant in writing and reading	/	tilde.club	70
+iprofessional and personal computer code. My brain will	/	tilde.club	70
+inaturally think of mechanisms and concepts that it knows and	/	tilde.club	70
+ihas memorized. For example, many times I've seen AI-generated	/	tilde.club	70
+icode that wasn't optimized, even on small blocks of code.	/	tilde.club	70
+iI've also had the opportunity to optimize execution times on	/	tilde.club	70
+iprofessional projects.	/	tilde.club	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iI think anyone working in tech should have a good grounding	/	tilde.club	70
+iin algorithms, especially computer developers. It's	/	tilde.club	70
+iessential for understanding how the machine works and being	/	tilde.club	70
+itechnically relevant. It helps avoid obvious problems in	/	tilde.club	70
+iproduction, such as over-consumption of CPU or memory.	/	tilde.club	70
+i	/	tilde.club	70
+iLearning algorithms and data structures is time well spent,	/	tilde.club	70
+iand will always be useful.	/	tilde.club	70

@@ -1,60 +1,60 @@
-i## title: A Transient menu for qBittorrent	/	tilde.team	70
-i## date: "2026-03-30"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iI often use qBittorrent and I usually manage my files with	/	tilde.team	70
-iEmacs, especially my torrent files. One day, while in Dired,	/	tilde.team	70
-iI noticed I had some unused torrent files. I wanted to mark	/	tilde.team	70
-ithem and then use a command to start the downloads, but I	/	tilde.team	70
-irealized that this feature didn't exist. So I had the idea	/	tilde.team	70
-ito create an Emacs package that would provide an ELisp API	/	tilde.team	70
-ito communicate with the qBittorrent CLI.	/	tilde.team	70
+i## title: A Transient menu for qBittorrent	/	tilde.club	70
+i## date: "2026-03-30"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iI often use qBittorrent and I usually manage my files with	/	tilde.club	70
+iEmacs, especially my torrent files. One day, while in Dired,	/	tilde.club	70
+iI noticed I had some unused torrent files. I wanted to mark	/	tilde.club	70
+ithem and then use a command to start the downloads, but I	/	tilde.club	70
+irealized that this feature didn't exist. So I had the idea	/	tilde.club	70
+ito create an Emacs package that would provide an ELisp API	/	tilde.club	70
+ito communicate with the qBittorrent CLI.	/	tilde.club	70
 hqBittorrent	URL:https://www.qbittorrent.org/	www.qbittorrent.org	443
-i	/	tilde.team	70
-i## My goal	/	tilde.team	70
-i	/	tilde.team	70
-iThe goal is to have a simple, intuitive Emacs user interface	/	tilde.team	70
-ito communicate with the official qBittorrent CLI and allow	/	tilde.team	70
-ime to pass torrent files to qBittorrent from Dired.	/	tilde.team	70
-i	/	tilde.team	70
-i## Using Transient	/	tilde.team	70
-i	/	tilde.team	70
-iTransient is an Emacs library specialized in creating menus	/	tilde.team	70
-ifor keyboard users. Using Transient will allow me to create	/	tilde.team	70
-ia menu for composing a qBittorrent command line, handling	/	tilde.team	70
-ithe configuration and the actions to be performed.	/	tilde.team	70
+i	/	tilde.club	70
+i## My goal	/	tilde.club	70
+i	/	tilde.club	70
+iThe goal is to have a simple, intuitive Emacs user interface	/	tilde.club	70
+ito communicate with the official qBittorrent CLI and allow	/	tilde.club	70
+ime to pass torrent files to qBittorrent from Dired.	/	tilde.club	70
+i	/	tilde.club	70
+i## Using Transient	/	tilde.club	70
+i	/	tilde.club	70
+iTransient is an Emacs library specialized in creating menus	/	tilde.club	70
+ifor keyboard users. Using Transient will allow me to create	/	tilde.club	70
+ia menu for composing a qBittorrent command line, handling	/	tilde.club	70
+ithe configuration and the actions to be performed.	/	tilde.club	70
 hTransient	URL:https://docs.magit.vc/transient/	docs.magit.vc	443
-i	/	tilde.team	70
-i## API Overview	/	tilde.team	70
-i	/	tilde.team	70
-iThe Emacs package is called qbittorrent-transient. It exposes	/	tilde.team	70
-icustomizations in a group of the same name, as well as	/	tilde.team	70
-ifunctions and commands. The main entry point is the	/	tilde.team	70
-iqbittorrent-transient command, which provides access to the	/	tilde.team	70
-iTransient menu for qBittorrent. Below are the main Emacs	/	tilde.team	70
-icommands.	/	tilde.team	70
-i	/	tilde.team	70
-i/qbittorrent-transient-commands.png	/	tilde.team	70
-I/qbittorrent-transient-commands.png	/~nagi/qbittorrent-transient-commands.png	tilde.team	70
-i	/	tilde.team	70
-i## Results	/	tilde.team	70
-i	/	tilde.team	70
-iI'm satisfied with the result; it allows me to pass files	/	tilde.team	70
-imarked with Dired to qBittorrent, which was my main goal.	/	tilde.team	70
-iHere's what the Transient menu looks like.	/	tilde.team	70
-i	/	tilde.team	70
-i/qbittorrent-transient.png	/	tilde.team	70
-I/qbittorrent-transient.png	/~nagi/qbittorrent-transient.png	tilde.team	70
-i	/	tilde.team	70
-i## Contributing	/	tilde.team	70
-i	/	tilde.team	70
-iAnyone is free to contribute to the source code available at	/	tilde.team	70
-iGitHub repository.	/	tilde.team	70
+i	/	tilde.club	70
+i## API Overview	/	tilde.club	70
+i	/	tilde.club	70
+iThe Emacs package is called qbittorrent-transient. It exposes	/	tilde.club	70
+icustomizations in a group of the same name, as well as	/	tilde.club	70
+ifunctions and commands. The main entry point is the	/	tilde.club	70
+iqbittorrent-transient command, which provides access to the	/	tilde.club	70
+iTransient menu for qBittorrent. Below are the main Emacs	/	tilde.club	70
+icommands.	/	tilde.club	70
+i	/	tilde.club	70
+i/qbittorrent-transient-commands.png	/	tilde.club	70
+I/qbittorrent-transient-commands.png	/~theobori/qbittorrent-transient-commands.png	tilde.club	70
+i	/	tilde.club	70
+i## Results	/	tilde.club	70
+i	/	tilde.club	70
+iI'm satisfied with the result; it allows me to pass files	/	tilde.club	70
+imarked with Dired to qBittorrent, which was my main goal.	/	tilde.club	70
+iHere's what the Transient menu looks like.	/	tilde.club	70
+i	/	tilde.club	70
+i/qbittorrent-transient.png	/	tilde.club	70
+I/qbittorrent-transient.png	/~theobori/qbittorrent-transient.png	tilde.club	70
+i	/	tilde.club	70
+i## Contributing	/	tilde.club	70
+i	/	tilde.club	70
+iAnyone is free to contribute to the source code available at	/	tilde.club	70
+iGitHub repository.	/	tilde.club	70
 hGitHub repository	URL:https://github.com/theobori/qbittorrent-transient	github.com	443
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iThis was a rewarding project to work on; I still love ELisp,	/	tilde.team	70
-iwhich allowed me to create an Emacs user interface that is	/	tilde.team	70
-ieasy and pleasant to use.	/	tilde.team	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iThis was a rewarding project to work on; I still love ELisp,	/	tilde.club	70
+iwhich allowed me to create an Emacs user interface that is	/	tilde.club	70
+ieasy and pleasant to use.	/	tilde.club	70

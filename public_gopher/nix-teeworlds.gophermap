@@ -1,122 +1,122 @@
-i## title: My NixOS Teeworlds servers management module	/	tilde.team	70
-i## date: "2024-11-10"	/	tilde.team	70
-i	/	tilde.team	70
-iSo I created a NixOS module to declare Teeworlds servers	/	tilde.team	70
-iwith their Nix configuration.	/	tilde.team	70
-i	/	tilde.team	70
-iWhy did I do this? Simply because I saw a video from	/	tilde.team	70
-iVimjoyer that presented a NixOs module for declaring	/	tilde.team	70
-imultiple Minecraft servers. I couldn't find an equivalent	/	tilde.team	70
-ifor Teeworlds, so I decided to write it myself.	/	tilde.team	70
+i## title: My NixOS Teeworlds servers management module	/	tilde.club	70
+i## date: "2024-11-10"	/	tilde.club	70
+i	/	tilde.club	70
+iSo I created a NixOS module to declare Teeworlds servers	/	tilde.club	70
+iwith their Nix configuration.	/	tilde.club	70
+i	/	tilde.club	70
+iWhy did I do this? Simply because I saw a video from	/	tilde.club	70
+iVimjoyer that presented a NixOs module for declaring	/	tilde.club	70
+imultiple Minecraft servers. I couldn't find an equivalent	/	tilde.club	70
+ifor Teeworlds, so I decided to write it myself.	/	tilde.club	70
 hvideo	URL:https://www.youtube.com/watch?v=Fph7SMldxpI	www.youtube.com	443
 hVimjoyer	URL:https://www.youtube.com/@vimjoyer	www.youtube.com	443
-i	/	tilde.team	70
-iThe module is open-source and available via a GitHub	/	tilde.team	70
-irepository. In this repository there are also some packages	/	tilde.team	70
-iproviding a server with particular game modes, which are	/	tilde.team	70
-iobviously usable with the module.	/	tilde.team	70
+i	/	tilde.club	70
+iThe module is open-source and available via a GitHub	/	tilde.club	70
+irepository. In this repository there are also some packages	/	tilde.club	70
+iproviding a server with particular game modes, which are	/	tilde.club	70
+iobviously usable with the module.	/	tilde.club	70
 hGitHub repository	URL:https://github.com/theobori/nix-teeworlds	github.com	443
-i	/	tilde.team	70
-iThey can also be run with the nix run command, for example,	/	tilde.team	70
-iyou could create an fng2 server with the following command.	/	tilde.team	70
+i	/	tilde.club	70
+iThey can also be run with the nix run command, for example,	/	tilde.club	70
+iyou could create an fng2 server with the following command.	/	tilde.club	70
 hfng2	URL:https://github.com/Jupeyy/teeworlds-fng2-mod/tree/fng_06	github.com	443
-i	/	tilde.team	70
-inix run github:theobori/nix-teeworlds#fng2-server	/	tilde.team	70
-i	/	tilde.team	70
-iThe module is user-friendly and fairly intuitive to	/	tilde.team	70
-iconfigure. For example, to configure a fng2 server, you	/	tilde.team	70
-icould write a Nix expression like this.	/	tilde.team	70
+i	/	tilde.club	70
+inix run github:theobori/nix-teeworlds#fng2-server	/	tilde.club	70
+i	/	tilde.club	70
+iThe module is user-friendly and fairly intuitive to	/	tilde.club	70
+iconfigure. For example, to configure a fng2 server, you	/	tilde.club	70
+icould write a Nix expression like this.	/	tilde.club	70
 hfng2	URL:https://github.com/Jupeyy/teeworlds-fng2-mod/tree/fng_06	github.com	443
-i	/	tilde.team	70
-i{ pkgs, ... }:	/	tilde.team	70
-i{	/	tilde.team	70
-i  services.nix-teeworlds = {	/	tilde.team	70
-i    enable = true;	/	tilde.team	70
-i    openFirewall = true;	/	tilde.team	70
-i	/	tilde.team	70
-i    servers = {	/	tilde.team	70
-i      my-fng = {	/	tilde.team	70
-i        enable = true;	/	tilde.team	70
-i        package = pkgs.fng2-server;	/	tilde.team	70
-i	/	tilde.team	70
-i        extraConfig = ''	/	tilde.team	70
-i          password "1234"	/	tilde.team	70
-i        '';	/	tilde.team	70
-i	/	tilde.team	70
-i        externalConsole = {	/	tilde.team	70
-i          enable = true;	/	tilde.team	70
-i          port = 1111;	/	tilde.team	70
-i          password = "hello";	/	tilde.team	70
-i          outputLevel = 2;	/	tilde.team	70
-i        };	/	tilde.team	70
-i	/	tilde.team	70
-i        settings = {	/	tilde.team	70
-i          name = "My FNG server from NixOS";	/	tilde.team	70
-i          port = 8305;	/	tilde.team	70
-i          maxClients = 16;	/	tilde.team	70
-i        };	/	tilde.team	70
-i	/	tilde.team	70
-i        game = {	/	tilde.team	70
-i          gameType = "fng2";	/	tilde.team	70
-i          map = "AliveFNG";	/	tilde.team	70
-i          scoreLimit = 800;	/	tilde.team	70
-i        };	/	tilde.team	70
-i	/	tilde.team	70
-i        votes = {	/	tilde.team	70
-i          "Say hello" = {	/	tilde.team	70
-i            commands = [	/	tilde.team	70
-i              "say hello"	/	tilde.team	70
-i              "say world"	/	tilde.team	70
-i              "say !!"	/	tilde.team	70
-i            ];	/	tilde.team	70
-i          };	/	tilde.team	70
-i	/	tilde.team	70
-i          "Map IIT_Edited" = {	/	tilde.team	70
-i            commands = [ "sv_map IIT_Edited" ];	/	tilde.team	70
-i          };	/	tilde.team	70
-i	/	tilde.team	70
-i          "Empty vote" = {	/	tilde.team	70
-i            commands = [ ];	/	tilde.team	70
-i          };	/	tilde.team	70
-i        };	/	tilde.team	70
-i      };	/	tilde.team	70
-i    };	/	tilde.team	70
-i  };	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iTo access services.nix-teeworlds, you can import the module	/	tilde.team	70
-ias specified in the README file in the GitHub repository.	/	tilde.team	70
+i	/	tilde.club	70
+i{ pkgs, ... }:	/	tilde.club	70
+i{	/	tilde.club	70
+i  services.nix-teeworlds = {	/	tilde.club	70
+i    enable = true;	/	tilde.club	70
+i    openFirewall = true;	/	tilde.club	70
+i	/	tilde.club	70
+i    servers = {	/	tilde.club	70
+i      my-fng = {	/	tilde.club	70
+i        enable = true;	/	tilde.club	70
+i        package = pkgs.fng2-server;	/	tilde.club	70
+i	/	tilde.club	70
+i        extraConfig = ''	/	tilde.club	70
+i          password "1234"	/	tilde.club	70
+i        '';	/	tilde.club	70
+i	/	tilde.club	70
+i        externalConsole = {	/	tilde.club	70
+i          enable = true;	/	tilde.club	70
+i          port = 1111;	/	tilde.club	70
+i          password = "hello";	/	tilde.club	70
+i          outputLevel = 2;	/	tilde.club	70
+i        };	/	tilde.club	70
+i	/	tilde.club	70
+i        settings = {	/	tilde.club	70
+i          name = "My FNG server from NixOS";	/	tilde.club	70
+i          port = 8305;	/	tilde.club	70
+i          maxClients = 16;	/	tilde.club	70
+i        };	/	tilde.club	70
+i	/	tilde.club	70
+i        game = {	/	tilde.club	70
+i          gameType = "fng2";	/	tilde.club	70
+i          map = "AliveFNG";	/	tilde.club	70
+i          scoreLimit = 800;	/	tilde.club	70
+i        };	/	tilde.club	70
+i	/	tilde.club	70
+i        votes = {	/	tilde.club	70
+i          "Say hello" = {	/	tilde.club	70
+i            commands = [	/	tilde.club	70
+i              "say hello"	/	tilde.club	70
+i              "say world"	/	tilde.club	70
+i              "say !!"	/	tilde.club	70
+i            ];	/	tilde.club	70
+i          };	/	tilde.club	70
+i	/	tilde.club	70
+i          "Map IIT_Edited" = {	/	tilde.club	70
+i            commands = [ "sv_map IIT_Edited" ];	/	tilde.club	70
+i          };	/	tilde.club	70
+i	/	tilde.club	70
+i          "Empty vote" = {	/	tilde.club	70
+i            commands = [ ];	/	tilde.club	70
+i          };	/	tilde.club	70
+i        };	/	tilde.club	70
+i      };	/	tilde.club	70
+i    };	/	tilde.club	70
+i  };	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iTo access services.nix-teeworlds, you can import the module	/	tilde.club	70
+ias specified in the README file in the GitHub repository.	/	tilde.club	70
 hGitHub repository	URL:https://github.com/theobori/nix-teeworlds	github.com	443
-i	/	tilde.team	70
-iInside your flake.nix, you can start by adding the following	/	tilde.team	70
-ilines.	/	tilde.team	70
-i	/	tilde.team	70
-i{	/	tilde.team	70
-i  inputs = {	/	tilde.team	70
-i    nix-teeworlds.url = "github:theobori/nix-teeworlds";	/	tilde.team	70
-i  };	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iYou can then include the module and its default overlay in	/	tilde.team	70
-ithe system configuration as shown below.	/	tilde.team	70
-i	/	tilde.team	70
-i{ inputs, ... }: {	/	tilde.team	70
-i  imports = with inputs; [ nix-teeworlds.nixosModules.nix-	/	tilde.team	70
-iteeworlds ];	/	tilde.team	70
-i  nixpkgs.overlays = with inputs; [ nix-	/	tilde.team	70
-iteeworlds.overlays.default ];	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iUnder the hood, each teeworlds server is managed by a	/	tilde.team	70
-isystemd service unit, which takes care of running the	/	tilde.team	70
-iapplication with a dedicated user in the right working	/	tilde.team	70
-idirectory and creating the necessary resources.	/	tilde.team	70
-i	/	tilde.team	70
-iEvaluation of the module may return an error if the ports of	/	tilde.team	70
-ithe different servers (TCP and UDP) are identical, as	/	tilde.team	70
-iwritten in the code.	/	tilde.team	70
+i	/	tilde.club	70
+iInside your flake.nix, you can start by adding the following	/	tilde.club	70
+ilines.	/	tilde.club	70
+i	/	tilde.club	70
+i{	/	tilde.club	70
+i  inputs = {	/	tilde.club	70
+i    nix-teeworlds.url = "github:theobori/nix-teeworlds";	/	tilde.club	70
+i  };	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iYou can then include the module and its default overlay in	/	tilde.club	70
+ithe system configuration as shown below.	/	tilde.club	70
+i	/	tilde.club	70
+i{ inputs, ... }: {	/	tilde.club	70
+i  imports = with inputs; [ nix-teeworlds.nixosModules.nix-	/	tilde.club	70
+iteeworlds ];	/	tilde.club	70
+i  nixpkgs.overlays = with inputs; [ nix-	/	tilde.club	70
+iteeworlds.overlays.default ];	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iUnder the hood, each teeworlds server is managed by a	/	tilde.club	70
+isystemd service unit, which takes care of running the	/	tilde.club	70
+iapplication with a dedicated user in the right working	/	tilde.club	70
+idirectory and creating the necessary resources.	/	tilde.club	70
+i	/	tilde.club	70
+iEvaluation of the module may return an error if the ports of	/	tilde.club	70
+ithe different servers (TCP and UDP) are identical, as	/	tilde.club	70
+iwritten in the code.	/	tilde.club	70
 hin the code	URL:https://github.com/theobori/nix-teeworlds/blob/main/modules/nixos/nix-teeworlds/default.nix#L138-L143	github.com	443
-i	/	tilde.team	70
-iAnyone is free to contribute to the source code. For more	/	tilde.team	70
-idetails, please visit the GitHub repository.	/	tilde.team	70
+i	/	tilde.club	70
+iAnyone is free to contribute to the source code. For more	/	tilde.club	70
+idetails, please visit the GitHub repository.	/	tilde.club	70
 hGitHub repository	URL:https://github.com/theobori/nix-teeworlds	github.com	443

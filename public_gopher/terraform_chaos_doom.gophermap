@@ -1,35 +1,35 @@
-i## title: DOOM Terraform chaos engineering	/	tilde.team	70
-i## date: "2023-06-03"	/	tilde.team	70
-i	/	tilde.team	70
-iI first saw kubedoom and thought it was pretty cool, so I	/	tilde.team	70
-idecided to do the same for Terraform, knowing that I was	/	tilde.team	70
-iworking with it for professional projects.	/	tilde.team	70
+i## title: DOOM Terraform chaos engineering	/	tilde.club	70
+i## date: "2023-06-03"	/	tilde.club	70
+i	/	tilde.club	70
+iI first saw kubedoom and thought it was pretty cool, so I	/	tilde.club	70
+idecided to do the same for Terraform, knowing that I was	/	tilde.club	70
+iworking with it for professional projects.	/	tilde.club	70
 hkubedoom	URL:https://github.com/storax/kubedoom	github.com	443
-i	/	tilde.team	70
-iThe principle is very simple, each enemy represents a	/	tilde.team	70
-iTerraform resource, if an enemy dies, the associated	/	tilde.team	70
-iresource is destroyed.	/	tilde.team	70
-i	/	tilde.team	70
-i## How does it work?	/	tilde.team	70
-i	/	tilde.team	70
-iThe main program is terraform-doom, which creates a UNIX	/	tilde.team	70
-isocket, listens to it and simultaneously launches an X11	/	tilde.team	70
-ivirtual server (Xvfb), a VNC server (x11vnc) attached to	/	tilde.team	70
-ithis X session and psdoom (DOOM writing to the UNIX socket).	/	tilde.team	70
-i	/	tilde.team	70
-iThe binaries Xvfb and x11vnc are used to create a cross-	/	tilde.team	70
-iplatform graphical access to psdoom inside the container.	/	tilde.team	70
-i	/	tilde.team	70
-iAt runtime psdoom will continuously write to the UNIX socket	/	tilde.team	70
-ito signal terraform-doom to send Terraform resource	/	tilde.team	70
-iinformation. When an enemy is killed, psdoom writes the	/	tilde.team	70
-iassociated resource name to the socket.	/	tilde.team	70
-i	/	tilde.team	70
-iEverything we've just described will be encapsulated in a	/	tilde.team	70
-iDocker container.	/	tilde.team	70
-i	/	tilde.team	70
-i/terraform_doom_graph.png	/	tilde.team	70
-I/terraform_doom_graph.png	/~nagi/terraform_doom_graph.png	tilde.team	70
-i	/	tilde.team	70
-ihttps://github.com/theobori/terraform-doom	/	tilde.team	70
+i	/	tilde.club	70
+iThe principle is very simple, each enemy represents a	/	tilde.club	70
+iTerraform resource, if an enemy dies, the associated	/	tilde.club	70
+iresource is destroyed.	/	tilde.club	70
+i	/	tilde.club	70
+i## How does it work?	/	tilde.club	70
+i	/	tilde.club	70
+iThe main program is terraform-doom, which creates a UNIX	/	tilde.club	70
+isocket, listens to it and simultaneously launches an X11	/	tilde.club	70
+ivirtual server (Xvfb), a VNC server (x11vnc) attached to	/	tilde.club	70
+ithis X session and psdoom (DOOM writing to the UNIX socket).	/	tilde.club	70
+i	/	tilde.club	70
+iThe binaries Xvfb and x11vnc are used to create a cross-	/	tilde.club	70
+iplatform graphical access to psdoom inside the container.	/	tilde.club	70
+i	/	tilde.club	70
+iAt runtime psdoom will continuously write to the UNIX socket	/	tilde.club	70
+ito signal terraform-doom to send Terraform resource	/	tilde.club	70
+iinformation. When an enemy is killed, psdoom writes the	/	tilde.club	70
+iassociated resource name to the socket.	/	tilde.club	70
+i	/	tilde.club	70
+iEverything we've just described will be encapsulated in a	/	tilde.club	70
+iDocker container.	/	tilde.club	70
+i	/	tilde.club	70
+i/terraform_doom_graph.png	/	tilde.club	70
+I/terraform_doom_graph.png	/~theobori/terraform_doom_graph.png	tilde.club	70
+i	/	tilde.club	70
+ihttps://github.com/theobori/terraform-doom	/	tilde.club	70
 hhttps://github.com/theobori/terraform-doom	URL:https://github.com/theobori/terraform-doom	github.com	443

@@ -1,37 +1,37 @@
-i## title: Teeworlds Terraform chaos engineering	/	tilde.team	70
-i## date: "2024-06-05"	/	tilde.team	70
-i	/	tilde.team	70
-iAfter doing some chaos engineering for Terraform with the	/	tilde.team	70
-iDOOM game, I wanted to make a version for Teeworlds,	/	tilde.team	70
-ispecifically for its version 0.7 (its latest version).	/	tilde.team	70
-1chaos engineering for Terraform with the DOOM game	/~nagi/posts/terraform_chaos_doom	tilde.team	70
-i	/	tilde.team	70
-iThe difference with the DOOM version is that in this	/	tilde.team	70
-iproject, a player must capture the flag for a Terraform	/	tilde.team	70
-iresource to be randomly destroyed.	/	tilde.team	70
-i	/	tilde.team	70
-i## How does it work?	/	tilde.team	70
-i	/	tilde.team	70
-iWhen configuring a Teeworlds server, the values below can be	/	tilde.team	70
-ientered.	/	tilde.team	70
-i	/	tilde.team	70
-i# Econ configuration	/	tilde.team	70
-iec_port 7000	/	tilde.team	70
-iec_password "hello_world"	/	tilde.team	70
-iec_output_level 2	/	tilde.team	70
-i	/	tilde.team	70
-iThese are prefixed with ec_ because they are associated with	/	tilde.team	70
-ithe econ server. This configuration binds a TCP port which	/	tilde.team	70
-iwill expose the Telnet protocol-based econ server.	/	tilde.team	70
-i	/	tilde.team	70
-iThrough the latter, we'll be able to retrieve events from	/	tilde.team	70
-ithe Teeworlds server, such as a message sent, a player	/	tilde.team	70
-ikilled or a flag captured !	/	tilde.team	70
-i	/	tilde.team	70
-i/terraform_teeworlds_graph.png	/	tilde.team	70
-I/terraform_teeworlds_graph.png	/~nagi/terraform_teeworlds_graph.png	tilde.team	70
-i	/	tilde.team	70
-ihttps://github.com/theobori/terraform-teeworlds	/	tilde.team	70
-ihttps://github.com/theobori/teeworlds-econ	/	tilde.team	70
+i## title: Teeworlds Terraform chaos engineering	/	tilde.club	70
+i## date: "2024-06-05"	/	tilde.club	70
+i	/	tilde.club	70
+iAfter doing some chaos engineering for Terraform with the	/	tilde.club	70
+iDOOM game, I wanted to make a version for Teeworlds,	/	tilde.club	70
+ispecifically for its version 0.7 (its latest version).	/	tilde.club	70
+1chaos engineering for Terraform with the DOOM game	/~theobori/posts/terraform_chaos_doom	tilde.club	70
+i	/	tilde.club	70
+iThe difference with the DOOM version is that in this	/	tilde.club	70
+iproject, a player must capture the flag for a Terraform	/	tilde.club	70
+iresource to be randomly destroyed.	/	tilde.club	70
+i	/	tilde.club	70
+i## How does it work?	/	tilde.club	70
+i	/	tilde.club	70
+iWhen configuring a Teeworlds server, the values below can be	/	tilde.club	70
+ientered.	/	tilde.club	70
+i	/	tilde.club	70
+i# Econ configuration	/	tilde.club	70
+iec_port 7000	/	tilde.club	70
+iec_password "hello_world"	/	tilde.club	70
+iec_output_level 2	/	tilde.club	70
+i	/	tilde.club	70
+iThese are prefixed with ec_ because they are associated with	/	tilde.club	70
+ithe econ server. This configuration binds a TCP port which	/	tilde.club	70
+iwill expose the Telnet protocol-based econ server.	/	tilde.club	70
+i	/	tilde.club	70
+iThrough the latter, we'll be able to retrieve events from	/	tilde.club	70
+ithe Teeworlds server, such as a message sent, a player	/	tilde.club	70
+ikilled or a flag captured !	/	tilde.club	70
+i	/	tilde.club	70
+i/terraform_teeworlds_graph.png	/	tilde.club	70
+I/terraform_teeworlds_graph.png	/~theobori/terraform_teeworlds_graph.png	tilde.club	70
+i	/	tilde.club	70
+ihttps://github.com/theobori/terraform-teeworlds	/	tilde.club	70
+ihttps://github.com/theobori/teeworlds-econ	/	tilde.club	70
 hhttps://github.com/theobori/terraform-teeworlds	URL:https://github.com/theobori/terraform-teeworlds	github.com	443
 hhttps://github.com/theobori/teeworlds-econ	URL:https://github.com/theobori/teeworlds-econ	github.com	443

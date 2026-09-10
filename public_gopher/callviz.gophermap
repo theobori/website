@@ -1,62 +1,62 @@
-i## title: A toy to visualize recursive function calls	/	tilde.team	70
-i## date: "2024-06-29"	/	tilde.team	70
-i	/	tilde.team	70
-iRecently, I did a little project in Python to visualise	/	tilde.team	70
-ifunction calls, especially recursive functions.	/	tilde.team	70
+i## title: A toy to visualize recursive function calls	/	tilde.club	70
+i## date: "2024-06-29"	/	tilde.club	70
+i	/	tilde.club	70
+iRecently, I did a little project in Python to visualise	/	tilde.club	70
+ifunction calls, especially recursive functions.	/	tilde.club	70
 hPython	URL:https://python.org	python.org	443
-i	/	tilde.team	70
-iIt takes the form of a Python decorator applied to the	/	tilde.team	70
-idesired functions. The data structure used is fairly basic,	/	tilde.team	70
-ia tree with nodes that have a parent and an indefinite	/	tilde.team	70
-inumber of children. Each node represents a function call,	/	tilde.team	70
-iand the nodes also include the arguments passed to the	/	tilde.team	70
-ifunction when it is called and, optionally, a return value.	/	tilde.team	70
+i	/	tilde.club	70
+iIt takes the form of a Python decorator applied to the	/	tilde.club	70
+idesired functions. The data structure used is fairly basic,	/	tilde.club	70
+ia tree with nodes that have a parent and an indefinite	/	tilde.club	70
+inumber of children. Each node represents a function call,	/	tilde.club	70
+iand the nodes also include the arguments passed to the	/	tilde.club	70
+ifunction when it is called and, optionally, a return value.	/	tilde.club	70
 hPython	URL:https://python.org	python.org	443
-i	/	tilde.team	70
-iTo generate a visual and have an overview of all the	/	tilde.team	70
-ifunction calls, I used Graphviz to manage a graph and save	/	tilde.team	70
-iit as a file (DOT, SVG, PNG, etc.).	/	tilde.team	70
+i	/	tilde.club	70
+iTo generate a visual and have an overview of all the	/	tilde.club	70
+ifunction calls, I used Graphviz to manage a graph and save	/	tilde.club	70
+iit as a file (DOT, SVG, PNG, etc.).	/	tilde.club	70
 hGraphviz	URL:https://graphviz.org/	graphviz.org	443
-i	/	tilde.team	70
-iThe decorator also supports memoization, which can also be	/	tilde.team	70
-irepresented on the final visual.	/	tilde.team	70
-i	/	tilde.team	70
-i## How is it used?	/	tilde.team	70
-i	/	tilde.team	70
-iThese are two clear examples of how the decorator is used.	/	tilde.team	70
-i	/	tilde.team	70
-ifrom callviz.core import callviz, set_output_dir	/	tilde.team	70
-i	/	tilde.team	70
-iset_output_dir("out")	/	tilde.team	70
-i	/	tilde.team	70
-i@callviz(	/	tilde.team	70
-i  _format="png",	/	tilde.team	70
-i  memoization=True,	/	tilde.team	70
-i  open_file=True,	/	tilde.team	70
-i  show_node_result=True,	/	tilde.team	70
-i)	/	tilde.team	70
-idef fib(n: int):	/	tilde.team	70
-i    if n < 2:	/	tilde.team	70
-i        return n	/	tilde.team	70
-i	/	tilde.team	70
-i    return fib(n - 2) + fib(n - 1)	/	tilde.team	70
-i	/	tilde.team	70
-i@callviz(_format="png", show_link_value=False)	/	tilde.team	70
-idef rev(arr, new):	/	tilde.team	70
-i    if arr == []:	/	tilde.team	70
-i        return new	/	tilde.team	70
-i	/	tilde.team	70
-i    return rev(arr[1:], [arr[0]] + new)	/	tilde.team	70
-i	/	tilde.team	70
-ifib(5)	/	tilde.team	70
-irev(list(range(6, 0, -1)), [])	/	tilde.team	70
-i	/	tilde.team	70
-i/callviz_fib.png	/	tilde.team	70
-i/callviz_rev.png	/	tilde.team	70
-I/callviz_fib.png	/~nagi/callviz_fib.png	tilde.team	70
-I/callviz_rev.png	/~nagi/callviz_rev.png	tilde.team	70
-i	/	tilde.team	70
-i## Links	/	tilde.team	70
-i	/	tilde.team	70
-ihttps://github.com/theobori/callviz	/	tilde.team	70
+i	/	tilde.club	70
+iThe decorator also supports memoization, which can also be	/	tilde.club	70
+irepresented on the final visual.	/	tilde.club	70
+i	/	tilde.club	70
+i## How is it used?	/	tilde.club	70
+i	/	tilde.club	70
+iThese are two clear examples of how the decorator is used.	/	tilde.club	70
+i	/	tilde.club	70
+ifrom callviz.core import callviz, set_output_dir	/	tilde.club	70
+i	/	tilde.club	70
+iset_output_dir("out")	/	tilde.club	70
+i	/	tilde.club	70
+i@callviz(	/	tilde.club	70
+i  _format="png",	/	tilde.club	70
+i  memoization=True,	/	tilde.club	70
+i  open_file=True,	/	tilde.club	70
+i  show_node_result=True,	/	tilde.club	70
+i)	/	tilde.club	70
+idef fib(n: int):	/	tilde.club	70
+i    if n < 2:	/	tilde.club	70
+i        return n	/	tilde.club	70
+i	/	tilde.club	70
+i    return fib(n - 2) + fib(n - 1)	/	tilde.club	70
+i	/	tilde.club	70
+i@callviz(_format="png", show_link_value=False)	/	tilde.club	70
+idef rev(arr, new):	/	tilde.club	70
+i    if arr == []:	/	tilde.club	70
+i        return new	/	tilde.club	70
+i	/	tilde.club	70
+i    return rev(arr[1:], [arr[0]] + new)	/	tilde.club	70
+i	/	tilde.club	70
+ifib(5)	/	tilde.club	70
+irev(list(range(6, 0, -1)), [])	/	tilde.club	70
+i	/	tilde.club	70
+i/callviz_fib.png	/	tilde.club	70
+i/callviz_rev.png	/	tilde.club	70
+I/callviz_fib.png	/~theobori/callviz_fib.png	tilde.club	70
+I/callviz_rev.png	/~theobori/callviz_rev.png	tilde.club	70
+i	/	tilde.club	70
+i## Links	/	tilde.club	70
+i	/	tilde.club	70
+ihttps://github.com/theobori/callviz	/	tilde.club	70
 hhttps://github.com/theobori/callviz	URL:https://github.com/theobori/callviz	github.com	443

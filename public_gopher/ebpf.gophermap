@@ -1,175 +1,175 @@
-i## title: My eBPF exploration	/	tilde.team	70
-i## date: "2024-01-11"	/	tilde.team	70
-i	/	tilde.team	70
-i/ebpf.png	/	tilde.team	70
-I/ebpf.png	/~nagi/ebpf.png	tilde.team	70
-i	/	tilde.team	70
-iHaving discovered eBPF and read a few books about it, I'm	/	tilde.team	70
-iwriting here the essentials to remember about the basics.	/	tilde.team	70
-iIt's mainly a mix of my personal notes from the books	/	tilde.team	70
-i"Learning eBPF" by Liz Rice and "Linux Observability with	/	tilde.team	70
-iBPF" by David Calavera. The aim is to write down the	/	tilde.team	70
-iessentials without going into too much technical detail, a	/	tilde.team	70
-isort of memo.	/	tilde.team	70
-i	/	tilde.team	70
-iYou can find my eBPF (XDP) projects at the bottom of the	/	tilde.team	70
-ipage.	/	tilde.team	70
-i	/	tilde.team	70
-i## What is eBPF ?	/	tilde.team	70
-i	/	tilde.team	70
-ieBPF stands for extended Berkeley Packet Filter. It's a	/	tilde.team	70
-ivirtual machine with a minimalist instructions set in the	/	tilde.team	70
-ikernel (Linux) that lets you run BPF programs from user	/	tilde.team	70
-ispace. These BPF programs are attached to objects in the	/	tilde.team	70
-ikernel and executed when these objects are triggered by	/	tilde.team	70
-ievents.	/	tilde.team	70
-i	/	tilde.team	70
-i/basic_ebpf_scheme.png	/	tilde.team	70
-I/basic_ebpf_scheme.png	/~nagi/basic_ebpf_scheme.png	tilde.team	70
-i	/	tilde.team	70
-ieBPF mainly avoid use to rewrite the kernel source code and	/	tilde.team	70
-ithe whole process (even after writing code, waiting for	/	tilde.team	70
-ichanges can take years. It allows the kernel to be dymanic.	/	tilde.team	70
-i	/	tilde.team	70
-iLinux modules exist, they can be loaded dynamically, but	/	tilde.team	70
-ithere is a problem, the safety/security is too long to	/	tilde.team	70
-icheck, and it is too risky. eBPF has fixed this problem with	/	tilde.team	70
-ithe eBPF verifier.	/	tilde.team	70
-i	/	tilde.team	70
-i### Important features	/	tilde.team	70
-i	/	tilde.team	70
-iKernel probe is an important part of the eBPF functioning.	/	tilde.team	70
+i## title: My eBPF exploration	/	tilde.club	70
+i## date: "2024-01-11"	/	tilde.club	70
+i	/	tilde.club	70
+i/ebpf.png	/	tilde.club	70
+I/ebpf.png	/~theobori/ebpf.png	tilde.club	70
+i	/	tilde.club	70
+iHaving discovered eBPF and read a few books about it, I'm	/	tilde.club	70
+iwriting here the essentials to remember about the basics.	/	tilde.club	70
+iIt's mainly a mix of my personal notes from the books	/	tilde.club	70
+i"Learning eBPF" by Liz Rice and "Linux Observability with	/	tilde.club	70
+iBPF" by David Calavera. The aim is to write down the	/	tilde.club	70
+iessentials without going into too much technical detail, a	/	tilde.club	70
+isort of memo.	/	tilde.club	70
+i	/	tilde.club	70
+iYou can find my eBPF (XDP) projects at the bottom of the	/	tilde.club	70
+ipage.	/	tilde.club	70
+i	/	tilde.club	70
+i## What is eBPF ?	/	tilde.club	70
+i	/	tilde.club	70
+ieBPF stands for extended Berkeley Packet Filter. It's a	/	tilde.club	70
+ivirtual machine with a minimalist instructions set in the	/	tilde.club	70
+ikernel (Linux) that lets you run BPF programs from user	/	tilde.club	70
+ispace. These BPF programs are attached to objects in the	/	tilde.club	70
+ikernel and executed when these objects are triggered by	/	tilde.club	70
+ievents.	/	tilde.club	70
+i	/	tilde.club	70
+i/basic_ebpf_scheme.png	/	tilde.club	70
+I/basic_ebpf_scheme.png	/~theobori/basic_ebpf_scheme.png	tilde.club	70
+i	/	tilde.club	70
+ieBPF mainly avoid use to rewrite the kernel source code and	/	tilde.club	70
+ithe whole process (even after writing code, waiting for	/	tilde.club	70
+ichanges can take years. It allows the kernel to be dymanic.	/	tilde.club	70
+i	/	tilde.club	70
+iLinux modules exist, they can be loaded dynamically, but	/	tilde.club	70
+ithere is a problem, the safety/security is too long to	/	tilde.club	70
+icheck, and it is too risky. eBPF has fixed this problem with	/	tilde.club	70
+ithe eBPF verifier.	/	tilde.club	70
+i	/	tilde.club	70
+i### Important features	/	tilde.club	70
+i	/	tilde.club	70
+iKernel probe is an important part of the eBPF functioning.	/	tilde.club	70
 hKernel probe	URL:https://docs.kernel.org/trace/kprobes.html	docs.kernel.org	443
-i“"It enables you to dynamically break into any kernel	/	tilde.team	70
-iroutine and collect debugging and performance information	/	tilde.team	70
-inon-disruptively."”	/	tilde.team	70
-i	/	tilde.team	70
-iSo how can a user (user space) communicate with a BPF	/	tilde.team	70
-iprogram (kernel space) ?	/	tilde.team	70
-i	/	tilde.team	70
-iIt is possible thanks to BPF maps. A map is a key/value	/	tilde.team	70
-istores that resides in the kernel and that can be accessed	/	tilde.team	70
-ifrom eBPF program and from the user space via bpf syscalls.	/	tilde.team	70
-i	/	tilde.team	70
-i## eBPF program	/	tilde.team	70
-i	/	tilde.team	70
-iAn eBPF program is nothing else than a set of eBPF	/	tilde.team	70
-iinstructions in a bytecode format. eBPF uses JIT compiler to	/	tilde.team	70
-iconvert the eBPF bytecode to machine code that run natively	/	tilde.team	70
-ion the CPU.	/	tilde.team	70
-i	/	tilde.team	70
-i/ebpf_build_chain.png	/	tilde.team	70
-I/ebpf_build_chain.png	/~nagi/ebpf_build_chain.png	tilde.team	70
-i	/	tilde.team	70
-ieBPF program take a pointer to a context that depends of the	/	tilde.team	70
-itype of event (defining different type of program help the	/	tilde.team	70
-iverifier).	/	tilde.team	70
-i	/	tilde.team	70
-iThere are a set of functions that eBPF programs can call, it	/	tilde.team	70
-iis called bpf helper functions.	/	tilde.team	70
-i	/	tilde.team	70
-iEach program type cannot call every bpf helper functions,	/	tilde.team	70
-isome are banned by the verifier. As example, an XDP program	/	tilde.team	70
-icannot use bpf_get_current_pid_tgid. A program type has its	/	tilde.team	70
-iown return code meanings.	/	tilde.team	70
-i	/	tilde.team	70
-iBPF Kernel functions aka kfuncs allow internal kernel	/	tilde.team	70
-ifunctions to be called from eBPF programs.	/	tilde.team	70
+i“"It enables you to dynamically break into any kernel	/	tilde.club	70
+iroutine and collect debugging and performance information	/	tilde.club	70
+inon-disruptively."”	/	tilde.club	70
+i	/	tilde.club	70
+iSo how can a user (user space) communicate with a BPF	/	tilde.club	70
+iprogram (kernel space) ?	/	tilde.club	70
+i	/	tilde.club	70
+iIt is possible thanks to BPF maps. A map is a key/value	/	tilde.club	70
+istores that resides in the kernel and that can be accessed	/	tilde.club	70
+ifrom eBPF program and from the user space via bpf syscalls.	/	tilde.club	70
+i	/	tilde.club	70
+i## eBPF program	/	tilde.club	70
+i	/	tilde.club	70
+iAn eBPF program is nothing else than a set of eBPF	/	tilde.club	70
+iinstructions in a bytecode format. eBPF uses JIT compiler to	/	tilde.club	70
+iconvert the eBPF bytecode to machine code that run natively	/	tilde.club	70
+ion the CPU.	/	tilde.club	70
+i	/	tilde.club	70
+i/ebpf_build_chain.png	/	tilde.club	70
+I/ebpf_build_chain.png	/~theobori/ebpf_build_chain.png	tilde.club	70
+i	/	tilde.club	70
+ieBPF program take a pointer to a context that depends of the	/	tilde.club	70
+itype of event (defining different type of program help the	/	tilde.club	70
+iverifier).	/	tilde.club	70
+i	/	tilde.club	70
+iThere are a set of functions that eBPF programs can call, it	/	tilde.club	70
+iis called bpf helper functions.	/	tilde.club	70
+i	/	tilde.club	70
+iEach program type cannot call every bpf helper functions,	/	tilde.club	70
+isome are banned by the verifier. As example, an XDP program	/	tilde.club	70
+icannot use bpf_get_current_pid_tgid. A program type has its	/	tilde.club	70
+iown return code meanings.	/	tilde.club	70
+i	/	tilde.club	70
+iBPF Kernel functions aka kfuncs allow internal kernel	/	tilde.club	70
+ifunctions to be called from eBPF programs.	/	tilde.club	70
 hBPF Kernel functions	URL:https://docs.kernel.org/bpf/kfuncs.html	docs.kernel.org	443
-i	/	tilde.team	70
-i## BPF System call	/	tilde.team	70
-i	/	tilde.team	70
-iThis system call allow us to perform a command on an	/	tilde.team	70
-iextended BPF map or program.	/	tilde.team	70
-i	/	tilde.team	70
-i#include <linux/bpf.h>	/	tilde.team	70
-i	/	tilde.team	70
-iint bpf(int cmd, union bpf_attr *attr, unsigned int size);	/	tilde.team	70
-i	/	tilde.team	70
-iAn example of the bpf system call output from strace.	/	tilde.team	70
-i	/	tilde.team	70
-ibpf(BPF_BTF_LOAD, ...) = 3	/	tilde.team	70
-ibpf(BPF_MAP_CREATE,	/	tilde.team	70
-i{map_type=BPF_MAP_TYPE_PERF_EVENT_ARRAY…) = 4	/	tilde.team	70
-ibpf(BPF_MAP_CREATE, {map_type=BPF_MAP_TYPE_HASH...) = 5	/	tilde.team	70
-ibpf(BPF_PROG_LOAD,	/	tilde.team	70
-i{prog_type=BPF_PROG_TYPE_KPROBE,...prog_name="hello",...) =	/	tilde.team	70
-i6	/	tilde.team	70
-ibpf(BPF_MAP_UPDATE_ELEM, ...}	/	tilde.team	70
-i...	/	tilde.team	70
-i	/	tilde.team	70
-i## BTF	/	tilde.team	70
-i	/	tilde.team	70
-iBTF stands for BPF Type Format, it is the metadata format	/	tilde.team	70
-iwhich encodes the debug information associated with eBPF	/	tilde.team	70
-iprograms/map.	/	tilde.team	70
-i	/	tilde.team	70
-i“"BTF provides a standardized way to describe the data	/	tilde.team	70
-istructures used by eBPF programs, enabling better	/	tilde.team	70
-iinteraction between user-space tools and the kernel."”	/	tilde.team	70
-i	/	tilde.team	70
-iThe BTF is stored as a BPF map after the BPF program is	/	tilde.team	70
-iloaded. It makes the BPF programs portable across different	/	tilde.team	70
-ikernel versions.	/	tilde.team	70
-i	/	tilde.team	70
-i## CO-RE	/	tilde.team	70
-i	/	tilde.team	70
-iCO-RE stands for Compile Once, Run Everywhere, the idea	/	tilde.team	70
-ibehing is to compile a program once and run it on different	/	tilde.team	70
-ikernel version without recompiling it.	/	tilde.team	70
-i	/	tilde.team	70
-iWe can list some CO-RE elements:	/	tilde.team	70
-i- BTF	/	tilde.team	70
-i- Kernel headers	/	tilde.team	70
-i  - Including individual header files	/	tilde.team	70
-i  - Generating kernel headers (vmlinux.h) with bpftool	/	tilde.team	70
-i- Compiler support flags like -g	/	tilde.team	70
-i- Data structure relocations support for libraries	/	tilde.team	70
-i  - Information relocation based on destination machine data	/	tilde.team	70
-istructure difference, it is used to compensates	/	tilde.team	70
-i- BPF skeleton	/	tilde.team	70
-i  - Generated with bpftool, it allows the programmer to call	/	tilde.team	70
-ifunctions to manage the BPF program lifecycle	/	tilde.team	70
-i	/	tilde.team	70
-i## eBPF verifier	/	tilde.team	70
-i	/	tilde.team	70
-iThe verification process ensures the eBPF bytecode is safe.	/	tilde.team	70
-i	/	tilde.team	70
-iIt tests every possible execution paths, it pushes copy of	/	tilde.team	70
-ithe regs onto a stack and explore one of the possible paths.	/	tilde.team	70
-i	/	tilde.team	70
-iIt is optimized to avoid evaluating the instructions with	/	tilde.team	70
-isomething called state pruning, it avoids reevaluating path	/	tilde.team	70
-i(record registers state and if it arrives on the same	/	tilde.team	70
-iinstruction with a matching state, there is no need to	/	tilde.team	70
-iverify the rest of path).	/	tilde.team	70
-i	/	tilde.team	70
-i## XDP	/	tilde.team	70
-i	/	tilde.team	70
-iXDP stands for eXpress Data Path, it is a programmable	/	tilde.team	70
-ikernel-integrated packet processor in the Linux network data	/	tilde.team	70
-ipath that execute BPF programs.	/	tilde.team	70
-i	/	tilde.team	70
-i“"The packet processor is the in-kernel component for XDP	/	tilde.team	70
-iprograms that processes packets on the receive (RX) queue	/	tilde.team	70
-idirectly as they are presented by the NIC."”	/	tilde.team	70
-i	/	tilde.team	70
-iXDP programs can make decision (drop, pass, etc..) on the	/	tilde.team	70
-ireceived packets.	/	tilde.team	70
-i	/	tilde.team	70
-i## Important Linux concepts	/	tilde.team	70
-i	/	tilde.team	70
-iThe capabilities are a way of dividing Linux root privileged	/	tilde.team	70
-iinto smaller "units".	/	tilde.team	70
-i	/	tilde.team	70
-iSeccomp means Secure Computing and is a security layer in	/	tilde.team	70
-iLinux that allow to filter specific syscalls.	/	tilde.team	70
-i	/	tilde.team	70
-i## Links	/	tilde.team	70
-i	/	tilde.team	70
-iHere are some of my XDP projects.	/	tilde.team	70
-i	/	tilde.team	70
-ihttps://github.com/theobori/tinyknock	/	tilde.team	70
-ihttps://github.com/theobori/tinyfilter	/	tilde.team	70
+i	/	tilde.club	70
+i## BPF System call	/	tilde.club	70
+i	/	tilde.club	70
+iThis system call allow us to perform a command on an	/	tilde.club	70
+iextended BPF map or program.	/	tilde.club	70
+i	/	tilde.club	70
+i#include <linux/bpf.h>	/	tilde.club	70
+i	/	tilde.club	70
+iint bpf(int cmd, union bpf_attr *attr, unsigned int size);	/	tilde.club	70
+i	/	tilde.club	70
+iAn example of the bpf system call output from strace.	/	tilde.club	70
+i	/	tilde.club	70
+ibpf(BPF_BTF_LOAD, ...) = 3	/	tilde.club	70
+ibpf(BPF_MAP_CREATE,	/	tilde.club	70
+i{map_type=BPF_MAP_TYPE_PERF_EVENT_ARRAY…) = 4	/	tilde.club	70
+ibpf(BPF_MAP_CREATE, {map_type=BPF_MAP_TYPE_HASH...) = 5	/	tilde.club	70
+ibpf(BPF_PROG_LOAD,	/	tilde.club	70
+i{prog_type=BPF_PROG_TYPE_KPROBE,...prog_name="hello",...) =	/	tilde.club	70
+i6	/	tilde.club	70
+ibpf(BPF_MAP_UPDATE_ELEM, ...}	/	tilde.club	70
+i...	/	tilde.club	70
+i	/	tilde.club	70
+i## BTF	/	tilde.club	70
+i	/	tilde.club	70
+iBTF stands for BPF Type Format, it is the metadata format	/	tilde.club	70
+iwhich encodes the debug information associated with eBPF	/	tilde.club	70
+iprograms/map.	/	tilde.club	70
+i	/	tilde.club	70
+i“"BTF provides a standardized way to describe the data	/	tilde.club	70
+istructures used by eBPF programs, enabling better	/	tilde.club	70
+iinteraction between user-space tools and the kernel."”	/	tilde.club	70
+i	/	tilde.club	70
+iThe BTF is stored as a BPF map after the BPF program is	/	tilde.club	70
+iloaded. It makes the BPF programs portable across different	/	tilde.club	70
+ikernel versions.	/	tilde.club	70
+i	/	tilde.club	70
+i## CO-RE	/	tilde.club	70
+i	/	tilde.club	70
+iCO-RE stands for Compile Once, Run Everywhere, the idea	/	tilde.club	70
+ibehing is to compile a program once and run it on different	/	tilde.club	70
+ikernel version without recompiling it.	/	tilde.club	70
+i	/	tilde.club	70
+iWe can list some CO-RE elements:	/	tilde.club	70
+i- BTF	/	tilde.club	70
+i- Kernel headers	/	tilde.club	70
+i  - Including individual header files	/	tilde.club	70
+i  - Generating kernel headers (vmlinux.h) with bpftool	/	tilde.club	70
+i- Compiler support flags like -g	/	tilde.club	70
+i- Data structure relocations support for libraries	/	tilde.club	70
+i  - Information relocation based on destination machine data	/	tilde.club	70
+istructure difference, it is used to compensates	/	tilde.club	70
+i- BPF skeleton	/	tilde.club	70
+i  - Generated with bpftool, it allows the programmer to call	/	tilde.club	70
+ifunctions to manage the BPF program lifecycle	/	tilde.club	70
+i	/	tilde.club	70
+i## eBPF verifier	/	tilde.club	70
+i	/	tilde.club	70
+iThe verification process ensures the eBPF bytecode is safe.	/	tilde.club	70
+i	/	tilde.club	70
+iIt tests every possible execution paths, it pushes copy of	/	tilde.club	70
+ithe regs onto a stack and explore one of the possible paths.	/	tilde.club	70
+i	/	tilde.club	70
+iIt is optimized to avoid evaluating the instructions with	/	tilde.club	70
+isomething called state pruning, it avoids reevaluating path	/	tilde.club	70
+i(record registers state and if it arrives on the same	/	tilde.club	70
+iinstruction with a matching state, there is no need to	/	tilde.club	70
+iverify the rest of path).	/	tilde.club	70
+i	/	tilde.club	70
+i## XDP	/	tilde.club	70
+i	/	tilde.club	70
+iXDP stands for eXpress Data Path, it is a programmable	/	tilde.club	70
+ikernel-integrated packet processor in the Linux network data	/	tilde.club	70
+ipath that execute BPF programs.	/	tilde.club	70
+i	/	tilde.club	70
+i“"The packet processor is the in-kernel component for XDP	/	tilde.club	70
+iprograms that processes packets on the receive (RX) queue	/	tilde.club	70
+idirectly as they are presented by the NIC."”	/	tilde.club	70
+i	/	tilde.club	70
+iXDP programs can make decision (drop, pass, etc..) on the	/	tilde.club	70
+ireceived packets.	/	tilde.club	70
+i	/	tilde.club	70
+i## Important Linux concepts	/	tilde.club	70
+i	/	tilde.club	70
+iThe capabilities are a way of dividing Linux root privileged	/	tilde.club	70
+iinto smaller "units".	/	tilde.club	70
+i	/	tilde.club	70
+iSeccomp means Secure Computing and is a security layer in	/	tilde.club	70
+iLinux that allow to filter specific syscalls.	/	tilde.club	70
+i	/	tilde.club	70
+i## Links	/	tilde.club	70
+i	/	tilde.club	70
+iHere are some of my XDP projects.	/	tilde.club	70
+i	/	tilde.club	70
+ihttps://github.com/theobori/tinyknock	/	tilde.club	70
+ihttps://github.com/theobori/tinyfilter	/	tilde.club	70
 hhttps://github.com/theobori/tinyknock	URL:https://github.com/theobori/tinyknock	github.com	443
 hhttps://github.com/theobori/tinyfilter	URL:https://github.com/theobori/tinyfilter	github.com	443

@@ -1,195 +1,195 @@
-i## title: Terraform OVH external DNS records	/	tilde.team	70
-i## date: "2023-10-22"	/	tilde.team	70
-i	/	tilde.team	70
-iEnvironment replication is always very useful, and I've	/	tilde.team	70
-ialways made sure that all my operations and work can be	/	tilde.team	70
-iautomated and replicated. For example, I've written	/	tilde.team	70
-iTerraform configuration files for OVH DNS entries.	/	tilde.team	70
-i	/	tilde.team	70
-iThis turned out to be more useful than expected, given that	/	tilde.team	70
-iI had to change server, I had to move everything and the	/	tilde.team	70
-iautomations saved me a lot of time, especially those linked	/	tilde.team	70
-ito the machine's IP address.	/	tilde.team	70
-i	/	tilde.team	70
-i## Requirements	/	tilde.team	70
-i	/	tilde.team	70
-iThe Terraform OVH provider requires certain environment	/	tilde.team	70
-ivariables:	/	tilde.team	70
-i- OVH_ENDPOINT	/	tilde.team	70
-i- OVH_APPLICATION_KEY	/	tilde.team	70
-i- OVH_APPLICATION_SECRET	/	tilde.team	70
-i- OVH_CONSUMER_KEY	/	tilde.team	70
-i	/	tilde.team	70
-iTo access them, simply go to OVH's API token creation page.	/	tilde.team	70
+i## title: Terraform OVH external DNS records	/	tilde.club	70
+i## date: "2023-10-22"	/	tilde.club	70
+i	/	tilde.club	70
+iEnvironment replication is always very useful, and I've	/	tilde.club	70
+ialways made sure that all my operations and work can be	/	tilde.club	70
+iautomated and replicated. For example, I've written	/	tilde.club	70
+iTerraform configuration files for OVH DNS entries.	/	tilde.club	70
+i	/	tilde.club	70
+iThis turned out to be more useful than expected, given that	/	tilde.club	70
+iI had to change server, I had to move everything and the	/	tilde.club	70
+iautomations saved me a lot of time, especially those linked	/	tilde.club	70
+ito the machine's IP address.	/	tilde.club	70
+i	/	tilde.club	70
+i## Requirements	/	tilde.club	70
+i	/	tilde.club	70
+iThe Terraform OVH provider requires certain environment	/	tilde.club	70
+ivariables:	/	tilde.club	70
+i- OVH_ENDPOINT	/	tilde.club	70
+i- OVH_APPLICATION_KEY	/	tilde.club	70
+i- OVH_APPLICATION_SECRET	/	tilde.club	70
+i- OVH_CONSUMER_KEY	/	tilde.club	70
+i	/	tilde.club	70
+iTo access them, simply go to OVH's API token creation page.	/	tilde.club	70
 hOVH's API token creation page	URL:https://www.ovh.com/auth/api/createToken	www.ovh.com	443
-i	/	tilde.team	70
-i## Use cases	/	tilde.team	70
-i	/	tilde.team	70
-iFor theobori.cafe, I used the following configurations.	/	tilde.team	70
+i	/	tilde.club	70
+i## Use cases	/	tilde.club	70
+i	/	tilde.club	70
+iFor theobori.cafe, I used the following configurations.	/	tilde.club	70
 htheobori.cafe	URL:https://theobori.cafe	theobori.cafe	443
-i	/	tilde.team	70
-iproviders.tf	/	tilde.team	70
-iterraform {	/	tilde.team	70
-i  required_providers {	/	tilde.team	70
-i    ovh = {	/	tilde.team	70
-i      source  = "ovh/ovh"	/	tilde.team	70
-i      version = "0.34.0"	/	tilde.team	70
-i    }	/	tilde.team	70
-i  }	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iprovider "ovh" {	/	tilde.team	70
-i  endpoint = "ovh-eu"	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-ivariables.tf	/	tilde.team	70
-ivariable "domain" {	/	tilde.team	70
-i  type        = string	/	tilde.team	70
-i  description = "The managed domain name"	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-ivariable "subdomains" {	/	tilde.team	70
-i  type        = set(string)	/	tilde.team	70
-i  description = "The subdomains directly link to	/	tilde.team	70
-i`var.domain_name`"	/	tilde.team	70
-i  default = [	/	tilde.team	70
-i    "www",	/	tilde.team	70
-i    "status",	/	tilde.team	70
-i    "cringe",	/	tilde.team	70
-i    "etherpad",	/	tilde.team	70
-i    "search",	/	tilde.team	70
-i    "mail",	/	tilde.team	70
-i    "cloud"	/	tilde.team	70
-i  ]	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-ivariable "host" {	/	tilde.team	70
-i  type        = string	/	tilde.team	70
-i  description = "The target host IPv4 address"	/	tilde.team	70
-i  sensitive   = true	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-ivariable "host_ipv6" {	/	tilde.team	70
-i  type        = string	/	tilde.team	70
-i  description = "The target host IPv6 address"	/	tilde.team	70
-i  default     = null	/	tilde.team	70
-i  sensitive   = true	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-ivariable "dkim_key" {	/	tilde.team	70
-i  type        = string	/	tilde.team	70
-i  description = "The TXT DNS entry containing the DKIM key"	/	tilde.team	70
-i  default     = null	/	tilde.team	70
-i  sensitive   = true	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-ivariable "smtp_tlsa" {	/	tilde.team	70
-i  type        = string	/	tilde.team	70
-i  description = "The SMTP TLS fingerprint"	/	tilde.team	70
-i  default     = null	/	tilde.team	70
-i  sensitive   = true	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-imain.tf	/	tilde.team	70
-iresource "ovh_domain_zone_record" "domain" {	/	tilde.team	70
-i  zone      = var.domain	/	tilde.team	70
-i  fieldtype = "A"	/	tilde.team	70
-i  target    = var.host	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iresource "ovh_domain_zone_record" "www_domain" {	/	tilde.team	70
-i  zone      = var.domain	/	tilde.team	70
-i  subdomain = "www"	/	tilde.team	70
-i  fieldtype = "A"	/	tilde.team	70
-i  target    = var.host	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iresource "ovh_domain_zone_record" "mail" {	/	tilde.team	70
-i  zone      = var.domain	/	tilde.team	70
-i  fieldtype = "MX"	/	tilde.team	70
-i  ttl       = 300	/	tilde.team	70
-i  target    = "10 mail"	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iresource "ovh_domain_zone_record" "dmarc" {	/	tilde.team	70
-i  zone      = var.domain	/	tilde.team	70
-i  subdomain = "_dmarc"	/	tilde.team	70
-i  fieldtype = "TXT"	/	tilde.team	70
-i  target    = "v=DMARC1; p=none;	/	tilde.team	70
-irua=mailto:dmarc@${var.domain}"	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iresource "ovh_domain_zone_record" "spf" {	/	tilde.team	70
-i  for_each = toset(	/	tilde.team	70
-i    [	/	tilde.team	70
-i      "",	/	tilde.team	70
-i      "www"	/	tilde.team	70
-i    ]	/	tilde.team	70
-i  )	/	tilde.team	70
-i	/	tilde.team	70
-i  zone      = var.domain	/	tilde.team	70
-i  subdomain = each.key	/	tilde.team	70
-i  fieldtype = "TXT"	/	tilde.team	70
-i  target    = "v=spf1 a mx -all"	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iresource "ovh_domain_zone_record" "www_txt" {	/	tilde.team	70
-i  zone      = var.domain	/	tilde.team	70
-i  fieldtype = "TXT"	/	tilde.team	70
-i  target    = "1|www.${var.domain}"	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iresource "ovh_domain_zone_record" "dkim_key" {	/	tilde.team	70
-i  count = var.dkim_key == null ? 0 : 1	/	tilde.team	70
-i	/	tilde.team	70
-i  zone      = var.domain	/	tilde.team	70
-i  subdomain = "dkim._domainkey"	/	tilde.team	70
-i  fieldtype = "TXT"	/	tilde.team	70
-i  target    = var.dkim_key	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iresource "ovh_domain_zone_record" "subdomain_entries" {	/	tilde.team	70
-i  for_each = var.subdomains	/	tilde.team	70
-i	/	tilde.team	70
-i  zone      = var.domain	/	tilde.team	70
-i  subdomain = each.key	/	tilde.team	70
-i  fieldtype = "A"	/	tilde.team	70
-i  target    = var.host	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iresource "ovh_domain_zone_record" "mail_ipv6" {	/	tilde.team	70
-i  count = var.host_ipv6 == null ? 0 : 1	/	tilde.team	70
-i	/	tilde.team	70
-i  zone      = var.domain	/	tilde.team	70
-i  subdomain = "mail"	/	tilde.team	70
-i  fieldtype = "AAAA"	/	tilde.team	70
-i  target    = var.host_ipv6	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iresource "ovh_domain_zone_record" "smtp_fingerprint_tlsa" {	/	tilde.team	70
-i  count = var.smtp_tlsa == null ? 0 : 1	/	tilde.team	70
-i	/	tilde.team	70
-i  zone      = var.domain	/	tilde.team	70
-i  subdomain = "_25._tcp.mail"	/	tilde.team	70
-i  fieldtype = "TLSA"	/	tilde.team	70
-i  target    = var.smtp_tlsa	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iresource "ovh_domain_zone_record" "autodiscover" {	/	tilde.team	70
-i  zone      = var.domain	/	tilde.team	70
-i  subdomain = "autodiscover"	/	tilde.team	70
-i  fieldtype = "CNAME"	/	tilde.team	70
-i  target    = "mail"	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iresource "ovh_domain_zone_record" "autoconfig" {	/	tilde.team	70
-i  zone      = var.domain	/	tilde.team	70
-i  subdomain = "autoconfig"	/	tilde.team	70
-i  fieldtype = "CNAME"	/	tilde.team	70
-i  target    = "mail"	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-i## Links	/	tilde.team	70
-i	/	tilde.team	70
-ihttps://github.com/theobori-cafe/dns	/	tilde.team	70
+i	/	tilde.club	70
+iproviders.tf	/	tilde.club	70
+iterraform {	/	tilde.club	70
+i  required_providers {	/	tilde.club	70
+i    ovh = {	/	tilde.club	70
+i      source  = "ovh/ovh"	/	tilde.club	70
+i      version = "0.34.0"	/	tilde.club	70
+i    }	/	tilde.club	70
+i  }	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iprovider "ovh" {	/	tilde.club	70
+i  endpoint = "ovh-eu"	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+ivariables.tf	/	tilde.club	70
+ivariable "domain" {	/	tilde.club	70
+i  type        = string	/	tilde.club	70
+i  description = "The managed domain name"	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+ivariable "subdomains" {	/	tilde.club	70
+i  type        = set(string)	/	tilde.club	70
+i  description = "The subdomains directly link to	/	tilde.club	70
+i`var.domain_name`"	/	tilde.club	70
+i  default = [	/	tilde.club	70
+i    "www",	/	tilde.club	70
+i    "status",	/	tilde.club	70
+i    "cringe",	/	tilde.club	70
+i    "etherpad",	/	tilde.club	70
+i    "search",	/	tilde.club	70
+i    "mail",	/	tilde.club	70
+i    "cloud"	/	tilde.club	70
+i  ]	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+ivariable "host" {	/	tilde.club	70
+i  type        = string	/	tilde.club	70
+i  description = "The target host IPv4 address"	/	tilde.club	70
+i  sensitive   = true	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+ivariable "host_ipv6" {	/	tilde.club	70
+i  type        = string	/	tilde.club	70
+i  description = "The target host IPv6 address"	/	tilde.club	70
+i  default     = null	/	tilde.club	70
+i  sensitive   = true	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+ivariable "dkim_key" {	/	tilde.club	70
+i  type        = string	/	tilde.club	70
+i  description = "The TXT DNS entry containing the DKIM key"	/	tilde.club	70
+i  default     = null	/	tilde.club	70
+i  sensitive   = true	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+ivariable "smtp_tlsa" {	/	tilde.club	70
+i  type        = string	/	tilde.club	70
+i  description = "The SMTP TLS fingerprint"	/	tilde.club	70
+i  default     = null	/	tilde.club	70
+i  sensitive   = true	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+imain.tf	/	tilde.club	70
+iresource "ovh_domain_zone_record" "domain" {	/	tilde.club	70
+i  zone      = var.domain	/	tilde.club	70
+i  fieldtype = "A"	/	tilde.club	70
+i  target    = var.host	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iresource "ovh_domain_zone_record" "www_domain" {	/	tilde.club	70
+i  zone      = var.domain	/	tilde.club	70
+i  subdomain = "www"	/	tilde.club	70
+i  fieldtype = "A"	/	tilde.club	70
+i  target    = var.host	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iresource "ovh_domain_zone_record" "mail" {	/	tilde.club	70
+i  zone      = var.domain	/	tilde.club	70
+i  fieldtype = "MX"	/	tilde.club	70
+i  ttl       = 300	/	tilde.club	70
+i  target    = "10 mail"	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iresource "ovh_domain_zone_record" "dmarc" {	/	tilde.club	70
+i  zone      = var.domain	/	tilde.club	70
+i  subdomain = "_dmarc"	/	tilde.club	70
+i  fieldtype = "TXT"	/	tilde.club	70
+i  target    = "v=DMARC1; p=none;	/	tilde.club	70
+irua=mailto:dmarc@${var.domain}"	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iresource "ovh_domain_zone_record" "spf" {	/	tilde.club	70
+i  for_each = toset(	/	tilde.club	70
+i    [	/	tilde.club	70
+i      "",	/	tilde.club	70
+i      "www"	/	tilde.club	70
+i    ]	/	tilde.club	70
+i  )	/	tilde.club	70
+i	/	tilde.club	70
+i  zone      = var.domain	/	tilde.club	70
+i  subdomain = each.key	/	tilde.club	70
+i  fieldtype = "TXT"	/	tilde.club	70
+i  target    = "v=spf1 a mx -all"	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iresource "ovh_domain_zone_record" "www_txt" {	/	tilde.club	70
+i  zone      = var.domain	/	tilde.club	70
+i  fieldtype = "TXT"	/	tilde.club	70
+i  target    = "1|www.${var.domain}"	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iresource "ovh_domain_zone_record" "dkim_key" {	/	tilde.club	70
+i  count = var.dkim_key == null ? 0 : 1	/	tilde.club	70
+i	/	tilde.club	70
+i  zone      = var.domain	/	tilde.club	70
+i  subdomain = "dkim._domainkey"	/	tilde.club	70
+i  fieldtype = "TXT"	/	tilde.club	70
+i  target    = var.dkim_key	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iresource "ovh_domain_zone_record" "subdomain_entries" {	/	tilde.club	70
+i  for_each = var.subdomains	/	tilde.club	70
+i	/	tilde.club	70
+i  zone      = var.domain	/	tilde.club	70
+i  subdomain = each.key	/	tilde.club	70
+i  fieldtype = "A"	/	tilde.club	70
+i  target    = var.host	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iresource "ovh_domain_zone_record" "mail_ipv6" {	/	tilde.club	70
+i  count = var.host_ipv6 == null ? 0 : 1	/	tilde.club	70
+i	/	tilde.club	70
+i  zone      = var.domain	/	tilde.club	70
+i  subdomain = "mail"	/	tilde.club	70
+i  fieldtype = "AAAA"	/	tilde.club	70
+i  target    = var.host_ipv6	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iresource "ovh_domain_zone_record" "smtp_fingerprint_tlsa" {	/	tilde.club	70
+i  count = var.smtp_tlsa == null ? 0 : 1	/	tilde.club	70
+i	/	tilde.club	70
+i  zone      = var.domain	/	tilde.club	70
+i  subdomain = "_25._tcp.mail"	/	tilde.club	70
+i  fieldtype = "TLSA"	/	tilde.club	70
+i  target    = var.smtp_tlsa	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iresource "ovh_domain_zone_record" "autodiscover" {	/	tilde.club	70
+i  zone      = var.domain	/	tilde.club	70
+i  subdomain = "autodiscover"	/	tilde.club	70
+i  fieldtype = "CNAME"	/	tilde.club	70
+i  target    = "mail"	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iresource "ovh_domain_zone_record" "autoconfig" {	/	tilde.club	70
+i  zone      = var.domain	/	tilde.club	70
+i  subdomain = "autoconfig"	/	tilde.club	70
+i  fieldtype = "CNAME"	/	tilde.club	70
+i  target    = "mail"	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+i## Links	/	tilde.club	70
+i	/	tilde.club	70
+ihttps://github.com/theobori-cafe/dns	/	tilde.club	70
 hhttps://github.com/theobori-cafe/dns	URL:https://github.com/theobori-cafe/dns	github.com	443

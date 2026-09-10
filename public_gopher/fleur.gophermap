@@ -1,227 +1,227 @@
-i## title: My Gopher application framework	/	tilde.team	70
-i## date: "2026-06-10"	/	tilde.team	70
-i	/	tilde.team	70
-i## Introduction	/	tilde.team	70
-i	/	tilde.team	70
-iI've always really liked the Gopher protocol for its	/	tilde.team	70
-isimplicity, lightness, and accessibility. A while back, I	/	tilde.team	70
-iwanted to have my own solution for creating custom Gopher	/	tilde.team	70
-iapplications. That's why I decided to write a framework in	/	tilde.team	70
-iGo that allows you to implement an RFC 1436 compliant Gopher	/	tilde.team	70
-iserver, as well as add evaluation extensions for the	/	tilde.team	70
-igophermap format and dynamic and virtual routes.	/	tilde.team	70
+i## title: My Gopher application framework	/	tilde.club	70
+i## date: "2026-06-10"	/	tilde.club	70
+i	/	tilde.club	70
+i## Introduction	/	tilde.club	70
+i	/	tilde.club	70
+iI've always really liked the Gopher protocol for its	/	tilde.club	70
+isimplicity, lightness, and accessibility. A while back, I	/	tilde.club	70
+iwanted to have my own solution for creating custom Gopher	/	tilde.club	70
+iapplications. That's why I decided to write a framework in	/	tilde.club	70
+iGo that allows you to implement an RFC 1436 compliant Gopher	/	tilde.club	70
+iserver, as well as add evaluation extensions for the	/	tilde.club	70
+igophermap format and dynamic and virtual routes.	/	tilde.club	70
 hRFC 1436	URL:https://www.rfc-editor.org/rfc/rfc1436.html	www.rfc-editor.org	443
-i	/	tilde.team	70
-iThe name of the project is fleur, pronounced \\flœʁ\\, which	/	tilde.team	70
-imeans flower.	/	tilde.team	70
+i	/	tilde.club	70
+iThe name of the project is fleur, pronounced \\flœʁ\\, which	/	tilde.club	70
+imeans flower.	/	tilde.club	70
 hfleur	URL:https://github.com/theobori/fleur	github.com	443
-i	/	tilde.team	70
-i## My goal	/	tilde.team	70
-i	/	tilde.team	70
-iMy goal is to provide an API for implementing Gopher	/	tilde.team	70
-iapplications. I want it to be easy to use while remaining	/	tilde.team	70
-ilow-level enough to allow for a high degree of flexibility.	/	tilde.team	70
-i	/	tilde.team	70
-i## How it works	/	tilde.team	70
-i	/	tilde.team	70
-iThere are a few core components to introduce in order to	/	tilde.team	70
-ifully understand how the framework works.	/	tilde.team	70
-i	/	tilde.team	70
-i### Route	/	tilde.team	70
-i	/	tilde.team	70
-iA route is a pair consisting of a regular expression and a	/	tilde.team	70
-ifunction used by a router.	/	tilde.team	70
-i	/	tilde.team	70
-i### Router	/	tilde.team	70
-i	/	tilde.team	70
-iThis is an interface that manages routes. If one of the	/	tilde.team	70
-iregexes matches the request path, the associated function is	/	tilde.team	70
-icalled. For example, a client requesting a path matching the	/	tilde.team	70
-iregex ^/dice$ would receive a gophermap page containing the	/	tilde.team	70
-iresult of a dice roll.	/	tilde.team	70
-i	/	tilde.team	70
-i### Server	/	tilde.team	70
-i	/	tilde.team	70
-iA server is essential since it is responsible for receiving	/	tilde.team	70
-iGopher requests from clients and responding to them. Before	/	tilde.team	70
-iserving a file, it will ask its router if there is a routing	/	tilde.team	70
-irule for the path requested by the client. If there is one,	/	tilde.team	70
-ithe associated function will be called first to respond to	/	tilde.team	70
-ithe client.	/	tilde.team	70
-i	/	tilde.team	70
-iNote that before serving a directory, the server will check	/	tilde.team	70
-iif there is a gophermap file at its root; if so, it will be	/	tilde.team	70
-iserved instead of the directory.	/	tilde.team	70
-i	/	tilde.team	70
-iAlso, only files named gophermap and those with the	/	tilde.team	70
-i.gophermap extension will be evaluated.	/	tilde.team	70
-i	/	tilde.team	70
-i### Extension	/	tilde.team	70
-i	/	tilde.team	70
-iAn extension is a pair consisting of a regex and a function;	/	tilde.team	70
-iit is similar to the routes in the router component, except	/	tilde.team	70
-ithat here, an extension is specific to the gophermap format.	/	tilde.team	70
-iCreating an extension allows you, for example, to add,	/	tilde.team	70
-imodify, or delete gophermap item types. For instance, all	/	tilde.team	70
-istandard RFC 1436 item types are implemented using	/	tilde.team	70
-iextensions in the Fleur CLI.	/	tilde.team	70
+i	/	tilde.club	70
+i## My goal	/	tilde.club	70
+i	/	tilde.club	70
+iMy goal is to provide an API for implementing Gopher	/	tilde.club	70
+iapplications. I want it to be easy to use while remaining	/	tilde.club	70
+ilow-level enough to allow for a high degree of flexibility.	/	tilde.club	70
+i	/	tilde.club	70
+i## How it works	/	tilde.club	70
+i	/	tilde.club	70
+iThere are a few core components to introduce in order to	/	tilde.club	70
+ifully understand how the framework works.	/	tilde.club	70
+i	/	tilde.club	70
+i### Route	/	tilde.club	70
+i	/	tilde.club	70
+iA route is a pair consisting of a regular expression and a	/	tilde.club	70
+ifunction used by a router.	/	tilde.club	70
+i	/	tilde.club	70
+i### Router	/	tilde.club	70
+i	/	tilde.club	70
+iThis is an interface that manages routes. If one of the	/	tilde.club	70
+iregexes matches the request path, the associated function is	/	tilde.club	70
+icalled. For example, a client requesting a path matching the	/	tilde.club	70
+iregex ^/dice$ would receive a gophermap page containing the	/	tilde.club	70
+iresult of a dice roll.	/	tilde.club	70
+i	/	tilde.club	70
+i### Server	/	tilde.club	70
+i	/	tilde.club	70
+iA server is essential since it is responsible for receiving	/	tilde.club	70
+iGopher requests from clients and responding to them. Before	/	tilde.club	70
+iserving a file, it will ask its router if there is a routing	/	tilde.club	70
+irule for the path requested by the client. If there is one,	/	tilde.club	70
+ithe associated function will be called first to respond to	/	tilde.club	70
+ithe client.	/	tilde.club	70
+i	/	tilde.club	70
+iNote that before serving a directory, the server will check	/	tilde.club	70
+iif there is a gophermap file at its root; if so, it will be	/	tilde.club	70
+iserved instead of the directory.	/	tilde.club	70
+i	/	tilde.club	70
+iAlso, only files named gophermap and those with the	/	tilde.club	70
+i.gophermap extension will be evaluated.	/	tilde.club	70
+i	/	tilde.club	70
+i### Extension	/	tilde.club	70
+i	/	tilde.club	70
+iAn extension is a pair consisting of a regex and a function;	/	tilde.club	70
+iit is similar to the routes in the router component, except	/	tilde.club	70
+ithat here, an extension is specific to the gophermap format.	/	tilde.club	70
+iCreating an extension allows you, for example, to add,	/	tilde.club	70
+imodify, or delete gophermap item types. For instance, all	/	tilde.club	70
+istandard RFC 1436 item types are implemented using	/	tilde.club	70
+iextensions in the Fleur CLI.	/	tilde.club	70
 hRFC 1436	URL:https://www.rfc-editor.org/rfc/rfc1436.html	www.rfc-editor.org	443
-i	/	tilde.team	70
-i### Extension Manager	/	tilde.team	70
-i	/	tilde.team	70
-iThis is an interface for managing extensions; it is used by	/	tilde.team	70
-ithe evaluator to extend the gophermap.	/	tilde.team	70
-i	/	tilde.team	70
-i### Evaluator	/	tilde.team	70
-i	/	tilde.team	70
-iAn evaluator evaluates gophermap files when the server is	/	tilde.team	70
-iready to serve them. This evaluation works line by line and	/	tilde.team	70
-iallows the gophermap format to be extended by adding	/	tilde.team	70
-iextensions.	/	tilde.team	70
-i	/	tilde.team	70
-i### Example of a simple Gopher Application	/	tilde.team	70
-i	/	tilde.team	70
-iBelow is a very simple example of a Gopher application	/	tilde.team	70
-idesigned to serve files.	/	tilde.team	70
-i	/	tilde.team	70
-ipackage main	/	tilde.team	70
-i	/	tilde.team	70
-iimport (	/	tilde.team	70
-i    "flag"	/	tilde.team	70
-i    "log"	/	tilde.team	70
-i	/	tilde.team	70
-i    "github.com/theobori/fleur/gopher"	/	tilde.team	70
-i    "github.com/theobori/fleur/gophermap/evaluator"	/	tilde.team	70
-i    "github.com/theobori/fleur/server"	/	tilde.team	70
-i)	/	tilde.team	70
-i	/	tilde.team	70
-ifunc main() {	/	tilde.team	70
-i    var (	/	tilde.team	70
-i        err           error	/	tilde.team	70
-i        directoryPath string	/	tilde.team	70
-i        domain        string	/	tilde.team	70
-i        port          int	/	tilde.team	70
-i    )	/	tilde.team	70
-i	/	tilde.team	70
-i    flag.StringVar(	/	tilde.team	70
-i        &directoryPath,	/	tilde.team	70
-i        "directory",	/	tilde.team	70
-i        "./fleur",	/	tilde.team	70
-i        "Root directory of the Gopher server",	/	tilde.team	70
-i    )	/	tilde.team	70
-i    flag.StringVar(	/	tilde.team	70
-i        &domain,	/	tilde.team	70
-i        "domain",	/	tilde.team	70
-i        "localhost",	/	tilde.team	70
-i        "Gopher domain",	/	tilde.team	70
-i    )	/	tilde.team	70
-i    flag.IntVar(	/	tilde.team	70
-i        &port,	/	tilde.team	70
-i        "port",	/	tilde.team	70
-i        gopher.DefaultPort,	/	tilde.team	70
-i        "Gopher port",	/	tilde.team	70
-i    )	/	tilde.team	70
-i	/	tilde.team	70
-i    flag.Parse()	/	tilde.team	70
-i	/	tilde.team	70
-i    serverOptions, err := server.NewOptions(	/	tilde.team	70
-i        port,	/	tilde.team	70
-i        directoryPath,	/	tilde.team	70
-i        domain,	/	tilde.team	70
-i        true,	/	tilde.team	70
-i    )	/	tilde.team	70
-i    if err != nil {	/	tilde.team	70
-i        log.Fatalln(err)	/	tilde.team	70
-i    }	/	tilde.team	70
-i	/	tilde.team	70
-i    evaluatorOptions := evaluator.Options{	/	tilde.team	70
-i        Port:                 serverOptions.Port,	/	tilde.team	70
-i        DirectoryPath:        serverOptions.DirectoryPath,	/	tilde.team	70
-i        Domain:               serverOptions.Domain,	/	tilde.team	70
-i        EnableAutoInlineText: true,	/	tilde.team	70
-i    }	/	tilde.team	70
-i	/	tilde.team	70
-i    em := evaluator.RFC1436ItemsExtensionManager()	/	tilde.team	70
-i    evaluator := evaluator.NewEvaluator(&evaluatorOptions, em)	/	tilde.team	70
-i    server := server.NewServer(serverOptions, evaluator)	/	tilde.team	70
-i	/	tilde.team	70
-i    err = server.Serve()	/	tilde.team	70
-i    if err != nil {	/	tilde.team	70
-i        log.Fatalln(err)	/	tilde.team	70
-i    }	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iOnce compiled, the application can be launched using the	/	tilde.team	70
-icommand line below.	/	tilde.team	70
-i	/	tilde.team	70
-i./simple -port 7070 -directory "./"	/	tilde.team	70
-i	/	tilde.team	70
-i## CLI	/	tilde.team	70
-i	/	tilde.team	70
-iThe fleur CLI is a Gopher application that serves files	/	tilde.team	70
-iimplemented with the framework. It optionally supports	/	tilde.team	70
-ipersonal Gopherspaces on UNIX systems, with the virtual path	/	tilde.team	70
-i/~username/ being converted to /home/username/public_gopher.	/	tilde.team	70
-i	/	tilde.team	70
-iIt also implements an extension that lists files in the	/	tilde.team	70
-icurrent directory. To use it, type * on a line. This feature	/	tilde.team	70
-iis inspired by gophernicus.	/	tilde.team	70
+i	/	tilde.club	70
+i### Extension Manager	/	tilde.club	70
+i	/	tilde.club	70
+iThis is an interface for managing extensions; it is used by	/	tilde.club	70
+ithe evaluator to extend the gophermap.	/	tilde.club	70
+i	/	tilde.club	70
+i### Evaluator	/	tilde.club	70
+i	/	tilde.club	70
+iAn evaluator evaluates gophermap files when the server is	/	tilde.club	70
+iready to serve them. This evaluation works line by line and	/	tilde.club	70
+iallows the gophermap format to be extended by adding	/	tilde.club	70
+iextensions.	/	tilde.club	70
+i	/	tilde.club	70
+i### Example of a simple Gopher Application	/	tilde.club	70
+i	/	tilde.club	70
+iBelow is a very simple example of a Gopher application	/	tilde.club	70
+idesigned to serve files.	/	tilde.club	70
+i	/	tilde.club	70
+ipackage main	/	tilde.club	70
+i	/	tilde.club	70
+iimport (	/	tilde.club	70
+i    "flag"	/	tilde.club	70
+i    "log"	/	tilde.club	70
+i	/	tilde.club	70
+i    "github.com/theobori/fleur/gopher"	/	tilde.club	70
+i    "github.com/theobori/fleur/gophermap/evaluator"	/	tilde.club	70
+i    "github.com/theobori/fleur/server"	/	tilde.club	70
+i)	/	tilde.club	70
+i	/	tilde.club	70
+ifunc main() {	/	tilde.club	70
+i    var (	/	tilde.club	70
+i        err           error	/	tilde.club	70
+i        directoryPath string	/	tilde.club	70
+i        domain        string	/	tilde.club	70
+i        port          int	/	tilde.club	70
+i    )	/	tilde.club	70
+i	/	tilde.club	70
+i    flag.StringVar(	/	tilde.club	70
+i        &directoryPath,	/	tilde.club	70
+i        "directory",	/	tilde.club	70
+i        "./fleur",	/	tilde.club	70
+i        "Root directory of the Gopher server",	/	tilde.club	70
+i    )	/	tilde.club	70
+i    flag.StringVar(	/	tilde.club	70
+i        &domain,	/	tilde.club	70
+i        "domain",	/	tilde.club	70
+i        "localhost",	/	tilde.club	70
+i        "Gopher domain",	/	tilde.club	70
+i    )	/	tilde.club	70
+i    flag.IntVar(	/	tilde.club	70
+i        &port,	/	tilde.club	70
+i        "port",	/	tilde.club	70
+i        gopher.DefaultPort,	/	tilde.club	70
+i        "Gopher port",	/	tilde.club	70
+i    )	/	tilde.club	70
+i	/	tilde.club	70
+i    flag.Parse()	/	tilde.club	70
+i	/	tilde.club	70
+i    serverOptions, err := server.NewOptions(	/	tilde.club	70
+i        port,	/	tilde.club	70
+i        directoryPath,	/	tilde.club	70
+i        domain,	/	tilde.club	70
+i        true,	/	tilde.club	70
+i    )	/	tilde.club	70
+i    if err != nil {	/	tilde.club	70
+i        log.Fatalln(err)	/	tilde.club	70
+i    }	/	tilde.club	70
+i	/	tilde.club	70
+i    evaluatorOptions := evaluator.Options{	/	tilde.club	70
+i        Port:                 serverOptions.Port,	/	tilde.club	70
+i        DirectoryPath:        serverOptions.DirectoryPath,	/	tilde.club	70
+i        Domain:               serverOptions.Domain,	/	tilde.club	70
+i        EnableAutoInlineText: true,	/	tilde.club	70
+i    }	/	tilde.club	70
+i	/	tilde.club	70
+i    em := evaluator.RFC1436ItemsExtensionManager()	/	tilde.club	70
+i    evaluator := evaluator.NewEvaluator(&evaluatorOptions, em)	/	tilde.club	70
+i    server := server.NewServer(serverOptions, evaluator)	/	tilde.club	70
+i	/	tilde.club	70
+i    err = server.Serve()	/	tilde.club	70
+i    if err != nil {	/	tilde.club	70
+i        log.Fatalln(err)	/	tilde.club	70
+i    }	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iOnce compiled, the application can be launched using the	/	tilde.club	70
+icommand line below.	/	tilde.club	70
+i	/	tilde.club	70
+i./simple -port 7070 -directory "./"	/	tilde.club	70
+i	/	tilde.club	70
+i## CLI	/	tilde.club	70
+i	/	tilde.club	70
+iThe fleur CLI is a Gopher application that serves files	/	tilde.club	70
+iimplemented with the framework. It optionally supports	/	tilde.club	70
+ipersonal Gopherspaces on UNIX systems, with the virtual path	/	tilde.club	70
+i/~username/ being converted to /home/username/public_gopher.	/	tilde.club	70
+i	/	tilde.club	70
+iIt also implements an extension that lists files in the	/	tilde.club	70
+icurrent directory. To use it, type * on a line. This feature	/	tilde.club	70
+iis inspired by gophernicus.	/	tilde.club	70
 hgophernicus	URL:https://github.com/gophernicus/gophernicus	github.com	443
-i	/	tilde.team	70
-i### Help Message	/	tilde.team	70
-i	/	tilde.team	70
-iBelow is the CLI help message.	/	tilde.team	70
-i	/	tilde.team	70
-iUsage of ./fleur:	/	tilde.team	70
-i  -directory string	/	tilde.team	70
-i        It specifies an input directory path that will be the	/	tilde.team	70
-iroot of the Gopher server (default "./fleur")	/	tilde.team	70
-i  -domain string	/	tilde.team	70
-i        Gopher domain (default "localhost")	/	tilde.team	70
-i  -enable-auto-inline-text	/	tilde.team	70
-i        Relax non compliant text error and convert to gophermap	/	tilde.team	70
-iinline text	/	tilde.team	70
-i  -enable-personal-gopherspaces	/	tilde.team	70
-i        Enable personal Gopherspaces, it allows each user of	/	tilde.team	70
-ithe system to serve its own files	/	tilde.team	70
-i  -port int	/	tilde.team	70
-i        Gopher port (default 70)	/	tilde.team	70
-i  -verbose	/	tilde.team	70
-i        Enable verbose logs	/	tilde.team	70
-i	/	tilde.team	70
-i### NixOS module	/	tilde.team	70
-i	/	tilde.team	70
-iI also provide a NixOS module for managing the fleur CLI	/	tilde.team	70
-iusing a systemd service unit. Inside your flake.nix, you can	/	tilde.team	70
-istart by adding the following lines.	/	tilde.team	70
-i	/	tilde.team	70
-i{	/	tilde.team	70
-i  inputs = {	/	tilde.team	70
-i    fleur.url = "github:theobori/fleur";	/	tilde.team	70
-i  };	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-iYou can then include the module and its default overlay in	/	tilde.team	70
-ithe system configuration as shown below.	/	tilde.team	70
-i	/	tilde.team	70
-i{ inputs, ... }: {	/	tilde.team	70
-i  imports = with inputs; [ fleur.nixosModules.default ];	/	tilde.team	70
-i	/	tilde.team	70
-i  services.fleur = {	/	tilde.team	70
-i    enable = true;	/	tilde.team	70
-i    directory = "${./my-directory}";	/	tilde.team	70
-i    port = 7070;	/	tilde.team	70
-i    verbose = true;	/	tilde.team	70
-i    autoInlineText = true;	/	tilde.team	70
-i    personalGopherspaces = true;	/	tilde.team	70
-i    # Other options	/	tilde.team	70
-i  };	/	tilde.team	70
-i}	/	tilde.team	70
-i	/	tilde.team	70
-i## Conclusion	/	tilde.team	70
-i	/	tilde.team	70
-iIt was a fun project to write and test, and I plan to use it	/	tilde.team	70
-isoon to serve my own gophermap files. Also, thanks to	/	tilde.team	70
-iWireshark, it was a huge help.	/	tilde.team	70
+i	/	tilde.club	70
+i### Help Message	/	tilde.club	70
+i	/	tilde.club	70
+iBelow is the CLI help message.	/	tilde.club	70
+i	/	tilde.club	70
+iUsage of ./fleur:	/	tilde.club	70
+i  -directory string	/	tilde.club	70
+i        It specifies an input directory path that will be the	/	tilde.club	70
+iroot of the Gopher server (default "./fleur")	/	tilde.club	70
+i  -domain string	/	tilde.club	70
+i        Gopher domain (default "localhost")	/	tilde.club	70
+i  -enable-auto-inline-text	/	tilde.club	70
+i        Relax non compliant text error and convert to gophermap	/	tilde.club	70
+iinline text	/	tilde.club	70
+i  -enable-personal-gopherspaces	/	tilde.club	70
+i        Enable personal Gopherspaces, it allows each user of	/	tilde.club	70
+ithe system to serve its own files	/	tilde.club	70
+i  -port int	/	tilde.club	70
+i        Gopher port (default 70)	/	tilde.club	70
+i  -verbose	/	tilde.club	70
+i        Enable verbose logs	/	tilde.club	70
+i	/	tilde.club	70
+i### NixOS module	/	tilde.club	70
+i	/	tilde.club	70
+iI also provide a NixOS module for managing the fleur CLI	/	tilde.club	70
+iusing a systemd service unit. Inside your flake.nix, you can	/	tilde.club	70
+istart by adding the following lines.	/	tilde.club	70
+i	/	tilde.club	70
+i{	/	tilde.club	70
+i  inputs = {	/	tilde.club	70
+i    fleur.url = "github:theobori/fleur";	/	tilde.club	70
+i  };	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+iYou can then include the module and its default overlay in	/	tilde.club	70
+ithe system configuration as shown below.	/	tilde.club	70
+i	/	tilde.club	70
+i{ inputs, ... }: {	/	tilde.club	70
+i  imports = with inputs; [ fleur.nixosModules.default ];	/	tilde.club	70
+i	/	tilde.club	70
+i  services.fleur = {	/	tilde.club	70
+i    enable = true;	/	tilde.club	70
+i    directory = "${./my-directory}";	/	tilde.club	70
+i    port = 7070;	/	tilde.club	70
+i    verbose = true;	/	tilde.club	70
+i    autoInlineText = true;	/	tilde.club	70
+i    personalGopherspaces = true;	/	tilde.club	70
+i    # Other options	/	tilde.club	70
+i  };	/	tilde.club	70
+i}	/	tilde.club	70
+i	/	tilde.club	70
+i## Conclusion	/	tilde.club	70
+i	/	tilde.club	70
+iIt was a fun project to write and test, and I plan to use it	/	tilde.club	70
+isoon to serve my own gophermap files. Also, thanks to	/	tilde.club	70
+iWireshark, it was a huge help.	/	tilde.club	70
 hWireshark	URL:https://www.wireshark.org/	www.wireshark.org	443
 
