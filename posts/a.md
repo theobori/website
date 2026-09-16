@@ -58,15 +58,23 @@ So I wrote a CLI that lets me create, rename, edit, and filter my notes using my
   (or 
     (title "title1")
     (title "title2"))
-
+  ;;
+  ;; Comment 1
+  ;;
   (tag "tag1")
-
+  ;;
+  ;; Comment 2
+  ;;
   (if (from-date "2020-01-01")
     (title "title3")
   (title "title4"))
-
+  ;;
+  ;; Comment 3
+  ;;
   (to-date "2020-02-01")
-
+  ;;
+  ;; Comment 4
+  ;;
   (and
     (not (tag "tag2"))
     (tag "tag3")))
@@ -100,10 +108,10 @@ Below is an example of interactively filtering notes in the './example' director
 a query -r example
 ```
 
-Below is an example of interactively filtering notes in the './example' directory recursively, followed by editing the path associated with each note.
+Below is an example of filtering notes in the './example' directory recursively using ql code in the './example/dsa.ql' file, followed by editing the path associated with each note.
 
 ```bash
-a query -r example edit
+a query -r example -f example/dsa.ql edit
 ```
 
 ## Conclusion
