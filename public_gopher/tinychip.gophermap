@@ -25,13 +25,8 @@ i	/	tilde.club	70
 iThere are approximately n instructions executed per second	/	tilde.club	70
 ifor a frequency of n hz (n is 500 by default). The sound and	/	tilde.club	70
 idelay timers are managed with 60hz.	/	tilde.club	70
-i	/	tilde.club	70
-i/breakout_320_160.png	/	tilde.club	70
-i/space_invaders_320_160.png	/	tilde.club	70
 I/breakout_320_160.png	/~theobori/breakout_320_160.png	tilde.club	70
 I/space_invaders_320_160.png	/~theobori/space_invaders_320_160.png	tilde.club	70
-i	/	tilde.club	70
-i/ibm_logo_640_320.png	/	tilde.club	70
 I/ibm_logo_640_320.png	/~theobori/ibm_logo_640_320.png	tilde.club	70
 i	/	tilde.club	70
 i## Some extra informations	/	tilde.club	70
@@ -45,6 +40,4 @@ iI implemented the 36 instructions + the 4 I was taking	/	tilde.club	70
 ibefore to be compatible with more ROM.	/	tilde.club	70
 i	/	tilde.club	70
 i## Links	/	tilde.club	70
-i	/	tilde.club	70
-ihttps://github.com/theobori/tinychip	/	tilde.club	70
 hhttps://github.com/theobori/tinychip	URL:https://github.com/theobori/tinychip	github.com	443

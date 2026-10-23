@@ -1,7 +1,6 @@
 i## title: My Nix exploration	/	tilde.club	70
 i## date: "2024-06-24"	/	tilde.club	70
 i	/	tilde.club	70
-i/nix_logo.svg	/	tilde.club	70
 I/nix_logo.svg	/~theobori/nix_logo.svg	tilde.club	70
 i	/	tilde.club	70
 iHere I share some notes and other things I've learned about	/	tilde.club	70
@@ -201,7 +200,6 @@ i	/	tilde.club	70
 iNix technology will enable us to build these derivations, in	/	tilde.club	70
 ithe following stages.	/	tilde.club	70
 i	/	tilde.club	70
-i/nix_graph.png	/	tilde.club	70
 I/nix_graph.png	/~theobori/nix_graph.png	tilde.club	70
 i	/	tilde.club	70
 iThe .drv files contain specifications on how to build the	/	tilde.club	70

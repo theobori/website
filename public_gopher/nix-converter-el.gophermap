@@ -62,14 +62,12 @@ iactive region directly by modifying an Emacs buffer. Below	/	tilde.club	70
 iis a gif showing this functionality with a conversion from	/	tilde.club	70
 iYAML to Nix, without additional nix-converter flags.	/	tilde.club	70
 i	/	tilde.club	70
-i/nix-converter-el-result.gif	/	tilde.club	70
 g/nix-converter-el-result.gif	/~theobori/nix-converter-el-result.gif	tilde.club	70
 i	/	tilde.club	70
 iThe package provides other features such as ad-hoc expression	/	tilde.club	70
 iconversion. Below is a gif showing an on-the-fly conversion	/	tilde.club	70
 ifrom Nix to YAML.	/	tilde.club	70
 i	/	tilde.club	70
-i/nix-converter-el-result2.gif	/	tilde.club	70
 g/nix-converter-el-result2.gif	/~theobori/nix-converter-el-result2.gif	tilde.club	70
 i	/	tilde.club	70
 i## Conclusion	/	tilde.club	70

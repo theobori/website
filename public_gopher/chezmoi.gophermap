@@ -72,6 +72,4 @@ ichezmoi init https://github.com/theobori/dotfiles.git	/	tilde.club	70
 ichezmoi apply -v	/	tilde.club	70
 i	/	tilde.club	70
 i## Links	/	tilde.club	70
-i	/	tilde.club	70
-ihttps://github.com/theobori/dotfiles	/	tilde.club	70
 hhttps://github.com/theobori/dotfiles	URL:https://github.com/theobori/dotfiles	github.com	443

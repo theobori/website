@@ -35,7 +35,6 @@ iqbittorrent-transient command, which provides access to the	/	tilde.club	70
 iTransient menu for qBittorrent. Below are the main Emacs	/	tilde.club	70
 icommands.	/	tilde.club	70
 i	/	tilde.club	70
-i/qbittorrent-transient-commands.png	/	tilde.club	70
 I/qbittorrent-transient-commands.png	/~theobori/qbittorrent-transient-commands.png	tilde.club	70
 i	/	tilde.club	70
 i## Results	/	tilde.club	70
@@ -44,7 +43,6 @@ iI'm satisfied with the result; it allows me to pass files	/	tilde.club	70
 imarked with Dired to qBittorrent, which was my main goal.	/	tilde.club	70
 iHere's what the Transient menu looks like.	/	tilde.club	70
 i	/	tilde.club	70
-i/qbittorrent-transient.png	/	tilde.club	70
 I/qbittorrent-transient.png	/~theobori/qbittorrent-transient.png	tilde.club	70
 i	/	tilde.club	70
 i## Contributing	/	tilde.club	70

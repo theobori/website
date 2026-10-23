@@ -1,7 +1,6 @@
 i## title: My eBPF exploration	/	tilde.club	70
 i## date: "2024-01-11"	/	tilde.club	70
 i	/	tilde.club	70
-i/ebpf.png	/	tilde.club	70
 I/ebpf.png	/~theobori/ebpf.png	tilde.club	70
 i	/	tilde.club	70
 iHaving discovered eBPF and read a few books about it, I'm	/	tilde.club	70
@@ -24,7 +23,6 @@ ispace. These BPF programs are attached to objects in the	/	tilde.club	70
 ikernel and executed when these objects are triggered by	/	tilde.club	70
 ievents.	/	tilde.club	70
 i	/	tilde.club	70
-i/basic_ebpf_scheme.png	/	tilde.club	70
 I/basic_ebpf_scheme.png	/~theobori/basic_ebpf_scheme.png	tilde.club	70
 i	/	tilde.club	70
 ieBPF mainly avoid use to rewrite the kernel source code and	/	tilde.club	70
@@ -58,7 +56,6 @@ iinstructions in a bytecode format. eBPF uses JIT compiler to	/	tilde.club	70
 iconvert the eBPF bytecode to machine code that run natively	/	tilde.club	70
 ion the CPU.	/	tilde.club	70
 i	/	tilde.club	70
-i/ebpf_build_chain.png	/	tilde.club	70
 I/ebpf_build_chain.png	/~theobori/ebpf_build_chain.png	tilde.club	70
 i	/	tilde.club	70
 ieBPF program take a pointer to a context that depends of the	/	tilde.club	70
@@ -169,7 +166,5 @@ i## Links	/	tilde.club	70
 i	/	tilde.club	70
 iHere are some of my XDP projects.	/	tilde.club	70
 i	/	tilde.club	70
-ihttps://github.com/theobori/tinyknock	/	tilde.club	70
-ihttps://github.com/theobori/tinyfilter	/	tilde.club	70
 hhttps://github.com/theobori/tinyknock	URL:https://github.com/theobori/tinyknock	github.com	443
 hhttps://github.com/theobori/tinyfilter	URL:https://github.com/theobori/tinyfilter	github.com	443

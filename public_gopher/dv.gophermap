@@ -132,14 +132,12 @@ iI am happy with the result; it fully meets the requirements	/	tilde.club	70
 iset out at the beginning. Below is an SVG image of the	/	tilde.club	70
 idependencies of the Emacs transient package.	/	tilde.club	70
 i	/	tilde.club	70
-i    /abc.svg	/	tilde.club	70
 I/abc.svg	/~theobori/abc.svg	tilde.club	70
 i	/	tilde.club	70
 iBelow is a more complex SVG image involving all types of	/	tilde.club	70
 inodes and circular imports, produced using the Emacs command	/	tilde.club	70
 idv-dirpath.	/	tilde.club	70
 i	/	tilde.club	70
-i    /dirpath.svg	/	tilde.club	70
 I/dirpath.svg	/~theobori/dirpath.svg	tilde.club	70
 i	/	tilde.club	70
 i## Conclusion	/	tilde.club	70

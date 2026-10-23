@@ -22,7 +22,6 @@ iA webring is a chained list in which each node contains	/	tilde.club	70
 iinformation about a website and its neighbors in the list.	/	tilde.club	70
 iBelow is a graph representing a webring example.	/	tilde.club	70
 i	/	tilde.club	70
-i/webring.png	/	tilde.club	70
 I/webring.png	/~theobori/webring.png	tilde.club	70
 i	/	tilde.club	70
 i## My goal	/	tilde.club	70
@@ -43,7 +42,6 @@ iexample form.	/	tilde.club	70
 hfleur-form	URL:https://github.com/theobori/fleur-form	github.com	443
 hfleur	URL:https://github.com/theobori/fleur	github.com	443
 i	/	tilde.club	70
-i/fleur-form_example.png	/	tilde.club	70
 I/fleur-form_example.png	/~theobori/fleur-form_example.png	tilde.club	70
 i	/	tilde.club	70
 i## Based on fleur	/	tilde.club	70
@@ -51,7 +49,6 @@ i	/	tilde.club	70
 iAnge is primarily based on the fleur framework and the fleur	/	tilde.club	70
 irouter plugin called fleur-form.	/	tilde.club	70
 i	/	tilde.club	70
-i/ange-dependencies.png	/	tilde.club	70
 I/ange-dependencies.png	/~theobori/ange-dependencies.png	tilde.club	70
 i	/	tilde.club	70
 i## How it works	/	tilde.club	70
@@ -98,13 +95,11 @@ i	/	tilde.club	70
 iHere's what ange looks like with the gophermap file provided	/	tilde.club	70
 iby the project.	/	tilde.club	70
 i	/	tilde.club	70
-i/ange-zero-gopherspaces.png	/	tilde.club	70
 I/ange-zero-gopherspaces.png	/~theobori/ange-zero-gopherspaces.png	tilde.club	70
 i	/	tilde.club	70
 iAnd here's an example of Gopherspaces accepted into the	/	tilde.club	70
 iwebring.	/	tilde.club	70
 i	/	tilde.club	70
-i/ange-two-gopherspaces.png	/	tilde.club	70
 I/ange-two-gopherspaces.png	/~theobori/ange-two-gopherspaces.png	tilde.club	70
 i	/	tilde.club	70
 i## Conclusion	/	tilde.club	70
@@ -113,4 +108,3 @@ iImplementing a webring helped me better understand how they	/	tilde.club	70
 igenerally work, it was pretty fun. During my research, I	/	tilde.club	70
 iwasn't able to find any existing Gopher webrings. If you	/	tilde.club	70
 iknow of any, please feel free to contact me to discuss them.	/	tilde.club	70
-

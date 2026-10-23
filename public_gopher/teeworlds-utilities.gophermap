@@ -20,7 +20,6 @@ iTeeAssembler 2.0 that used some part of the Teeworlds	/	tilde.club	70
 iutilities code.	/	tilde.club	70
 hTeeAssembler 2.0	URL:https://teeassembler.developer.li/	teeassembler.developer.li	443
 i	/	tilde.club	70
-i  /fokkonaut_bridge.png	/	tilde.club	70
 I/fokkonaut_bridge.png	/~theobori/fokkonaut_bridge.png	tilde.club	70
 i	/	tilde.club	70
 i## Use case examples	/	tilde.club	70
@@ -58,9 +57,6 @@ i  console.error(err);	/	tilde.club	70
 i}	/	tilde.club	70
 i	/	tilde.club	70
 i### Result (4K)	/	tilde.club	70
-i	/	tilde.club	70
-i/render_default.png	/	tilde.club	70
-i/render_color.png	/	tilde.club	70
 I/render_default.png	/~theobori/render_default.png	tilde.club	70
 I/render_color.png	/~theobori/render_color.png	tilde.club	70
 i	/	tilde.club	70
@@ -82,8 +78,6 @@ i	/	tilde.club	70
 isceneTest();	/	tilde.club	70
 i	/	tilde.club	70
 i### Result	/	tilde.club	70
-i	/	tilde.club	70
-i/scene.png	/	tilde.club	70
 I/scene.png	/~theobori/scene.png	tilde.club	70
 i	/	tilde.club	70
 i### Merge asset parts	/	tilde.club	70
@@ -91,9 +85,6 @@ i	/	tilde.club	70
 iHere we are going to merge specific parts from a skin	/	tilde.club	70
 i(right) to another (left).	/	tilde.club	70
 iAny Teeworlds asset should works.	/	tilde.club	70
-i	/	tilde.club	70
-i/teedata_skin.png	/	tilde.club	70
-i/alien_skin.png	/	tilde.club	70
 I/teedata_skin.png	/~theobori/teedata_skin.png	tilde.club	70
 I/alien_skin.png	/~theobori/alien_skin.png	tilde.club	70
 i	/	tilde.club	70
@@ -138,9 +129,6 @@ i  console.error(err);	/	tilde.club	70
 i}	/	tilde.club	70
 i	/	tilde.club	70
 i### Result	/	tilde.club	70
-i	/	tilde.club	70
-i/render_new_skin.png	/	tilde.club	70
-i/new_skin.png	/	tilde.club	70
 I/render_new_skin.png	/~theobori/render_new_skin.png	tilde.club	70
 I/new_skin.png	/~theobori/new_skin.png	tilde.club	70
 i	/	tilde.club	70
@@ -193,13 +181,9 @@ i  console.error(err);	/	tilde.club	70
 i}	/	tilde.club	70
 i	/	tilde.club	70
 i### Result	/	tilde.club	70
-i	/	tilde.club	70
-i/skin_with_weapon_and_emote.png	/	tilde.club	70
 I/skin_with_weapon_and_emote.png	/~theobori/skin_with_weapon_and_emote.png	tilde.club	70
 i	/	tilde.club	70
 i### Other possible result	/	tilde.club	70
-i	/	tilde.club	70
-i/board.png	/	tilde.club	70
 I/board.png	/~theobori/board.png	tilde.club	70
 i	/	tilde.club	70
 i## Links	/	tilde.club	70

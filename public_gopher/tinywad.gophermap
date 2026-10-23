@@ -46,7 +46,6 @@ iselects desired lumps, then it update the selected lumps in	/	tilde.club	70
 iDOOM1 and finally overwrite the file.	/	tilde.club	70
 i	/	tilde.club	70
 i### Screenhot(s)	/	tilde.club	70
-i/doom_gate3.png	/	tilde.club	70
 I/doom_gate3.png	/~theobori/doom_gate3.png	tilde.club	70
 i	/	tilde.club	70
 i### Lumps extracting	/	tilde.club	70
@@ -81,20 +80,6 @@ iIn this part of code, it extracts as PNG the selected lumps	/	tilde.club	70
 iwith different palettes (13).	/	tilde.club	70
 i	/	tilde.club	70
 i### Extracted lumps (as PNGs)	/	tilde.club	70
-i	/	tilde.club	70
-i/doom2/pal_0/BOSFB0.png	/	tilde.club	70
-i/doom2/pal_1/BOSFB0.png	/	tilde.club	70
-i/doom2/pal_2/BOSFB0.png	/	tilde.club	70
-i/doom2/pal_3/BOSFB0.png	/	tilde.club	70
-i/doom2/pal_4/BOSFB0.png	/	tilde.club	70
-i/doom2/pal_5/BOSFB0.png	/	tilde.club	70
-i/doom2/pal_6/BOSFB0.png	/	tilde.club	70
-i/doom2/pal_7/BOSFB0.png	/	tilde.club	70
-i/doom2/pal_8/BOSFB0.png	/	tilde.club	70
-i/doom2/pal_9/BOSFB0.png	/	tilde.club	70
-i/doom2/pal_10/BOSFB0.png	/	tilde.club	70
-i/doom2/pal_11/BOSFB0.png	/	tilde.club	70
-i/doom2/pal_12/BOSFB0.png	/	tilde.club	70
 I/doom2/pal_0/BOSFB0.png	/~theobori/doom2/pal_0/BOSFB0.png	tilde.club	70
 I/doom2/pal_1/BOSFB0.png	/~theobori/doom2/pal_1/BOSFB0.png	tilde.club	70
 I/doom2/pal_2/BOSFB0.png	/~theobori/doom2/pal_2/BOSFB0.png	tilde.club	70
@@ -199,14 +184,9 @@ iTo take the screenshot (below) doom1_patch.wad has been	/	tilde.club	70
 iinjected into GZDOOM with the IWAD doom.wad (registered).	/	tilde.club	70
 i	/	tilde.club	70
 i### Result	/	tilde.club	70
-i/doom_floor6_1.png	/	tilde.club	70
 I/doom_floor6_1.png	/~theobori/doom_floor6_1.png	tilde.club	70
 i	/	tilde.club	70
 i### Files	/	tilde.club	70
-i	/	tilde.club	70
-idoom1_patch.wad	/	tilde.club	70
-idoom1_patch.asc	/	tilde.club	70
-ichecksum	/	tilde.club	70
 1doom1_patch.wad	/~theobori/doom1_patch.wad	tilde.club	70
 1doom1_patch.asc	/~theobori/doom1_patch.asc	tilde.club	70
 0checksum	/~theobori/checksum.txt	tilde.club	70
@@ -228,6 +208,4 @@ i    src.save_lumps(".");	/	tilde.club	70
 i	/	tilde.club	70
 i    Ok(())	/	tilde.club	70
 i}	/	tilde.club	70
-i	/	tilde.club	70
-ihttps://github.com/theobori/tinywad	/	tilde.club	70
 hhttps://github.com/theobori/tinywad	URL:https://github.com/theobori/tinywad	github.com	443

@@ -132,7 +132,6 @@ iHere's a diagram of several services trying to retrieve the	/	tilde.club	70
 iidentity of an Authentik user.	/	tilde.club	70
 hAuthentik	URL:https://goauthentik.io/	goauthentik.io	443
 i	/	tilde.club	70
-i/authentik_users.png	/	tilde.club	70
 I/authentik_users.png	/~theobori/authentik_users.png	tilde.club	70
 i	/	tilde.club	70
 i## Access management	/	tilde.club	70
@@ -164,7 +163,6 @@ iLet's say I want to access duplicati.theobori.duckdns.org,	/	tilde.club	70
 iit could be schematized as follows.	/	tilde.club	70
 hduplicati.theobori.duckdns.org	URL:https://duplicati.theobori.duckdns.org	duplicati.theobori.duckdns.org	443
 i	/	tilde.club	70
-i/authentik_proxy.png	/	tilde.club	70
 I/authentik_proxy.png	/~theobori/authentik_proxy.png	tilde.club	70
 i	/	tilde.club	70
 i## Media stack	/	tilde.club	70
@@ -179,7 +177,6 @@ hJellyfin	URL:https://jellyfin.org/	jellyfin.org	443
 i	/	tilde.club	70
 iHere's what the media stack looks like.	/	tilde.club	70
 i	/	tilde.club	70
-i/media_stack.png	/	tilde.club	70
 I/media_stack.png	/~theobori/media_stack.png	tilde.club	70
 i	/	tilde.club	70
 i## Backup and restore	/	tilde.club	70
@@ -208,7 +205,6 @@ hUptime Kuma	URL:https://uptime.kuma.pet/	uptime.kuma.pet	443
 i	/	tilde.club	70
 iThis is how the monitoring stack looks.	/	tilde.club	70
 i	/	tilde.club	70
-i  /monitoring_stack.png	/	tilde.club	70
 I/monitoring_stack.png	/~theobori/monitoring_stack.png	tilde.club	70
 i	/	tilde.club	70
 i## Final home page	/	tilde.club	70
@@ -217,7 +213,6 @@ iHere's an overview of the dashboard, featuring all the	/	tilde.club	70
 iservices exposed to the local network. In a way it's the end	/	tilde.club	70
 iresult of service implementation.	/	tilde.club	70
 i	/	tilde.club	70
-i/dashy.png	/	tilde.club	70
 I/dashy.png	/~theobori/dashy.png	tilde.club	70
 i	/	tilde.club	70
 i## Links	/	tilde.club	70

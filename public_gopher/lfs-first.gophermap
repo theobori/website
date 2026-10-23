@@ -75,7 +75,6 @@ iHere's a diagram representing the cross-compilation steps,	/	tilde.club	70
 iwhere each rectangle represents a compiler containing a	/	tilde.club	70
 isource platform to destination platform relationship.	/	tilde.club	70
 i	/	tilde.club	70
-i/lfs_cross-compilation.png	/	tilde.club	70
 I/lfs_cross-compilation.png	/~theobori/lfs_cross-compilation.png	tilde.club	70
 i	/	tilde.club	70
 i### Basic softwares and configuration	/	tilde.club	70
@@ -132,7 +131,6 @@ iPAM), etc.	/	tilde.club	70
 i	/	tilde.club	70
 iBelow is an overview of my main desktop envinronnement.	/	tilde.club	70
 i	/	tilde.club	70
-i/lfs_xfce.png	/	tilde.club	70
 I/lfs_xfce.png	/~theobori/lfs_xfce.png	tilde.club	70
 i	/	tilde.club	70
 iSo I end up on Xfce, download the latest version of DDNet,	/	tilde.club	70
@@ -145,13 +143,11 @@ iThe application is functional, I can join a game via the	/	tilde.club	70
 iInternet and the game sound comes out of my laptop speakers!	/	tilde.club	70
 iBelow is a screenshot with the game running.	/	tilde.club	70
 i	/	tilde.club	70
-i/lfs_ddnet.png	/	tilde.club	70
 I/lfs_ddnet.png	/~theobori/lfs_ddnet.png	tilde.club	70
 i	/	tilde.club	70
 iThe same for Quake I through VkQuake, a preview below.	/	tilde.club	70
 hVkQuake	URL:https://github.com/Novum/vkQuake	github.com	443
 i	/	tilde.club	70
-i/lfs_quake.png	/	tilde.club	70
 I/lfs_quake.png	/~theobori/lfs_quake.png	tilde.club	70
 i	/	tilde.club	70
 i## Little hack	/	tilde.club	70
@@ -169,7 +165,6 @@ iIt allowed me to build very complicated packages such as	/	tilde.club	70
 iFirefox, here's a preview.	/	tilde.club	70
 hFirefox	URL:https://www.mozilla.org/fr/firefox	www.mozilla.org	443
 i	/	tilde.club	70
-i/lfs_firefox.png	/	tilde.club	70
 I/lfs_firefox.png	/~theobori/lfs_firefox.png	tilde.club	70
 i	/	tilde.club	70
 i## Is it worth it?	/	tilde.club	70
