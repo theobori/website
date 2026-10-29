@@ -43,11 +43,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1793280758,
-        "narHash": "sha256-Kda8mL6FcWyvSJyaEjkqQOovANYczyMW1uI5BG3AT5s=",
+        "lastModified": 1793291826,
+        "narHash": "sha256-ilFapVLyEqWY/1OUwh95HgefSkbCmt5DMC0ItBEEkj0=",
         "owner": "theobori",
         "repo": "my-website-carbon-badges",
-        "rev": "b8362e3bd9b21bdc98e666d0195e81489b143b67",
+        "rev": "9d48c435195d651ea8b62500e4a8dc8c487d19f8",
         "type": "github"
       },
       "original": {
