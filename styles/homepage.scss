@@ -33,3 +33,19 @@
 p {
   margin: 8px 0;
 }
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.badges img {
+  display: block;
+}
+
+.badges map {
+  display: none;
+}

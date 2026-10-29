@@ -4,6 +4,7 @@
   nodejs,
   npmHooks,
   fetchNpmDeps,
+  my-website-carbon-badges-pkg,
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "theobori-cafe";
@@ -28,6 +29,7 @@ stdenv.mkDerivation (finalAttrs: {
     runHook preInstall
 
     mv _site $out
+    cp ${my-website-carbon-badges-pkg}/* $out/
 
     runHook postInstall
   '';
