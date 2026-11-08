@@ -7,6 +7,7 @@ On this web page, you'll find a non-exhaustive list of my links.
 
 - [https://theobori.cafe](https://theobori.cafe)
 - [https://zettel.theobori.cafe](https://zettel.theobori.cafe)
+- [https://recueil.theobori.cafe](https://recueil.theobori.cafe)
 - [https://github.com/theobori](https://github.com/theobori)
 - [https://leetcode.com/u/theobori](https://leetcode.com/u/theobori)
 - [https://repology.org/maintainer/theobori@disroot.org](https://repology.org/maintainer/theobori@disroot.org)
